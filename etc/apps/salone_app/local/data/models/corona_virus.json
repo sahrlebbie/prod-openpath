@@ -1,0 +1,302 @@
+{
+    "modelName": "corona_virus",
+    "displayName": "Corona Virus",
+    "description": "",
+    "objectSummary": {
+        "Event-Based": 0,
+        "Transaction-Based": 0,
+        "Search-Based": 1
+    },
+    "objects": [
+        {
+            "objectName": "all_statistics",
+            "displayName": "all_statistics",
+            "parentName": "BaseSearch",
+            "comment": "",
+            "fields": [
+                {
+                    "fieldName": "confirmed.detail",
+                    "owner": "all_statistics",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "confirmed.detail",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "confirmed.value",
+                    "owner": "all_statistics",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "confirmed.value",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "country",
+                    "owner": "all_statistics",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "country",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "deaths.detail",
+                    "owner": "all_statistics",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "deaths.detail",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "deaths.value",
+                    "owner": "all_statistics",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "deaths.value",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "eventtype",
+                    "owner": "all_statistics",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "eventtype",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "lastUpdate",
+                    "owner": "all_statistics",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "lastUpdate",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "recovered.detail",
+                    "owner": "all_statistics",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "recovered.detail",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "recovered.value",
+                    "owner": "all_statistics",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "recovered.value",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "_time",
+                    "owner": "all_statistics",
+                    "type": "timestamp",
+                    "fieldSearch": "_time=*",
+                    "required": true,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "_time",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "error.message",
+                    "owner": "all_statistics",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "error.message",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "host",
+                    "owner": "all_statistics",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "host",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "index",
+                    "owner": "all_statistics",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "index",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "sourcetype",
+                    "owner": "all_statistics",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "sourcetype",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "tag",
+                    "owner": "all_statistics",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "tag",
+                    "comment": ""
+                }
+            ],
+            "calculations": [
+                {
+                    "outputFields": [
+                        {
+                            "fieldName": "region_wb",
+                            "owner": "all_statistics",
+                            "type": "string",
+                            "fieldSearch": "",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "region_wb",
+                            "comment": "",
+                            "lookupOutputFieldName": "region_wb"
+                        },
+                        {
+                            "fieldName": "region_un",
+                            "owner": "all_statistics",
+                            "type": "string",
+                            "fieldSearch": "",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "region_un",
+                            "comment": "",
+                            "lookupOutputFieldName": "region_un"
+                        },
+                        {
+                            "fieldName": "subregion",
+                            "owner": "all_statistics",
+                            "type": "string",
+                            "fieldSearch": "",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "subregion",
+                            "comment": "",
+                            "lookupOutputFieldName": "subregion"
+                        },
+                        {
+                            "fieldName": "continent",
+                            "owner": "all_statistics",
+                            "type": "string",
+                            "fieldSearch": "",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "continent",
+                            "comment": "",
+                            "lookupOutputFieldName": "continent"
+                        },
+                        {
+                            "fieldName": "iso2",
+                            "owner": "all_statistics",
+                            "type": "string",
+                            "fieldSearch": "",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "iso2",
+                            "comment": "",
+                            "lookupOutputFieldName": "iso2"
+                        },
+                        {
+                            "fieldName": "iso3",
+                            "owner": "all_statistics",
+                            "type": "string",
+                            "fieldSearch": "",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "iso3",
+                            "comment": "",
+                            "lookupOutputFieldName": "iso3"
+                        }
+                    ],
+                    "calculationType": "Lookup",
+                    "lookupName": "geo_attr_countries",
+                    "comment": "",
+                    "lookupInputs": [
+                        {
+                            "inputField": "_raw",
+                            "lookupField": "country"
+                        }
+                    ],
+                    "owner": "all_statistics",
+                    "calculationID": "8ouobn9cgjl",
+                    "editable": true
+                }
+            ],
+            "constraints": [],
+            "lineage": "all_statistics",
+            "baseSearch": "source=\"/opt/scripts/CORONA_LOGS/*\" host=\"covid19.mathdro.id\" index=\"sierra_leone_analytics\" sourcetype=\"coronaVirus_data\""
+        }
+    ],
+    "objectNameList": [
+        "all_statistics"
+    ]
+}

@@ -1,0 +1,1 @@
+###You need to download and install the [Horizon Chart](https://splunkbase.splunk.com/app/3117/) custom visualization in order to make this work.

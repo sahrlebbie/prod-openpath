@@ -1,0 +1,6 @@
+[props/syslog/EXTRACT-user_slice_detected]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = admin
+version = 8.0.2.1
+modtime = 1588037545.218403000

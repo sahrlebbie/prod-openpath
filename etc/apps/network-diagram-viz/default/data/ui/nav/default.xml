@@ -1,0 +1,12 @@
+<nav search_view="search">
+  <view name="about" default='true' />
+  <view name="available_icons" />
+  
+  <collection label="Drill-Downs">
+	<view name="drill_down_config" />
+	<view name="drill_down_example" />
+  </collection>
+  <view name="splunk_examples" />
+  <view name="create_designs" />
+  <view name="settings" />
+</nav>

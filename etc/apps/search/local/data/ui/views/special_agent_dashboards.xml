@@ -1,0 +1,32 @@
+<dashboard>
+  <label>Special Agent Dashboards</label>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>| makeresults 
+| eval client="Agent002_client,Bond446clientxxxxyvvv,RA45DMclientxxxxyvvvv,MKLINEclientxxxxyvvvv,DoD346Gclient,REn83Dclient"
+| makemv delim="," client
+| mvexpand client
+| eval client=rtrim('client',"xxxxyvvv")
+| rex field=client (?&lt;client_part1&gt;\w+)(?&lt;client_part2&gt;client)
+| eval client=if(client="Agent002_client",'client',client_part1 +"_"+client_part2)</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">50</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="client_part2">
+          <colorPalette type="sharedList"></colorPalette>
+          <scale type="sharedCategory"></scale>
+        </format>
+      </table>
+    </panel>
+  </row>
+</dashboard>

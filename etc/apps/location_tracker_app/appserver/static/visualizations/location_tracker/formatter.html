@@ -1,0 +1,40 @@
+<form class="splunk-formatter-section" section-label="General">
+    <splunk-control-group label="Show traces">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.showTraces" value="0">
+            <option value="1">Yes</option>
+            <option value="0" selected>No</option>
+        </splunk-radio-input> 
+    </splunk-control-group>
+    <splunk-control-group label="Split trace interval (seconds)">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.interval" value="10"></splunk-text-input>
+    </splunk-control-group>
+</form>
+<form class="splunk-formatter-section" section-label="Icon">
+    <splunk-control-group label="Static icon">
+        <splunk-select name="{{VIZ_NAMESPACE}}.staticIcon">
+            <option value="none">none</option>
+            <option value="ambulance">ambulance</option>
+            <option value="bicycle">bicycle</option>
+            <option value="bus">bus</option>
+            <option value="car">car</option>
+            <option value="motorcycle">motorcycle</option>
+            <option value="plane">plane</option>
+            <option value="ship">ship</option>
+            <option value="space-shuttle">space-shuttle</option>
+            <option value="subway">subway</option>
+            <option value="taxi">taxi</option>
+            <option value="train">train</option>
+            <option value="truck">truck</option>
+        </splunk-select> 
+    </splunk-control-group>
+</form>
+<form class="splunk-formatter-section" section-label="Tiles">
+    <splunk-control-group label="Tile set">
+        <splunk-select name="{{VIZ_NAMESPACE}}.tileSet">
+            <option value="light_tiles" selected>Light</option>
+            <option value="dark_tiles">Dark</option>
+            <option value="satellite_tiles">Satellite</option>
+            <option value="openstreetmap_tiles">Open Street Map</option>
+        </splunk-select>
+    </splunk-control-group>
+</form>

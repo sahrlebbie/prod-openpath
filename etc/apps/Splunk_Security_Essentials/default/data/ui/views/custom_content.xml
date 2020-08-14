@@ -1,0 +1,50 @@
+<dashboard stylesheet="style/app.css,style/custom_content.css" script="runPageScript.js">
+  <label>Custom Content</label>
+  <!--<search id="analytics">
+    <query>| sseanalytics  | search channel="Custom Content"</query>
+    <earliest>-24h@h</earliest>
+    <latest>now</latest>
+    <sampleRatio>1</sampleRatio>
+  </search>-->
+  
+  <row>
+  <panel>
+  <html id="bookmarkrow" >
+        <div id="bookmarkNavContainer" style="text-align: center">
+            <div class="floatleft" id="manageBookmarkLink"><a href="#"  data-translate-id="bookmarked-a-manageList">Manage List</a></div>
+            <div class="floatright" id="addCustomContent"><a href="#"  data-translate-id="custom-a-addcustom">Add Custom Content</a></div>
+            <div id="restoredDeletedContent"><a href="#"  data-translate-id="custom-a-restoredeleted">Recycling Bin</a></div>
+          </div>
+  
+  </html>
+  </panel>
+  </row><!--
+  <row>
+    <panel id="custom_content">
+      <title>Custom</title>
+      <single>
+        <search base="analytics">
+          <query>| stats count</query>
+        </search>
+        <option name="drilldown">none</option>
+      </single>
+    </panel>
+  </row>-->
+  <row>
+  <panel>
+  <html>
+  <div id="bookmark_table">
+  </div>
+  </html>
+  </panel>
+  </row>
+  <row>
+  <panel>
+  <html>
+
+  <div id="bookmark_printable_table">
+  </div>
+  </html>
+  </panel>
+  </row>
+</dashboard>

@@ -1,0 +1,30 @@
+<form>
+  <label>Students Drilldown</label>
+  <fieldset submitButton="false">
+    <input type="time" token="field1">
+      <label></label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <chart>
+        <search>
+          <query>index=_audit AND (user!=*0* user!=-1 user!=admin user!=nobody)
+| stats count by user</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <link target="_blank">/app/student_front_end_app/actions_by_students?form.student=$click.value$</link>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+</form>

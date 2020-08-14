@@ -1,0 +1,179 @@
+<dashboard theme="dark">
+  <label>COVID-19 Breakdown By Country</label>
+  <fieldset submitButton="false">
+    <input type="dropdown" token="country" searchWhenChanged="true">
+      <label>Analyze by Country</label>
+      <choice value="*">All</choice>
+      <default>Sierra Leone</default>
+      <initialValue>Sierra Leone</initialValue>
+      <fieldForLabel>Country</fieldForLabel>
+      <fieldForValue>Country</fieldForValue>
+      <search>
+        <query>|inputlookup all_countries_location.csv|fields Country</query>
+        <earliest>-2s@s</earliest>
+        <latest>now</latest>
+      </search>
+      <prefix>"</prefix>
+      <suffix>"</suffix>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <html>
+       <style type="text/css">
+   .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+   .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg .tg-6i5z{font-size:28px;font-family:"Arial Black", Gadget, sans-serif !important;;text-align:center;vertical-align:top}
+   </style>
+   <table class="tg">
+     <tr>
+       <th class="tg-6i5z">Total Confirmed Cases</th>
+     </tr>
+     </table>
+     </html>
+      <viz type="status_indicator_app.status_indicator">
+        <search>
+          <query>|tstats max(all_statistics.confirmed.value) as highest_confirmed_per_country from datamodel=corona_virus where all_statistics.country=$country$ by all_statistics.country |stats sum(highest_confirmed_per_country) |eval status="Confirmed Cases"</query>
+          <earliest>-90d@d</earliest>
+          <latest>now</latest>
+          <refresh>15m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">background</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">info-circle</option>
+        <option name="status_indicator_app.status_indicator.icon">fix_icon</option>
+        <option name="status_indicator_app.status_indicator.precision">0</option>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#f1813f</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+      </viz>
+    </panel>
+    <panel>
+      <html>
+       <style type="text/css">
+   .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+   .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg .tg-6i5z{font-size:28px;font-family:"Arial Black", Gadget, sans-serif !important;;text-align:center;vertical-align:top}
+   </style>
+   <table class="tg">
+     <tr>
+       <th class="tg-6i5z">Total Recovered Cases</th>
+     </tr>
+     </table>
+     </html>
+      <viz type="status_indicator_app.status_indicator">
+        <search>
+          <query>|tstats max(all_statistics.recovered.value) as highest_recovery_per_country from datamodel=corona_virus  where all_statistics.country=$country$ by all_statistics.country |stats sum(highest_recovery_per_country) |eval status="Recovered Cases"</query>
+          <earliest>-90d@d</earliest>
+          <latest>now</latest>
+          <refresh>15m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">background</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">check</option>
+        <option name="status_indicator_app.status_indicator.icon">fix_icon</option>
+        <option name="status_indicator_app.status_indicator.precision">0</option>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#53a051</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+      </viz>
+    </panel>
+    <panel>
+      <html>
+       <style type="text/css">
+   .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+   .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg .tg-6i5z{font-size:28px;font-family:"Arial Black", Gadget, sans-serif !important;;text-align:center;vertical-align:top}
+   </style>
+   <table class="tg">
+     <tr>
+       <th class="tg-6i5z">Total Deaths</th>
+     </tr>
+     </table>
+     </html>
+      <viz type="status_indicator_app.status_indicator">
+        <search>
+          <query>|tstats max(all_statistics.deaths.value) as highest_deaths_per_country from datamodel=corona_virus  where all_statistics.country=$country$ by all_statistics.country |stats sum(highest_deaths_per_country) |eval status="Confirmed Deaths"</query>
+          <earliest>-90d@d</earliest>
+          <latest>now</latest>
+          <refresh>15m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">background</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">bug</option>
+        <option name="status_indicator_app.status_indicator.icon">fix_icon</option>
+        <option name="status_indicator_app.status_indicator.precision">0</option>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#dc4e41</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>TOP $toggle$ by Country($limit$)</title>
+      <input type="radio" token="toggle" searchWhenChanged="true">
+        <label>Select Statistics</label>
+        <choice value="all_statistics.deaths.value">Deaths</choice>
+        <choice value="all_statistics.confirmed.value">Confirmed</choice>
+        <default>all_statistics.confirmed.value</default>
+        <initialValue>all_statistics.confirmed.value</initialValue>
+      </input>
+      <input type="radio" token="limit" searchWhenChanged="true">
+        <label>Select County Count:</label>
+        <choice value="limit=10">Default</choice>
+        <choice value="limit=20">20 Countries</choice>
+        <choice value="limit=30">30 Countries</choice>
+        <choice value="limit=40">40 Countries</choice>
+        <choice value="limit=50">50 Countries</choice>
+        <default>limit=10</default>
+        <initialValue>limit=10</initialValue>
+      </input>
+      <chart>
+        <search>
+          <query>|tstats max($toggle$) as $toggle$ from datamodel=corona_virus where all_statistics.country=$country$ by all_statistics.country,_time |timechart values($toggle$) as count by all_statistics.country</query>
+          <earliest>-90d@d</earliest>
+          <latest>now</latest>
+          <refresh>15m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="charting.axisTitleX.text">Country Statistics by Time</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.overlayFields">_time</option>
+        <option name="charting.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <map>
+        <search>
+          <query>|tstats count from datamodel=corona_virus where all_statistics.country=$country$ by  all_statistics.country |lookup all_countries_location.csv Country AS all_statistics.country  OUTPUT Country, "IP Address" as dest |iplocation dest |geostats sum(count) by Country globallimit=0</query>
+          <earliest>-90d@d</earliest>
+          <latest>now</latest>
+          <refresh>15m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="mapping.type">marker</option>
+        <option name="refresh.display">progressbar</option>
+      </map>
+    </panel>
+  </row>
+</dashboard>

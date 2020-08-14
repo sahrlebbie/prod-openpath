@@ -1,0 +1,11 @@
+fields: user, action, ip
+user:
+djohnson,root,nsharpe,administrator,admin,operator,
+mailman,mail,irc
+
+action:
+failure,addtocart,purchase,view,success,remove,changequantity
+
+ip:
+87.194.216.51,10.3.10.46,211.166.11.101,128.241.220.82,10.2.10.163,
+109.169.32.135,194.215.205.19,216.221.226.11,95.130.170.231,27.1.11.11

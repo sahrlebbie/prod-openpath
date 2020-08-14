@@ -1,0 +1,46 @@
+##### App Version #####
+3.1
+
+##### Release Date #####
+September 13, 2019
+
+##### Splunk Compatibility #####
+7.3, 7.2, 7.1, 7.0, 6.6, 6.5
+
+##### OS Compatibility #####
+This app is platform independent.
+
+##### Installation #####
+
+* If your Splunk Enterprise server or your client machine are connected to the Internet, you can navigate to the app browser from the launcher home page. 
+
+1. Click "+ Find More Apps" below your last installed app to go directly to the app browser. You can also click the gear next to "Apps" to go to the apps manager page. 
+2. Click the "Browse more apps" button to go to the app browser. 
+3. Search for the ".conf Archive Search" app. 
+4. Click on the "Install" button for the app.
+
+* If your Splunk Enterprise server and client do not have Internet connectivity, you must download apps from Splunkbase and copy them over to your server:
+
+1. From a computer connected to the Internet, browse Splunkbase for the ".conf Archive Search" app or go to https://splunkbase.splunk.com/app/3330/.
+2. Download the app.
+3. Once downloaded, copy it to your Splunk Enterprise server.  
+4. Put it in your $SPLUNK_HOME/etc/apps directory.  
+5. Untar and ungzip the app, using a tool like tar -xvf (on *nix) or WinZip (on Windows). Note that Splunk apps and add-ons are packaged with a .SPL extension although they are just tarred and gzipped. You may need to force your tool to recognize this extension.
+6. You should not need to restart Splunk Enterprise.
+7. The app should now be installed and will be available from Splunk Home.
+
+##### Configuration #####
+This app requires no configuration. There is no impact to your indexers, searches or others. 
+
+##### App Contents ####
+This app consists of a single style sheet and dashboard view driven by a lookup file (conf_breakout_sessions.csv)
+
+##### Using the App #####
+Use this app to search the .conf Archives for sessions (i.e. Breakout Sessions, Community Theater, Hands-on Labs, Hands-on Session, Keynotes, Panel Discussions, Splunk Snacks, Super Session) based on topic, solution, speaker, etc., and get the link(s) to the captured presentation ("Recording") and presentation slides ("Slides").
+
+NOTE: Some files will download directly to your default dowloads directory, while other apps will launch in a new browser tab.
+
+##### Uninstall the App #####
+To uninstall the app, just delete the app and its directory. The app and its directory is located in $SPLUNK_HOME/etc/apps/conf_archives. You can run the following command in the CLI:
+
+./splunk remove app conf_archives -auth <username>:<password>

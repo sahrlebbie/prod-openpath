@@ -1,0 +1,61 @@
+<dashboard>
+  <label>Trellis Counters</label>
+  <description>SVG examples within trellis layout</description>
+  <row>
+    <panel>
+      <title>Counter with small trellis</title>
+      <viz type="svg.svg">
+        <search>
+          <query>| makeresults count=12
+| streamstats count 
+| eval name = CASE (count==1, "Human Resource", count==2, "Marketing", count==3, "Customer Support", count==4, "Sales", count==5, "Accounting", count==6, "Distribution", count==7, "Research and Development", count==8, "Management", count==9, "Production", count==10, "Operations", count==11, "Legal", count==12, "Purchasing")
+| eval count = random()%100
+| stats sum(count) as count by name 
+| eval text_colour="black", stroke_width=10, stroke_colour="black"
+| eval background_colour= CASE( count &lt;= 30, "#c23b35", count &lt;= 60, "#f1f227", 1==1, "#66c430" )
+| `svg_viz_circle_complex(count,text_colour,background_colour,stroke_width,stroke_colour)`</query>
+          <earliest>-1m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="height">320</option>
+        <option name="drilldown">none</option>
+        <option name="trellis.enabled">1</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">small</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Counter with large trellis</title>
+      <viz type="svg.svg">
+        <search>
+          <query>| makeresults count=4
+| streamstats count 
+| eval name = CASE (count==1, "Website", count==2, "Intranet", count==3, "Operating System", count==4, "Database")
+| eval count = random()%100
+| stats sum(count) as count by name 
+| eval text_colour="black", stroke_width=10, stroke_colour="black"
+| eval background_colour= CASE( count &lt;= 30, "#c23b35", count &lt;= 60, "#f1f227", 1==1, "#66c430" )
+| `svg_viz_square_complex(count,text_colour,background_colour,stroke_width,stroke_colour)`</query>
+          <earliest>-1m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="height">850</option>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="svg.svg.debug">false</option>
+        <option name="svg.svg.error_message_delay_in_seconds">0</option>
+        <option name="svg.svg.viewbox_height">100</option>
+        <option name="svg.svg.viewbox_min_x">0</option>
+        <option name="svg.svg.viewbox_min_y">0</option>
+        <option name="svg.svg.viewbox_width">100</option>
+        <option name="trellis.enabled">1</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">large</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

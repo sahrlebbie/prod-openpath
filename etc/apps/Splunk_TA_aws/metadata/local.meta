@@ -1,0 +1,43 @@
+[views/error_details]
+version = 7.3.3
+modtime = 1580356818.334145000
+
+[aws_account_ext/Assume_Splunk_AWS_Role]
+owner = admin
+version = 7.3.3
+modtime = 1582258546.343246000
+
+[passwords/credential%3A__REST_CREDENTIAL__%23Splunk_TA_aws%23configs%2Fconf-splunk_ta_aws_iam_roles%23BaseRestHandler%3ASplunk_Assume_Prod_Role%3A]
+owner = admin
+version = 7.3.3
+modtime = 1582258596.688593000
+
+[splunk_ta_aws_iam_roles/Splunk_Assume_Prod_Role]
+owner = admin
+version = 7.3.3
+modtime = 1582258596.705523000
+
+[aws_description_tasks/Description%20Logs]
+owner = admin
+version = 7.3.3
+modtime = 1582259478.132617000
+
+[inputs/aws_billing_cur%3A%2F%2Fopenpath_billing]
+owner = admin
+version = 8.0.2.1
+modtime = 1586897704.195758000
+
+[inputs/aws_s3%3A%2F%2Fopenpath_s3_access]
+owner = admin
+version = 7.3.3
+modtime = 1582261184.816713000
+
+[aws_inspector_tasks/openpath_inspector]
+owner = admin
+version = 7.3.3
+modtime = 1582261216.795304000
+
+[aws_config_rule_tasks/openpath_config_rules_c860c620-1ca0-4ee6-9002-02715055152c]
+owner = admin
+version = 7.3.3
+modtime = 1582261268.756550000

@@ -1,0 +1,85 @@
+<form>
+  <label>Eric_T (Student Grading Dashboard)</label>
+  <fieldset submitButton="false"></fieldset>
+  <row>
+    <panel>
+      <input type="dropdown" token="app" searchWhenChanged="true">
+        <label>Select App Context</label>
+        <choice value="*">ALL</choice>
+        <choice value="openpath">OpenPath</choice>
+        <choice value="search">Search</choice>
+        <default>*</default>
+        <initialValue>*</initialValue>
+      </input>
+      <table>
+        <title>Student Information</title>
+        <search>
+          <query>| rest /services/authentication/users 
+| table title realname roles email last_successful_login 
+| convert ctime(last_successful_login) 
+| eval grade=" ", test1=" ",test2=" ",test=" " 
+| rename title as Owner 
+| join Owner 
+    [| rest /servicesNS/-/-/data/ui/views 
+    | table author title label eai:acl.app updated 
+    | eval Type="Dashboards" 
+    | rename author as Owner title as Name "eai:acl.app" as AppName 
+    | search Owner!=admin* Owner!=nobody  AppName=$app$
+    | eval updated=strptime(updated, "%Y-%m-%dT%H:%M:%S%z") 
+    | eval currentTime=now() 
+    | eval z = ('updated'-'currentTime')/86400 
+    | rename z as "Days Since Last Dashboard Update" 
+    | convert ctime(currentTime) 
+    | convert ctime(updated)]</query>
+          <earliest>-5s</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="count">20</option>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <format type="color" field="roles">
+          <colorPalette type="sharedList"></colorPalette>
+          <scale type="sharedCategory"></scale>
+        </format>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Attendance  Record</title>
+        <search>
+          <query>| rest /services/authentication/users 
+| table title realname email last_successful_login 
+|convert ctime(last_successful_login)
+| eval 02/12=" " 
+| eval login="0" 
+| eval 02/12=if(login=1,1,0)</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Student Information</title>
+        <search>
+          <query>|rest /services/authentication/users |table title realname roles email last_successful_login |convert ctime(last_successful_login) |eval grade=" ", test1=" ",test2=" ",test=" "</query>
+          <earliest>-5s</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="count">20</option>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <format type="color" field="roles">
+          <colorPalette type="sharedList"></colorPalette>
+          <scale type="sharedCategory"></scale>
+        </format>
+      </table>
+    </panel>
+  </row>
+</form>

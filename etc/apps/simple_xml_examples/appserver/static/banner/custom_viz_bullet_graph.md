@@ -1,0 +1,1 @@
+###You need to download and install the [Bullet Graph](https://splunkbase.splunk.com/app/3144/) custom visualization in order to make this work.

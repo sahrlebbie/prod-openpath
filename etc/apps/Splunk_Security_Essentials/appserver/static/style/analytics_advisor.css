@@ -1,0 +1,304 @@
+#tabs{
+    border-bottom: 0px;
+}
+
+#tabs > .dashboard-cell > .dashboard-panel{
+    margin-bottom: 0px;
+    border-bottom: 0px;
+}
+
+#element1 > .html{
+    padding-left: 0px; /* This fixes some weirdness where the first tab doesn't look right due to the left part of the tab showing */
+    padding-right: 0px;
+    padding-top: 0px;
+}
+
+#tab_1 > .dashboard-cell > .dashboard-panel{
+    border-top: 0px;
+}
+.nav-tabs>li.active>a:before {
+    background-color: #00A9F8 !important;
+}
+/* This makes the Details column wider to display nice
+td[data-cell-index="3"] {
+  min-width:220px;
+}
+*/
+#content_table th[data-sort-key=Details] {
+    min-width:220px;
+}
+#content_table th[data-sort-key=Status] {
+    min-width:140px;
+}
+/*
+#content_table td:last-child,#content_table th:last-child {
+    display:none;
+}
+*/
+span.red {
+    color:red;
+}
+span.green {
+    color:green;
+}
+.dashboard-form-fieldset label {
+    display: inline-block;
+}
+.dashboard-form-fieldset label[data-original-title] {
+    border: dashed #bbb;
+    border-width: 0 0 1px;
+}
+
+.fieldset div.input-multiselect {
+    width: 220px;
+}
+
+/* This makes descriptions that contain HTML tags display uniformly to those that do not */
+#content_table td p {
+    padding: 0 0px;
+     color: #006eaa !important;
+}
+
+#content_table td .highlight {
+    background-color: #fef2d7;
+    border-top: 4px solid #fef2d7;
+    border-bottom: 4px solid #fef2d7;
+    color: #3c444d;
+}
+
+.tooltip p {
+    text-align:left;
+    color:#fff;
+}
+.tooltip h2,.tooltip h3 {
+    color: #fff;
+}
+
+
+
+.fieldset .input-checkbox {
+    width: 100px;
+}
+
+/* This is for the drill down button to make it more prominent */
+.animatedbutton  {
+    vertical-align:middle
+}
+.animatedbutton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.animatedbutton span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.animatedbutton:hover span {
+  padding-right: 25px;
+}
+
+.animatedbutton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+
+/* This is for the security journey sectoin that has some custom styling */
+.panel-element-row < #stage_1_bar,.panel-element-row < #stage_2_bar,.panel-element-row < #stage_3_bar,.panel-element-row < #stage_4_bar,.panel-element-row < #stage_5_bar,.panel-element-row < #stage_6_bar {
+    position: relative;
+}
+
+#stage_1_bar div.highcharts-container ,#stage_2_bar div.highcharts-container ,#stage_3_bar div.highcharts-container ,#stage_4_bar div.highcharts-container,#stage_5_bar div.highcharts-container,#stage_6_bar div.highcharts-container  {
+    position: absolute !important;
+    bottom: 15px;
+    left: 0;
+}
+#stage_1_bar div.highcharts-container{
+    height: 120px !important;
+}
+#stage_1_bar .highcharts-series-0,#stage_1_bar .highcharts-series-1,#stage_1_bar .highcharts-series-2,#stage_1_bar .highcharts-series-3{
+    transform: scale(1, 0.30);
+}
+#stage_2_bar div.highcharts-container{
+    height: 145px !important;
+}
+#stage_2_bar .highcharts-series-0,#stage_2_bar .highcharts-series-1,#stage_2_bar .highcharts-series-2,#stage_2_bar .highcharts-series-3{
+    transform: scale(1, 0.40);
+}
+#stage_3_bar div.highcharts-container{
+    height: 172px !important;
+}
+#stage_3_bar .highcharts-series-0,#stage_3_bar .highcharts-series-1,#stage_3_bar .highcharts-series-2,#stage_3_bar .highcharts-series-3{
+    transform: scale(1, 0.50);
+}
+#stage_4_bar div.highcharts-container{
+    height: 227px !important;
+}
+#stage_4_bar .highcharts-series-0,#stage_4_bar .highcharts-series-1,#stage_4_bar .highcharts-series-2,#stage_4_bar .highcharts-series-3{
+    transform: scale(1, 0.70);
+}
+#stage_5_bar div.highcharts-container{
+    height: 269px !important;
+}
+#stage_5_bar .highcharts-series-0,#stage_5_bar .highcharts-series-1,#stage_5_bar .highcharts-series-2,#stage_5_bar .highcharts-series-3{
+    transform: scale(1, 0.85);
+}
+#stage_6_bar div.highcharts-container{
+    height: 100% !important;
+}
+#stage_6_bar .highcharts-series-0,#stage_6_bar .highcharts-series-1,#stage_6_bar .highcharts-series-2,#stage_6_bar .highcharts-series-3{
+    transform: scale(1, 1);
+}
+
+#row1_col4 .dashboard-panel,#row1_col5 .dashboard-panel,#row1_col6 .dashboard-panel,#row1_col7 .dashboard-panel,#row1_col8 .dashboard-panel {
+    margin: 0;
+}
+#row1_col4 .fieldset .input {
+    /* width: 230px; */
+}
+
+#row1_col6 .dashboard-panel .panel-element-row div.single,#row1_col7 .dashboard-panel .panel-element-row div.single,#row1_col8 .dashboard-panel .panel-element-row div.single {
+    min-width: 100px;
+}
+
+#row1_col6 .splunk-single .shared-reportvisualizer,#row1_col7 .splunk-single .shared-reportvisualizer,#row1_col8 .splunk-single .shared-reportvisualizer {
+    width: 50% !important;
+    height: 50px !important;
+    margin: 0 auto 0 auto;
+}
+#row1_col7 {
+    margin-bottom:5px;
+}
+#row1_col5 .highcharts-tooltip{
+    transform: translate(1, 10) !important;
+}
+/* This needs tweaking to show nice bg for the security journey
+#row1_col5 .dashboard-panel {
+    background: none !important;
+}
+
+#row1_col5 {
+    background-image: url(/static/app/Content_Analytics/images/security_journey_graph.png) !important;
+    background-position: left bottom;
+    background-clip: border-box;
+    background-size: 80%;
+    background-repeat: no-repeat;
+}
+*/
+
+
+/* Custom kill chain viz */
+
+#killchain_panel h1 {
+    margin-left: 20%;
+}
+
+.killchain-phases {
+    width: 90%;
+    margin-left: 20%;
+    display: inline-block;
+}
+
+.killchain_card {
+    width: 11.33%;
+    max-width: 160px;
+    float: left;
+}
+
+.killchain_arrow {
+    height: 85px;
+    line-height: 85px;
+    -webkit-clip-path: polygon(75% 0%, 90% 50%, 75% 100%, 0% 100%, 15% 50%, 0% 0%);
+    clip-path: polygon(75% 0%, 90% 50%, 75% 100%, 0% 100%, 15% 50%, 0% 0%);
+}
+
+.killchain-text {
+    font-size: 250%;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+}
+
+
+.killchain-label {
+    margin-top: 7px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-left: 10%;
+    width: 60%;
+}
+
+.killchain-text-one-line {
+    font-size: 16px;
+    color: #fff;
+    font-family: system-ui;
+    white-space: wrap;
+    width: 100%;
+    padding-top: 7%;
+    padding-left: 26%;
+}
+
+.killchain-text-second {
+    font-size: 16px;
+    color: #fff;
+    font-family: system-ui;
+    margin-top: -10px;
+    padding-left: 26%;
+}
+
+.notfirst {
+    margin-left: -2%;
+}
+
+
+/* Custom MITRE map viz */
+
+#mitremaptable table td, #mitremaptable table th {
+    font-size: 10px;
+}
+#mitremaptable  table td {
+    line-height: 14px;
+    padding: 0px 6px;
+    cursor: pointer;
+}
+#mitremaptable  table th {
+    padding: 3px 6px;
+}
+#mitremaptable table td span {
+    display: block;
+    min-height: 27px;
+}
+
+#mitremaptable .tooltip {
+    max-width:140px;
+}
+
+#mitremaptable .threat_group {
+    background-image: url('/static/app/Splunk_Security_Essentials/images/general_images/mitre_threat_group_icon.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 12px 12px;
+}
+
+#mitremaptable .selected{
+    border: 2px solid #49B849;
+
+}
+
+#mitremaptable table-striped.table-chrome>tbody>tr.even>td, #mitremaptable .table-striped.table-chrome>tbody>tr:nth-child(2n)>td, #mitremaptable  .table-striped.table-chrome>tbody>tr:nth-child(odd).even>td {
+    background-color: #ffffff !important;
+}
+
+/* this is to show the edit button, might remove before golive */
+.dashboard-view-controls a.edit-btn {
+    display: inline-block !important;
+}

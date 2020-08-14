@@ -1,0 +1,32 @@
+<dashboard>
+  <label>Trellis Trucks</label>
+  <description>SVG examples within trellis layout</description>
+  <row>
+    <panel>
+      <viz type="svg.svg">
+        <search>
+          <query>| makeresults count=12
+| streamstats count 
+| eval name = CASE (count==1, "Human Resource", count==2, "Marketing", count==3, "Customer Support", count==4, "Sales", count==5, "Accounting", count==6, "Distribution", count==7, "Research and Development", count==8, "Management", count==9, "Production", count==10, "Operations", count==11, "Legal", count==12, "Purchasing")
+| eval count = random()%11
+| stats sum(count) as count by name 
+| eval truck_color = "#28383c"
+| eval cargo_color = CASE( count &lt;=3, "#c23b35", 1==1, "#66c430" ) 
+| `svg_viz_truck_one(count, cargo_color, truck_color )` 
+| eval truck_one = svg_viz 
+| `svg_viz_truck_ten_simple(count, cargo_color, truck_color)` 
+| eval truck_ten = svg_viz 
+| eval svg_viz = CASE( count &lt;= 7, truck_ten, 1==1, truck_one )</query>
+          <earliest>-1m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="height">650</option>
+        <option name="drilldown">none</option>
+        <option name="trellis.enabled">1</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

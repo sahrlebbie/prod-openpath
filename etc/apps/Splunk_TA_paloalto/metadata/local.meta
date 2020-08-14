@@ -1,0 +1,7 @@
+[eventtypes/pan_firewall]
+version = 7.3.3
+modtime = 1584590021.332221000
+
+[tags/eventtype%3Dpan_firewall]
+version = 7.3.3
+modtime = 1584590021.417194000

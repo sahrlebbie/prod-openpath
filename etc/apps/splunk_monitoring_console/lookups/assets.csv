@@ -1,0 +1,7 @@
+peerURI,serverName,host,machine,"search_group","_mkv_child","_timediff","__mv_peerURI","__mv_serverName","__mv_host","__mv_machine","__mv_search_group","__mv__mkv_child","__mv__timediff"
+"172.31.18.94:8089","ip-172-31-18-94.ec2.internal","prod_indexer","prod_indexer","dmc_group_indexer",0,,,,,,,,
+"172.31.18.94:8089","ip-172-31-18-94.ec2.internal","prod_indexer","prod_indexer","dmc_group_kv_store",1,,,,,,,,
+"172.31.18.94:8089","ip-172-31-18-94.ec2.internal","prod_indexer","prod_indexer","dmc_indexerclustergroup_openpath_class",2,,,,,,,,
+localhost,"prod-openpathus.com","prod-openpathus.com","prod-openpathus","dmc_group_kv_store",0,,,,,,,,
+localhost,"prod-openpathus.com","prod-openpathus.com","prod-openpathus","dmc_group_license_master",1,,,,,,,,
+localhost,"prod-openpathus.com","prod-openpathus.com","prod-openpathus","dmc_group_search_head",2,,,,,,,,

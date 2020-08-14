@@ -1,0 +1,22 @@
+<dashboard>
+  <label>lebbie second class assignment</label>
+  <description>Assignment to search and discover all searches done by user Rufus Gillette until january 27 2020</description>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>index=_audit user=rufus.gillette action=search* |table timestamp search info |dedup search | sort _timestamp</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

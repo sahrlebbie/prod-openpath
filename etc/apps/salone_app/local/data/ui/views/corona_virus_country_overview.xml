@@ -1,0 +1,222 @@
+<form theme="dark">
+  <label>Corona Virus Country Overview</label>
+  <fieldset submitButton="true" autoRun="false">
+    <input type="time" token="time" searchWhenChanged="true">
+      <label>Select Time Range</label>
+      <default>
+        <earliest>-30d@d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <html>
+        <head>
+          <style>
+          img
+          { float: right;
+          }
+          </style>
+        </head>
+        <p>
+            <img src="/static/app/salone_app/openpathBlue.png" style="border0px;margin:10px;width:10%;"/>
+          </p>
+        <center>
+          <h1>
+            <font color="Orange">Welcome to OpenPath CoronaVirus Dashboard</font>
+          </h1>
+        </center>
+        <br/>
+        <center>
+          <p>This is a basic dashboard statistics of the CoronaVirus across the world. These statistics are grabbed from JHU's Database using their Mathdro API and a script.</p>
+        </center>
+      <center>
+          <p>You can click the button below to jump to more in depth look at the datasets scraped from JHU.</p>
+          <br/>
+          <form action="https://prod-openpathus.com/en-US/app/openpath/student_grading_dashboard" method="get" target="_blank">
+         <button type="submit" class="button">Drill-Down Dashboards</button>
+      </form>
+        </center>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+       <style type="text/css">
+   .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+   .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg .tg-6i5z{font-size:28px;font-family:"Arial Black", Gadget, sans-serif !important;;text-align:center;vertical-align:top}
+   </style>
+   <table class="tg">
+     <tr>
+       <th class="tg-6i5z">Total Countries Affected</th>
+     </tr>
+     </table>
+     </html>
+      <viz type="status_indicator_app.status_indicator">
+        <search>
+          <query>|tstats dc(all_statistics.country) from datamodel=corona_virus |eval status="Affected Countries"</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">background</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">globe</option>
+        <option name="status_indicator_app.status_indicator.icon">fix_icon</option>
+        <option name="status_indicator_app.status_indicator.precision">0</option>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#555</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+       <style type="text/css">
+   .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+   .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg .tg-6i5z{font-size:28px;font-family:"Arial Black", Gadget, sans-serif !important;;text-align:center;vertical-align:top}
+   </style>
+   <table class="tg">
+     <tr>
+       <th class="tg-6i5z">Total Confirmed Cases</th>
+     </tr>
+     </table>
+     </html>
+      <viz type="status_indicator_app.status_indicator">
+        <search>
+          <query>|tstats max(all_statistics.confirmed.value) as highest_confirmed_per_country from datamodel=corona_virus by all_statistics.country |stats sum(highest_confirmed_per_country) |eval status="Confirmed Cases"</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">background</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">info-circle</option>
+        <option name="status_indicator_app.status_indicator.icon">fix_icon</option>
+        <option name="status_indicator_app.status_indicator.precision">0</option>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#f1813f</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+      </viz>
+    </panel>
+    <panel>
+      <html>
+       <style type="text/css">
+   .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+   .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg .tg-6i5z{font-size:28px;font-family:"Arial Black", Gadget, sans-serif !important;;text-align:center;vertical-align:top}
+   </style>
+   <table class="tg">
+     <tr>
+       <th class="tg-6i5z">Total Recovered Cases</th>
+     </tr>
+     </table>
+     </html>
+      <viz type="status_indicator_app.status_indicator">
+        <search>
+          <query>|tstats max(all_statistics.recovered.value) as highest_recovery_per_country from datamodel=corona_virus by all_statistics.country |stats sum(highest_recovery_per_country) |eval status="Recovered Cases"</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">background</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">check</option>
+        <option name="status_indicator_app.status_indicator.icon">fix_icon</option>
+        <option name="status_indicator_app.status_indicator.precision">0</option>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#53a051</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+      </viz>
+    </panel>
+    <panel>
+      <html>
+       <style type="text/css">
+   .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+   .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg .tg-6i5z{font-size:28px;font-family:"Arial Black", Gadget, sans-serif !important;;text-align:center;vertical-align:top}
+   </style>
+   <table class="tg">
+     <tr>
+       <th class="tg-6i5z">Total Deaths</th>
+     </tr>
+     </table>
+     </html>
+      <viz type="status_indicator_app.status_indicator">
+        <search>
+          <query>|tstats max(all_statistics.deaths.value) as highest_deaths_per_country from datamodel=corona_virus by all_statistics.country |stats sum(highest_deaths_per_country) |eval status="Confirmed Deaths"</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">background</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">bug</option>
+        <option name="status_indicator_app.status_indicator.icon">fix_icon</option>
+        <option name="status_indicator_app.status_indicator.precision">0</option>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#dc4e41</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+          <style type="text/css">
+   .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+   .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg .tg-6i5z{font-size:28px;font-family:"Arial Black", Gadget, sans-serif !important;;text-align:center;vertical-align:top}
+   </style>
+   <table class="tg">
+     <tr>
+       <th class="tg-6i5z">Toggled View By Deaths/Confirmed Cases</th>
+     </tr>
+     </table>
+            <center>
+          <p>Below you have the option to TOGGLE Between Deaths and Confirmed cases. The statistics are pulled at a 15 minute interval form JHU's Database.</p>
+        </center>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <input type="radio" token="toggle" searchWhenChanged="true">
+        <label>Toggle View</label>
+        <choice value="all_statistics.confirmed.value">Confirmed Cases</choice>
+        <choice value="all_statistics.deaths.value">Confirmed Deaths</choice>
+        <default>all_statistics.confirmed.value</default>
+        <initialValue>all_statistics.confirmed.value</initialValue>
+      </input>
+      <map>
+        <search>
+          <query>|tstats max($toggle$) as count from datamodel=corona_virus by  all_statistics.country |lookup all_countries_location.csv Country AS all_statistics.country  OUTPUT Country, "IP Address" as dest |iplocation dest |geostats sum(count) by Country globallimit=0</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="mapping.type">marker</option>
+        <option name="refresh.display">progressbar</option>
+      </map>
+    </panel>
+  </row>
+</form>

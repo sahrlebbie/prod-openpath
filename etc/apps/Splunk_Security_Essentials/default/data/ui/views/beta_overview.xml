@@ -1,0 +1,27 @@
+<dashboard script="runPageScript.js">
+  <label>Beta Overview</label>
+  <row>
+    <panel>
+      <html>
+        <h2>Overview</h2>
+          <p>In Splunk Security Essentials 2.4, we are beta-launching some new functionality focused on providing more concrete recommendations about what content will drive the most value for your organization. This comes in many flavors -- understanding what data sources you have in the environment, what content you already have enabled, and then providing you dashboards to help identify the best content, including maturity graphs, per-data-source filters, a MITRE ATT&amp;CK Map, and more. Jump right in with the <a href="content_overview">Analytics Advisor dashboard</a> to start looking at the available analytics!</p>
+          <p>Once you've gotten a high level sense of what's possible, get a more accurate look by telling the app what data sources you have in your environment, and what content you're using today. This will fuel the "Data Available" and "Active" labels in the dashboards.</p>
+          <p>If you're wondering whether we're going to do more with this.. you can bet we are. This content will go from Beta to GA in a following release, so if you have any feedback, please <a href="mailto:sse@splunk.com?subject=SSE 2.4.0 Feedback">share it with us <i class="icon-mail" /></a>!</p>
+          <div class="betacontainer">
+            <div class="beta-tile" id="data_inventory">
+                <img src="/static/app/Splunk_Security_Essentials/images/general_images/log.png" width="175" title="Data Inventory" />
+                <label>Data Inventory</label>
+            </div>
+            <div class="beta-tile" id="enabled_content">
+                <img src="/static/app/Splunk_Security_Essentials/images/general_images/greencheck.png" width="175" title="Enabled Content" />
+                <label>Enabled Content</label>
+            </div>
+            <div class="beta-tile" id="analytics_advisor">
+                <img src="/static/app/Splunk_Security_Essentials/images/general_images/graph.png" width="175" title="Analytics Advisor" />
+                <label>Analytics Advisor</label>
+            </div>
+          </div>
+    </html>
+  </panel>
+</row>
+</dashboard>

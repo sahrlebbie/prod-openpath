@@ -1,0 +1,21 @@
+<dashboard>
+  <label>Elvis_Metadata_Command_Search</label>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>|metadata type=hosts index=_* |convert ctime(recentTime)</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

@@ -1,0 +1,43 @@
+[app/ui]
+version = 8.0.2.1
+modtime = 1597109577.118069000
+
+[app/launcher]
+version = 8.0.2.1
+modtime = 1597109577.121025000
+
+[]
+access = read : [ * ], write : [ admin, modified_admin, power ]
+export = none
+version = 8.0.2.1
+modtime = 1597109612.163744000
+
+[nav/default]
+version = 8.0.2.1
+modtime = 1597115834.553171000
+
+[savedsearches/Empty%20Indexes%20By%20Students]
+access = read : [ * ], write : [ admin, modified_admin ]
+export = system
+owner = admin
+version = 8.0.2.1
+modtime = 1597116759.160364000
+
+[views/students_drilldown]
+owner = admin
+version = 8.0.2.1
+modtime = 1597114423.303145000
+
+[views/actions_by_students]
+access = read : [ * ], write : [ admin, modified_admin, power ]
+export = system
+owner = admin
+version = 8.0.2.1
+modtime = 1597114210.134777000
+
+[workflow_actions/Patrick%20IP%20Identifier]
+access = read : [ * ], write : [ admin, modified_admin ]
+export = system
+owner = admin
+version = 8.0.2.1
+modtime = 1597115289.838999000

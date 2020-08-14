@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "info": {
+    "title": "Tenable Add-On for Splunk",
+    "id": {
+      "group": null,
+      "name": "TA-tenable",
+      "version": "3.1.0"
+    },
+    "author": [
+      {
+        "name": "Tenable",
+        "email": null,
+        "company": "Tenable, Inc."
+      }
+    ],
+    "releaseDate": null,
+    "description": "This Add-On collects data from Tenable platform and indexes it in Splunk.",
+    "classification": {
+      "intendedAudience": null,
+      "categories": [],
+      "developmentStatus": "Production/Stable"
+    },
+    "commonInformationModels": {
+      "Vulnerabilities": ">=4.9.0"
+    },
+    "license": {
+      "name": null,
+      "text": null,
+      "uri": null
+    },
+    "privacyPolicy": {
+      "name": null,
+      "text": null,
+      "uri": null
+    },
+    "releaseNotes": {
+      "name": null,
+      "text": null,
+      "uri": null
+    }
+  },
+  "dependencies": {
+  },
+  "tasks": [],
+  "inputGroups": {
+  },
+  "incompatibleApps": {
+  },
+  "platformRequirements": {
+    "splunk": {
+      "Enterprise": ">=7.0.0"
+    }
+  }
+}
