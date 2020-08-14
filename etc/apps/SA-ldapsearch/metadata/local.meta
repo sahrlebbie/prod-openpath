@@ -1,0 +1,16 @@
+[app/install/install_source_checksum]
+version = 8.0.2.1
+modtime = 1592191973.625652000
+
+[app/install/is_configured]
+version = 8.0.2.1
+modtime = 1593392571.774876000
+
+[ldap/default]
+version = 8.0.2.1
+modtime = 1593392571.699048000
+
+[passwords/credential%3ASA-ldapsearch%3Adefault%3A]
+owner = admin
+version = 8.0.2.1
+modtime = 1593392571.697786000

@@ -1,0 +1,179 @@
+<form script="runPageScript.js" theme="light">
+  <label>Framework Operations</label>
+  <search id="base">
+    <query>
+    index=$object$
+$searchstring$
+| fields *
+</query>
+    <earliest>$field1.earliest$</earliest>
+    <latest>$field1.latest$</latest>
+  </search>
+  <fieldset submitButton="false">
+    <input type="time" token="field1">
+      <label></label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+    <input type="dropdown" token="object">
+      <label>Object</label>
+      <choice value="notable">Notable Events</choice>
+      <choice value="risk">Risk Modifiers</choice>
+      <default>notable</default>
+    </input>
+    <input type="text" token="searchstring">
+      <label>Search (ip, hostname, user etc.)</label>
+      <default>*</default>
+    </input>
+  </fieldset>
+  <row id="tabs">
+    <panel>
+      <html>
+      <ul id="tabs" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#" class="toggle-tab available_content" data-toggle="tab" data-tab-set="available_content" data-elements="mitre_panel1,mitre_panel2,mitre_panel3" data-token="mitre_panel1" data-translate-id="contentanalytics-li-mitreview">MITRE View</a>
+                    </li>
+                    <li>
+                        <a href="#" class="toggle-tab available_content" data-toggle="tab" data-tab-set="available_content" data-elements="killchain_panel1,killchain_panel2,killchain_panel3" data-token="killchain_panel1" data-translate-id="contentanalytics-li-killchainview">Kill Chain View</a>
+                    </li>
+				</ul>
+
+
+    </html>
+    </panel>
+  </row>
+  <row id="mitre_panel1">
+    <panel>
+      <title>Objects for $searchstring$ linked to MITRE Tactics</title>
+      <chart>
+        <title>Click to drilldown</title>
+        <search base="base">
+          <query>| eval mitre_tactic_combined=coalesce(mitre_tactic_combined,"&lt;NOT MAPPED&gt;")
+| timechart count by mitre_tactic_combined</query>
+        </search>
+        <option name="charting.axisLabelsY.axisVisibility">hide</option>
+        <option name="charting.axisLabelsY.majorLabelVisibility">hide</option>
+        <option name="charting.axisLabelsY.majorTickVisibility">hide</option>
+        <option name="charting.axisLabelsY.majorUnit">1</option>
+        <option name="charting.axisLabelsY.minorTickVisibility">hide</option>
+        <option name="charting.axisLabelsY2.axisVisibility">hide</option>
+        <option name="charting.axisLabelsY2.majorLabelVisibility">hide</option>
+        <option name="charting.axisLabelsY2.majorTickVisibility">hide</option>
+        <option name="charting.axisLabelsY2.minorTickVisibility">hide</option>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisTitleY2.visibility">collapsed</option>
+        <option name="charting.axisY.abbreviation">none</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.gridLinesY.showMajorLines">0</option>
+        <option name="charting.gridLinesY.showMinorLines">0</option>
+        <option name="charting.layout.splitSeries">1</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="height">426</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="mitre_tactic_drilldown">$click.name2$</set>
+          <set token="earliest_drilldown">$earliest$</set>
+          <set token="latest_drilldown">$latest$</set>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row id="mitre_panel2">
+    <panel depends="$mitre_tactic_drilldown$">
+      <title>Drilldown for $mitre_tactic_drilldown$</title>
+      <table>
+        <search base="base">
+          <query>| eval mitre_tactic_combined=coalesce(mitre_tactic_combined,"&lt;NOT MAPPED&gt;")
+| search mitre_tactic_combined="$mitre_tactic_drilldown$"
+| where _time&gt;=($earliest_drilldown$-3599) AND _time&lt;=($earliest_drilldown$+3599)
+| table _time search_name app src dest user mitre_tactic_combined mitre_technique_combined *_object* *_score</query>
+        </search>
+        <option name="count">10</option>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+  <row id="mitre_panel3">
+    <panel>
+      <title>MITRE Matrix</title>
+      <table>
+        <search base="base">
+          <query>
+| mitremaplookup
+| `Sort_MITRE`</query>
+        </search>
+        <option name="count">50</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row id="killchain_panel1">
+    <panel>
+      <title>KILLCHAIN IS SUPPOSED TO BE IN THE OTHER TAB - Objects for $searchstring$ linked to the Cyber Kill Chain</title>
+      <chart>
+        <title>Click to drilldown</title>
+        <search base="base">
+          <query>| eval killchain_combined=coalesce(if(killchain="None",null,killchain),"&lt;NOT MAPPED&gt;")
+| eval killchain_combined=split(killchain_combined,"|")
+| timechart count by killchain_combined</query>
+        </search>
+        <option name="charting.axisLabelsY.axisVisibility">hide</option>
+        <option name="charting.axisLabelsY.majorLabelVisibility">hide</option>
+        <option name="charting.axisLabelsY.majorTickVisibility">hide</option>
+        <option name="charting.axisLabelsY.majorUnit">1</option>
+        <option name="charting.axisLabelsY.minorTickVisibility">hide</option>
+        <option name="charting.axisLabelsY2.axisVisibility">hide</option>
+        <option name="charting.axisLabelsY2.majorLabelVisibility">hide</option>
+        <option name="charting.axisLabelsY2.majorTickVisibility">hide</option>
+        <option name="charting.axisLabelsY2.minorTickVisibility">hide</option>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisTitleY2.visibility">collapsed</option>
+        <option name="charting.axisY.abbreviation">none</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.gridLinesY.showMajorLines">0</option>
+        <option name="charting.gridLinesY.showMinorLines">0</option>
+        <option name="charting.layout.splitSeries">1</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="height">426</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="killchain_drilldown">$click.name2$</set>
+          <set token="earliest_drilldown">$earliest$</set>
+          <set token="latest_drilldown">$latest$</set>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row id="killchain_panel2">
+    <panel depends="$killchain_drilldown$">
+      <title>Drilldown for $killchain_drilldown$</title>
+      <table>
+        <search base="base">
+          <query>| eval killchain_combined=coalesce(if(killchain="None",null,killchain),"&lt;NOT MAPPED&gt;")
+| eval killchain_combined=split(killchain_combined,"|")
+| search killchain="$killchain_drilldown$"
+| where _time&gt;=($earliest_drilldown$-3599) AND _time&lt;=($earliest_drilldown$+3599)
+| table _time search_name app src dest user killchain *_object* *_score</query>
+        </search>
+        <option name="count">10</option>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+</form>

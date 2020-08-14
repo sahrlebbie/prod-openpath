@@ -1,0 +1,45 @@
+[app/ui]
+version = 8.0.2.1
+modtime = 1591564670.688864000
+
+[app/launcher]
+version = 8.0.2.1
+modtime = 1591564670.691142000
+
+[indexes/rbyprints]
+owner = admin
+version = 8.0.2.1
+modtime = 1591564797.975379000
+
+[lookups/blackfathers.csv]
+owner = admin
+version = 8.0.2.1
+modtime = 1591566891.358010000
+
+[savedsearches/RBY-Black%20Fathers%20Report]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 8.0.2.1
+modtime = 1591591051.293220000
+
+[savedsearches/RBY-Fathers%20Report%20by%20Size]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 8.0.2.1
+modtime = 1591591060.995307000
+
+[savedsearches/RBY%20Prints%20By%20Category]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 8.0.2.1
+modtime = 1591631207.131686000
+
+[savedsearches/RBY%20Prints%20by%20Design]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 8.0.2.1
+modtime = 1591807538.122007000

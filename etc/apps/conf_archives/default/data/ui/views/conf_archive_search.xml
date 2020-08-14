@@ -1,0 +1,501 @@
+<form stylesheet="table_decorations.css">
+  <label>.conf Archive Search</label>
+  <fieldset submitButton="false"></fieldset>
+  <row>
+    <panel depends="$yr$">
+      <single>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv 
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $focus$ $level$ $other$ $type$ Type="Breakout Session"
+            | stats max(*) AS * by Year, Title, Description
+            | stats count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="height">100</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0xD93F3C","0xD93F3C"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">BREAKOUT SESSIONS</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <drilldown>
+          <set token="type">Type="Breakout Session"</set>
+        </drilldown>
+      </single>
+      <single>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv 
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $focus$ $level$ $other$ $type$ Type="Theater"
+            | stats max(*) AS * by Year, Title, Description
+            | stats count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="height">100</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0xFF7F00","0xFF7F00"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">THEATER</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <drilldown>
+          <set token="type">Type="Theater"</set>
+        </drilldown>
+      </single>
+      <single>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv 
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $focus$ $level$ $other$ $type$ Type="Hands-on Lab"
+            | stats max(*) AS * by Year, Title, Description
+            | stats count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="height">100</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0xF7BC38","0xF7BC38"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">HANDS-ON LABS</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <drilldown>
+          <set token="type">Type="Hands-on Lab"</set>
+        </drilldown>
+      </single>
+      <single>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv 
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $focus$ $level$ $other$ $type$ Type="Hands-on Session"
+            | stats max(*) AS * by Year, Title, Description
+            | stats count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="height">100</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65A637","0x65A637"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">HANDS-ON SESSIONS</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <drilldown>
+          <set token="type">Type="Hands-on Session"</set>
+        </drilldown>
+      </single>
+      <single>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv 
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $focus$ $level$ $other$ $type$ Type="Keynote"
+            | stats max(*) AS * by Year, Title, Description
+            | stats count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="height">100</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x0000FF","0x0000FF"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">KEYNOTES</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <drilldown>
+          <set token="type">Type=Keynote</set>
+        </drilldown>
+      </single>
+      <single>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv 
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $focus$ $level$ $other$ $type$ Type="Panel Discussion"
+            | stats max(*) AS * by Year, Title, Description
+            | stats count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="height">100</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x4B0082","0x4B0082"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">PANEL DISCUSSIONS</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <drilldown>
+          <set token="type">Type="Panel Discussion"</set>
+        </drilldown>
+      </single>
+      <single>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv 
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $focus$ $level$ $other$ $type$ Type="Splunk Snack"
+            | stats max(*) AS * by Year, Title, Description
+            | stats count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="height">100</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x8B00FF","0x8B00FF"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">SPLUNK SNACKS</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <drilldown>
+          <set token="type">Type="Splunk Snack"</set>
+        </drilldown>
+      </single>
+      <single>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv 
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $focus$ $level$ $other$ $type$ Type="Super Session"
+            | stats max(*) AS * by Year, Title, Description
+            | stats count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="height">100</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x909090","0x909090"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">SUPER SESSIONS</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <drilldown>
+          <set token="type">Type="Super Session"</set>
+        </drilldown>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>.conf Archive Search Results</title>
+      <input type="multiselect" token="yr" searchWhenChanged="true">
+        <label>Year</label>
+        <choice value="*">Any</choice>
+        <default>*</default>
+        <delimiter> OR </delimiter>
+        <valuePrefix>Year="</valuePrefix>
+        <prefix>(</prefix>
+        <suffix>)</suffix>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv
+            | stats count by Year 
+| sort -Year</query>
+        </search>
+        <fieldForLabel>Year</fieldForLabel>
+        <fieldForValue>Year</fieldForValue>
+        <valueSuffix>"</valueSuffix>
+      </input>
+      <input type="multiselect" token="level" searchWhenChanged="true">
+        <label>Skill Level</label>
+        <choice value="*">Any</choice>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $focus$ $other$ $type$
+            | fields Skill_Level
+            | stats count by Skill_Level</query>
+        </search>
+        <fieldForLabel>Skill_Level</fieldForLabel>
+        <fieldForValue>Skill_Level</fieldForValue>
+        <default>*</default>
+        <delimiter> OR </delimiter>
+        <valuePrefix>Skill_Level="*</valuePrefix>
+        <valueSuffix>*"</valueSuffix>
+        <prefix>(</prefix>
+        <suffix>)</suffix>
+      </input>
+      <input type="multiselect" token="role" searchWhenChanged="true">
+        <label>Role (2015 to 2018 only)</label>
+        <choice value="*">Any</choice>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $track$ $focus$ $level$ $other$ $type$
+            | fields Role
+            | makemv delim="," Role
+            | rename Role as role_expanded 
+            | mvexpand role_expanded
+            | eval role=trim(role_expanded)
+            | stats count by role</query>
+        </search>
+        <fieldForLabel>role</fieldForLabel>
+        <fieldForValue>role</fieldForValue>
+        <default>*</default>
+        <delimiter> OR </delimiter>
+        <valuePrefix>Role="*</valuePrefix>
+        <valueSuffix>*"</valueSuffix>
+        <prefix>(</prefix>
+        <suffix>)</suffix>
+      </input>
+      <input type="multiselect" token="type" searchWhenChanged="true">
+        <label>Type</label>
+        <choice value="*">Any</choice>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $focus$ $level$ $other$ 
+            | fields Type
+            | stats count by Type</query>
+        </search>
+        <fieldForLabel>Type</fieldForLabel>
+        <fieldForValue>Type</fieldForValue>
+        <default>*</default>
+        <delimiter> OR </delimiter>
+        <valuePrefix>Type="*</valuePrefix>
+        <valueSuffix>*"</valueSuffix>
+        <prefix>(</prefix>
+        <suffix>)</suffix>
+      </input>
+      <input type="text" token="title" searchWhenChanged="true">
+        <label>Title (a keyword or phrase)</label>
+        <default>*</default>
+        <prefix>Title="*</prefix>
+        <suffix>*"</suffix>
+      </input>
+      <input type="text" token="description" searchWhenChanged="true">
+        <label>Description (a keyword or phrase)</label>
+        <default>*</default>
+        <prefix>Description="*</prefix>
+        <suffix>*"</suffix>
+      </input>
+      <input type="text" token="speaker" searchWhenChanged="true">
+        <label>Speaker (or Company Name)</label>
+        <default>*</default>
+        <prefix>Speakers="*</prefix>
+        <suffix>*"</suffix>
+      </input>
+      <input type="multiselect" token="solutions" searchWhenChanged="true">
+        <label>Solutions (2013 to 2015, 2017 only)</label>
+        <choice value="*">Any</choice>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $industries$ $product$ $role$ $track$ $focus$ $level$ $other$ $type$
+            | fields Solutions
+            | makemv delim="," Solutions
+            | rename Solutions as sol_expanded
+            | mvexpand sol_expanded
+            | eval solutions=trim(sol_expanded)
+            | stats count by solutions</query>
+        </search>
+        <fieldForLabel>solutions</fieldForLabel>
+        <fieldForValue>solutions</fieldForValue>
+        <default>*</default>
+        <delimiter> OR </delimiter>
+        <valuePrefix>Solutions="*</valuePrefix>
+        <valueSuffix>*"</valueSuffix>
+        <prefix>(</prefix>
+        <suffix>)</suffix>
+      </input>
+      <input type="multiselect" token="industries" searchWhenChanged="true">
+        <label>Industries</label>
+        <choice value="*">Any</choice>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $product$ $role$ $track$ $focus$ $level$ $other$ 
+            | fields Industries
+            | makemv delim="," Industries
+            | rename Industries as ind_expanded
+            | mvexpand ind_expanded
+            | eval industries=trim(ind_expanded)
+            | stats count by industries</query>
+        </search>
+        <fieldForLabel>industries</fieldForLabel>
+        <fieldForValue>industries</fieldForValue>
+        <default>*</default>
+        <delimiter> OR </delimiter>
+        <valuePrefix>Industries="*</valuePrefix>
+        <valueSuffix>*"</valueSuffix>
+        <prefix>(</prefix>
+        <suffix>)</suffix>
+      </input>
+      <input type="multiselect" token="product" searchWhenChanged="true">
+        <label>Products</label>
+        <choice value="*">Any</choice>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $role$ $track$ $focus$ $level$ $other$ 
+            | fields Products
+            | makemv delim="," Products
+            | rename Products as products_expanded
+            | mvexpand products_expanded
+            | eval product=trim(products_expanded)
+            | stats count by product</query>
+        </search>
+        <fieldForLabel>product</fieldForLabel>
+        <fieldForValue>product</fieldForValue>
+        <default>*</default>
+        <delimiter> OR </delimiter>
+        <valuePrefix>Products="*</valuePrefix>
+        <valueSuffix>*"</valueSuffix>
+        <prefix>(</prefix>
+        <suffix>)</suffix>
+      </input>
+      <input type="multiselect" token="track" searchWhenChanged="true">
+        <label>Track (2013, 2015 to 2018 only)</label>
+        <choice value="*">Any</choice>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $focus$ $level$ $other$ 
+            | fields Track 
+            | stats count by Track</query>
+        </search>
+        <fieldForLabel>Track</fieldForLabel>
+        <fieldForValue>Track</fieldForValue>
+        <default>*</default>
+        <delimiter> OR </delimiter>
+        <valuePrefix>Track="*</valuePrefix>
+        <valueSuffix>*"</valueSuffix>
+        <prefix>(</prefix>
+        <suffix>)</suffix>
+      </input>
+      <input type="multiselect" token="focus" searchWhenChanged="true">
+        <label>Session Focus (2016 to 2017 only)</label>
+        <choice value="*">Any</choice>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $level$ $other$ 
+            | fields Session_Focus
+            | stats count by Session_Focus</query>
+        </search>
+        <fieldForLabel>Session_Focus</fieldForLabel>
+        <fieldForValue>Session_Focus</fieldForValue>
+        <default>*</default>
+        <delimiter> OR </delimiter>
+        <valuePrefix>Session_Focus="*</valuePrefix>
+        <valueSuffix>*"</valueSuffix>
+        <prefix>(</prefix>
+        <suffix>)</suffix>
+      </input>
+      <input type="multiselect" token="other" searchWhenChanged="true">
+        <label>Other Topics (2016 to 2017 only)</label>
+        <choice value="*">Any</choice>
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $focus$ $level$ 
+            | fields Other_Topics
+            | makemv delim="," Other_Topics
+            | rename Other_Topics as other_expanded
+            | mvexpand other_expanded
+            | eval other=trim(other_expanded)
+            | stats count by other</query>
+        </search>
+        <fieldForLabel>other</fieldForLabel>
+        <fieldForValue>other</fieldForValue>
+        <default>*</default>
+        <delimiter> OR </delimiter>
+        <valuePrefix>Other_Topics="*</valuePrefix>
+        <valueSuffix>*"</valueSuffix>
+        <prefix>(</prefix>
+        <suffix>)</suffix>
+      </input>
+      <table id="customWidth">
+        <search>
+          <query>| inputlookup conf_breakout_sessions.csv
+            | fillnull value="N/A"
+            | search $yr$ $title$ $description$ $speaker$ $solutions$ $industries$ $product$ $role$ $track$ $focus$ $level$ $other$ $type$
+            | eval Type=case(Type == "Breakout Session", "BOS", Type == "Theater", "CMT", Type == "Hands-on Lab", "HOL", Type == "Hands-on Session","HOS", Type == "Keynote", "KEY", Type == "Panel Discussion", "PAN", Type == "Splunk Snack", "SPS", Type == "Super Session", "SUS")
+            | eval Recording = if(RecordingLink == "N/A", "N/A", "https://" + RecordingLink)             
+            | eval Slides = if(SlideLink == "N/A", "N/A", "https://" + SlideLink)
+            | stats max(*) AS * by Year, Title, Description
+            | sort -Year</query>
+          <earliest>0</earliest>
+        </search>
+        <fields>Type, Year, Title, Description, Speakers, Recording, Slides</fields>
+        <format type="color" field="Type">
+          <colorPalette type="map">{"BOS":#D93F3C,"CMT":#FF7F00,"HOL":#F7BC38,"HOS":#65A637,"KEY":#0000FF,"PAN":#4B0082,"SPS":#8B00FF,"SUS":#909090}</colorPalette>
+        </format>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="drilldown">cell</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">20</option>
+        <drilldown target="_blank">
+          <condition field="Recording">
+            <link>https://$row.RecordingLink|n$</link>
+          </condition>
+          <condition field="Slides">
+            <link>https://$row.SlideLink|n$</link>
+          </condition>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+</form>

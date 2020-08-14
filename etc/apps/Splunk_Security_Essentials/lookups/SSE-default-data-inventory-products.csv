@@ -1,0 +1,100 @@
+﻿productId,vendorName,productName,notes,regex_field,regex_pattern,default_sourcetype_search,extended_fields,term_fields,eventtypeId
+AWS__CloudTrail,AWS,CloudTrail,,sourcetype,^aws:cloudtrail$,sourcetype=aws:cloudtrail,,,VendorSpecific-aws-cloudtrail
+AWS__S3,AWS,S3,,sourcetype,^aws.*s3.*access$,sourcetype=aws*s3*access,,,DS014WebServer-ET01Access
+AWS__VPC_Flow_Logs,AWS,VPC Flow Logs,,sourcetype,^aws.*vpcflow$,sourcetype=aws*vpcflow,,,DS010NetworkCommunication-ET01Traffic
+AWS__Billing_Logs,AWS,Billing Logs,,sourcetype,^aws.*billing.*$,sourcetype=aws*billing*,,,DS034ApplicationLogs
+AWS__CloudWatch,AWS,CloudWatch,,sourcetype,^aws:cloudwatch$,sourcetype=aws:cloudwatch,,,DS022HostPerformance-ET01General
+AWS__Config,AWS,Config,,sourcetype,^aws:config$,sourcetype=aws:config,,,DS015ConfigurationManagement-ET01General
+Blue_Coat__ProxyAV,Blue Coat,ProxyAV,,sourcetype,^(bluecoat:proxysg:access.*|bcoat_proxy)$,sourcetype=bluecoat:proxysg:access* OR sourcetype=bcoat_proxy,,,DS005WebProxyRequest-ET01Requested
+Box__Audit_Logs,Box,Audit Logs,,sourcetype,^(box:.*|box)$,sourcetype=box:* OR sourcetype=box,,,VendorSpecific-Box
+Bro__Conn,Bro,Conn,,sourcetype,^bro_conn$,sourcetype=bro_conn,,,DS010NetworkCommunication-ET01Traffic
+Bro__DHCP,Bro,DHCP,,sourcetype,^bro_dhcp$,sourcetype=bro_dhcp,,,DS025IPAddressAssignment-ET01General
+Bro__DNS,Bro,DNS,,sourcetype,^bro_dns$,sourcetype=bro_dns,,,DS002DNS-ET01QueryResponse|DS002DNS-ET01QueryRequest|DS002DNS-ET01Query
+Bro__FTP,Bro,FTP,,sourcetype,^bro_ftp$,sourcetype=bro_ftp,,,DS010NetworkCommunication-ET01TrafficAppAware
+Bro__HTTP,Bro,HTTP,,sourcetype,^bro_http$,sourcetype=bro_http,,,DS014WebServer-ET01Access
+Bro__Notice,Bro,Notice,,sourcetype,^bro_notice$,sourcetype=bro_notice,,,DS012NetworkIntrusionDetection-ET01SigDetection
+Bro__SMTP,Bro,SMTP,,sourcetype,^bro_smtp$,sourcetype=bro_smtp,,,DS001MAIL-ET02Receive|DS001MAIL-ET03Send
+Bro__SSH,Bro,SSH,,sourcetype,^bro_ssh$,sourcetype=bro_ssh,,,DS010NetworkCommunication-ET01TrafficAppAware
+Bro__SSL,Bro,SSL,,sourcetype,^bro_ssl$,sourcetype=bro_ssl,,,DS010NetworkCommunication-ET01TrafficAppAware
+Check_Point__Firewall,Check Point,Firewall,,sourcetype,^opsec:firewall $,sourcetype=opsec:firewall ,,,DS010NetworkCommunication-ET01Traffic
+Check_Point__URL_Filtering,Check Point,URL Filtering,,sourcetype,^opsec$,sourcetype=opsec,,TERM(URL) TERM(Filtering),DS014WebServer-ET01Access
+Check_Point__DLP,Check Point,DLP,,sourcetype,^opsec:dlp$,sourcetype=opsec:dlp,,,DS016DataLossPrevention-ET01Violation
+Check_Point__Application_Control,Check Point,Application Control,,sourcetype,^opsec:app_control$,sourcetype=opsec:app_control,,,DS010NetworkCommunication-ET01TrafficAppAware
+Check_Point__Network_Anti-Virus,Check Point,Network Anti-Virus,,sourcetype,^(opsec:anti_malware|opsec:anti_virus)$,sourcetype=opsec:anti_malware OR sourcetype=opsec:anti_virus,,,DS004EndPointAntiMalware-ET01SigDetected
+Check_Point__Anti-Bot,Check Point,Anti-Bot,,sourcetype,^opsec:anti_bot$,sourcetype=opsec:anti_bot,,,DS012NetworkIntrusionDetection-ET01SigDetection
+Check_Point__Threat_Emulation,Check Point,Threat Emulation,,sourcetype,^opsec:threat_emulation$,sourcetype=opsec:threat_emulation,,,DS011MalwareDetonation-ET01Detection
+Check_Point__IPS,Check Point,IPS,,sourcetype,^opsec:smartdefense$,sourcetype=opsec:smartdefense,,,DS012NetworkIntrusionDetection-ET01SigDetection
+Check_Point__VPN,Check Point,VPN,,sourcetype,^opsec:vpn$,sourcetype=opsec:vpn,,,DS025IPAddressAssignment-ET01General|DS010NetworkCommunication-ET01Traffic|DS003Authentication-ET01Success|DS003Authentication-ET02Failure
+Cisco__Email_Security_Appliance_ESA__Ironport,Cisco,Email Security Appliance (ESA) / Ironport,,sourcetype,^(cisco:esa:.*|ironport)$,sourcetype=cisco:esa:* OR sourcetype=ironport,,,DS001MAIL-ET02Receive|DS001MAIL-ET03Send
+Cisco__PIX,Cisco,PIX,,sourcetype,^(pix|cisco:pix)$,sourcetype=pix OR sourcetype=cisco:pix,,,DS010NetworkCommunication-ET01Traffic
+Cisco__ASA_Firewall,Cisco,ASA Firewall,,sourcetype,^cisco:asa$,sourcetype=cisco:asa,,,DS010NetworkCommunication-ET01Traffic
+Cisco__Umbrella_DNS,Cisco,Umbrella DNS,,,,,,,
+Cisco__Web_Security_Appliance_WSA,Cisco,Web Security Appliance (WSA),,sourcetype,^cisco:wsa$,sourcetype=cisco:wsa,,,DS014WebServer-ET01Access
+Cisco__Identity_Services_Engine_ISE,Cisco,Identity Services Engine (ISE),,sourcetype,^cisco:ise$,sourcetype=cisco:ise,,,DS025IPAddressAssignment-ET01General|DS003Authentication-ET01Success|DS003Authentication-ET02Failure
+Cisco__ACS,Cisco,ACS,,sourcetype,^(acs|cisco:acs)$,sourcetype=acs OR sourcetype=cisco:acs,,,DS025IPAddressAssignment-ET01General|DS003Authentication-ET01Success|DS003Authentication-ET02Failure
+Cisco__Sourcefire,Cisco,Sourcefire,,sourcetype,^cisco:sourcefire.*$,sourcetype=cisco:sourcefire*,,,DS012NetworkIntrusionDetection-ET01SigDetection
+Cisco__eStreamer,Cisco,eStreamer,,sourcetype,^(estreamer|cisco:estreamer.*)$,sourcetype=estreamer OR sourcetype=cisco:estreamer*,,,DS012NetworkIntrusionDetection-ET01SigDetection
+FireEye__Email_Security,FireEye,Email Security,,,,,,,
+FireEye__Web_Security,FireEye,Web Security,,,,,,,
+Fortinet__Firewall,Fortinet,Firewall,,sourcetype,^fortinet$,sourcetype=fortinet,,,DS010NetworkCommunication-ET01Traffic
+Infoblox__DHCP,Infoblox,DHCP,,sourcetype,^infoblox:dhcp$,sourcetype=infoblox:dhcp,,,DS025IPAddressAssignment-ET01General
+Infoblox__DNS,Infoblox,DNS,,sourcetype,^infoblox:dns$,sourcetype=infoblox:dns,,,DS002DNS-ET01QueryRequest|DS002DNS-ET01Query
+Juniper__Firewall,Juniper,Firewall,,sourcetype,^juniper:junos:firewall$,sourcetype=juniper:junos:firewall,,,DS010NetworkCommunication-ET01Traffic
+Juniper__VPN,Juniper,VPN,,sourcetype,^juniper:sslvpn$,sourcetype=juniper:sslvpn,,,DS025IPAddressAssignment-ET01General|DS010NetworkCommunication-ET01Traffic|DS003Authentication-ET01Success|DS003Authentication-ET02Failure
+Juniper__Netscreen,Juniper,Netscreen,,sourcetype,^netscreen:firewall$,sourcetype=netscreen:firewall,,,DS010NetworkCommunication-ET01Traffic
+Linux__Process_Tools,Linux,Process Tools,,sourcetype,^(top|ps)$,sourcetype=top OR sourcetype=ps,,,DS003Authentication-ET01Success|DS003Authentication-ET02Failure
+Linux__Security,Linux,Security,,sourcetype,^(linux_secure|auditd)$,sourcetype=linux_secure OR sourcetype=auditd,,,DS003Authentication-ET01Success|DS003Authentication-ET02Failure
+Linux__Syslog,Linux ,Syslog (Generic),,sourcetype,^linux_syslog OR syslog$,sourcetype=linux_syslog OR sourcetype=syslog,,,DS033SystemLogs-ET01General
+McAfee__Security,McAfee,EPO,,sourcetype,^mcafee:epo$,sourcetype=mcafee:epo,,,DS004EndPointAntiMalware-ET01SigDetected
+McAfee__IDS,McAfee,IDS,,sourcetype,^mcafee:ids$,sourcetype=mcafee:ids,,,DS012NetworkIntrusionDetection-ET01SigDetection
+Microsoft__Windows_Host_and_Server,Microsoft,Windows Host and Server,,source,^(XML)?WinEventLog:Security$,source=*WinEventLog*Security,,,VendorSpecific-winsec
+Microsoft__Windows_Domain_Controller,Microsoft,Windows Domain Controller,,source,^(XML)?WinEventLog:Security$,source=*WinEventLog*Security,,,VendorSpecific-winsec-domaincontroller
+Microsoft__Windows_Powershell,Microsoft,Windows Powershell,,source,^(XML)?WinEventLog:Security$,source=*WinEventLog*Security,,,VendorSpecific-winsec-powershell
+Microsoft__Windows_Process_Launch,Microsoft,Windows Process Launch,,source,^(XML)?WinEventLog:Security$,source=*WinEventLog*Security,EventCode=4688,4688,DS009EndPointIntel-ET01ProcessLaunch
+Microsoft__Office_365,Microsoft,Office 365,,sourcetype,^ms:o365:.*$,sourcetype=ms:o365:*,,,DS001MAIL-ET02Receive|DS001MAIL-ET03Send
+Microsoft__Exchange,Microsoft,Exchange,,sourcetype,^MSExchange.*MessageTracking$,sourcetype=MSExchange*MessageTracking,,,DS001MAIL-ET02Receive|DS001MAIL-ET03Send
+Microsoft__Sysmon,Microsoft,Sysmon,,sourcetype,^.*WinEventLog:Microsoft-Windows-Sysmon.Operational$,sourcetype=*WinEventLog:Microsoft-Windows-Sysmon/Operational,,,DS009EndPointIntel-ET01ProcessLaunch|DS009EndPointIntel-ET03ProcessLaunchwithCLI|DS009EndPointIntel-ET04ProcessLaunchWithHash
+Nessus__Vulnerability_Scanner,Nessus,Vulnerability Scanner,,sourcetype,^(nessus|nessus_xml|nessus:scan)$,sourcetype=nessus OR sourcetype=nessus_xml OR sourcetype=nessus:scan,,,DS018VulnerabilityDetection-ET01SigDetected
+Netflow___,Netflow, ,,sourcetype,^netflow$,sourcetype=netflow,,,DS010NetworkCommunication-ET01Traffic|DS035NetworkFlow-ET01General
+OSQuery___,OSQuery, ,,sourcetype,^osquery_results$,sourcetype=osquery_results,,,DS009EndPointIntel-ET01ProcessLaunch|DS009EndPointIntel-ET03ProcessLaunchwithCLI|DS009EndPointIntel-ET04ProcessLaunchWithHash
+Palo_Alto_Networks__URL_Filtering_for_Web_Security,Palo Alto Networks,URL Filtering for Web Security,,sourcetype,^pan.*threat$,sourcetype=pan*threat,log_subtype=url,TERM(url),DS005WebProxyRequest-ET01Requested|DS005WebProxyRequest-ET01RequestedWebAppAware
+Palo_Alto_Networks__Firewall,Palo Alto Networks,Firewall (Alone),,sourcetype,^pan.*traffic$,sourcetype=pan*traffic,,,DS010NetworkCommunication-ET01Traffic
+Palo_Alto_Networks__Firewall_w_AppId,Palo Alto Networks,Firewall w/ AppId,,sourcetype,^pan.*traffic$,sourcetype=pan*traffic,app=*,,DS010NetworkCommunication-ET01Traffic|DS010NetworkCommunication-ET01TrafficAppAware
+Palo_Alto_Networks__Network_Anti-Virus,Palo Alto Networks,Network Anti-Virus,,sourcetype,^pan.*threat$,sourcetype=pan*threat,log_subtype=virus OR log_subtype=wildfire-virus,TERM(virus) OR TERM(wildfire-virus),DS004EndPointAntiMalware-ET01SigDetected
+Palo_Alto_Networks__IPS,Palo Alto Networks,IPS,,sourcetype,^pan.*threat$,sourcetype=pan*threat,,TERM(IPS),DS012NetworkIntrusionDetection-ET01SigDetection
+Proofpoint__,Proofpoint,,,sourcetype,^proofpoint$,sourcetype=proofpoint,,,DS001MAIL-ET02Receive|DS001MAIL-ET03Send
+Salesforce__Event_Log_File,Salesforce,Event Log File,,sourcetype,^sfdc:eventlog$,sourcetype=sfdc:eventlog,,,VendorSpecific-sfdc-elf
+Snort__IDS,Snort,IDS,,sourcetype,^snort$,sourcetype=snort,,,DS001MAIL-ET02Receive|DS001MAIL-ET03Send
+Sophos__Anti-Virus,Sophos,Anti-Virus,,sourcetype,^sophos:.*$,sourcetype=sophos:*,,,DS004EndPointAntiMalware-ET01SigDetected
+Splunk__ES_Risk_Framework,Splunk,ES Risk Framework,,index,^risk$,index=risk,,,DS013TicketManagement-ET02LowLevelEvents
+Splunk__ES_Notable_Event_Framework,Splunk,ES Notable Event Framework,,index,^notable$,index=notable,,,DS013TicketManagement-ET01
+Stream__UDP,Stream,UDP,,sourcetype,^stream:udp$,sourcetype=stream:udp,,,DS010NetworkCommunication-ET01Traffic
+Stream__TCP,Stream,TCP,,sourcetype,^stream:tcp$,sourcetype=stream:tcp,,,DS010NetworkCommunication-ET01Traffic
+Stream__SMB,Stream,SMB,,sourcetype,^stream:smb$,sourcetype=stream:smb,,,DS010NetworkCommunication-ET01TrafficAppAware
+Stream__MySQL,Stream,MySQL,,sourcetype,^stream:mysql$,sourcetype=stream:mysql,,,DS029DatabaseServer-ET01General
+Stream__LDAP,Stream,LDAP,,sourcetype,^stream:ldap$,sourcetype=stream:ldap,,,DS010NetworkCommunication-ET01TrafficAppAware|DS003Authentication-ET01Success|DS003Authentication-ET02Failure
+Stream__ICMP,Stream,ICMP,,sourcetype,^stream:icmp$,sourcetype=stream:icmp,,,DS010NetworkCommunication-ET01Traffic
+Stream__DHCP,Stream,DHCP,,sourcetype,^stream:dhcp$,sourcetype=stream:dhcp,,,DS025IPAddressAssignment-ET01General
+Stream__ARP,Stream,ARP,,sourcetype,^stream:arp$,sourcetype=stream:arp,,,DS010NetworkCommunication-ET01Traffic
+Stream__HTTP,Stream,HTTP,,sourcetype,^stream:http$,sourcetype=stream:http,,,DS014WebServer-ET01Access
+Stream__SMTP,Stream,SMTP,,sourcetype,^stream:smtp$,sourcetype=stream:smtp,,,DS001MAIL-ET02Receive|DS001MAIL-ET03Send
+Stream__DNS,Stream,DNS,,sourcetype,^stream:dns$,sourcetype=stream:dns,,,DS002DNS-ET01QueryResponse|DS002DNS-ET01QueryRequest|DS002DNS-ET01Query
+Suricata___,Suricata, ,,sourcetype,^suricata$,sourcetype=suricata,,,DS010NetworkCommunication-ET01Traffic|DS012NetworkIntrusionDetection-ET01SigDetection|DS001MAIL-ET02Receive|DS001MAIL-ET03Send
+Symantec__Endpoint_Protection,Symantec,Endpoint Protection,,sourcetype,^symantec:ep.*$,sourcetype=symantec:ep*,,,DS004EndPointAntiMalware-ET01SigDetected|DS004EndPointAntiMalware-ET02UpdatedSig|DS004EndPointAntiMalware-ET03UpdatedEng
+Symantec__ATP,Symantec,ATP,,sourcetype,^symantec:atp:.*$,sourcetype=symantec:atp:*,,,DS004EndPointAntiMalware-ET01SigDetected|DS004EndPointAntiMalware-ET02UpdatedSig|DS004EndPointAntiMalware-ET03UpdatedEng
+Tenable__Vulnerability_Scanner,Tenable,Vulnerability Scanner,,sourcetype,^tenable:sc:vuln$,sourcetype=tenable:sc:vuln,,,DS018VulnerabilityDetection-ET01SigDetected
+Tipping_Point__IPS,Tipping Point,IPS,,sourcetype,^tippingpoint$,sourcetype=tippingpoint,,,DS012NetworkIntrusionDetection-ET01SigDetection
+Websense__Proxy,Websense,Proxy,,sourcetype,^websense:cg:kv$,sourcetype=websense:cg:kv,,,DS014WebServer-ET01Access
+Zscaler__Web_Proxy,Zscaler,Web Proxy,,sourcetype,^zscalernss-web$,sourcetype=zscalernss-web,,,DS014WebServer-ET01Access
+Zscaler__Firewall,Zscaler,Firewall,,sourcetype,^zscalernss-fw$,sourcetype=zscalernss-fw,,,DS010NetworkCommunication-ET01Traffic
+Apache__Web_Server,Apache,Web Server,,sourcetype,^access_combined$,sourcetype=access_combined,,,DS014WebServer-ET01Access
+Microsoft__IIS,Microsoft,IIS,,sourcetype,^(iis|ms:iis.*)$,sourcetype=iis OR sourcetype=ms:iis*,,,DS014WebServer-ET01Access
+Azure__Active_Directory,Azure,Active Directory,,sourcetype,^ms:aad:signin$,sourcetype=ms:aad:signin,,,DS003Authentication-ET01Success|DS003Authentication-ET02Failure
+CyberArk__Enterprise_Password_Vault,CyberArk,Enterprise Password Vault,,sourcetype,^cyberark:epv:.*$,sourcetype=cyberark:epv*,,,DS003Authentication-ET01Success|DS003Authentication-ET02Failure
+Okta__Identity_Cloud,Okta,Identity Cloud,,sourcetype,^OktaIM2.*$,sourceype=OktaIM2*,,,DS003Authentication-ET01Success|DS003Authentication-ET02Failure
+Linux__Updates,Linux,Updates,,sourcetype,^Unix:Update$,sourcetype=Unix:Update,,,DS019PatchManagement-Eligible|DS019PatchManagement-Applied|DS019PatchManagement-Failed
+Microsoft__Windows_System_Log,Microsoft,Windows System Log,,source,^.*WinEventLog:System$,source=*WinEventLog*System,,,DS033SystemLogs-ET01General
+Microsoft__Windows_Application_Log,Microsoft,Windows Application Log,,source,^.*WinEventLog:Application$,source=*WinEventLog*Application,,,DS034ApplicationLogs-ET01General
+Microsoft__Update_Log,Microsoft,Update Log,,sourcetype,^WindowsUpdateLog$,sourcetype=WindowsUpdateLog,,,DS019PatchManagement-Eligible|DS019PatchManagement-Applied|DS019PatchManagement-Failed
+Qualys__Vulnerability_Scanner,Qualys,Vulnerability Scanner,,sourcetype,^qualys:.*$,sourcetype=qualys:*,,,DS018VulnerabilityDetection-ET01SigDetected
+Crowdstrike__Falcon,Crowdstrike,Falcon,,sourcetype,^crowdstrike:falcon.*$,sourcetype=crowdstrike:falcon*,,,DS009EndPointIntel-ET01ProcessLaunch|DS009EndPointIntel-ET03ProcessLaunchwithCLI|DS009EndPointIntel-ET04ProcessLaunchWithHash

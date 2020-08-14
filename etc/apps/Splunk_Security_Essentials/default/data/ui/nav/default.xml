@@ -1,0 +1,61 @@
+<nav search_view="search" color="#3b444d">
+	<view name="home" default='true' />
+  <collection label="Security Content">
+    <view name="contents"/>
+    <divider />
+    <view name="overview" />
+    <view name="bookmarked_content" />
+    <view name="custom_content" />
+    <divider />
+    <view name="mitre_focused_content_recommendation" />
+    <view name="rba_content_recommendation" />
+  </collection>
+  <collection label="Analytics Advisor">
+    <view name="content_overview" />
+    <view name="mitre_overview" />
+    <view name="kill_chain_overview" />
+  </collection>
+  <collection label="Security Operations">
+    <view name="analyze_es_risk" />
+    <view name="sse_cim_compliance" />
+    <view name="Essential_Account_Security" />
+    <view name="Essential_Host_Security" />
+    <view name="Essential_Network_Security" />
+  </collection>
+  <collection label="Data">
+    <view name="data_inventory" />
+    <view name="sse_data_availability" />
+    <view name="data_source_check" />
+    <divider />
+    <view name="journey" />
+    <view name="data_source" />
+  </collection>
+  <collection label="Advanced">
+    <collection label="Reports and Queries">
+      <saved name="Saved Searches and the Data that Enables Them" />
+      <saved name="Products and the Content Mapped to Them" />
+      <a href="search?q=%7C%20sseanalytics">Core sseanalytics Comand</a>
+    </collection>
+    <collection label="Search Assistants">
+      <view name="showcase_standard_deviation"></view>
+      <view name="showcase_first_seen_demo"></view> 
+      <view name="showcase_simple_search"></view> 
+    </collection>
+    <divider />
+    <view name="search"/>
+    <view name="dashboards" />
+    <view name="datasets" />
+    <view name="reports" />
+    <view name="alerts" />
+  </collection>
+  <collection label="Documentation">
+    <a target="_blank" href="https://docs.splunksecurityessentials.com/">Documentation</a>
+    <a target="_blank" href="https://www.splunksecurityessentials.com/">Website</a>
+    <a target="_blank" href="https://answers.splunk.com/answers/ask.html?appid=3435">Ask a Question</a>
+    <divider />
+    <a target="_blank" href="https://www.davidveuve.com/searchdeepdive">Course: How Search Works</a>
+    <divider />
+    <view name="journey" />
+    <view name="data_source" />
+  </collection>
+</nav>

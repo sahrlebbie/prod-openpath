@@ -1,0 +1,158 @@
+<dashboard theme="dark">
+  <label>Tilo Open Path Test Practice</label>
+  <row>
+    <panel>
+      <title>Email Requests</title>
+      <viz type="status_indicator_app.status_indicator">
+        <search>
+          <query>index="sahr_openpath_index"* (yahoo OR hotmail OR gmail OR aol OR outlook) |stats count as "Number of Email Request"|eval yerrd="yerrd"</query>
+          <earliest>@mon</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">text</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">envelope</option>
+        <option name="status_indicator_app.status_indicator.icon">fix_icon</option>
+        <option name="status_indicator_app.status_indicator.precision">0</option>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#dc4e41</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Post Requests</title>
+      <single>
+        <search>
+          <query>index="sahr_openpath_index" POST |stats count AS "NUMBER OF POST REQUESTS"</query>
+          <earliest>@mon</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xf8be34"]</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Get Requests</title>
+      <single>
+        <search>
+          <query>index="sahr_openpath_index" GET |stats count AS "NUMBER OF GET REQUESTS"</query>
+          <earliest>@mon</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xf1813f","0x555","0xf8be34","0xf1813f","0x555"]</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Unencrypted Request</title>
+      <viz type="status_indicator_app.status_indicator">
+        <search>
+          <query>index="sahr_openpath_index"* http |stats count as "unEncrypted Request"|eval yerrd="yerrd"</query>
+          <earliest>@mon</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">background</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">question</option>
+        <option name="status_indicator_app.status_indicator.icon">fix_icon</option>
+        <option name="status_indicator_app.status_indicator.precision">0</option>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#dc4e41</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Encrypted Requests</title>
+      <viz type="status_indicator_app.status_indicator">
+        <search>
+          <query>index="sahr_openpath_index"* https |stats count as "unEncrypted Request" |eval yerrd="yerrd"</query>
+          <earliest>@mon</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="refresh.display">progressbar</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">text</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">check</option>
+        <option name="status_indicator_app.status_indicator.icon">fix_icon</option>
+        <option name="status_indicator_app.status_indicator.precision">0</option>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#f8be34</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">false</option>
+        <drilldown>
+          <link target="_blank">search?q=index=%22sahr_openpath_index%22*%20https%20%7Cstats%20count%20as%20%22unEncrypted%20Request%22%20%7Ceval%20yerd=%22yerd%22&amp;earliest=@mon&amp;latest=now</link>
+        </drilldown>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>IP Count List</title>
+      <chart>
+        <title>Repeated Visitors By IP Address</title>
+        <search>
+          <query>index="sahr_openpath_index" src_ip=* |stats count by src_ip,_time|where count&gt;1 | timechart count by src_ip</query>
+          <earliest>@mon</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>One Time IP Visitors</title>
+      <chart>
+        <title>IP Visitors Visiting Only Once</title>
+        <search>
+          <query>index="sahr_openpath_index" src_ip=* |stats count by src_ip |search count&lt;2</query>
+          <earliest>@mon</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Event Count in Data</title>
+      <single>
+        <title>Total Number of Events</title>
+        <search>
+          <query>|eventcount index=*</query>
+          <earliest>@mon</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <refresh>1s</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+  </row>
+</dashboard>

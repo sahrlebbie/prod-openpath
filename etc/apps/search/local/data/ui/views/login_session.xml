@@ -1,0 +1,36 @@
+<dashboard theme="dark">
+  <label>Login_Session</label>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>index=_audit info=granted login |stats count by user</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">100</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">true</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Login</title>
+      <chart>
+        <title>Login Session</title>
+        <search>
+          <query>index=_audit info=granted login |stats count by user</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+  </row>
+</dashboard>

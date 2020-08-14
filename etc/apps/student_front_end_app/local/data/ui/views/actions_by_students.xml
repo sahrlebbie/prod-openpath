@@ -1,0 +1,23 @@
+<form>
+  <label>Actions By Students</label>
+  <fieldset submitButton="false">
+    <input type="text" token="student">
+      <label>Students</label>
+      <prefix>*</prefix>
+      <suffix>*</suffix>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <chart>
+        <search>
+          <query>index=_audit action=search user=$student$</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+  </row>
+</form>

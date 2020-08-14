@@ -1,0 +1,24 @@
+<form theme="dark">
+  <label>My Favorite Students</label>
+  <fieldset submitButton="false">
+    <input type="text" token="student" searchWhenChanged="true">
+      <label>Students</label>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>| makeresults 
+| eval students="$student$"
+| eval login="true" 
+| lookup  test_1.csv students as students OUTPUT server</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+</form>

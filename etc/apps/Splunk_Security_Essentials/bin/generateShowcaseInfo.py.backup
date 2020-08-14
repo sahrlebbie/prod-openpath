@@ -1,0 +1,459 @@
+import os
+import sys
+import json 
+import random
+import json, csv, re, os
+import urllib, urllib2
+import sys
+import splunk.entity, splunk.Intersplunk
+from splunk.clilib.cli_common import getConfKeyValue
+
+if sys.platform == "win32":
+    import msvcrt
+    # Binary mode is required for persistent mode on Windows.
+    msvcrt.setmode(sys.stdin.fileno(), os.O_BINARY)
+    msvcrt.setmode(sys.stdout.fileno(), os.O_BINARY)
+    msvcrt.setmode(sys.stderr.fileno(), os.O_BINARY)
+
+from splunk.persistconn.application import PersistentServerConnectionApplication
+
+
+class ShowcaseInfo(PersistentServerConnectionApplication):
+    def __init__(self, command_line, command_arg):
+        PersistentServerConnectionApplication.__init__(self)
+
+    def handle(self, in_string):
+        input = {}
+        payload = {}
+        sessionKey = ""
+        owner = "" 
+        app = "Splunk_Security_Essentials" 
+        includeSSEFilter = True
+        settings = dict()
+        base_url =""
+        kvstore_usernames = dict()
+        kvstore_conversion = dict()
+        kvstore_data_status = dict()
+        eventtypes_data_status = dict()
+        eventtype_names = {}
+        eventtype_to_legacy_names = {}
+        myApps = [app]
+        globalSourceList = dict()
+        debug = []
+        globalSearchList = dict()
+        mitre_names = {}
+        mitre_refs_to_names = {}
+        mitre_refs_to_refs = {}
+        mitre_techniques_to_groups = {}
+        desired_locale = ""
+        valid_locales = ["ja-JP", "en-DEBUG"]
+        custom_content = []
+        bookmark_display_names = { "none": "Not On List", "bookmarked": "Bookmarked", "inQueue": "Ready for Deployment", "needData": "Waiting on Data", "issuesDeploying": "Deployment Issues", "needsTuning": "Needs Tuning", "successfullyImplemented": "Successfully Implemented" }
+        try: 
+            input = json.loads(in_string)
+            sessionKey = input['session']['authtoken']
+            owner = input['session']['user']
+            if "query" in input:
+                for pair in input['query']:
+                    if pair[0] == "app":
+                        app = pair[1]
+                    elif pair[0] == "hideExcludedContent":
+                        if pair[1] == "false":
+                            includeSSEFilter = False
+                    elif pair[0] == "locale":
+                        if pair[1] in valid_locales:
+                            desired_locale = "." + pair[1]
+        except:
+            return {'payload': json.dumps({"response": "Error! Couldn't find any initial input. This shouldn't happen."}),  
+                    'status': 500          # HTTP status code
+            }
+
+        try:
+            # Getting configurations
+            base_url = "https://" + getConfKeyValue('web', 'settings', 'mgmtHostPort')
+        except:
+            return {'payload': json.dumps({"response": "Error getting configurations!"}),  
+                    'status': 500          # HTTP status code
+            }
+
+
+        try:
+            # Now to grab kvstore collection data
+            request = urllib2.Request(base_url + '/servicesNS/nobody/' + app + '/storage/collections/data/bookmark',
+                headers = { 'Authorization': ('Splunk %s' % sessionKey)})
+            search_results = urllib2.urlopen(request)
+
+            kvstore_output = json.loads(search_results.read())
+
+            for i in kvstore_output:
+                kvstore_conversion[i['showcase_name']] = i['status']
+                if "user" in i:
+                    kvstore_usernames[i['showcase_name']] = i['user']
+
+            request = urllib2.Request(base_url + '/servicesNS/nobody/' + app + '/storage/collections/data/data_source_check',
+                headers = { 'Authorization': ('Splunk %s' % sessionKey)})
+            search_results = urllib2.urlopen(request)
+            kvstore_output = json.loads(search_results.read())
+            for i in kvstore_output:
+                if " - Demo" in i['searchName'] or ( i['showcaseId'] in kvstore_data_status and kvstore_data_status[ i['showcaseId'] ] == "Good" ):
+                    continue
+                kvstore_data_status[i['showcaseId']] = i['status']
+
+            request = urllib2.Request(base_url + '/servicesNS/nobody/' + app + '/storage/collections/data/custom_content',
+                headers = { 'Authorization': ('Splunk %s' % sessionKey)})
+            search_results = urllib2.urlopen(request)
+            custom_content = json.loads(search_results.read())
+            debug.append("Hi there!")
+            for i in custom_content:
+                debug.append(i)
+            debug.append("Byyyeeee!")
+
+            request = urllib2.Request(base_url + '/servicesNS/nobody/' + app + '/storage/collections/data/data_inventory_eventtypes',
+                headers = { 'Authorization': ('Splunk %s' % sessionKey)})
+            search_results = urllib2.urlopen(request)
+            kvstore_output = json.loads(search_results.read())
+            for i in kvstore_output:
+                eventtypes_data_status[i['eventtypeId']] = i['status']
+        except: 
+            json.dump({"input": input, "log_level": "ERROR", "message": "Could not grab kvstore collections in ShowcaseInfo"}, open("../../../../var/spool/splunk/sse_showcase.log", "a"))
+            return {'payload': json.dumps({"response": "Error! kvstore stage."}),  
+                    'status': 500          # HTTP status code
+            }
+            
+        try:
+            # Now to grab files off the filesystem
+            for myApp in myApps:
+                path = os.environ['SPLUNK_HOME'] + "/etc/apps/" + myApp + "/appserver/static/components/localization/ShowcaseInfo" + desired_locale + ".json"
+                debug.append("desired_locale: " + desired_locale)
+                if desired_locale != "":
+                    if not os.path.exists(path):
+                        path = os.environ['SPLUNK_HOME'] + "/etc/apps/" + myApp + "/appserver/static/components/localization/ShowcaseInfo.json"
+                debug.append("path: " + path)
+                with open(path) as f:
+                    data = json.load(f)
+                    if "summaries" not in globalSourceList:
+                        globalSourceList = data
+                    else:
+                        for summaryName in data['summaries']:
+                            if summaryName not in globalSourceList['summaries']:
+                                data['summaries'][summaryName]['channel'] = "Splunk_Security_Essentials"
+                                data['summaries'][summaryName]['showcaseId'] = summaryName
+                                globalSourceList['summaries'][summaryName] = data['summaries'][summaryName]
+                                globalSourceList['roles']['default']['summaries'].append(summaryName)
+            debug.append("# of summaries: " + str(len(globalSourceList['roles']['default']['summaries'])))
+            for content in custom_content:
+                showcase = json.loads(content['json'])
+                showcase['includeSSE'] = "Yes"
+                showcase['channel'] = "Custom Content"
+                globalSourceList['roles']['default']['summaries'].append(content['showcaseId'])
+                globalSourceList['summaries'][content['showcaseId']] = showcase
+                debug.append("# of summaries: " + str(len(globalSourceList['roles']['default']['summaries'])))
+            debug.append("# of summaries: " + str(len(globalSourceList['roles']['default']['summaries'])))
+
+            with open(os.environ['SPLUNK_HOME'] + "/etc/apps/" + app + "/appserver/static/components/localization/data_inventory.json") as f:
+                data_inventory = json.load(f)
+                for datasource in data_inventory:
+                    eventtype_names[datasource] = data_inventory[datasource]['name']
+                    for eventtype in data_inventory[datasource]['eventtypes']:
+                        eventtype_names[eventtype] = data_inventory[datasource]['eventtypes'][eventtype]['name']
+                        if "legacy_name" in data_inventory[datasource]['eventtypes'][eventtype]:
+                            eventtype_to_legacy_names[eventtype] = data_inventory[datasource]['eventtypes'][eventtype]["legacy_name"]
+
+
+            myAssistants = ["showcase_first_seen_demo", "showcase_standard_deviation", "showcase_simple_search"]
+            for assistant in myAssistants:
+                with open(os.environ['SPLUNK_HOME'] + "/etc/apps/" + myApps[0] + "/appserver/static/components/data/sampleSearches/" + assistant + ".json") as f:
+                    data = json.load(f)
+                    globalSearchList.update(data)
+        # mitre_refs_to_techniques = {}
+        # mitre_groups_to_refs = {}
+            with open(os.environ['SPLUNK_HOME'] + "/etc/apps/" + myApps[0] + "/appserver/static/vendor/mitre/enterprise-attack.json") as f:
+                mitre_attack_blob = json.load(f)
+                for obj in mitre_attack_blob['objects']:
+                    if "type" in obj and obj['type'] == "relationship":
+                        if "intrusion-set" in obj['source_ref'] and "attack-pattern" in obj['target_ref']:
+                            if obj['target_ref'] not in mitre_refs_to_refs:
+                                mitre_refs_to_refs[obj['target_ref']] = []
+                            mitre_refs_to_refs[obj['target_ref']].append(obj['source_ref'])
+                        if "intrusion-set" in obj['target_ref'] and "attack-pattern" in obj['source_ref']:
+                            if obj['source_ref'] not in mitre_refs_to_refs:
+                                mitre_refs_to_refs[obj['source_ref']] = []
+                            mitre_refs_to_refs[obj['source_ref']].append(obj['target_ref'])
+                    if "type" in obj and obj['type'] == "intrusion-set":
+                        mitre_refs_to_names[obj['id']] = obj['name']
+                    if "external_references" in obj:
+                        for reference in obj['external_references']:
+                            if "url" in reference and "type" in obj and (obj["type"] == "attack-pattern" or obj["type"] == "x-mitre-tactic") and ( "https://attack.mitre.org/techniques/" in reference['url'] or "https://attack.mitre.org/tactics/" in reference['url'] ):
+                                mitre_names[reference['external_id']] = obj['name']
+                                mitre_refs_to_names[obj['id']] = reference['external_id']
+            with open(os.environ['SPLUNK_HOME'] + "/etc/apps/" + myApps[0] + "/appserver/static/vendor/mitre/pre-attack.json") as f:
+                mitre_attack_blob = json.load(f)
+                for obj in mitre_attack_blob['objects']:
+                    if "type" in obj and obj['type'] == "relationship":
+                        if "intrusion-set" in obj['source_ref'] and "attack-pattern" in obj['target_ref']:
+                            if obj['target_ref'] not in mitre_refs_to_refs:
+                                mitre_refs_to_refs[obj['target_ref']] = []
+                            mitre_refs_to_refs[obj['target_ref']].append(obj['source_ref'])
+                        if "intrusion-set" in obj['target_ref'] and "attack-pattern" in obj['source_ref']:
+                            if obj['source_ref'] not in mitre_refs_to_refs:
+                                mitre_refs_to_refs[obj['source_ref']] = []
+                            mitre_refs_to_refs[obj['source_ref']].append(obj['target_ref'])
+                    if "type" in obj and obj['type'] == "intrusion-set":
+                        mitre_refs_to_names[obj['id']] = obj['name']
+                    if "external_references" in obj:
+                        for reference in obj['external_references']:
+                            if "url" in reference and "type" in obj and (obj["type"] == "attack-pattern" or obj["type"] == "x-mitre-tactic") and ( "https://attack.mitre.org/techniques/" in reference['url'] or "https://attack.mitre.org/tactics/" in reference['url'] ):
+                                mitre_names[reference['external_id']] = obj['name']
+                                mitre_refs_to_names[obj['id']] = reference['external_id']   
+            for ref in mitre_refs_to_refs:
+                for refvalue in mitre_refs_to_refs[ref]:
+                    if ref in mitre_refs_to_names and refvalue in mitre_refs_to_names:
+                        if mitre_refs_to_names[ref] not in mitre_techniques_to_groups:
+                            mitre_techniques_to_groups[mitre_refs_to_names[ref]] = []
+                        if mitre_refs_to_names[refvalue] not in mitre_techniques_to_groups[mitre_refs_to_names[ref]]:
+                            mitre_techniques_to_groups[mitre_refs_to_names[ref]].append(mitre_refs_to_names[refvalue])
+
+            
+        except: 
+            return {'payload': json.dumps({"response": "Error! grab files stage."}),  
+                    'status': 500          # HTTP status code
+            }
+            # Error handle!
+
+
+        try:
+            # Now we clear out any invalid characters in IDs and names
+            keys = globalSourceList['summaries'].keys()
+            debug.append("Debug Starting")
+            for summaryName in keys:
+                m = re.search("[^a-zA-Z0-9_]", summaryName)
+                if m:
+                    debug.append("Got a match " + summaryName)
+                    newSummaryName = re.sub(r"[^a-zA-Z0-9_\-]", "", summaryName)
+                    debug.append("New Summary Name " + newSummaryName)
+                    globalSourceList['summaries'][newSummaryName] = globalSourceList['summaries'].pop(summaryName)
+                    index = globalSourceList['roles']['default']['summaries'].index(summaryName)
+                    globalSourceList['roles']['default']['summaries'][index] = newSummaryName
+            
+            for summaryName in globalSourceList['summaries']:    
+                regex = r"\&[a-zA-Z0-9#]{2,10};"
+                m = re.search(regex, globalSourceList['summaries'][summaryName]['name'])
+                if m:
+                    debug.append("Got a name match " + globalSourceList['summaries'][summaryName]['name'])
+                    newName = re.sub(regex, "", globalSourceList['summaries'][summaryName]['name'])
+                    debug.append("New name " + newName)
+                    globalSourceList['summaries'][summaryName]['name'] = newName
+                elif "Allowed" in globalSourceList['summaries'][summaryName]['name']:
+                    debug.append("NO NAME match " + globalSourceList['summaries'][summaryName]['name'])
+        except Exception as e:
+            return {'payload': json.dumps({"response": "Error! clearing.", "error": str(e)}),  
+                    'status': 500          # HTTP status code
+            }
+
+
+        try:
+            # Now we do enrichment and processing
+            for summaryName in globalSourceList['summaries']:
+                globalSourceList['summaries'][summaryName]['categorytest'] = globalSourceList['summaries'][summaryName]['category']
+                globalSourceList['summaries'][summaryName]['enabled'] = "No"
+                if globalSourceList['summaries'][summaryName]['name'] in kvstore_conversion:
+                    globalSourceList['summaries'][summaryName]['bookmark_status'] = kvstore_conversion[globalSourceList['summaries'][summaryName]['name']]
+                    if globalSourceList['summaries'][summaryName]['bookmark_status'] in bookmark_display_names:
+                        globalSourceList['summaries'][summaryName]['bookmark_status_display'] = bookmark_display_names[globalSourceList['summaries'][summaryName]['bookmark_status']]
+                    else:
+                        globalSourceList['summaries'][summaryName]['bookmark_status_display'] = globalSourceList['summaries'][summaryName]['bookmark_status']
+                
+                    if kvstore_conversion[globalSourceList['summaries'][summaryName]['name']] == "successfullyImplemented":
+                        globalSourceList['summaries'][summaryName]['enabled'] = "Yes"
+                else:
+                    globalSourceList['summaries'][summaryName]['bookmark_status'] = "none"
+                    globalSourceList['summaries'][summaryName]['bookmark_status_display'] = "Not Bookmarked"
+
+                if globalSourceList['summaries'][summaryName]['name'] in kvstore_usernames:
+                    globalSourceList['summaries'][summaryName]['bookmark_user'] = kvstore_usernames[globalSourceList['summaries'][summaryName]['name']]
+                else:
+                    globalSourceList['summaries'][summaryName]['bookmark_user'] = "none"
+                # Enrich examples with the example data
+                if "examples" in globalSourceList['summaries'][summaryName] and len(globalSourceList['summaries'][summaryName]['examples']) > 0:
+                    for i in range(0, len(globalSourceList['summaries'][summaryName]['examples'])):
+                        if globalSourceList['summaries'][summaryName]['examples'][i]['name'] in globalSearchList:
+                            globalSourceList['summaries'][summaryName]['examples'][i]['showcase'] = globalSearchList[globalSourceList['summaries'][summaryName]['examples'][i]['name']]
+                
+                # eventtypes_data_status
+                globalSourceList['summaries'][summaryName]["data_available"] = "Unknown"
+                globalSourceList['summaries'][summaryName]["data_available_numeric"] = ""
+                if "data_source_categories" in globalSourceList['summaries'][summaryName]:
+                    eventtypes = globalSourceList['summaries'][summaryName]['data_source_categories'].split("|")
+                    eventtype_display = []
+                    for eventtype in eventtypes:
+                        if eventtype in eventtype_names:
+                            eventtype_display.append( eventtype_names[eventtype] )
+                            if eventtype in eventtype_to_legacy_names:
+                                globalSourceList['summaries'][summaryName]['datasource'] = globalSourceList['summaries'][summaryName]['datasource'].replace("Vendor-Specific Data", eventtype_to_legacy_names[eventtype])
+                        if eventtype in eventtypes_data_status and eventtypes_data_status[eventtype] != "unknown":
+                            globalSourceList['summaries'][summaryName]["data_available_numeric"] = eventtypes_data_status[eventtype]
+                            if int(eventtypes_data_status[eventtype]) >= 20:
+                                globalSourceList['summaries'][summaryName]["data_available"] = "Good"
+                            else:
+                                globalSourceList['summaries'][summaryName]["data_available"] = "Bad"
+                        globalSourceList['summaries'][summaryName]['data_source_categories_display'] = "|".join( eventtype_display )
+                # globalSourceList['summaries'][summaryName]['data_source_categories'] = globalSourceList['summaries'][summaryName]['data_source_categories']
+                # globalSourceList['summaries'][summaryName]['data_source_categories_display'] = globalSourceList['summaries'][summaryName]['data_source_categories_display']
+                # Probably this should be disabled...
+                # if summaryName in kvstore_data_status:
+                #   globalSourceList['summaries'][summaryName]['data_available'] = kvstore_data_status[summaryName]
+                
+                
+                # Add an ID
+                globalSourceList['summaries'][summaryName]["id"] = summaryName
+
+                #Do Mitre Display Name Mapping
+                globalSourceList['summaries'][summaryName]["mitre_tactic_display"] = []
+                globalSourceList['summaries'][summaryName]["mitre_technique_display"] = []
+                globalSourceList['summaries'][summaryName]["mitre_threat_groups"] = []
+                if "mitre_tactic" in globalSourceList['summaries'][summaryName]:
+                    tactics = globalSourceList['summaries'][summaryName]["mitre_tactic"].split("|")
+                    for tactic in tactics:
+                        if tactic != "":
+                            if tactic in mitre_names:
+                                globalSourceList['summaries'][summaryName]["mitre_tactic_display"].append(mitre_names[tactic])
+                            else:
+                                globalSourceList['summaries'][summaryName]["mitre_tactic_display"].append(tactic)
+                if "mitre_technique" in globalSourceList['summaries'][summaryName]:
+                    techniques = globalSourceList['summaries'][summaryName]["mitre_technique"].split("|")
+                    for technique in techniques:
+                        if technique != "":
+                            if technique in mitre_techniques_to_groups:
+                                globalSourceList['summaries'][summaryName]["mitre_threat_groups"] = globalSourceList['summaries'][summaryName]["mitre_threat_groups"] + mitre_techniques_to_groups[technique]
+                            if technique in mitre_names:
+                                globalSourceList['summaries'][summaryName]["mitre_technique_display"].append(mitre_names[technique])
+                            else:
+                                globalSourceList['summaries'][summaryName]["mitre_technique_display"].append(technique)
+                globalSourceList['summaries'][summaryName]["mitre_threat_groups"] = list(set(  globalSourceList['summaries'][summaryName]["mitre_threat_groups"] )) 
+                globalSourceList['summaries'][summaryName]["mitre_threat_groups"].sort()
+                globalSourceList['summaries'][summaryName]["mitre_tactic_display"] = "|".join(globalSourceList['summaries'][summaryName]["mitre_tactic_display"])
+                globalSourceList['summaries'][summaryName]["mitre_technique_display"] = "|".join(globalSourceList['summaries'][summaryName]["mitre_technique_display"])
+                globalSourceList['summaries'][summaryName]["mitre_threat_groups"] = "|".join( globalSourceList['summaries'][summaryName]["mitre_threat_groups"] )
+
+
+
+        except:
+            return {'payload': json.dumps({"response": "Error! core enrichment."}),  
+                    'status': 500          # HTTP status code
+            }
+
+        try:
+            # Now we default anything that needs to be defaulted
+            provide_No_Fields = ["hasSearch"]
+            provide_NA_Fields = ["data_source_categories", "data_source_categories_display"]
+            provide_none_Fields = []
+            provide_Other_Fields = ["category"]
+            provide_Uppercasenone_Fields = ["killchain", "mitre", "mitre_tactic", "mitre_technique",  "mitre_tactic_display", "mitre_technique_display", "category", "SPLEase"]
+
+            for summaryName in globalSourceList['summaries']:
+                if "icon" not in globalSourceList['summaries'][summaryName] or globalSourceList['summaries'][summaryName]['icon'] == "":
+                    globalSourceList['summaries'][summaryName]['icon'] = "custom_content.png"
+
+                if "dashboard" not in globalSourceList['summaries'][summaryName] or globalSourceList['summaries'][summaryName]['dashboard'] == "":
+                    globalSourceList['summaries'][summaryName]['dashboard'] = "showcase_custom?showcaseId=" + summaryName
+
+                for field in provide_NA_Fields:
+                    if (field not in globalSourceList['summaries'][summaryName] or globalSourceList['summaries'][summaryName][field] == "") and field in provide_NA_Fields:
+                        globalSourceList['summaries'][summaryName][field] = "N/A"
+
+                for field in provide_No_Fields:
+                    if (field not in globalSourceList['summaries'][summaryName] or globalSourceList['summaries'][summaryName][field] == "") and field in provide_No_Fields:
+                        globalSourceList['summaries'][summaryName][field] = "No"
+
+                for field in provide_none_Fields:
+                    if (field not in globalSourceList['summaries'][summaryName] or globalSourceList['summaries'][summaryName][field] == "") and field in provide_none_Fields:
+                        globalSourceList['summaries'][summaryName][field] = "none"
+
+                for field in provide_Other_Fields:
+                    if (field not in globalSourceList['summaries'][summaryName] or globalSourceList['summaries'][summaryName][field] == "") and field in provide_Other_Fields:
+                        globalSourceList['summaries'][summaryName][field] = "Other"
+
+                for field in provide_Uppercasenone_Fields:
+                    if (field not in globalSourceList['summaries'][summaryName] or globalSourceList['summaries'][summaryName][field] == "") and field in provide_Uppercasenone_Fields:
+                        globalSourceList['summaries'][summaryName][field] = "None"
+
+
+        except:
+            return {'payload': json.dumps({"response": "Error! defaulting."}),  
+                    'status': 500          # HTTP status code
+            }
+
+    
+        # Clear out excluded content
+        keys = globalSourceList['summaries'].keys()
+        for summaryName in keys:
+            if "includeSSE" not in globalSourceList['summaries'][summaryName] or globalSourceList['summaries'][summaryName]["includeSSE"].lower() != "yes":
+                globalSourceList['summaries'].pop(summaryName)
+                if summaryName in globalSourceList['roles']['default']['summaries']:
+                    globalSourceList['roles']['default']['summaries'].remove(summaryName)
+
+        globalSourceList['debug'] = debug
+
+        return {'payload': globalSourceList,  
+                'status': 200          # HTTP status code
+        }
+
+        
+
+
+
+
+#         ############### BRIDGE TO EXISTING CONTENT
+
+
+
+
+
+
+
+#   if "examples" in globalSourceList['summaries'][summaryName]:
+#     for i in range(0, len(globalSourceList['summaries'][summaryName]['examples'])):
+#       globalSourceList['summaries'][summaryName]['example' + str(i)] = dict()
+#       globalSourceList['summaries'][summaryName]['example' + str(i)]['name'] = globalSourceList['summaries'][summaryName]['examples'][i]['name']
+#       globalSourceList['summaries'][summaryName]['example' + str(i)]['label'] = globalSourceList['summaries'][summaryName]['examples'][i]['label']
+#       if globalSourceList['summaries'][summaryName]['examples'][i]['name'] in globalSearchList:
+#         globalSourceList['summaries'][summaryName]['example' + str(i)]['object'] = globalSearchList[ globalSourceList['summaries'][summaryName]['examples'][i]['name'] ]
+#         globalSourceList['summaries'][summaryName]['example' + str(i)]['object']['numDescriptions'] = 0
+#         globalSourceList['summaries'][summaryName]['example' + str(i)]['object']['numPreReqs'] = 0
+#         if "prereqs" in globalSourceList['summaries'][summaryName]['example' + str(i)]['object']:
+#           globalSourceList['summaries'][summaryName]['example' + str(i)]['object']['numPreReqs'] = len(globalSourceList['summaries'][summaryName]['example' + str(i)]['object']['prereqs'])
+#         if "description" in globalSourceList['summaries'][summaryName]['example' + str(i)]['object']:
+#           globalSourceList['summaries'][summaryName]['example' + str(i)]['object']['numDescriptions'] = len(globalSourceList['summaries'][summaryName]['example' + str(i)]['object']['description'])
+#     del globalSourceList['summaries'][summaryName]['examples']
+# provide_NA_Fields = ["eventtypes", "eventtypes_display"]
+# fields = ["name", "id", "usecase", "__mv_usecase", "category", "__mv_category", "domain", "__mv_domain", "journey", "highlight", "bookmark_status", "bookmark_user", "displayapp", "app", "datasource", "__mv_datasource", "eventtypes", "__mv_eventtypes", "eventtypes_display", "__mv_eventtypes_display", "data_available", "enabled", "description", "hasSearch", "includeSSE", "dashboard", "mitre", "__mv_mitre", "mitre_tactic", "__mv_mitre_tactic", "mitre_tactic_display", "__mv_mitre_tactic_display", "mitre_technique", "__mv_mitre_technique", "mitre_technique_display", "__mv_mitre_technique_display", "killchain", "__mv_killchain", "alertvolume", "SPLEase", "released"]
+# doMVConversion = ["usecase", "category" , "domain", "datasource", "eventtypes", "eventtypes_display", "mitre", "mitre_tactic", "mitre_tactic_display", "mitre_technique", "mitre_technique_display", "killchain" ]
+# print ",".join(fields) + ",summaries"
+# f = open("/tmp/dvtest.log", "w")
+
+# f.write(",".join(fields) + ",summaries" + "\n")
+
+# regex = '"'
+# for summaryName in globalSourceList['summaries']:
+#   if includeSSEFilter == False or globalSourceList['summaries'][summaryName]['includeSSE'] == "Yes":
+#     line = json.dumps(globalSourceList['summaries'][summaryName], sort_keys=True)
+#     output = ""
+#     for field in fields:
+#       if "__mv_" not in field:
+#         if (field not in globalSourceList['summaries'][summaryName] or globalSourceList['summaries'][summaryName][field] == "") and field in provide_NA_Fields:
+#           globalSourceList['summaries'][summaryName][field] = "N/A"
+#         if field in globalSourceList['summaries'][summaryName]:
+#           # output += '"' + re.sub('\n', '\r', re.sub('"', '""', globalSourceList['summaries'][summaryName][field])) + '",'
+#           if field in doMVConversion:
+#             items = globalSourceList['summaries'][summaryName][field].split("|")
+#             output += '"' + re.sub('"', '""', "\n".join(items) ) + '",'
+#             output += '"' + re.sub('"', '""', "$" + "$;$".join(items) + "$") + '",'
+#             #output += '"' + re.sub('"', '""', re.sub('\n', '', "$" + "$\n$".join(items) + "$")) + '",'
+#             #output += '"' + re.sub('"', '""', re.sub('\|', '\n', re.sub('\n', '', globalSourceList['summaries'][summaryName][field]))) + '",'
+#           else:
+#             output += '"' + re.sub('\n', '\r', re.sub('"', '""', globalSourceList['summaries'][summaryName][field])) + '",'
+#         else:
+#           output += ','
+#     output += '"' + re.sub('\n', '', re.sub('"', '""', line)) + '"'
+#     f.write(output + "\n")
+#     print output

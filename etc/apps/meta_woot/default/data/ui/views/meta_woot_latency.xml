@@ -1,0 +1,255 @@
+<form script="metawoot_cell_highlighting.js" stylesheet="metawoot_cell_highlighting.css">
+  <label>Meta Woot! Latency Compliance</label>
+  <search id="baseSearch">
+    <query>| inputlookup meta_woot where sourcetype=$sourcetype$ index=$index$ host=$host$ | eval latency=round(abs(recentTime-lastTime)/60,2) | stats max(latency) as latency by host | eval latency_level=case(latency &gt;= $high_latency_thresh$, "High", latency &gt;= $medium_latency_thresh$, "Medium", latency &lt; $medium_latency_thresh$, "Low")</query>
+  </search>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="dropdown" token="index">
+      <label>Index</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>| inputlookup meta_woot | dedup index | fields index | sort index</query>
+      </search>
+      <fieldForLabel>index</fieldForLabel>
+      <fieldForValue>index</fieldForValue>
+      <default>*</default>
+    </input>
+    <input type="dropdown" token="sourcetype" searchWhenChanged="true">
+      <label>Sourcetype</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>| inputlookup meta_woot where index=$index$ | dedup sourcetype | fields sourcetype | sort sourcetype</query>
+      </search>
+      <fieldForLabel>sourcetype</fieldForLabel>
+      <fieldForValue>sourcetype</fieldForValue>
+      <default>*</default>
+    </input>
+    <input type="text" token="host" searchWhenChanged="true">
+      <label>Host</label>
+      <default>*</default>
+    </input>
+    <input type="dropdown" token="latency_level" searchWhenChanged="true">
+      <label>Latency Level</label>
+      <choice value="*">All</choice>
+      <choice value="Low">Low</choice>
+      <choice value="Medium">Medium</choice>
+      <choice value="High">High</choice>
+      <default>*</default>
+    </input>
+    <input type="text" token="medium_latency_thresh" searchWhenChanged="true">
+      <label>Medium Latency (mins)</label>
+      <default>5</default>
+    </input>
+    <input type="text" token="high_latency_thresh" searchWhenChanged="true">
+      <label>High Latency (mins)</label>
+      <default>10</default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <search base="baseSearch">
+          <query>| stats dc(host) as "Total Hosts"</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="underLabel">Total Hosts</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search base="baseSearch">
+          <query>| where latency_level="Low" | stats dc(host) | appendpipe [| stats count | where count=0]</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0x65a637"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">inverse</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="underLabel">Hosts with Low Latency</option>
+        <option name="trendInterval">-1h</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search base="baseSearch">
+          <query>| where latency_level="Medium" | stats dc(host) | appendpipe [| stats count | where count=0]</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0xf7bc38","0xf7bc38"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="underLabel">Hosts with Medium Latency</option>
+        <option name="trendInterval">-1h</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search base="baseSearch">
+          <query>|  where latency_level="High" | stats dc(host) | appendpipe [| stats count | where count=0]</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0xC00000","0xC00000"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">-1h</option>
+        <option name="underLabel">Hosts with High Latency</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="unitPosition">after</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search base="baseSearch">
+          <query>| eval compliant_hosts=if(latency&lt; $medium_latency_thresh$,"1","0")  | stats sum(compliant_hosts) as compliant_hosts, dc(host) as total_hosts | eval compliance_rate=round((compliant_hosts/total_hosts)*100,2) | fields compliance_rate</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0xC00000","0xf7bc38","0x65a637"]</option>
+        <option name="rangeValues">[33,76]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="underLabel">Latency Compliance</option>
+        <option name="unit">%</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Latent Hosts Over Time</title>
+      <html>
+        <p>Displays latency levels or statistics over time, rather than simply the state as displayed in the single value fields at the top of the dashboard.</p>
+      </html>
+      <input type="time" token="time" searchWhenChanged="true">
+        <label>Time</label>
+        <default>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </default>
+      </input>
+      <input type="dropdown" token="latency_filter" searchWhenChanged="true">
+        <label>Latency Filter</label>
+        <choice value="dc(orig_host) by latency_level">By Latency Level</choice>
+        <choice value="avg(latency) as &quot;Average&quot;, median(latency) as &quot;Median&quot;, p90(latency) as &quot;P90&quot;">By Latency Statistics</choice>
+        <default>dc(orig_host) by latency_level</default>
+      </input>
+      <input type="dropdown" token="span" searchWhenChanged="true">
+        <label>Span</label>
+        <choice value="15m">15 mins</choice>
+        <choice value="30m">30 mins</choice>
+        <choice value="1h">1 hour</choice>
+        <choice value="6h">6 hours</choice>
+        <choice value="12h">12 hours</choice>
+        <default>15m</default>
+      </input>
+      <chart>
+        <search>
+          <query>index=`meta_woot_read_summary` sourcetype=meta_woot orig_sourcetype=$sourcetype$ orig_index=$index$ orig_host=$host$  |  eval latency= round(abs(recentTime-lastTime)/60,2) | bucket span=$span$ _time | stats max(latency) as latency by _time orig_host  | eval latency_level=case(latency &gt;= $high_latency_thresh$, "High", latency &gt;= $medium_latency_thresh$, "Medium", latency &lt; $medium_latency_thresh$, "Low")  | timechart span=$span$ $latency_filter$</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">line</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">zero</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">bottom</option>
+        <option name="charting.axisTitleY2.text">Latency</option>
+        <option name="charting.axisTitleX.text">Time</option>
+        <option name="charting.axisTitleY.text">Number of Hosts</option>
+        <option name="charting.fieldColors">{"High":0xC00000,"Medium":0xf7bc38,"Low":0x65a637,"P90":0xC00000,"Average":0xf7bc38,"Median":0x65a637}</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Detailed Latency By Host</title>
+      <table id="shading">
+        <search>
+          <query>| inputlookup meta_woot where sourcetype=$sourcetype$ index=$index$ host=$host$  |  eval latency= round((recentTime-lastTime)/60,2) | eval latency_type=if(latency&lt;0,"Logging Ahead","Logging Behind") | eval latency=abs(latency)   | eval latency_level=case(latency &gt;= $high_latency_thresh$, "High", latency &gt;= $medium_latency_thresh$, "Medium", latency &lt; $medium_latency_thresh$, "Low")   | dedup host sourcetype index sortby -latency  | search latency_level="$latency_level$" | convert ctime(recentTime) ctime(firstTime) ctime(lastTime) ctime(lastUpdated) | rename latency AS "latency (mins)"| table index, sourcetype, host,  latency_level, "latency (mins)",latency_type, firstTime, lastTime, recentTime | rename latency_level AS "Latency Level"</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="count">50</option>
+        <drilldown target="NewWindow">
+          <link>
+            <![CDATA[
+          meta_woot_trends?form.sourcetype=$row.sourcetype$&form.index=$row.index$&form.host=$row.host$
+		]]>
+          </link>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+</form>

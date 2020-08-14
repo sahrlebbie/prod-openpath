@@ -1,0 +1,1 @@
+###You need to download and install the [Calendar Heat Map](https://splunkbase.splunk.com/app/3162/) custom visualization in order to make this work.

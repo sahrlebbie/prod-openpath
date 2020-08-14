@@ -1,0 +1,66 @@
+<dashboard>
+  <label>Realtime Location Tracker Gallery</label>
+  <row>
+    <panel>
+      <title>Show traces</title>
+      <viz type="location_tracker_app.location_tracker">
+        <search>
+          <query>| inputlookup locations.csv | table _time latitude longitude user | sort -_time</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="location_tracker_app.location_tracker.staticIcon">bicycle</option>
+        <option name="location_tracker_app.location_tracker.showTraces">1</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Default</title>
+      <viz type="location_tracker_app.location_tracker">
+        <search>
+          <query>| inputlookup locations.csv | table _time latitude longitude user | sort -_time</query>
+          <earliest>0</earliest>
+        </search>
+      </viz>
+    </panel>
+    <panel>
+      <title>Default (icon in query specified)</title>
+      <viz type="location_tracker_app.location_tracker">
+        <search>
+          <query>| inputlookup locations.csv | eval icon="ambulance" | table _time latitude longitude user icon | sort -_time</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="location_tracker_app.location_tracker.interval">10</option>
+        <option name="location_tracker_app.location_tracker.staticIcon">ambulance</option>
+        <option name="location_tracker_app.location_tracker.tileSet">satellite_tiles</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Static Icon</title>
+      <viz type="location_tracker_app.location_tracker">
+        <search>
+          <query>| inputlookup locations.csv | table _time latitude longitude user | sort -_time</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="location_tracker_app.location_tracker.staticIcon">bicycle</option>
+        <option name="location_tracker_app.location_tracker.interval">10</option>
+        <option name="location_tracker_app.location_tracker.tileSet">openstreetmap_tiles</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Dark Matter Tile Set</title>
+      <viz type="location_tracker_app.location_tracker">
+        <search>
+          <query>| inputlookup locations.csv | table _time latitude longitude user | sort -_time</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="location_tracker_app.location_tracker.staticIcon">bicycle</option>
+        <option name="location_tracker_app.location_tracker.tileSet">dark_tiles</option>
+        <option name="location_tracker_app.location_tracker.showTraces">1</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

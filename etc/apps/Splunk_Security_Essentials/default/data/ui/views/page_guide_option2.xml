@@ -1,0 +1,22 @@
+  <dashboard script="runPageScript.js">
+  <label>Page Guide Option 2</label>
+  <row>
+    <panel>
+      
+      <html>
+        <h2 data-translate-id="home-h2-intro">Page Guide</h2>
+        <div data-translate-id="home-div-welcometext">
+          <p>This is the new page guide template</p>
+        </div>
+    </html>
+  </panel>
+</row>
+  <row>
+    <panel>
+      <html>
+        <div id="ListOfPageGuides"  ></div>
+      </html>
+    </panel>
+  </row>
+  
+</dashboard>

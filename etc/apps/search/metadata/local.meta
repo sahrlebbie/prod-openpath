@@ -1,0 +1,1181 @@
+[indexes/sahr_index]
+owner = admin
+version = 7.3.3
+modtime = 1579754449.301990000
+
+[inputs/monitor%3A%2F%2F%2Fvar%2Flog%2Fmessages]
+owner = rufus.gillette
+version = 7.3.3
+modtime = 1580178251.111159000
+
+[inputs/monitor%3A%2F%2F%2Fvar%2Flog%2Fmessages-20200126]
+owner = rufus.gillette
+version = 7.3.3
+modtime = 1580178705.214235000
+
+[indexes/mo_index]
+owner = muhammed.oladimeji
+version = 7.3.3
+modtime = 1580179159.729492000
+
+[inputs/monitor%3A%2F%2F%2Fvar%2Flog%2Famazon]
+owner = muhammed.oladimeji
+version = 7.3.3
+modtime = 1580179178.868172000
+
+[props/%2Fvar%2Flog]
+owner = titi.ajayi
+version = 7.3.3
+modtime = 1580182823.419230000
+
+[inputs/monitor%3A%2F%2F%2Ftmp]
+owner = titi.ajayi
+version = 7.3.3
+modtime = 1580182826.004116000
+
+[inputs/monitor%3A%2F%2F%2Fvar]
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1580242181.151853000
+
+[views/lebbie_second_class_assignment]
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1580246895.463974000
+
+[indexes/yemi_index]
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1580247383.241491000
+
+[props/yemiresumerandom]
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1580248831.991971000
+
+[props/Mimi]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1580265020.041546000
+
+[inputs/monitor%3A%2F%2F%2Fvar%2Flog%2Fboot.log-20200124]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1580265104.820131000
+
+[props/nba18_19]
+owner = temi.ajayi
+version = 7.3.3
+modtime = 1580349484.319314000
+
+[indexes/nba]
+owner = temi.ajayi
+version = 7.3.3
+modtime = 1580349495.372451000
+
+[savedsearches/IP%20Location%20Count]
+access = read : [ * ], write : [ * ]
+export = system
+owner = temi.ajayi
+version = 7.3.3
+modtime = 1580355532.629991000
+
+[views/temis_example_dashboard]
+owner = temi.ajayi
+version = 7.3.3
+modtime = 1580357663.385446000
+
+[views/integrity_check_of_installed_files]
+version = 7.3.3
+modtime = 1580420754.659387000
+
+[savedsearches/Top%2050%20Web%20Traffic%20Location]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = muhammed.oladimeji
+version = 7.3.3
+modtime = 1580701345.938698000
+
+[savedsearches/No%20No%20No...]
+access = read : [ * ]
+export = none
+owner = tolu.ajayi
+version = 7.3.3
+modtime = 1580762397.250963000
+
+[savedsearches/Threats]
+access = read : [ * ]
+export = none
+owner = tolu.ajayi
+version = 8.0.2.1
+modtime = 1585021314.277541000
+
+[views/mos_devprod_dashboard]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = muhammed.oladimeji
+version = 7.3.3
+modtime = 1581300098.513028000
+
+[props/access_log]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1580778216.530921000
+
+[indexes/access_index]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1580778331.329085000
+
+[inputs/monitor%3A%2F%2F%2Fvar%2Flog%2Fboot.log-20200203]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1580778348.153817000
+
+[savedsearches/Mimi_session]
+access = read : [ * ]
+export = system
+owner = mireille.njock
+version = 8.0.2.1
+modtime = 1585703096.900137000
+
+[indexes/auth_index]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1580779425.139615000
+
+[savedsearches/Login_Session]
+access = read : [ * ]
+export = none
+owner = mireille.njock
+version = 8.0.2.1
+modtime = 1586223594.386282000
+
+[views/login_session]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1580951529.508997000
+
+[views/threats_hw_01292020]
+access = read : [ * ]
+export = none
+owner = tolu.ajayi
+version = 7.3.3
+modtime = 1580782936.853822000
+
+[views/titi_dashing_boards]
+access = read : [ * ]
+export = system
+owner = titi.ajayi
+version = 7.3.3
+modtime = 1580945340.151982000
+
+[views/open_path_user_log]
+access = read : [ * ]
+export = system
+owner = bola.banjoko
+version = 7.3.3
+modtime = 1580783142.422994000
+
+[views/clients_ip_location]
+access = read : [ admin ]
+export = none
+owner = onyeka.mordi
+version = 7.3.3
+modtime = 1580783465.136879000
+
+[savedsearches/Search%20done%20by%20Yemi%20Falusi]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1580786651.797936000
+
+[props/csv]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1580788577.079512000
+
+[lookups/kobe_stats.csv]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = rufus.gillette
+version = 7.3.3
+modtime = 1580789993.613699000
+
+[savedsearches/linux_user_report_eventgenlast4hours]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1580879567.929182000
+
+[views/retry_of_dashboard_by_yemi]
+access = read : [ * ], write : [ admin, power ]
+export = system
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1581475198.467891000
+
+[views/login_]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1580931963.700915000
+
+[transforms/product_lookup]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1580931560.014162000
+
+[transforms/products.cvs]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1580931585.250475000
+
+[lookups/SampleFFATA.csv]
+access = read : [ * ]
+export = system
+owner = mireille.njock
+version = 7.3.3
+modtime = 1580933424.355015000
+
+[lookups/yemi_products.csv]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1580934816.884980000
+
+[transforms/yemi_products_lookup]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1580935312.630065000
+
+[lookups/yemiproducts.csv]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1580935326.041466000
+
+[indexes/nfl]
+owner = temi.ajayi
+version = 7.3.3
+modtime = 1581382750.713035000
+
+[props/rushing]
+owner = temi.ajayi
+version = 7.3.3
+modtime = 1581383943.408786000
+
+[props/receiving]
+owner = temi.ajayi
+version = 7.3.3
+modtime = 1581384078.862385000
+
+[props/defense]
+owner = temi.ajayi
+version = 7.3.3
+modtime = 1581385926.515096000
+
+[props/kick_punt]
+owner = temi.ajayi
+version = 7.3.3
+modtime = 1581387698.872804000
+
+[savedsearches/Top%20Servers%20Deemed%20as%20threats]
+export = none
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1581474876.212766000
+
+[props/access_combined/EXTRACT-duration%2Csrc_ip%2Chttp_action%2Cstatus_code%2Cbytes%2Chttp_method%2Curl]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = admin
+version = 7.3.3
+modtime = 1581559007.236776000
+
+[inputs/monitor%3A%2F%2F%2Ftmp%2FREADME.doc]
+owner = admin
+version = 7.3.3
+modtime = 1581560149.321740000
+
+[inputs/monitor%3A%2F%2F%2Ftmp%2FTestinstructions.doc]
+owner = admin
+version = 7.3.3
+modtime = 1581560500.342607000
+
+[inputs/monitor%3A%2F%2F%2Ftmp%2FTestinstructions2.doc]
+owner = admin
+version = 7.3.3
+modtime = 1581560948.417171000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2FopenPath_Tests%2Ftiti.ajayi]
+owner = titi.ajayi
+version = 7.3.3
+modtime = 1581561507.064872000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2FopenPath_Tests%2Ftolu.ajayi]
+owner = tolu.ajayi
+version = 7.3.3
+modtime = 1581561349.542366000
+
+[indexes/muhammed_openpath_index]
+owner = muhammed.oladimeji
+version = 7.3.3
+modtime = 1581561729.837797000
+
+[props/Tike]
+owner = tike.awe
+version = 7.3.3
+modtime = 1581561800.347356000
+
+[indexes/onyekamordi_openpath_index]
+owner = onyeka.mordi
+version = 7.3.3
+modtime = 1581561846.925340000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2FopenPath_Tests]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1581561902.282422000
+
+[indexes/bolabanjoko_openpath_index]
+owner = bola.banjoko
+version = 7.3.3
+modtime = 1581561941.675204000
+
+[indexes/tike_openpath_index]
+owner = tike.awe
+version = 7.3.3
+modtime = 1581561944.144936000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2FopenPath_Tests%2Ftike.awe%2FREADME.doc]
+owner = tike.awe
+version = 7.3.3
+modtime = 1581561948.624124000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2FopenPath_Tests%2Ftolu.ajayi%2FREADME.doc]
+owner = tolu.ajayi
+version = 7.3.3
+modtime = 1581562087.449298000
+
+[indexes/samuelofori_openpath_index]
+owner = samuel.ofori
+version = 7.3.3
+modtime = 1581562805.721795000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2FopenPath_Tests%2Ftiti.ajayi%2FREADME.doc]
+owner = titi.ajayi
+version = 7.3.3
+modtime = 1581562379.633028000
+
+[indexes/sunnykamara_openpath_index]
+owner = sunny.kamara
+version = 7.3.3
+modtime = 1581562423.123328000
+
+[indexes/njock_openpath_index]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1581562449.743457000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2FopenPath_Tests%2Fyemi.falusi%2FREADME.doc]
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1581562470.531790000
+
+[props/Richard_openpath_index]
+owner = richard.kamara
+version = 7.3.3
+modtime = 1581562524.892425000
+
+[indexes/titiajayi]
+owner = titi.ajayi
+version = 7.3.3
+modtime = 1581562589.105177000
+
+[indexes/tolu_test]
+owner = tolu.ajayi
+version = 7.3.3
+modtime = 1581562664.491144000
+
+[indexes/sahr_openpath_index]
+owner = admin
+version = 7.3.3
+modtime = 1581562861.783750000
+
+[props/Splunk%20Source%20Types]
+owner = samuel.ofori
+version = 7.3.3
+modtime = 1581562892.650570000
+
+[indexes/toluajayi_openpath_index]
+owner = tolu.ajayi
+version = 7.3.3
+modtime = 1581562979.725287000
+
+[indexes/titiajayi_openpath_index]
+owner = titi.ajayi
+version = 7.3.3
+modtime = 1581563091.896092000
+
+[indexes/rufus_openpath_index]
+owner = rufus.gillette
+version = 7.3.3
+modtime = 1581563106.226728000
+
+[views/yemiquiz1]
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1581811632.774897000
+
+[views/sunnys_dashboard]
+owner = sunny.kamara
+version = 7.3.3
+modtime = 1581887152.485299000
+
+[views/clientip]
+access = read : [ * ], write : [ admin, power ]
+export = system
+owner = mireille.njock
+version = 7.3.3
+modtime = 1581564615.752145000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2FopenPath_Tests%2Frufus.gillette%2FREADME.doc]
+owner = rufus.gillette
+version = 7.3.3
+modtime = 1581564983.733115000
+
+[views/first_openpath_testuserpoweruser]
+owner = admin
+version = 7.3.3
+modtime = 1581567124.894378000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2FopenPath_Tests%2Fsamuel.ofori]
+owner = samuel.ofori
+version = 7.3.3
+modtime = 1581565470.801353000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2FopenPath_Tests%2Frichard.kamara]
+owner = richard.kamara
+version = 7.3.3
+modtime = 1581648249.587629000
+
+[views/first_openpathusmireile]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1581989208.680571000
+
+[views/tilo_open_path_test_practice]
+owner = titi.ajayi
+version = 7.3.3
+modtime = 1581989445.796265000
+
+[views/eric_t]
+access = read : [ * ], write : [ * ]
+export = system
+owner = eric.tcheimou
+version = 7.3.3
+modtime = 1582508268.725192000
+
+[props/access_combined_wcookie/EXTRACT-windows%2Cmac%2Clinux]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = sunny.kamara
+version = 7.3.3
+modtime = 1582598266.000188000
+
+[app/ui]
+version = 7.3.3
+modtime = 1582749824.945460000
+
+[app/launcher]
+version = 7.3.3
+modtime = 1582749824.949177000
+
+[app/package/check_for_updates]
+version = 7.3.3
+modtime = 1582749824.950680000
+
+[props/delimeter_ingest_examples]
+owner = admin
+version = 7.3.3
+modtime = 1582776259.175512000
+
+[props/json_no_timestamp]
+owner = rufus.gillette
+version = 7.3.3
+modtime = 1582837475.400494000
+
+[props/Rich%20test%20file]
+owner = richard.kamara
+version = 7.3.3
+modtime = 1582949791.026719000
+
+[views/web_monitoring]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1583190217.287617000
+
+[savedsearches/ip_count]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = mireille.njock
+version = 7.3.3
+modtime = 1583190661.395894000
+
+[savedsearches/response_codes]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = mireille.njock
+version = 7.3.3
+modtime = 1583195685.920525000
+
+[savedsearches/sc_assets]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = mireille.njock
+version = 7.3.3
+modtime = 1583195702.049688000
+
+[savedsearches/timechart_uri_path]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = mireille.njock
+version = 7.3.3
+modtime = 1583195717.103002000
+
+[savedsearches/top_referring]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = mireille.njock
+version = 7.3.3
+modtime = 1583195733.114686000
+
+[views/webmonitoring]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1583196041.094115000
+
+[props/aws%3As3%3Aaccesslogs/EXTRACT-Rest_Status%2CStatus_Code]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = samuel.ofori
+version = 7.3.3
+modtime = 1583204312.084874000
+
+[props/aws%3As3%3Aaccesslogs/EXTRACT-unsecured_ip%2Cstatus_id]
+access = read : [ * ], write : [ admin, aws_admin ]
+export = none
+owner = richard.kamara
+version = 7.3.3
+modtime = 1583372428.940959000
+
+[props/WMI%3ACPUTime/EXTRACT-cpu_request_time%2Ccpu_time%2Cuser_time]
+access = read : [ * ], write : [ admin, aws_admin ]
+export = none
+owner = richard.kamara
+version = 7.3.3
+modtime = 1583621101.864083000
+
+[props/WMI%3ALocalNetwork/EXTRACT-bytes_per_sec%2Cbytes_sent%2Ctotal_bytes%2CBytes_bandwidth]
+access = read : [ * ], write : [ admin, aws_admin ]
+export = none
+owner = richard.kamara
+version = 7.3.3
+modtime = 1583805875.848772000
+
+[props/syslog/EXTRACT-get_ip%2Cstatus_port]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = mireille.njock
+version = 7.3.3
+modtime = 1584044272.196384000
+
+[props/apache%3Alog_error/EXTRACT-clientip]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = admin
+version = 7.3.3
+modtime = 1584588104.300370000
+
+[health/feature%3Asearches_skipped]
+owner = admin
+version = 8.0.2.1
+modtime = 1585021032.778038000
+
+[workflow_actions/Twitter_SuperStar_Workflow]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = admin
+version = 8.0.2.1
+modtime = 1585189782.374888000
+
+[views/mimi_access]
+owner = mireille.njock
+version = 8.0.2.1
+modtime = 1585529718.863588000
+
+[savedsearches/attempts_logs]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = mireille.njock
+version = 8.0.2.1
+modtime = 1585526736.580445000
+
+[views/mo_test_2]
+owner = muhammed.oladimeji
+version = 8.0.2.1
+modtime = 1585792778.551660000
+
+[lookups/openpath_test2.csv]
+access = read : [ * ], write : [ admin, power ]
+export = system
+owner = rufus.gillette
+version = 8.0.2.1
+modtime = 1585623729.565845000
+
+[views/status_description]
+owner = mireille.njock
+version = 8.0.2.1
+modtime = 1585626384.112515000
+
+[lookups/mo_test.csv]
+access = read : [ * ], write : [ power ]
+export = system
+owner = muhammed.oladimeji
+version = 8.0.2.1
+modtime = 1585625288.642773000
+
+[macros/rufus_macro]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = rufus.gillette
+version = 8.0.2.1
+modtime = 1585625402.286576000
+
+[transforms/mo_test2]
+access = read : [ * ], write : [ power ]
+export = none
+owner = muhammed.oladimeji
+version = 8.0.2.1
+modtime = 1585628332.398345000
+
+[macros/richexam2macro]
+access = read : [ * ], write : [ power ]
+export = none
+owner = richard.kamara
+version = 8.0.2.1
+modtime = 1585712494.410096000
+
+[eventtypes/da_session]
+access = read : [ * ], write : [ power ]
+export = none
+owner = richard.kamara
+version = 8.0.2.1
+modtime = 1585668494.824537000
+
+[eventtypes/not_valid]
+access = read : [ * ], write : [ power ]
+export = none
+owner = richard.kamara
+version = 8.0.2.1
+modtime = 1585668502.130555000
+
+[eventtypes/the_plug]
+access = read : [ * ], write : [ power ]
+export = none
+owner = richard.kamara
+version = 8.0.2.1
+modtime = 1585668518.158695000
+
+[savedsearches/Splunk%20Logins]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = rufus.gillette
+version = 8.0.2.1
+modtime = 1585686874.780626000
+
+[eventtypes/access_denied]
+access = read : [ * ], write : [ power ]
+export = none
+owner = yemi.falusi
+version = 8.0.2.1
+modtime = 1585689458.940820000
+
+[eventtypes/access_ok]
+access = read : [ * ], write : [ power ]
+export = none
+owner = yemi.falusi
+version = 8.0.2.1
+modtime = 1585689469.998676000
+
+[eventtypes/access_why_remove]
+access = read : [ * ], write : [ power ]
+export = none
+owner = yemi.falusi
+version = 8.0.2.1
+modtime = 1585689490.334832000
+
+[lookups/Lookup_Tolu.csv]
+access = read : [ * ], write : [ power ]
+export = system
+owner = tolu.ajayi
+version = 8.0.2.1
+modtime = 1585796948.729808000
+
+[props/coronaVirus_data/EXTRACT-country]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = admin
+version = 8.0.2.1
+modtime = 1585689729.717405000
+
+[lookups/TiLoLookup.csv]
+access = read : [ * ], write : [ * ]
+export = none
+owner = titi.ajayi
+version = 8.0.2.1
+modtime = 1585695038.256355000
+
+[lookups/lookup.csv]
+access = read : [ * ], write : [ power ]
+export = none
+owner = mireille.njock
+version = 8.0.2.1
+modtime = 1585690848.780037000
+
+[macros/Question10_ToluAjayi]
+access = read : [ * ], write : [ * ]
+export = system
+owner = tolu.ajayi
+version = 8.0.2.1
+modtime = 1585796002.226050000
+
+[macros/TitiMacroQuestion10]
+access = read : [ * ], write : [ power ]
+export = none
+owner = titi.ajayi
+version = 8.0.2.1
+modtime = 1585695148.590271000
+
+[savedsearches/When_user_login]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = yemi.falusi
+version = 8.0.2.1
+modtime = 1586223415.932461000
+
+[props/access_combined/LOOKUP-mo_test2]
+access = read : [ * ], write : [ power ]
+export = none
+owner = muhammed.oladimeji
+version = 8.0.2.1
+modtime = 1585697697.149534000
+
+[savedsearches/whenever_yemi_login]
+owner = yemi.falusi
+version = 8.0.2.1
+modtime = 1585698014.563576000
+
+[savedsearches/Yemi%27s%20login]
+access = read : [ * ], write : [ power ]
+export = none
+owner = yemi.falusi
+version = 8.0.2.1
+modtime = 1585698382.549591000
+
+[eventtypes/successful%20purchase]
+access = read : [ * ], write : [ power ]
+export = none
+owner = muhammed.oladimeji
+version = 8.0.2.1
+modtime = 1585698298.176558000
+
+[tags/eventtype%3Dsuccessful%2520purchase]
+access = read : [ * ], write : [ power ]
+export = none
+owner = muhammed.oladimeji
+version = 8.0.2.1
+modtime = 1585698298.197794000
+
+[eventtypes/STRATEGY%20Category]
+access = read : [ * ], write : [ power ]
+export = none
+owner = muhammed.oladimeji
+version = 8.0.2.1
+modtime = 1585698601.495411000
+
+[eventtypes/Client%20Error]
+access = read : [ * ], write : [ power ]
+export = none
+owner = muhammed.oladimeji
+version = 8.0.2.1
+modtime = 1585698753.383346000
+
+[tags/eventtype%3DClient%2520Error]
+access = read : [ * ], write : [ power ]
+export = none
+owner = muhammed.oladimeji
+version = 8.0.2.1
+modtime = 1585698753.404154000
+
+[savedsearches/user_access]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = mireille.njock
+version = 8.0.2.1
+modtime = 1585701811.865533000
+
+[savedsearches/user_audit]
+access = read : [ * ], write : [ power ]
+export = none
+owner = mireille.njock
+version = 8.0.2.1
+modtime = 1585701849.062497000
+
+[lookups/Bugzy_lookup]
+access = read : [ * ], write : [ power ]
+export = system
+owner = bola.banjoko
+version = 8.0.2.1
+modtime = 1585794119.187888000
+
+[props/access_combined/EXTRACT-Vendor_ID%2CAccount_ID]
+access = read : [ * ], write : [ power ]
+export = none
+owner = mireille.njock
+version = 8.0.2.1
+modtime = 1585706828.987038000
+
+[savedsearches/Splunk%20User%20Login]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = muhammed.oladimeji
+version = 8.0.2.1
+modtime = 1585710249.961318000
+
+[views/yemi_test2]
+owner = yemi.falusi
+version = 8.0.2.1
+modtime = 1585712152.957983000
+
+[savedsearches/Splunk%20Failed%20Login]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = muhammed.oladimeji
+version = 8.0.2.1
+modtime = 1594691254.618878000
+
+[savedsearches/Number%20of%20GET%20and%20POST%20per%20Host]
+access = read : [ * ], write : [ power ]
+export = none
+owner = muhammed.oladimeji
+version = 8.0.2.1
+modtime = 1585712877.118869000
+
+[views/tike_exam2]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = tike.awe
+version = 8.0.2.1
+modtime = 1585793499.284523000
+
+[lookups/threat_status.csv]
+version = 8.0.2.1
+modtime = 1585798792.149897000
+
+[inputs/monitor%3A%2F%2F%2Fvar%2Flog%2Fcloud-init%2A]
+owner = admin
+version = 8.0.2.1
+modtime = 1586835613.496213000
+
+[props/EventCode]
+owner = richard.kamara
+version = 8.0.2.1
+modtime = 1586972304.306447000
+
+[inputs/monitor%3A%2F%2F%2Ftmp%2Fmessages_test]
+owner = admin
+version = 8.0.2.1
+modtime = 1587173908.382653000
+
+[props/random_extract]
+owner = admin
+version = 8.0.2.1
+modtime = 1588039670.927121000
+
+[inputs/monitor%3A%2F%2F%2Fremote_logs%2Fbugzy.log]
+owner = admin
+version = 8.0.2.1
+modtime = 1588040699.838734000
+
+[views/testing_dash]
+access = read : [ * ], write : [ * ]
+export = none
+owner = chelsea
+version = 8.0.2.1
+modtime = 1589381599.289609000
+
+[passwords/credential%3A%3ASLINT%20SLACK%3A]
+owner = splunk-system-user
+version = 8.0.2.1
+modtime = 1589771550.405679000
+
+[indexes/buttercup]
+owner = temi.ajayi
+version = 8.0.2.1
+modtime = 1591806462.840573000
+
+[props/db_audit]
+owner = temi.ajayi
+version = 8.0.2.1
+modtime = 1591806878.533569000
+
+[props/ssl_cert_check]
+owner = admin
+version = 8.0.2.1
+modtime = 1592018684.389520000
+
+[lookups/africa.csv]
+owner = richard.kamara
+version = 8.0.2.1
+modtime = 1593182169.246019000
+
+[eventtypes/sierra_leone_covid_events]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = admin
+version = 8.0.2.1
+modtime = 1594175671.247253000
+
+[tags/eventtype%3Dsierra_leone_covid_events]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = admin
+version = 8.0.2.1
+modtime = 1594175671.277902000
+
+[views/interview_dashboard]
+owner = admin
+version = 8.0.2.1
+modtime = 1594262061.490005000
+
+[props/squid_proxy_access/EXTRACT-session_code%2Csrc_ip%2Cproxy_status]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = admin
+version = 8.0.2.1
+modtime = 1595298784.259408000
+
+[views/squid_proxy_dashboard]
+owner = admin
+version = 8.0.2.1
+modtime = 1594869182.511806000
+
+[props/ssh_log/EXTRACT-user_id%2Csrc_ip%2Ccode%2Cclient_ip%2Cport%2Caction%2Cservice]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = richard.kamara
+version = 8.0.2.1
+modtime = 1595260407.173851000
+
+[views/secure_shell_dashboard]
+owner = richard.kamara
+version = 8.0.2.1
+modtime = 1595292140.731874000
+
+[savedsearches/Top%20Anime%20Characters]
+access = read : [ * ]
+export = none
+owner = tolu.ajayi
+version = 8.0.2.1
+modtime = 1595697575.717538000
+
+[views/anime_20200725_tolu]
+owner = tolu.ajayi
+version = 8.0.2.1
+modtime = 1595697640.639041000
+
+[props/stash/EXTRACT-job_title%2Ccompany]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = rufus.gillette
+version = 8.0.2.1
+modtime = 1595788987.545378000
+
+[props/syslog/EXTRACT-usr]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = rufus.gillette
+version = 8.0.2.1
+modtime = 1595791608.730599000
+
+[props/stash/EXTRACT-employee]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = rufus.gillette
+version = 8.0.2.1
+modtime = 1595792450.165586000
+
+[props/openpath_test2/EXTRACT-info_search_time%2Cuser%2Clogin_info]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = rufus.gillette
+version = 8.0.2.1
+modtime = 1595796340.332358000
+
+[views/linux_audit_dashboard]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = rufus.gillette
+version = 8.0.2.1
+modtime = 1595799771.348338000
+
+[views/soccer_players_and_goals]
+owner = richard.kamara
+version = 8.0.2.1
+modtime = 1595898252.699871000
+
+[savedsearches/Soccer%20Players%20And%20Goals]
+access = read : [ * ]
+export = system
+owner = richard.kamara
+version = 8.0.2.1
+modtime = 1596032028.842286000
+
+[savedsearches/License%20Usage%20Data%20Cube]
+version = 8.0.2.1
+modtime = 1595901825.588469000
+
+[serverclass/serverClass%3Astudent_windows_logs]
+owner = admin
+version = 8.0.2.1
+modtime = 1595906406.798152000
+
+[serverclass/serverClass%3Astudent_windows_logs%3Aapp%3A_server_app_student_windows_logs]
+owner = admin
+version = 8.0.2.1
+modtime = 1595906459.559318000
+
+[props/rufus_linux]
+owner = rufus.gillette
+version = 8.0.2.1
+modtime = 1596075005.388758000
+
+[views/user_login]
+access = read : [ * ], write : [ ernest_ugo_indexes, power ]
+export = none
+owner = ernest.ugo
+version = 8.0.2.1
+modtime = 1597281109.301459000
+
+[views/license_usage_by_index]
+access = read : [ * ], write : [ ernest_ugo_indexes, power ]
+export = none
+owner = ernest.ugo
+version = 8.0.2.1
+modtime = 1597286965.017392000
+
+[indexes/index_media]
+owner = mercy.chimombo
+version = 8.0.2.1
+modtime = 1596483333.043950000
+
+[inputs/monitor%3A%2F%2F%2Fmedia]
+owner = mercy.chimombo
+version = 8.0.2.1
+modtime = 1596483382.398941000
+
+[inputs/monitor%3A%2F%2F%2Fopt]
+owner = mercy.chimombo
+version = 8.0.2.1
+modtime = 1596483904.019384000
+
+[indexes/index_home]
+owner = mercy.chimombo
+version = 8.0.2.1
+modtime = 1596484285.009603000
+
+[inputs/monitor%3A%2F%2F%2Fhome]
+owner = mercy.chimombo
+version = 8.0.2.1
+modtime = 1596484298.967699000
+
+[views/special_agent_dashboards]
+owner = admin
+version = 8.0.2.1
+modtime = 1596510942.447682000
+
+[serverclass/serverClass%3Aall_windows]
+owner = admin
+version = 8.0.2.1
+modtime = 1596512103.853091000
+
+[serverclass/serverClass%3Aall_windows%3Aapp%3A_server_app_all_windows]
+owner = admin
+version = 8.0.2.1
+modtime = 1596512122.825828000
+
+[serverclass/serverClass%3Aall_linux_servers]
+owner = admin
+version = 8.0.2.1
+modtime = 1596512505.273114000
+
+[serverclass/serverClass%3Aall_linux_servers%3Aapp%3A_server_app_all_linux_servers]
+owner = admin
+version = 8.0.2.1
+modtime = 1596512536.996583000
+
+[savedsearches/Elvis_Metadata_Command_Search]
+access = read : [ * ]
+export = none
+owner = elvis.fortibui
+version = 8.0.2.1
+modtime = 1596597523.071206000
+
+[views/elvis_metadata_command_search]
+owner = elvis.fortibui
+version = 8.0.2.1
+modtime = 1596597612.381380000
+
+[views/license_usage_by_indexes_per_day]
+owner = elvis.fortibui
+version = 8.0.2.1
+modtime = 1596764223.164958000
+
+[props/secure_logs/EXTRACT-userid%2CClientip%2Ceventcode%2Csrc_ip%2Cport%2Caction%2Crules]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = richard.kamara
+version = 8.0.2.1
+modtime = 1597105072.817471000
+
+[views/ssh_monitoring]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = richard.kamara
+version = 8.0.2.1
+modtime = 1597280864.068641000
+
+[savedsearches/most_accessed]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = mireille.njock
+version = 8.0.2.1
+modtime = 1597283046.375349000
+
+[views/my_favorite_students]
+access = read : [ * ], write : [ admin, power ]
+export = system
+owner = admin
+version = 8.0.2.1
+modtime = 1597288523.928287000

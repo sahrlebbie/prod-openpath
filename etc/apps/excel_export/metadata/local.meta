@@ -1,0 +1,15 @@
+[app/install/install_source_checksum]
+version = 8.0.2.1
+modtime = 1585602367.998889000
+
+[app/ui]
+version = 8.0.2.1
+modtime = 1585602531.520973000
+
+[app/launcher]
+version = 8.0.2.1
+modtime = 1585602531.523415000
+
+[app/package/check_for_updates]
+version = 8.0.2.1
+modtime = 1585602531.524049000

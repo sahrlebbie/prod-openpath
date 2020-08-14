@@ -1,0 +1,25 @@
+<dashboard>
+  <label>Interview Dashboard</label>
+  <row>
+    <panel>
+      <title>If else panel</title>
+      <table>
+        <search>
+          <query>|eventcount summarize=f index=_* 
+| stats c by index
+| eval status =if(index="_audit", "red","green" )</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">50</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

@@ -1,0 +1,22 @@
+{
+  "name": "svg",
+  "version": "1.0.0",
+  "description": "SVG",
+  "main": "visualization.js",
+  "scripts": {
+    "build": "$SPLUNK_HOME/bin/splunk cmd node ./node_modules/webpack/bin/webpack.js",
+    "devbuild": "$SPLUNK_HOME/bin/splunk cmd node ./node_modules/webpack/bin/webpack.js --progress",
+    "watch": "$SPLUNK_HOME/bin/splunk cmd node ./node_modules/webpack/bin/webpack.js -d --watch --progress"
+  },
+  "author": "Splunk",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^1.12.6"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^3.12.16",
+    "svg.js": "^2.7.1",
+    "jquery": "^3.3.1",
+    "underscore": "^1.9.1"
+  }
+}

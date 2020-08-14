@@ -1,0 +1,11 @@
+<nav search_view="search">
+  <view name="search" />
+  <view name="students_drilldown" default='true'/>
+  <view name="actions_by_students"/>
+  <collection label="Splunk Default Tabs">
+  <view name="datasets" />
+  <view name="reports" />
+  <view name="alerts" />
+  <view name="dashboards" />
+</collection>
+</nav>

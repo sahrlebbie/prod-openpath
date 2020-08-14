@@ -1,0 +1,29 @@
+<nav search_view="search" color="#FD9827">
+  <collection label="SVG Examples">
+    <view name="showcase" default="true" />
+    <view name="infrastructure_monitoring" />
+    <view name="wheres_wally" />
+    <view name="circles_and_squares" />
+    <view name="battery_with_percentages" />
+    <view name="battery_with_bars" />
+    <view name="trucks" />
+    <view name="wallboard" />
+    <view name="go_large" />
+    <collection label="Trellis">
+      <view name="trellis_batteries" />
+      <view name="trellis_counters" />
+      <view name="trellis_trucks" />
+      <view name="trellis_slot_fruit_machine" />
+    </collection>
+    <view name="people" />
+    <collection label="How Tos">
+      <view name="tokens" />
+      <view name="viewbox" />
+      <view name="playground" />
+      <view name="bad_svg_examples" />
+    </collection>
+  </collection>
+  <view name="search" />
+  <view name="dashboards" />
+  <view name="attribution" />
+</nav>

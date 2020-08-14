@@ -1,0 +1,49 @@
+[app/install/install_source_checksum]
+version = 7.3.3
+modtime = 1580790222.561645000
+
+[views/login]
+owner = mireille.njock
+version = 7.3.3
+modtime = 1580953792.904829000
+
+[props/aws%3As3%3Aaccesslogs/EXTRACT-encryption_level]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = rufus.gillette
+version = 7.3.3
+modtime = 1583378423.692148000
+
+[props/stash/EXTRACT-encryption_level]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = rufus.gillette
+version = 7.3.3
+modtime = 1583380169.626275000
+
+[lookups/encryptionlevel.csv]
+version = 7.3.3
+modtime = 1583380459.437256000
+
+[transforms/IP_lookup_CoronaData]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = sahr.lebbie
+version = 8.0.2.1
+modtime = 1586219944.776449000
+
+[props/coronaVirus_data/LOOKUP-IP_lookup_CoronaData]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = sahr.lebbie
+version = 8.0.2.1
+modtime = 1586220057.202138000
+
+[collections/random_splunk.csv]
+owner = sahr.lebbie
+version = 8.0.2.1
+modtime = 1586226535.827902000
+
+[lookups/test_1.csv]
+version = 8.0.2.1
+modtime = 1597288550.226786000

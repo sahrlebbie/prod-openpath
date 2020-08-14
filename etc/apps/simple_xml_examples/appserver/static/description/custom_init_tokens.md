@@ -1,0 +1,1 @@
+This example shows how to set initial tokens on page load.

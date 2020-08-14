@@ -1,0 +1,57 @@
+.token-view {
+    background-color: white;
+    padding: 10px 15px;
+}
+
+.action-history {
+    float: left;
+    width: 50%;
+}
+
+.token-detail {
+    float: left;
+    width: 49%;
+    padding-left: 1%;
+}
+
+.token-view tr.active {
+    background-color: rgba(30,147,198,.1);
+}
+
+.token-view .shared-controls-syntheticcheckboxcontrol {
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.action-filter-group {
+    display: inline-block;
+    padding-right: 50px;
+}
+
+.splunk-checkboxgroup {
+    padding-bottom: 0;
+}
+
+.token-view-table-container {
+    max-height: 615px;
+    overflow: auto;
+}
+
+/* Dark Theme */
+
+.token-view.dark {
+    background-color: #31373E;
+}
+
+.token-view.dark label {
+    color: #FFFFFF;
+}
+
+.token-view.dark button {
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+
+.token-view.dark .token-name, .token-view.dark .token-value {
+    border-bottom: 1px solid #C3CBD4;
+}

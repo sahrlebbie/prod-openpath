@@ -1,0 +1,92 @@
+<dashboard>
+  <label>People</label>
+  <description>Macros examples of people in trellis layout</description>
+  <row>
+    <panel>
+      <title>Default sizing</title>
+      <viz type="svg.svg">
+        <search>
+          <query>| makeresults count=3 
+| streamstats count 
+| eval name = CASE (count==1, "Baby", count==2, "Man", count==3, "Woman" ) 
+| stats sum(count) as count by name 
+| eval baby_color = "#000000", man_color="#000000", woman_color="#000000" 
+| `svg_viz_aiga_nursery(baby_color)` 
+| eval svg_viz_baby = svg_viz 
+| `svg_viz_aiga_toilet_men(man_color)` 
+| eval svg_viz_man = svg_viz 
+| `svg_viz_aiga_toilet_women(woman_color)` 
+| eval svg_viz_woman = svg_viz 
+| eval svg_viz = CASE (count==1, svg_viz_baby, count==2, svg_viz_man, count==3, svg_viz_woman ) | fields - svg_viz_baby, svg_viz_man, svg_viz_woman</query>
+          <earliest>-1m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="height">225</option>
+        <option name="drilldown">none</option>
+        <option name="trellis.enabled">1</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Change baby size with additional viewbox macro</title>
+      <viz type="svg.svg">
+        <search>
+          <query>| makeresults count=3 
+| streamstats count 
+| eval name = CASE (count==1, "Baby", count==2, "Man", count==3, "Woman" ) 
+| stats sum(count) as count by name 
+| eval baby_color = "#000000", man_color="#000000", woman_color="#000000" 
+| `svg_viz_aiga_nursery(baby_color)` | `svg_viz_add_viewbox(0,-25,100,50,svg_viz)`
+| eval svg_viz_baby = svg_viz 
+| `svg_viz_aiga_toilet_men(man_color)` 
+| eval svg_viz_man = svg_viz 
+| `svg_viz_aiga_toilet_women(woman_color)` 
+| eval svg_viz_woman = svg_viz 
+| eval svg_viz = CASE (count==1, svg_viz_baby, count==2, svg_viz_man, count==3, svg_viz_woman ) | fields - svg_viz_baby, svg_viz_man, svg_viz_woman</query>
+          <earliest>-1m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">225</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">1</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Change icon colors via macro</title>
+      <viz type="svg.svg">
+        <search>
+          <query>| makeresults count=3 
+| streamstats count 
+| eval name = CASE (count==1, "Baby", count==2, "Man", count==3, "Woman" ) 
+| stats sum(count) as count by name 
+| eval baby_color = "#ff0000", man_color="#0000ff", woman_color="#ff00ff" 
+| `svg_viz_aiga_nursery(baby_color)` | `svg_viz_add_viewbox(0,-25,100,50,svg_viz)`
+| eval svg_viz_baby = svg_viz 
+| `svg_viz_aiga_toilet_men(man_color)` 
+| eval svg_viz_man = svg_viz 
+| `svg_viz_aiga_toilet_women(woman_color)` 
+| eval svg_viz_woman = svg_viz 
+| eval svg_viz = CASE (count==1, svg_viz_baby, count==2, svg_viz_man, count==3, svg_viz_woman ) | fields - svg_viz_baby, svg_viz_man, svg_viz_woman</query>
+          <earliest>-1m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="height">225</option>
+        <option name="drilldown">none</option>
+        <option name="trellis.enabled">1</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

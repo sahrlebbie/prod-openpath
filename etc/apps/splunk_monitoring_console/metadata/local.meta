@@ -1,0 +1,51 @@
+[inputs/modinput_eventgen%3A%2F%2FOpenpath%20Test]
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1581561477.856055000
+
+[indexes/yemitest]
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1581561937.476725000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2FopenPath_Tests%2Fyemi.falusi]
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1581561953.365921000
+
+[indexes/yemi_openpath_index]
+owner = yemi.falusi
+version = 7.3.3
+modtime = 1581562455.959672000
+
+[splunk_monitoring_console_assets/settings]
+version = 8.0.2.1
+modtime = 1589425791.204657000
+
+[app/ui]
+version = 8.0.2.1
+modtime = 1589425791.227838000
+
+[app/launcher]
+version = 8.0.2.1
+modtime = 1589425791.230368000
+
+[app/package/check_for_updates]
+version = 8.0.2.1
+modtime = 1589425791.231112000
+
+[app/install/is_configured]
+version = 8.0.2.1
+modtime = 1589425791.231901000
+
+[nav/default]
+version = 8.0.2.1
+modtime = 1589425791.253051000
+
+[savedsearches/DMC%20Asset%20-%20Build%20Standalone%20Asset%20Table]
+version = 8.0.2.1
+modtime = 1589425791.264761000
+
+[savedsearches/DMC%20Forwarder%20-%20Build%20Asset%20Table]
+version = 8.0.2.1
+modtime = 1596073529.304061000

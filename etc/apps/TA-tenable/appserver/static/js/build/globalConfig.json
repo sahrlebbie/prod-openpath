@@ -1,0 +1,764 @@
+{
+    "meta": {
+        "restRoot": "TA_tenable", 
+        "apiVersion": "3.0.0", 
+        "name": "TA-tenable", 
+        "displayName": "Tenable Add-On for Splunk", 
+        "version": "1.0.0"
+    }, 
+    "pages": {
+        "inputs": {
+            "description": "Manage your data inputs", 
+            "services": [ 
+                {
+                    "name": "tenable_io", 
+                    "title": "Tenable.io", 
+                    "entity": [
+                        {
+                            "validators": [
+                                {
+                                    "pattern": "^[a-zA-Z]\\w*$", 
+                                    "type": "regex", 
+                                    "errorMsg": "Input Name must start with a letter and followed by alphabetic letters, digits or underscores."
+                                }, 
+                                {
+                                    "minLength": 1, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of input name should be between 1 and 100", 
+                                    "maxLength": 100
+                                }
+                            ], 
+                            "type": "text", 
+                            "label": "Name", 
+                            "field": "name", 
+                            "help": "Enter a unique name for the data input", 
+                            "required": true
+                        }, 
+                        {
+                            "type": "text", 
+                            "label": "Interval", 
+                            "field": "interval", 
+                            "help": "Time interval of input in seconds or cron schedule.", 
+                            "required": true
+                        }, 
+                        {
+                            "validators": [
+                                {
+                                    "minLength": 1, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of index name should be between 1 and 80.", 
+                                    "maxLength": 80
+                                }
+                            ], 
+                            "type": "singleSelect", 
+                            "label": "Index", 
+                            "field": "index", 
+                            "defaultValue": "default", 
+                            "required": true, 
+                            "options": {
+                                "endpointUrl": "data/indexes", 
+                                "blackList": "^_.*$", 
+                                "createSearchChoice": true
+                            }
+                        }, 
+                        {
+                            "field": "global_account", 
+                            "required": true, 
+                            "type": "singleSelect", 
+                            "options": {
+                                "referenceName": "account"
+                            }, 
+                            "label": "Global Account", 
+                            "help": ""
+                        }, 
+                        {
+                            "required": false, 
+                            "help": "The date (UTC in \"YYYY-MM-DDThh:mm:ssZ\" format) from when to start collecting the data. Default value taken will be start of epoch time.", 
+                            "type": "text", 
+                            "validators": [
+                                {
+                                    "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$", 
+                                    "type": "regex", 
+                                    "errorMsg": "Time shoud be in YYYY-MM-DDThh:mm:ssZ format."
+                                }
+                            ], 
+                            "field": "start_time", 
+                            "label": "Start Time"
+                        }, 
+                        {
+                            "label": "Lowest Severity to Store", 
+                            "type": "singleSelect", 
+                            "options": {
+                                "disableSearch": true, 
+                                "autoCompleteFields": [
+                                    {
+                                        "label": "Info", 
+                                        "value": "info"
+                                    }, 
+                                    {
+                                        "label": "Low", 
+                                        "value": "low"
+                                    }, 
+                                    {
+                                        "label": "Medium", 
+                                        "value": "medium"
+                                    }, 
+                                    {
+                                        "label": "High", 
+                                        "value": "high"
+                                    }, 
+                                    {
+                                        "label": "Critical", 
+                                        "value": "critical"
+                                    }
+                                ]
+                            }, 
+                            "field": "lowest_severity_to_store", 
+                            "defaultValue": "info", 
+                            "help": "The Lowest Vulnerability severity to store.", 
+                            "required": true
+                        },
+                        {
+                            "help": "Sync plugin details via this input? ", 
+                            "type": "checkbox", 
+                            "label": "Sync Plugin Details", 
+                            "field": "sync_plugins", 
+                            "required": false
+                        },
+                        {
+                            "help": "Historical Fixed Vulnerability via this input?", 
+                            "type": "checkbox", 
+                            "label": "Historical Fixed Vulnerability", 
+                            "field": "fixed_vulnerability", 
+                            "required": false
+                        },
+                        {
+                            "required": false, 
+                            "help": "e.g. {\"tag_key1\": [\"tag_value1\", \"tag_value2\"...], \"tag_key2\": ...} OR [(\"key1\", \"value1\"), (\"key2\", \"value2\"), ...] format.",
+                            "type": "text", 
+                            "field": "tags", 
+                            "label": "Tags"
+                        }
+                    ]
+                }, 
+                {
+                    "name": "tenable_securitycenter", 
+                    "title": "Tenable.sc Vulnerability", 
+                    "entity": [
+                        {
+                            "validators": [
+                                {
+                                    "pattern": "^[a-zA-Z]\\w*$", 
+                                    "type": "regex", 
+                                    "errorMsg": "Input Name must start with a letter and followed by alphabetic letters, digits or underscores."
+                                }, 
+                                {
+                                    "minLength": 1, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of input name should be between 1 and 100", 
+                                    "maxLength": 100
+                                }
+                            ], 
+                            "type": "text", 
+                            "label": "Name", 
+                            "field": "name", 
+                            "help": "Enter a unique name for the data input", 
+                            "required": true
+                        }, 
+                        {
+                            "type": "text", 
+                            "label": "Interval", 
+                            "field": "interval", 
+                            "help": "Time interval of input in seconds or cron schedule.", 
+                            "required": true
+                        }, 
+                        {
+                            "validators": [
+                                {
+                                    "minLength": 1, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of index name should be between 1 and 80.", 
+                                    "maxLength": 80
+                                }
+                            ], 
+                            "type": "singleSelect", 
+                            "label": "Index", 
+                            "field": "index", 
+                            "defaultValue": "default", 
+                            "required": true, 
+                            "options": {
+                                "endpointUrl": "data/indexes", 
+                                "blackList": "^_.*$", 
+                                "createSearchChoice": true
+                            }
+                        }, 
+                        {
+                            "field": "global_account", 
+                            "required": true, 
+                            "type": "singleSelect", 
+                            "options": {
+                                "referenceName": "account"
+                            }, 
+                            "label": "Global Account", 
+                            "help": ""
+                        }, 
+                        {
+                            "required": false, 
+                            "help": "The date (UTC in \"YYYY-MM-DDThh:mm:ssZ\" format) from when to start collecting the data.", 
+                            "type": "text", 
+                            "validators": [
+                                {
+                                    "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$", 
+                                    "type": "regex", 
+                                    "errorMsg": "Time shoud be in YYYY-MM-DDThh:mm:ssZ format."
+                                }
+                            ], 
+                            "field": "start_time", 
+                            "label": "Start Time"
+                        }, 
+                        {
+                            "help": "Sync plugin details via this input? ", 
+                            "type": "checkbox", 
+                            "label": "Sync Plugin Details", 
+                            "field": "sync_plugins", 
+                            "required": false
+                        },
+                        {
+                            "help": "Historical Fixed Vulnerability via this input?", 
+                            "type": "checkbox", 
+                            "label": "Historical Fixed Vulnerability", 
+                            "field": "fixed_vulnerability", 
+                            "required": false
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "minLength": 1, 
+                                    "type": "string", 
+                                    "errorMsg": "Max length of text input is 8192", 
+                                    "maxLength": 8192
+                                }
+                            ], 
+                            "type": "text", 
+                            "label": "Query Name", 
+                            "field": "query_name", 
+                            "help": "Enter the query name for Tenable.sc vulnerability filter.", 
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "name": "tenable_securitycenter_mobile", 
+                    "title": "Tenable.sc Mobile", 
+                    "entity": [
+                        {
+                            "validators": [
+                                {
+                                    "pattern": "^[a-zA-Z]\\w*$", 
+                                    "type": "regex", 
+                                    "errorMsg": "Input Name must start with a letter and followed by alphabetic letters, digits or underscores."
+                                }, 
+                                {
+                                    "minLength": 1, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of input name should be between 1 and 100", 
+                                    "maxLength": 100
+                                }
+                            ], 
+                            "type": "text", 
+                            "label": "Name", 
+                            "field": "name", 
+                            "help": "Enter a unique name for the data input", 
+                            "required": true
+                        }, 
+                        {
+                            "type": "text", 
+                            "label": "Interval", 
+                            "field": "interval", 
+                            "help": "Time interval of input in seconds or cron schedule.", 
+                            "required": true
+                        }, 
+                        {
+                            "validators": [
+                                {
+                                    "minLength": 1, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of index name should be between 1 and 80.", 
+                                    "maxLength": 80
+                                }
+                            ], 
+                            "type": "singleSelect", 
+                            "label": "Index", 
+                            "field": "index", 
+                            "defaultValue": "default", 
+                            "required": true, 
+                            "options": {
+                                "endpointUrl": "data/indexes", 
+                                "blackList": "^_.*$", 
+                                "createSearchChoice": true
+                            }
+                        }, 
+                        {
+                            "field": "global_account", 
+                            "required": true, 
+                            "type": "singleSelect", 
+                            "options": {
+                                "referenceName": "account"
+                            }, 
+                            "label": "Global Account", 
+                            "help": ""
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "minLength": 1, 
+                                    "type": "string", 
+                                    "errorMsg": "Max length of text input is 8192", 
+                                    "maxLength": 8192
+                                }
+                            ], 
+                            "type": "text", 
+                            "label": "Query Name", 
+                            "field": "query_name", 
+                            "help": "Enter the query name for Tenable.sc mobile filter.", 
+                            "required": false
+                        }
+                    ]
+                }
+            ], 
+            "title": "Inputs", 
+            "table": {
+                "actions": [
+                    "edit", 
+                    "enable", 
+                    "delete", 
+                    "clone"
+                ], 
+                "moreInfo": [
+                    {
+                        "label": "Name", 
+                        "field": "name"
+                    }, 
+                    {
+                        "label": "Interval", 
+                        "field": "interval"
+                    }, 
+                    {
+                        "label": "Index", 
+                        "field": "index"
+                    }, 
+                    {
+                        "label": "Status", 
+                        "field": "disabled"
+                    }, 
+                    {
+                        "label": "Lowest Severity to Store", 
+                        "field": "lowest_severity_to_store"
+                    }, 
+                    {
+                        "label": "Sync Plugin Details", 
+                        "field": "sync_plugins"
+                    },
+                    {
+                        "label": "Historical Fixed Vulnerability", 
+                        "field": "fixed_vulnerability"
+                    },
+                    {
+                        "label": "Query Name", 
+                        "field": "query_name"
+                    },
+                    {
+                        "label": "Global Account", 
+                        "field": "global_account"
+                    },
+                    {
+                        "label": "Start Time", 
+                        "field": "start_time"
+                    },
+                    {
+                        "label": "Tags", 
+                        "field": "tags"
+                    }
+                ], 
+                "header": [
+                    {
+                        "label": "Name", 
+                        "field": "name"
+                    }, 
+                    {
+                        "label": "Interval", 
+                        "field": "interval"
+                    }, 
+                    {
+                        "label": "Index", 
+                        "field": "index"
+                    }, 
+                    {
+                        "label": "Status", 
+                        "field": "disabled"
+                    }
+                ]
+            }
+        }, 
+        "configuration": {
+            "description": "Set up your add-on", 
+            "tabs": [
+                {
+                    "entity": [
+                        {
+                            "validators": [
+                                {
+                                    "maxLength": 50, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of Account name should be between 1 and 50", 
+                                    "minLength": 1
+                                }, 
+                                {
+                                    "type": "regex", 
+                                    "errorMsg": "Account name must start with a letter and followed by alphabetic letters, digits or underscores.", 
+                                    "pattern": "^[a-zA-Z]\\w*$"
+                                }
+                            ], 
+                            "type": "text", 
+                            "help": "Enter a unique name for this account.", 
+                            "label": "Account Name", 
+                            "field": "name", 
+                            "required": true
+                        },
+                        {
+                            "label": "Tenable Account Type", 
+                            "type": "singleSelect", 
+                            "defaultValue": "tenable_io", 
+                            "options": {
+                                "disableSearch": true, 
+                                "autoCompleteFields": [
+                                    {
+                                        "label": "Tenable.io", 
+                                        "value": "tenable_io"
+                                    }, 
+                                    {
+                                        "label": "Tenable.sc Credentials",
+                                        "value": "tenable_securitycenter_credentials"
+                                    }, 
+                                    {
+                                        "label": "Tenable.sc Certificate",
+                                        "value": "tenable_securitycenter_certificate"
+                                    }
+                                ]
+                            }, 
+                            "field": "tenable_account_type", 
+                            "help": "Select the App for Tenable", 
+                            "required": true
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "maxLength": 300, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of address should be between 1 and 300", 
+                                    "minLength": 1
+                                }
+                            ], 
+                            "type": "text", 
+                            "help": "Enter the FQDN or IP of your server for this account.", 
+                            "label": "Address", 
+                            "field": "address", 
+                            "required": true
+                        },
+                        {
+                            "required": false,
+                            "defaultValue": true, 
+                            "type": "checkbox",
+                            "help": "Should we verify your SSL certificate?",
+                            "label": "Verify SSL Certificate",
+                            "field": "verify_ssl"
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "maxLength": 8192, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of access key should be between 1 and 8192", 
+                                    "minLength": 1
+                                }
+                            ], 
+                            "type": "text", 
+                            "help": "Enter the Access Key for this account.", 
+                            "label": "Access Key", 
+                            "field": "access_key", 
+                            "required": false,
+                            "encrypted": true
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "maxLength": 8192, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of secret key should be between 1 and 8192", 
+                                    "minLength": 1
+                                }
+                            ], 
+                            "type": "text", 
+                            "help": "Enter the secret key for this account.", 
+                            "label": "Secret Key", 
+                            "encrypted": true, 
+                            "required": false, 
+                            "field": "secret_key"
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "maxLength": 200, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of username should be between 1 and 200", 
+                                    "minLength": 1
+                                }
+                            ], 
+                            "type": "text", 
+                            "help": "Enter the username for this account.", 
+                            "label": "Username", 
+                            "field": "username", 
+                            "required": false
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "maxLength": 8192, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of password should be between 1 and 8192", 
+                                    "minLength": 1
+                                }
+                            ], 
+                            "type": "text", 
+                            "help": "Enter the password for this account.", 
+                            "label": "Password", 
+                            "encrypted": true, 
+                            "required": false, 
+                            "field": "password"
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "maxLength": 500, 
+                                    "type": "string", 
+                                    "errorMsg": "No path given for certificate!", 
+                                    "minLength": 1
+                                }
+                            ], 
+                            "type": "text", 
+                            "help": "Enter the filename of the certificate you stored in $SPLUNK_HOME/etc/apps/TA-tenable/certs/", 
+                            "label": "Certificate Filename", 
+                            "field": "certificate_path", 
+                            "required": false
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "maxLength": 500, 
+                                    "type": "string", 
+                                    "errorMsg": "No path given for key file!", 
+                                    "minLength": 1
+                                }
+                            ], 
+                            "type": "text", 
+                            "help": "Enter the filename of the key you stored in $SPLUNK_HOME/etc/apps/TA-tenable/certs/", 
+                            "label": "Key Filename", 
+                            "field": "key_file_path", 
+                            "required": false
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "maxLength": 8192, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of key password should be between 1 and 8192", 
+                                    "minLength": 1
+                                }
+                            ], 
+                            "type": "text", 
+                            "help": "Enter the key password for this account.", 
+                            "label": " Key Password", 
+                            "encrypted": true, 
+                            "required": false, 
+                            "field": "key_password"
+                        },
+                        {
+                            "type": "checkbox",
+                            "label": "Proxy Enable",
+                            "field": "proxy_enabled",
+                            "help": "Check to enable the proxy.",
+                            "defaultValue": 0
+                        },
+                        {
+                            "type": "singleSelect",
+                            "label": "Proxy Type",
+                            "defaultValue": "http",
+                            "field": "proxy_type",
+                            "help": "Select the type of proxy to use.",
+                            "required": false,
+                            "options": {
+                                "disableSearch": true,
+                                "autoCompleteFields": [
+                                    {
+                                        "value": "http",
+                                        "label": "http"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "minLength": 0,
+                                    "type": "string",
+                                    "errorMsg": "Max host length is 4096",
+                                    "maxLength": 4096
+                                }
+                            ],
+                            "type": "text",
+                            "label": "Proxy Host",
+                            "field": "proxy_url",
+                            "help": "Enter the URL for proxy.",
+                            "required": false
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "type": "number",
+                                    "range": [
+                                        1,
+                                        65535
+                                    ]
+                                }
+                            ],
+                            "type": "text",
+                            "label": "Proxy Port",
+                            "field": "proxy_port",
+                            "help": "Enter the port for proxy.",
+                            "required": false
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "minLength": 0,
+                                    "type": "string",
+                                    "errorMsg": "Max length of username is 50",
+                                    "maxLength": 50
+                                }
+                            ],
+                            "type": "text",
+                            "label": "Proxy Username",
+                            "field": "proxy_username",
+                            "help": "Enter the username for proxy authentication.",
+                            "required": false
+                        },
+                        {
+                            "validators": [
+                                {
+                                    "minLength": 0,
+                                    "type": "string",
+                                    "errorMsg": "Max length of password is 8192",
+                                    "maxLength": 8192
+                                }
+                            ],
+                            "type": "text",
+                            "label": "Proxy Password",
+                            "field": "proxy_password",
+                            "help": "Enter the password for proxy authentication.",
+                            "required": false,
+                            "encrypted": true
+                        }
+                    ],
+                    "options": {
+                        "onChange": "function(x,y,z){function i(j){return $($('[data-name=\\''+j+'\\']')[0]).closest('.form-horizontal')}function a(){i('username').hide();i('password').hide();$(z.username).val('');$(z.password).val('')}function b(){i('certificate_path').hide();i('key_file_path').hide();i('key_password').hide();$(z.certificate_path).val('');$(z.key_file_path).val('');$(z.key_password).val('')}function c(){i('access_key').hide();i('secret_key').hide();$(z.access_key).val('');$(z.secret_key).val('')}if(y.tenable_account_type!=undefined){if(y.tenable_account_type=='tenable_io'){i('access_key').show();i('secret_key').show();a();b()}else if(y.tenable_account_type=='tenable_securitycenter_credentials'){i('username').show();i('password').show();b();c()}else{i('certificate_path').show();i('key_file_path').show();i('key_password').show();c();a()}}if(y.proxy_enabled!=undefined){if(!y.proxy_enabled||y.proxy_enabled==='0'){i('proxy_type').hide();i('proxy_url').hide();i('proxy_port').hide();i('proxy_username').hide();i('proxy_password').hide();$(z.proxy_url).val('');$(z.proxy_port).val('');$(z.proxy_username).val('');$(z.proxy_password).val('')}else{i('proxy_type').show();i('proxy_url').show();i('proxy_port').show();i('proxy_username').show();i('proxy_password').show()}}}",
+                        "saveValidator": "function(formData){if(!formData.proxy_enabled||formData.proxy_enabled==='0'){return true}if(!formData.proxy_url){return 'Proxy Host can not be empty'}if(!formData.proxy_port){return 'Proxy Port can not be empty'}if(!formData.proxy_username^!formData.proxy_password){return 'Please provide both proxy username and proxy password'}return true}"
+                    },
+                    "table": {
+                        "actions": [
+                            "edit",
+                            "delete",
+                            "clone"
+                        ],
+                        "header": [
+                            {
+                                "label": "Account Name",
+                                "field": "name"
+                            },
+                            {
+                                "label": "Tenable Account Type",
+                                "field": "tenable_account_type"
+                            }
+                        ]
+                    },
+                    "name": "account",
+                    "title": "Account"
+                }, 
+                {
+                    "name": "logging", 
+                    "title": "Logging", 
+                    "entity": [
+                        {
+                            "type": "singleSelect", 
+                            "label": "Log level", 
+                            "defaultValue": "INFO", 
+                            "field": "loglevel", 
+                            "options": {
+                                "disableSearch": true, 
+                                "autoCompleteFields": [
+                                    {
+                                        "value": "DEBUG", 
+                                        "label": "DEBUG"
+                                    }, 
+                                    {
+                                        "value": "INFO", 
+                                        "label": "INFO"
+                                    }, 
+                                    {
+                                        "value": "WARNING", 
+                                        "label": "WARNING"
+                                    }, 
+                                    {
+                                        "value": "ERROR", 
+                                        "label": "ERROR"
+                                    }, 
+                                    {
+                                        "value": "CRITICAL", 
+                                        "label": "CRITICAL"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ar_configuration", 
+                    "title": "Alert Actions Configuration", 
+                    "entity": [
+                        {
+                            "validators": [
+                                {
+                                    "minLength": 1, 
+                                    "type": "string", 
+                                    "errorMsg": "Length of index name should be between 1 and 80.", 
+                                    "maxLength": 80
+                                }
+                            ], 
+                            "type": "singleSelect", 
+                            "label": "Alert Actions Index", 
+                            "field": "ar_index", 
+                            "help": "Please select the index for AR action responses.", 
+                            "defaultValue": "default", 
+                            "required": true, 
+                            "options": {
+                                "endpointUrl": "data/indexes", 
+                                "blackList": "^_.*$", 
+                                "createSearchChoice": true
+                            }
+                        }
+                    ]
+                }
+            ], 
+            "title": "Configuration"
+        }
+    }
+}

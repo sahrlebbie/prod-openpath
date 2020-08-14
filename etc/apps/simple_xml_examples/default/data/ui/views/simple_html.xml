@@ -1,0 +1,15 @@
+<dashboard>
+    <label>HTML Element</label>
+    <description>Include static HTML content.  Useful for descriptions, links, and context.</description>
+    <row>
+        <html>
+            <h1>
+                HTML Panels
+            </h1>
+            <p>Easily add content to clarify use of a dashboard.</p>
+
+        </html>
+        <html src="html/html_tags.html">
+        </html>
+    </row>
+</dashboard>

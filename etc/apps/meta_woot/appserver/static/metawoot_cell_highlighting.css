@@ -1,0 +1,15 @@
+ td.Critical {
+ background-color: #C00000 !important;
+ font-weight: bold;
+ color: #FFFFFF !important;
+ }
+ td.Medium {
+ background-color: #f7bc38 !important;
+ font-weight: bold;
+ color: #FFFFFF !important;
+ }
+ td.Normal {
+ background-color: #65a637 !important;
+ font-weight: bold;
+ color: #FFFFFF !important;
+ }

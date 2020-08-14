@@ -1,0 +1,71 @@
+<dashboard>
+  <label>Search Event Handler Condition Matches</label>
+  <description>Use advanced condition match in search event handler.</description>
+  <row>
+    <panel>
+      <title>mathematical comparison</title>
+      <table>
+        <search>
+          <query>index=_internal | stats count by sourcetype</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+          <done>
+            <condition match="$job.resultCount$ &gt;= 5">
+              <set token="result_count_condition">Matched! Result count is $job.resultCount$ that is larger than or equal to 5</set>
+            </condition>
+            <condition>
+              <set token="result_count_condition">No match! Result count is $job.resultCount$ that is smaller than 5</set>
+            </condition>
+          </done>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+      <html>
+        <h1>Condition: $result_count_condition$</h1>
+      </html>
+    </panel>
+    <panel>
+      <title>string match</title>
+      <table>
+        <search>
+          <query>index=_internal | stats count by sourcetype</query>
+          <earliest>-5m</earliest>
+          <latest>now</latest>
+          <done>
+            <condition match="$result.sourcetype$ = &quot;scheduler&quot;">
+              <set token="sourcetype_string_condition">Matched! First row of result.sourcetype is $result.sourcetype$ that is scheduler</set>
+            </condition>
+            <condition>
+              <set token="sourcetype_string_condition">No match! First row of result.sourcetype is $result.sourcetype$ that is not scheduler</set>
+            </condition>
+          </done>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+      <html>
+        <h1>Condition: $sourcetype_string_condition$</h1>
+      </html>
+    </panel>
+    <panel>
+      <title>advanced regex match</title>
+      <table>
+        <search>
+          <query>index=_internal | stats count by sourcetype</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+          <done>
+            <condition match="match($result.sourcetype$, &quot;\\w{5,}&quot;)">
+              <set token="sourcetype_regex_condition">Matched! First row of result.sourcetype is $result.sourcetype$ that has at least 5 characters.</set>
+            </condition>
+            <condition>
+              <set token="sourcetype_regex_condition">No match! First row of result.sourcetype is $result.sourcetype$ that has less than 5 characters.</set>
+            </condition>
+          </done>
+        </search>
+      </table>
+      <html>
+        <h1>Condition: $sourcetype_regex_condition$</h1>
+      </html>
+    </panel>
+  </row>
+</dashboard>
