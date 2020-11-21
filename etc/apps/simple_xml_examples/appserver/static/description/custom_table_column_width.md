@@ -1,1 +1,0 @@
-Explicitly modify column widths via a custom stylesheet.

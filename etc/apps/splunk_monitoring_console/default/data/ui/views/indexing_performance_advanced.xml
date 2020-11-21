@@ -380,13 +380,18 @@
   </row>
   <row>
     <panel rejects="$snapshot$">
-      <title>Regex Processor CPU Profiling per $groupTypeCpuProfLabel$</title>
+      <title>$processorTypeCpuProfLabel$ Processor CPU Profiling per $groupTypeCpuProfLabel$</title>
       <html>
           <p>Index-time transformation detail available with Splunk Enterprise 6.6.0 or later indexers. <a href="/help?location=learnmore.MC.indexingperf.regex" target="_blank" title="Splunk help">Learn More</a></p>
       </html>
       <search id="internal_metrics_log_base">
         <query>
-          `dmc_set_index_internal` host=$host$ source=$source$ group=per_$groupTypeCpuProfValue$_regex_cpu | fields *
+          `dmc_set_index_internal` host=$host$ source=*/metrics.log* group=per_$groupTypeCpuProfValue$_$processorTypeCpuProfValue$_cpu*
+          | eval cpu_time_ms = if(isnotnull(cpu_time_ms), cpu_time_ms, cpu)
+          | eval avg_cpu_time_per_event_ms = if(isnotnull(avg_cpu_time_per_event_ms), avg_cpu_time_per_event_ms, cpupe)
+          | eval event_count = if(isnotnull(event_count), event_count, ev)
+          | bin _time minspan=30s
+          | stats $functionQueueCpuProf$(cpu_time_ms) AS cpu_time_ms $functionQueueCpuProf$(avg_cpu_time_per_event_ms) AS avg_cpu_time_per_event_ms $functionQueueCpuProf$(bytes) AS bytes $functionQueueCpuProf$(event_count) AS event_count by series, _time
         </query>
         <earliest>$time.earliest$</earliest>
         <latest>$time.latest$</latest>
@@ -403,6 +408,20 @@
           <condition value="no">
             <unset token="source"></unset>
           </condition>
+        </change>
+      </input>
+      <input type="dropdown" depends="$source$" searchWhenChanged="true" token="processorTypeCpuProf">
+        <label>Splunk processor</label>
+        <showClearButton>false</showClearButton>
+        <default>lb</default>
+        <choice value="lb">Line Breaking</choice>
+        <choice value="agg">Aggregator</choice>
+        <choice value="regex">Regex</choice>
+        <choice value="mp">Metrics</choice>
+        <choice value="msp">Metric Schema</choice>
+        <change>
+          <set token="processorTypeCpuProfLabel">$label$</set>
+          <set token="processorTypeCpuProfValue">$value$</set>
         </change>
       </input>
       <input type="dropdown" depends="$source$" searchWhenChanged="true" token="groupTypeCpuProf">
@@ -440,7 +459,7 @@
       <chart>
         <search base="internal_metrics_log_base">
           <query>
-            `dmc_timechart_for_metrics_log` $functionQueueCpuProf$(cpu) by series useother=false limit=20
+            `dmc_timechart_for_metrics_log` $functionQueueCpuProf$(cpu_time_ms) by series
           </query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
@@ -450,7 +469,7 @@
         <option name="charting.axisTitleY.text">CPU milliseconds</option>
       </chart>
       <html>
-        <p>Total time spent in milliseconds performing index-time transformations for a given $groupTypeCpuProfLabel$.</p>
+        <p>Total time (in milliseconds) spent by the $processorTypeCpuProfLabel$ processor, split per $groupTypeCpuProfLabel$.</p>
       </html>
     </panel>
     <panel rejects="$snapshot$" depends="$source$">
@@ -458,7 +477,7 @@
       <chart>
         <search base="internal_metrics_log_base">
           <query>
-            `dmc_timechart_for_metrics_log` $functionQueueCpuProf$(cpupe) by series useother=false limit=20
+            `dmc_timechart_for_metrics_log` $functionQueueCpuProf$(avg_cpu_time_per_event_ms) by series
           </query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
@@ -468,7 +487,7 @@
         <option name="charting.axisTitleY.text">Milliseconds spent per event</option>
       </chart>
       <html>
-        <p>Average time spent in milliseconds performing index-time transformations per event for a given $groupTypeCpuProfLabel$.</p>
+        <p>Average time (in milliseconds) spent by the $processorTypeCpuProfLabel$ processor, split per $groupTypeCpuProfLabel$.</p>
       </html>
     </panel>
   </row>
@@ -478,7 +497,7 @@
       <chart>
         <search base="internal_metrics_log_base">
           <query>
-            `dmc_timechart_for_metrics_log` $functionQueueCpuProf$(bytes) by series useother=false limit=20
+            `dmc_timechart_for_metrics_log` $functionQueueCpuProf$(bytes) by series
           </query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
@@ -488,7 +507,7 @@
         <option name="charting.axisTitleY.text">Total number of bytes</option>
       </chart>
       <html>
-        <p>Total number of bytes processed performing index-time transformations for a given $groupTypeCpuProfLabel$.</p>
+        <p>Total number of bytes processed by the $processorTypeCpuProfLabel$ processor, split by $groupTypeCpuProfLabel$.</p>
       </html>
     </panel>
     <panel rejects="$snapshot$" depends="$source$">
@@ -496,7 +515,7 @@
       <chart>
         <search base="internal_metrics_log_base">
           <query>
-            `dmc_timechart_for_metrics_log` $functionQueueCpuProf$(ev) by series useother=false limit=20
+            `dmc_timechart_for_metrics_log` $functionQueueCpuProf$(event_count) by series
           </query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
@@ -506,7 +525,7 @@
         <option name="charting.axisTitleY.text">Total number of events</option>
       </chart>
       <html>
-        <p>Total number of events processed performing index-time transformations for a given $groupTypeCpuProfLabel$.</p>
+        <p>Total number of events processed by the $processorTypeCpuProfLabel$ processor, split by $groupTypeCpuProfLabel$.</p>
       </html>
     </panel>
   </row>

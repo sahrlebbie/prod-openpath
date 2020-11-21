@@ -99,7 +99,7 @@ def getTimeInfoTuplet(timestampconfilename):
     if not os.path.isabs(root):
         root = os.path.abspath(root)
 
-    timestampconfilename = os.path.realpath(os.path.normpath(os.path.normcase(timestampconfilename)))
+    timestampconfilename = os.path.realpath(os.path.normpath(timestampconfilename))
     if not os.path.isabs(timestampconfilename):
         timestampconfilename = os.path.abspath(timestampconfilename)
 

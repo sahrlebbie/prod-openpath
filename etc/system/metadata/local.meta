@@ -1,0 +1,35 @@
+[server/sslConfig]
+version = 8.1.0
+modtime = 1605494695.468419000
+
+[web/settings]
+version = 8.1.0
+modtime = 1605494696.473979000
+
+[server/general]
+version = 8.1.0
+modtime = 1605494843.545903000
+
+[server/lmpool%3Aauto_generated_pool_download-trial]
+version = 8.1.0
+modtime = 1605494843.556140000
+
+[server/lmpool%3Aauto_generated_pool_forwarder]
+version = 8.1.0
+modtime = 1605494843.558002000
+
+[server/lmpool%3Aauto_generated_pool_free]
+version = 8.1.0
+modtime = 1605494843.559813000
+
+[server/lmpool%3Aauto_generated_pool_enterprise]
+version = 8.1.0
+modtime = 1605674186.644660000
+
+[server/license]
+version = 8.1.0
+modtime = 1605674186.646886000
+
+[distsearch/distributedSearch]
+version = 8.1.0
+modtime = 1605956445.639046000

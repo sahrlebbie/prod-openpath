@@ -6,7 +6,7 @@
   <menu name="system_configurations">
     <label>Workload management</label>
     <url>/manager/system/workload_management</url>
-    <description>View and edit configurations of workload management.</description>
+    <description>View, edit, and apply configurations for admission control and workload management.</description>
     <order>75</order>
     <id>workload_management</id>
   </menu>

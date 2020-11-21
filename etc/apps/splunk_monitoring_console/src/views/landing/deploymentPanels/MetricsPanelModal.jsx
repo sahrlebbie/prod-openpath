@@ -16,6 +16,7 @@ class MetricsPanelModal extends Component {
             models: PropTypes.arrayOf(PropTypes.shape({})),
             on: PropTypes.func,
             getMetrics: PropTypes.func,
+            find: PropTypes.func,
         }).isRequired,
         handleClose: PropTypes.func.isRequired,
     };
@@ -69,7 +70,7 @@ class MetricsPanelModal extends Component {
             isWorking: true,
             changed: true,
         });
-        let metric = this.props.metrics.find(metric => value === metric.entry.attributes.name);
+        const metric = this.props.metrics.find(m => value === m.entry.attributes.name);
         metric.entry.content.attributes.disabled = !metric.entry.content.attributes.disabled;
         metric.save().done(() => {
             this.props.metrics.fetch();
@@ -78,7 +79,7 @@ class MetricsPanelModal extends Component {
                 errorMessage: '',
             });
         }).fail((response) => {
-            let msg = gettext('Encountered errors while updating Metrics');
+            let msg = _('Encountered errors while updating Metrics');
             if (response.responseJSON.messages && response.responseJSON.messages.length > 0) {
                 const messageObj = response.responseJSON.messages[0];
                 msg = splunkUtil.sprintf(_('%s: %s'), messageObj.type, messageObj.text);
@@ -101,13 +102,13 @@ class MetricsPanelModal extends Component {
                     data-test-name="edit-page-layout-btn"
                     label={_('Edit Panel')}
                     onClick={this.handleOpen}
-                    className='metric-button'
+                    className="metric-button"
                 />
                 <Modal
                     data-test-name="deployment-metrics-modal"
                     onRequestClose={this.handleClose}
                     open={this.state.open}
-                    className='metric-modal'
+                    className="metric-modal"
                 >
                     <Modal.Header
                         data-test-name="metrics-modal-header"
@@ -122,7 +123,7 @@ class MetricsPanelModal extends Component {
                         }
                         <div
                             data-test-name="metrics-modal-content"
-                            className='metric-modal-content'
+                            className="metric-modal-content"
                         >
                             <div
                                 className="metricsAvailable"
@@ -131,10 +132,10 @@ class MetricsPanelModal extends Component {
                                 <div data-test-name="metrics-recommended">
                                     <Heading level={3}>{_('Recommended Metrics to Display')}</Heading>
                                     {
-                                        Object.keys(this.state.metrics).map((metric) => (
+                                        Object.keys(this.state.metrics).map(metric => (
                                             (this.state.metrics[metric].disabled &&
-                                             this.state.metrics[metric].recommended) ?
-                                                <ControlGroup 
+                                            this.state.metrics[metric].recommended) ?
+                                                <ControlGroup
                                                     label={this.state.metrics[metric].displayName}
                                                     labelWidth="250px"
                                                     tooltip={this.state.metrics[metric].description}
@@ -157,10 +158,10 @@ class MetricsPanelModal extends Component {
                                 <div data-test-name="metrics-other">
                                     <Heading level={3}>{_('Other Metrics')}</Heading>
                                     {
-                                        Object.keys(this.state.metrics).map((metric) => (
+                                        Object.keys(this.state.metrics).map(metric => (
                                             (this.state.metrics[metric].disabled &&
-                                             !this.state.metrics[metric].recommended) ?
-                                                <ControlGroup 
+                                            !this.state.metrics[metric].recommended) ?
+                                                <ControlGroup
                                                     label={this.state.metrics[metric].displayName}
                                                     labelWidth="250px"
                                                     tooltip={this.state.metrics[metric].description}
@@ -187,9 +188,9 @@ class MetricsPanelModal extends Component {
                             >
                                 <Heading level={3}>{_('Metrics Displayed')}</Heading>
                                 {
-                                    Object.keys(this.state.metrics).map((metric) => (
+                                    Object.keys(this.state.metrics).map(metric => (
                                         !this.state.metrics[metric].disabled ?
-                                            <ControlGroup 
+                                            <ControlGroup
                                                 label={this.state.metrics[metric].displayName}
                                                 labelWidth="250px"
                                                 tooltip={this.state.metrics[metric].description}

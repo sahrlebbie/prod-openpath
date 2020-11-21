@@ -1,5 +1,5 @@
 import 'core-js';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 import $ from 'jquery';
 import { render } from 'react-dom';
 import BaseRouter from 'routers/Base';
@@ -7,10 +7,10 @@ import { _ } from '@splunk/ui-utils/i18n';
 import IndexesCollection from 'collections/services/data/Indexes';
 import ClusterConfigModel from 'models/services/cluster/Config';
 import HealthDetailsModel from 'models/services/server/HealthDetails';
-import Bookmarks from 'splunk_monitoring_console/collections/Bookmarks';
-import Metrics from 'splunk_monitoring_console/collections/Metrics';
 import { getReactUITheme, ThemeProvider } from 'util/theme_utils';
-import Landing from 'splunk_monitoring_console/views/landing/Landing';
+import Bookmarks from '../collections/Bookmarks';
+import Metrics from '../collections/Metrics';
+import Landing from '../views/landing/Landing';
 
 class MonitoringConsoleLandingRouter extends BaseRouter {
     initialize(...args) {

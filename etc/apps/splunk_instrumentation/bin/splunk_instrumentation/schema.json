@@ -78,7 +78,7 @@
       "roles": [ "lead_node" ],
       "component": "deployment.node",
       "priority": "high",
-      "visibility": "anonymous,support",
+      "visibility": "anonymous,support,license",
       "hash_key": ["host"]
     },
     {
@@ -530,6 +530,91 @@
       "component": "usage.kvstore",
       "priority": "high",
       "visibility": "anonymous,support"
+    },
+    {
+      "dataPoints": [
+        {
+          "saved_search": "instrumentation.usage.healthMonitor.currentState",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ "lead_node" ],
+      "component": "usage.healthMonitor.currentState",
+      "priority": "high",
+      "visibility": "anonymous,support"
+    },
+    {
+      "dataPoints": [
+        {
+          "saved_search": "instrumentation.deployment.featureFlags",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ "indexer", "search_head", "cluster_master", "license_master"],
+      "component": "deployment.featureFlags",
+      "priority": "high",
+      "visibility": "anonymous,support"
+    },
+    {
+      "dataPoints": [
+        {
+          "saved_search": "instrumentation.usage.savedSearches.alerts",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ "lead_node" ],
+      "component": "usage.savedSearches.alerts",
+      "priority": "high",
+      "visibility": "anonymous,support"
+    },
+    {
+      "dataPoints": [
+        {
+          "saved_search": "instrumentation.usage.streamingMetricAlerts",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ "lead_node" ],
+      "component": "usage.streamingMetricAlerts",
+      "priority": "high",
+      "visibility": "anonymous,support"
+    },
+    {
+      "dataPoints": [
+        {
+          "saved_search": "instrumentation.usage.durableSearch",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ "lead_node" ],
+      "component": "usage.durableSearch",
+      "priority": "high",
+      "visibility": "anonymous,support"
+    },
+    {
+      "dataPoints": [
+        {
+          "saved_search": "instrumentation.usage.rest",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ "lead_node"],
+      "component": "usage.rest",
+      "priority": "high",
+      "visibility": "anonymous,support"
     }
+
   ]
 }

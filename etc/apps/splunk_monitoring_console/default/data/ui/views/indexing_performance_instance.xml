@@ -62,12 +62,23 @@
       | eval typingQueue = if(isnotnull(typingQueue), typingQueue, "N/A")
       | eval indexQueue = if(isnotnull(indexQueue), indexQueue, "N/A")
     </query>
-    <preview>
-      <set token="parsing_queue_value">$result.parsingQueue$</set>
-      <set token="agg_queue_value">$result.aggQueue$</set>
-      <set token="typing_queue_value">$result.typingQueue$</set>
-      <set token="index_queue_value">$result.indexQueue$</set>
-    </preview>
+    <!-- Need to keep eval in the above search as its not certain that a result with null values is not returned -->
+    <done>
+      <!-- Search does not return any result when a server is down. Hence setting N/A if there is no result -->
+      <condition match="$job.resultCount$ = 0">
+        <set token="parsing_queue_value">N/A</set>
+        <set token="agg_queue_value">N/A</set>
+        <set token="typing_queue_value">N/A</set>
+        <set token="index_queue_value">N/A</set>
+      </condition>
+      <!-- Search does return result when a server is up. Hence setting field values as token -->
+      <condition match="$job.resultCount$ > 0">
+        <set token="parsing_queue_value">$result.parsingQueue$</set>
+        <set token="agg_queue_value">$result.aggQueue$</set>
+        <set token="typing_queue_value">$result.typingQueue$</set>
+        <set token="index_queue_value">$result.indexQueue$</set>
+      </condition>
+    </done>
   </search>
   <row>
     <panel>
@@ -215,8 +226,8 @@
       <input type="dropdown" searchWhenChanged="true" token="queues">
         <label>Queues to Measure:</label>
         <showClearButton>false</showClearButton>
-        <default>(name=parsingqueue OR name=aggqueue OR name=typingqueue OR name=indexqueue) | eval name=case(name=="aggqueue","2 - Aggregation Queue",name=="indexqueue","4 - Indexing Queue",name=="parsingqueue","1 - Parsing Queue",name=="typingqueue","3 - Typing Queue")</default>
-        <choice value="(name=parsingqueue OR name=aggqueue OR name=typingqueue OR name=indexqueue) | eval name=case(name==&quot;aggqueue&quot;,&quot;2 - Aggregation Queue&quot;,name==&quot;indexqueue&quot;,&quot;4 - Indexing Queue&quot;,name==&quot;parsingqueue&quot;,&quot;1 - Parsing Queue&quot;,name==&quot;typingqueue&quot;,&quot;3 - Typing Queue&quot;)">Event-Processing Queues</choice>
+        <default>(name=parsingqueue OR name=aggqueue OR name=typingqueue OR name=indexqueue OR name=splunktcpin) | eval name=case(name=="splunktcpin","5 - Splunktcpin Queue",name=="aggqueue","2 - Aggregation Queue",name=="indexqueue","4 - Indexing Queue",name=="parsingqueue","1 - Parsing Queue",name=="typingqueue","3 - Typing Queue")</default>
+        <choice value="(name=parsingqueue OR name=aggqueue OR name=typingqueue OR name=indexqueue OR name=splunktcpin) | eval name=case(name==&quot;splunktcpin&quot;,&quot;5 - Splunktcpin Queue&quot;,name==&quot;aggqueue&quot;,&quot;2 - Aggregation Queue&quot;,name==&quot;indexqueue&quot;,&quot;4 - Indexing Queue&quot;,name==&quot;parsingqueue&quot;,&quot;1 - Parsing Queue&quot;,name==&quot;typingqueue&quot;,&quot;3 - Typing Queue&quot;)">Event-Processing Queues</choice>
         <choice value="name=*">All Queues</choice>
       </input>
       <input type="dropdown" searchWhenChanged="true" token="functionQueue">

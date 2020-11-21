@@ -16,23 +16,23 @@
 .pipeline-queue-value:nth-child(1) {
     -ms-transform: translate(-365px, 176px);
     -webkit-transform: translate(-365px, 176px);
-    transform: translate(-365px, 176px);
+    transform: translate(-380px, 179px);
 }
 
 .pipeline-queue-value:nth-child(2) {
     -ms-transform: translate(-167px, 144px);
     -webkit-transform: translate(-167px, 144px);
-    transform: translate(-167px, 144px);
+    transform: translate(-181px, 147px);
 }
 
 .pipeline-queue-value:nth-child(3) {
     -ms-transform: translate(33px, 112px);
     -webkit-transform: translate(33px, 112px);
-    transform: translate(33px, 112px);
+    transform: translate(19px, 115px);
 }
 
 .pipeline-queue-value:nth-child(4) {
     -ms-transform: translate(238px, 80px);
     -webkit-transform: translate(238px, 80px);
-    transform: translate(238px, 80px);
+    transform: translate(229px, 83px);
 }

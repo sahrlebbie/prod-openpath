@@ -12,7 +12,7 @@
   </fieldset>
   <search id="captainSnapshotSearch">
     <query>
-      | rest splunk_server_group=$group$ splunk_server_group=dmc_group_search_head /services/shcluster/captain/info
+      | rest splunk_server_group="$group$" splunk_server_group=dmc_group_search_head /services/shcluster/captain/info
       | dedup peer_scheme_host_port
       | fields label
     </query>
@@ -75,13 +75,13 @@
       <title>Health Check</title>
       <search id="members_heartbeat_timeout_base" base="membersSnapshotSearch">
         <query>
-          fields label, status, last_heartbeat, last_heartbeat_captain
+          fields label, status, last_heartbeat, last_heartbeat_captain, unable_to_connect
           | join label type=outer [
             | rest splunk_server_group="$group$" splunk_server_group=dmc_group_search_head /services/configs/conf-server/shclustering
             | fields splunk_server, heartbeat_timeout
             | rename splunk_server as label
           ]
-          | where status != "Up" OR (last_heartbeat_captain - last_heartbeat) > heartbeat_timeout
+          | where (status != "Up" OR (last_heartbeat_captain - last_heartbeat) > heartbeat_timeout) OR unable_to_connect != ""
         </query>
         <done>
           <condition match="$job.resultCount$ > 0">
@@ -170,12 +170,12 @@
         <title>Members that exceeded heartbeat timeout</title>
         <search base="members_heartbeat_timeout_base">
           <query>
-            fields label, last_heartbeat, last_heartbeat_captain, heartbeat_timeout, status
+            fields label, last_heartbeat, last_heartbeat_captain, heartbeat_timeout, status, unable_to_connect
             | eval heartbeat_timeout = if(isnotnull(heartbeat_timeout), heartbeat_timeout, "N/A")
             | `dmc_time_format(last_heartbeat)`
             | `dmc_time_format(last_heartbeat_captain)`
             | eval last_heartbeat = if(isnotnull(last_heartbeat), last_heartbeat, "N/A")
-            | rename label as Member, last_heartbeat as "Last Heartbeat Sent to Captain", last_heartbeat_captain as "Last Heartbeat Received by Captain", heartbeat_timeout as "Heartbeat Timeout (sec)", status as "Status"
+            | rename label as Member, last_heartbeat as "Last Heartbeat Sent to Captain", last_heartbeat_captain as "Last Heartbeat Received by Captain", heartbeat_timeout as "Heartbeat Timeout (sec)", status as "Status", unable_to_connect as "Member Unreachable"
           </query>
         </search>
         <option name="drilldown">none</option>
@@ -515,7 +515,7 @@ fields label role status last_heartbeat ratio unpublished_changes artifact_count
       </table>
       <html>
         <p>Click on instance name to see more details.</p>
-        <p>Click on configuration baseline ratio to see more details about configuration replication. <a href="/help?location=learnmore.shc.confreplication" target="_blank" class="external">Learn More</a></p>
+        <p>Click on configuration baseline ratio to see more details about configuration replication. <a href="/help?location=learnmore.shc.replication_sync_issues" target="_blank" class="external">Learn More</a></p>
       </html>
     </panel>
     <panel depends="$SHCMemberDrilldown$">

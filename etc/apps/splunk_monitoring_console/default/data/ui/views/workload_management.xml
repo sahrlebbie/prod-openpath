@@ -14,7 +14,7 @@
           | join type=outer splunk_server [rest splunk_server=* /services/server/info
               | fields splunk_server, os_name, os_version]
           | eval OS = 'os_name'." ".'os_version'
-          | join type=outer splunk_server [rest splunk_server=* /services/workloads/status
+          | join type=outer splunk_server [rest splunk_server=* /services/workloads/status/workload-management-status
               | fields splunk_server, general.isSupported, general.enabled, general.error_message]
           | eval Status = case('general.isSupported' = 0 OR isnull('general.isSupported'), "Unsupported", 'general.isSupported' = 1, "Supported")." / ".case('general.enabled' = 0, "Disabled", 'general.enabled' = 1, "Enabled", isnull('general.enabled'), "N/A")
           | fields splunk_server, roles, OS, Status, general.error_message

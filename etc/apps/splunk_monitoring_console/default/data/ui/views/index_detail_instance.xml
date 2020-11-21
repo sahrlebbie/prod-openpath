@@ -7,43 +7,42 @@
     | rest splunk_server=$splunk_server$ /services/data/indexes-extended $datatype$
   ]
 | `dmc_exclude_indexes`
-| eval warm_bucket_size = if(isnotnull('bucket_dirs.home.warm_bucket_size'), 'bucket_dirs.home.warm_bucket_size', 'bucket_dirs.home.size')
-| eval cold_bucket_size = if(isnotnull('bucket_dirs.cold.bucket_size'), 'bucket_dirs.cold.bucket_size', 'bucket_dirs.cold.size')
+| eval warm_bucket_size = coalesce('bucket_dirs.home.warm_bucket_size', 'bucket_dirs.home.size')
+| eval cold_bucket_size = coalesce('bucket_dirs.cold.bucket_size', 'bucket_dirs.cold.size')
 | eval hot_bucket_size = if(isnotnull(cold_bucket_size), total_size - cold_bucket_size - warm_bucket_size, total_size - warm_bucket_size)
-| eval thawed_bucket_size = if(isnotnull('bucket_dirs.thawed.bucket_size'), 'bucket_dirs.thawed.bucket_size', 'bucket_dirs.thawed.size')
-| eval warm_bucket_size_gb = if(isnull(warm_bucket_size), 0, round(warm_bucket_size / 1024, 2))
-| eval hot_bucket_size_gb = if(isnull(hot_bucket_size), 0, round(hot_bucket_size / 1024, 2))
-| eval cold_bucket_size_gb = if(isnull(cold_bucket_size), 0, round(cold_bucket_size / 1024, 2))
-| eval thawed_bucket_size_gb = if(isnull(thawed_bucket_size), 0, round(thawed_bucket_size / 1024, 2))
+| eval thawed_bucket_size = coalesce('bucket_dirs.thawed.bucket_size', 'bucket_dirs.thawed.size')
+| eval warm_bucket_size_gb = coalesce(round(warm_bucket_size / 1024, 2), 0.00)
+| eval hot_bucket_size_gb = coalesce(round(hot_bucket_size / 1024, 2), 0.00)
+| eval cold_bucket_size_gb = coalesce(round(cold_bucket_size / 1024, 2), 0.00)
+| eval thawed_bucket_size_gb = coalesce(round(thawed_bucket_size / 1024, 2), 0.00)
 
-| eval warm_bucket_count = if(isnotnull('bucket_dirs.home.warm_bucket_count'), 'bucket_dirs.home.warm_bucket_count', 0)
-| eval hot_bucket_count = if(isnotnull('bucket_dirs.home.hot_bucket_count'), 'bucket_dirs.home.hot_bucket_count', 0)
-| eval cold_bucket_count = if(isnotnull('bucket_dirs.cold.bucket_count'), 'bucket_dirs.cold.bucket_count', 0)
-| eval thawed_bucket_count = if(isnotnull('bucket_dirs.thawed.bucket_count'), 'bucket_dirs.thawed.bucket_count', 0)
-| eval home_event_count = if(isnotnull('bucket_dirs.home.event_count'), 'bucket_dirs.home.event_count', 0)
-| eval cold_event_count = if(isnotnull('bucket_dirs.cold.event_count'), 'bucket_dirs.cold.event_count', 0)
-| eval thawed_event_count = if(isnotnull('bucket_dirs.thawed.event_count'), 'bucket_dirs.thawed.event_count', 0)
+| eval warm_bucket_count = coalesce('bucket_dirs.home.warm_bucket_count', 0)
+| eval hot_bucket_count = coalesce('bucket_dirs.home.hot_bucket_count', 0)
+| eval cold_bucket_count = coalesce('bucket_dirs.cold.bucket_count', 0)
+| eval thawed_bucket_count = coalesce('bucket_dirs.thawed.bucket_count', 0)
+| eval home_event_count = coalesce('bucket_dirs.home.event_count', 0)
+| eval cold_event_count = coalesce('bucket_dirs.cold.event_count', 0)
+| eval thawed_event_count = coalesce('bucket_dirs.thawed.event_count', 0)
 
-| eval home_bucket_size_gb = round((warm_bucket_size + hot_bucket_size) / 1024, 2)
-| eval home_bucket_size_gb = if(isnull(home_bucket_size_gb), 0, home_bucket_size_gb)
-| eval home_bucket_capacity_gb = if(isnull('homePath.maxDataSizeMB') OR 'homePath.maxDataSizeMB' == 0, "unlimited", round('homePath.maxDataSizeMB' / 1024, 2))
-| eval home_bucket_capacity_gb = if(isnull(home_bucket_capacity_gb), "unlimited", home_bucket_capacity_gb)
+| eval home_bucket_size_gb = coalesce(round((warm_bucket_size + hot_bucket_size) / 1024, 2), 0.00)
+| eval homeBucketMaxSizeGB = coalesce(round('homePath.maxDataSizeMB' / 1024, 2), 0.00)
+| eval home_bucket_capacity_gb = if(homeBucketMaxSizeGB > 0, homeBucketMaxSizeGB, "unlimited")
 | eval home_bucket_usage_gb = home_bucket_size_gb." / ".home_bucket_capacity_gb
-| eval cold_bucket_capacity_gb = if(isnull('coldPath.maxDataSizeMB') OR 'coldPath.maxDataSizeMB' = 0, "unlimited", round('coldPath.maxDataSizeMB' / 1024, 2))
+| eval cold_bucket_capacity_gb = coalesce(round('coldPath.maxDataSizeMB' / 1024, 2), 0.00)
+| eval cold_bucket_capacity_gb = if(cold_bucket_capacity_gb > 0, cold_bucket_capacity_gb, "unlimited")
 | eval cold_bucket_usage_gb = cold_bucket_size_gb." / ".cold_bucket_capacity_gb
 
 | eval currentDBSizeGB = round(currentDBSizeMB / 1024, 2)
-| eval maxTotalDataSizeGB = if(maxTotalDataSizeMB = 0, "unlimited", round(maxTotalDataSizeMB / 1024, 2))
+| eval maxTotalDataSizeGB = if(maxTotalDataSizeMB > 0, round(maxTotalDataSizeMB / 1024, 2), "unlimited")
 | eval disk_usage_gb = currentDBSizeGB." / ".maxTotalDataSizeGB
 
-| eval currentTimePeriodDay = round((now() - strptime(minTime,"%Y-%m-%dT%H:%M:%S%z")) / 86400, 0)
-| eval currentTimePeriodDay = if(isnull(currentTimePeriodDay), 0, currentTimePeriodDay)
-| eval frozenTimePeriodDay = round(frozenTimePeriodInSecs / 86400, 0)
-| eval frozenTimePeriodDay = if(isnull(frozenTimePeriodDay) OR frozenTimePeriodDay == 0, "unlimited", frozenTimePeriodDay)
+| eval currentTimePeriodDay = coalesce(round((now() - strptime(minTime,"%Y-%m-%dT%H:%M:%S%z")) / 86400, 0), 0)
+| eval frozenTimePeriodDay = coalesce(round(frozenTimePeriodInSecs / 86400, 0), 0)
+| eval frozenTimePeriodDay = if(frozenTimePeriodDay > 0, frozenTimePeriodDay, "unlimited")
 | eval freeze_period_viz_day = currentTimePeriodDay." / ".frozenTimePeriodDay
 
-| eval total_bucket_count = toString(if(isnotnull(total_bucket_count), total_bucket_count, 0), "commas")
-| eval totalEventCount = toString(if(isnotnull(totalEventCount), totalEventCount, 0), "commas")
+| eval total_bucket_count = toString(coalesce(total_bucket_count, 0), "commas")
+| eval totalEventCount = toString(coalesce(totalEventCount, 0), "commas")
 | eval total_raw_size_gb = round(total_raw_size / 1024, 2)
 | eval avg_bucket_size_gb = round(currentDBSizeGB / total_bucket_count, 2)
 | eval compress_ratio = round(total_raw_size_gb / currentDBSizeGB, 2)." : 1"
@@ -111,13 +110,17 @@
     <input type="dropdown" searchWhenChanged="true" token="single_index_name">
       <label>Index</label>
       <showClearButton>false</showClearButton>
-      <fieldForValue>title</fieldForValue>
+      <fieldForValue>index_data_type_combined</fieldForValue>
       <fieldForLabel>title</fieldForLabel>
       <search base="indexes_base_search">
-        <query>stats count by title
+        <query>| eval index_data_type_combined = title.":".datatype | stats count by title index_data_type_combined
         </query>
       </search>
       <selectFirstChoice>true</selectFirstChoice>
+      <change>
+        <set token="single_index_name">$label$</set>
+        <eval token="index_type_value">mvindex(split($value$, ":"),1)</eval>
+      </change>
     </input>
     <html id="index_type_disclaimer">
       <p>The "All Index Types" option is not compatible with indexers running Splunk Enterprise 6.6 or earlier, where only event indexes exist.</p>
@@ -364,7 +367,7 @@ search title=$single_index_name$
         <title>Event Count by Hosts ($hostCount$)</title>
         <search>
           <query>
-| metadata type=hosts index=$single_index_name$ splunk_server=$splunk_server$
+| metadata type=hosts index=$single_index_name$ splunk_server=$splunk_server$ datatype=$index_type_value$
 | fields host, totalCount
 | sort - totalCount
 | rename host as Host, totalCount as "Event Count"
@@ -383,7 +386,7 @@ search title=$single_index_name$
         <title>Event Count by Sources ($sourceCount$)</title>
         <search>
           <query>
-| metadata type=sources index=$single_index_name$ splunk_server=$splunk_server$
+| metadata type=sources index=$single_index_name$ splunk_server=$splunk_server$ datatype=$index_type_value$
 | fields source, totalCount
 | sort - totalCount
 | rename source as Source, totalCount as "Event Count"
@@ -402,7 +405,7 @@ search title=$single_index_name$
         <title>Event Count by Sourcetypes ($sourcetypeCount$)</title>
         <search>
           <query>
-| metadata type=sourcetypes index=$single_index_name$ splunk_server=$splunk_server$
+| metadata type=sourcetypes index=$single_index_name$ splunk_server=$splunk_server$ datatype=$index_type_value$
 | fields sourcetype, totalCount
 | sort - totalCount
 | rename sourcetype as Sourcetype, totalCount as "Event Count"

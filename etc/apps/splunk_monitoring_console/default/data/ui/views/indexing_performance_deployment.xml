@@ -147,7 +147,7 @@ stats avg(average_KBps) as avg_indexing_rate
         <viz type="splunk_monitoring_console.heatmap">
             <search id="instances_by_estimated_indexing_rate">
                 <query>
-                    `dmc_set_index_internal` source=*metrics.log* sourcetype=splunkd search_group=dmc_group_indexer search_group=$group$ group=thruput name=index_thruput
+                    `dmc_set_index_internal` source=*metrics.log* sourcetype=splunkd search_group=dmc_group_indexer search_group="$group$" group=thruput name=index_thruput
                     | `dmc_timechart_for_metrics_log` partial=f limit=0 per_second(kb) AS kbps by host
                     | untable _time host kbps
                     | eval kbps = round(kbps,0)
@@ -268,6 +268,7 @@ stats avg(average_KBps) as avg_indexing_rate
 | `dmc_timechart_for_metrics_log` partial=f per_second(kb) AS kbps dc(host) AS num_hosts 
 | eval kbps = kbps / $aggrIdxRateDivider$ 
 | eval kbps = round(kbps, 0)
+| rename kbps as "KB/s"
 | fields - num_hosts
           </query>
           <earliest>$time.earliest$</earliest>

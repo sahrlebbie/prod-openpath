@@ -41,7 +41,7 @@
       <table>
         <search id="scheduler_status_base">
           <query>
-            | rest splunk_server_group=dmc_group_search_head splunk_server_group="$group$" /servicesNS/-/-/saved/searches search="is_scheduled=1" search="disabled=0"
+            | rest splunk_server_group=dmc_group_search_head splunk_server_group="$group$" /servicesNS/-/-/saved/searches preserve_args_case=t noProxy=t search="is_scheduled=1" search="disabled=0"
             | stats count by splunk_server
             | join splunk_server type=outer [
               | rest splunk_server_group=dmc_group_search_head splunk_server_group="$group$" /services/server/status/limits/search-concurrency

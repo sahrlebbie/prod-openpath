@@ -34,6 +34,10 @@ data-alerts-streaming = <bool>
 * Disables/enables the streaming alert service.
 * Default: 0
 
+global-save-all-to-dashboard = <bool>
+* Disables/enables the global save all to dashboard
+* Default: 1
+
 analysis-related-events = <bool>
 * Toggle the related events functionality
 * Default: 1
@@ -54,34 +58,14 @@ analysis-create-alert = <bool>
 * Toggles the alert creation functionality.
 * Default: 1
 
-analysis-export-png = <bool>
-* Toggles the panel png export functionality.
-* Default: 1
-
-analysis-export-csv = <bool>
-* Toggles the panel csv export functionality.
-* Default: 1
-
-span-limit-description = <bool>
-* Enables/disables span limit description functionality.
-* Default: 0
-
 state-restore = <bool>
 * Enables/disables state restore, to bring back the previous session
 * Default: 1
 
-chart-blocking-load = <bool>
-* Enables/disables chart loading body on data refresh
-* Default: 0
-
-reference-lines = <bool>
-* Enables/disables reference lines on charts
-* Default: 0
-
-category-charts = <bool>
-* Enables/disables category chart modes in chart settings panel
-* Default: 0
-
 data-datasets = <bool>
 * Disables/enables the data source for the dataset.
+* Default: 1
+
+data-metrics = <bool>
+* Disables/enables the metrics data source
 * Default: 1

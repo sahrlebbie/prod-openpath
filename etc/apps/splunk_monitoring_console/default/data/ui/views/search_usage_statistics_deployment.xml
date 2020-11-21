@@ -29,7 +29,7 @@
   </fieldset>
   <search id="get_audit_base">
     <query>
-      `dmc_audit_get_searches_for_groups($group$)`
+      `dmc_audit_get_searches_for_groups("$group$")`
       | stats min(_time) as _time, values(user) as user, max(total_run_time) as total_run_time, first(search) as search, first(search_type) as search_type, first(apiStartTime) as apiStartTime, first(apiEndTime) as apiEndTime by search_id, host
       | where isnotnull(search) $filter_out_non_adhoc$
     </query>

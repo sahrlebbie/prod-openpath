@@ -16,106 +16,105 @@ import './Anomalies.pcss';
 export const icons = {
     green: {
         type: 'success',
-        icon: <Success size={1.6} data-test-name='success-icon' className='successIcon' />,
+        icon: <Success size={1.6} data-test-name="success-icon" className="successIcon" />,
     },
     red: {
         type: 'error',
-        icon: <Error size={1.6} data-test-name='error-icon' className='errorIcon' />
+        icon: <Error size={1.6} data-test-name="error-icon" className="errorIcon" />,
     },
     yellow: {
         type: 'warning',
-        icon: <Warning size={1.6} data-test-name='warning-icon' className='warningIcon' />
+        icon: <Warning size={1.6} data-test-name="warning-icon" className="warningIcon" />,
     },
     info: {
-       type: 'info',
-       icon: <InfoCircle size={1.6} data-test-name='info-icon' className='infoIcon' />
+        type: 'info',
+        icon: <InfoCircle size={1.6} data-test-name="info-icon" className="infoIcon" />,
     },
 };
 
 class Anomalies extends Component {
     static propTypes = {
-        anomalies: PropTypes.arrayOf(PropTypes.shape({})),
+        anomalies: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     }
 
     createInvestigateURL = (anomaly) => {
-        let tags = [];
+        const tags = [];
         // health.conf feature stanza name is used as tag name
         if (anomaly.reasons) {
-            values(values(anomaly.reasons)[0]).forEach(function(reasonObj) {
+            values(values(anomaly.reasons)[0]).forEach((reasonObj) => {
                 tags.push(reasonObj.due_to_stanza.split(':').pop());
             });
         }
-        return createURL('app/splunk_monitoring_console/monitoringconsole_check', {tag: tags});
+        return createURL('app/splunk_monitoring_console/monitoringconsole_check', { tag: tags });
     }
 
     renderDescriptions = (anomaly) => {
-        let children = [];
+        const children = [];
         if (anomaly.reasons) {
-            values(values(anomaly.reasons)[0]).forEach(function(reasonObj, index) {
+            values(values(anomaly.reasons)[0]).forEach((reasonObj, index) => {
                 children.push(
-                    <List.Item 
-                        key={`${reasonObj.due_to_stanza}-${index}`}
+                    <List.Item
+                        key={`${reasonObj.due_to_stanza}-${index}`} // eslint-disable-line react/no-array-index-key
                     >
                         { reasonObj.reason }
-                    </List.Item>
+                    </List.Item>,
                 );
             });
         } else {
             children.push(
                 <List.Item>
                     { _('Description is not available.') }
-                </List.Item>
+                </List.Item>,
             );
         }
         return (
-            <List className='anomaly-description'>{ children }</List>
+            <List className="anomaly-description">{ children }</List>
         );
     }
 
     renderNoAnomalies = () => (
-        <div data-test-name='no-anomalies-section' className='no-anomalies-section'>
-            <Message type={icons['green'].type}>
+        <div data-test-name="no-anomalies-section" className="no-anomalies-section">
+            <Message type={icons.green.type}>
                 { _('No anomalies found in your deployment.') }
             </Message>
         </div>
     )
-    
+
     render() {
         const { anomalies } = this.props;
         return anomalies.length > 0 ? (
             <div>
-                <Table 
+                <Table
                     stripeRows
                     tableStyle={{ backgroundColor: 'white' }}
-                    data-test-name='anomalies-table'
+                    data-test-name="anomalies-table"
                 >
-                    <Table.Head data-test-name='anomalies-table-head'>
+                    <Table.Head data-test-name="anomalies-table-head">
                         <Table.HeadCell
-                            data-test-name='anomalies-table-head-cell-status'
+                            data-test-name="anomalies-table-head-cell-status"
                         >
                             {_('Status')}
                         </Table.HeadCell>
                         <Table.HeadCell
-                            data-test-name='anomalies-table-head-cell-description'
+                            data-test-name="anomalies-table-head-cell-description"
                         >
                             {_('Description')}
                         </Table.HeadCell>
                         <Table.HeadCell
-                            data-test-name='anomalies-table-head-cell-feature'
+                            data-test-name="anomalies-table-head-cell-feature"
                             width={300}
                         >
                             {_('Feature')}
                         </Table.HeadCell>
                         <Table.HeadCell
-                            data-test-name='anomalies-table-head-cell-actions'
+                            data-test-name="anomalies-table-head-cell-actions"
                             width={150}
                         >
                             {_('Actions')}
                         </Table.HeadCell>
                     </Table.Head>
-                    <Table.Body data-test-name='anomalies-table-body'>
-                        {anomalies.map(anomaly => {
-
+                    <Table.Body data-test-name="anomalies-table-body">
+                        {anomalies.map((anomaly) => {
                             const anomalyName = anomaly.name[anomaly.name.length - 1];
                             return (
                                 <Table.Row
@@ -123,7 +122,7 @@ class Anomalies extends Component {
                                     data-test-name={`anomalies-table-row-${anomalyName}`}
                                 >
                                     <Table.Cell
-                                        className='status-cell'
+                                        className="status-cell"
                                         data-test-name={`${anomalyName}-cell-status`}
                                     >
                                         { icons[`${anomaly.health}`].icon }
@@ -141,7 +140,7 @@ class Anomalies extends Component {
                                     <Table.Cell
                                         data-test-name={`${anomalyName}-cell-action`}
                                     >
-                                        <Link 
+                                        <Link
                                             to={this.createInvestigateURL(anomaly)}
                                             openInNewContext
                                         >

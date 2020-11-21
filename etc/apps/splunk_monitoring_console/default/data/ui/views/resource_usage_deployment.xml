@@ -66,7 +66,7 @@
 | eval mem = round(mem, 0)
 | fields splunk_server, normalized_load_avg_1min, core_info, cpu_usage, mem, mem_used, mem_used_pct, iops_mountpoint, cpupct_mountpoint
 | sort - cpu_usage, -mem_used
-| rename splunk_server AS Instance, normalized_load_avg_1min AS "Load Average", core_info AS "CPU Cores (Physical / Virtual)", cpu_usage AS "CPU Usage (%)", mem AS "Physical Memory Capacity (MB)", mem_used AS "Physical Memory Usage (MB)", mem_used_pct AS "Physical Memory Usage (%)", iops_mountpoint as "I/O Operations per second (Mount Point)", cpupct_mountpoint as "I/O Bandwidth Utilization (Mount Point)"
+| rename splunk_server AS Instance, normalized_load_avg_1min AS "Load Average", core_info AS "CPU Cores (Physical / Virtual)", cpu_usage AS "CPU Usage (%)", mem AS "Physical Memory Capacity (MB)", mem_used AS "Physical Memory Usage (MB)", mem_used_pct AS "Physical Memory Usage (%)", iops_mountpoint as "I/O Operations per second (Mount Point)", cpupct_mountpoint as "Storage I/O Saturation (Mount Point)"
           </query>
           <finalized>
             <condition match='$result._load_avg_full_availability$ == "1"'>
@@ -179,7 +179,7 @@
         <option name="charting.axisLabelsY.majorUnit">1</option>
         <option name="charting.axisTitleX.text">Time</option>
         <option name="charting.axisTitleY.text">Instance count</option>
-        <option name="charting.fieldColors">{"50+": 0xD85D3C, "20-50%": 0xF7902B, "0-20":0x9AC23C, "abnormal":0xC4C4C0}</option>
+        <option name="charting.fieldColors">{"1.5+": 0xD85D3C, "0.75-1.5": 0xF7902B, "0-0.75":0x9AC23C, "abnormal":0xC4C4C0}</option>
         <drilldown>
           <condition match="isnotnull('row._span')">
             <set token="drilldown_load_average">true</set>
@@ -681,7 +681,7 @@
   </search>
   <row>
     <panel rejects="$snapshot$, $split_by_host$" id="io_bandwidth_utilization">
-      <title>$countIOstatsFuncLabel$ I/O Bandwidth Utilization</title>
+      <title>$countIOstatsFuncLabel$ Storage I/O Saturation</title>
       <input type="dropdown" token="countIOstatsFunc" searchWhenChanged="true">
         <label>Aggregation</label>
         <showClearButton>false</showClearButton>
@@ -765,7 +765,7 @@
             | `dmc_drilldown_join_peers_by_peerURI`
             | eval Action = Action." $role$"
             | fields serverName, machine, mount_point, cpu_pct, range, numberOfCores, ram, version, Action
-            | rename serverName as Instance, machine as Machine, mount_point as "Mount Point", cpu_pct as "I/O Bandwidth Utilizatio (%)", range as "I/O Bandwidth Utilization Range", version as Version, numberOfCores as Cores, ram as RAM
+            | rename serverName as Instance, machine as Machine, mount_point as "Mount Point", cpu_pct as "I/O Bandwidth Utilizatio (%)", range as "Storage I/O Saturation Range", version as Version, numberOfCores as Cores, ram as RAM
           </query>
         </search>
         <option name="drilldown">none</option>
@@ -777,7 +777,7 @@
     </row>
     <row>
       <panel depends="$split_by_host$">
-          <title>$countIOstatsFuncLabel$ I/O Bandwidth Utilization</title>
+          <title>$countIOstatsFuncLabel$ Storage I/O Saturation</title>
           <input type="dropdown" token="aggIOstatsFunc" searchWhenChanged="true">
               <label>Aggregation</label>
               <showClearButton>false</showClearButton>
@@ -801,18 +801,18 @@
         <option name="charting.chart">line</option>
         <option name="charting.legend.placement">bottom</option>
         <option name="charting.axisTitleX.text">Time</option>
-        <option name="charting.axisTitleY.text">I/O Bandwidth Utilization (%)</option>
+        <option name="charting.axisTitleY.text">Storage I/O Saturation (%)</option>
         <option name="charting.axisY.maximumNumber">100</option>
         <option name="charting.axisY.minimumNumber">0</option>
       </chart>
       <html>
         <p>This panel shows data for instances running Splunk Enterprise 6.4+.</p>
-        <p><b>I/O Bandwidth Utilization: </b>Percentage of time the CPU was servicing requests. Disk saturation occurs when this value is close to 100%. </p>
+        <p><b>Storage I/O Saturation: </b>Percentage of time the CPU was servicing requests. Disk saturation occurs when this value is close to 100%. </p>
         <p><a href="/help?location=learnmore.dmc.ru_machine.iostats" target="_blank">Learn more</a> about the source of this data. </p>
       </html>
     </panel>
     <panel rejects="$snapshot$">
-      <title>Deployment-wide $aggIOstatsFuncLabel$ I/O Bandwidth Utilization</title>
+      <title>Deployment-wide $aggIOstatsFuncLabel$ Storage I/O Saturation</title>
       <input type="dropdown" token="aggIOstatsFunc" searchWhenChanged="true">
         <label>Aggregation</label>
         <showClearButton>false</showClearButton>
@@ -837,13 +837,13 @@
         <option name="charting.chart">area</option>
         <option name="charting.legend.placement">none</option>
         <option name="charting.axisTitleX.text">Time</option>
-        <option name="charting.axisTitleY.text">I/O Bandwidth Utilization (%)</option>
+        <option name="charting.axisTitleY.text">Storage I/O Saturation (%)</option>
         <option name="charting.axisY.maximumNumber">100</option>
         <option name="charting.axisY.minimumNumber">0</option>
       </chart>
       <html>
         <p>This panel shows data for instances running Splunk Enterprise 6.4+.</p>
-        <p><b>I/O Bandwidth Utilization: </b>Percentage of time the CPU was servicing requests. Disk saturation occurs when this value is close to 100%. </p>
+        <p><b>Storage I/O Saturation: </b>Percentage of time the CPU was servicing requests. Disk saturation occurs when this value is close to 100%. </p>
         <p><a href="/help?location=learnmore.dmc.ru_machine.iostats" target="_blank">Learn more</a> about the source of this data. </p>
       </html>
     </panel>

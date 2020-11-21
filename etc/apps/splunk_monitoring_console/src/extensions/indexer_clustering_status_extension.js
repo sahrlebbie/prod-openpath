@@ -51,9 +51,9 @@ define([
         canRender: function(cell) {
             return cell.field === 'Fully Searchable' || cell.field === 'Status';
         },
-        render: function($td, cell) {
+        render: function ($td, cell) {
             var icon = (cell.value == "Yes" || cell.value == "Up" || cell.value == "Connected") ? '<i class="icon-check" />' : '<i class="icon-alert" />';
-            $td.append(icon + cell.value);
+            $td.append(icon + _.escape(cell.value));
         }
     });
 

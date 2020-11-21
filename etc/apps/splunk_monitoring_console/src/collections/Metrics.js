@@ -3,15 +3,13 @@ define(
         'underscore',
         'splunk_monitoring_console/models/Metric',
         'collections/SplunkDsBase',
-        'util/general_utils',
-        'fixtures/monitoringconsole/Metrics.json'
+        'util/general_utils'
     ],
     function(
         _,
         Model,
         SplunkDsBaseCollection,
-        util,
-        MetricsFixture
+        util
     ) {
 
         return SplunkDsBaseCollection.extend({

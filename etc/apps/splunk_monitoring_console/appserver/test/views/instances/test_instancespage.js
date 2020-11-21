@@ -23,10 +23,18 @@ define(
 
       suite('Instances page', function() {
         setup(function() {
+          // Mock XHR
+          this.xhr = sinon.useFakeXMLHttpRequest();
+          this.requests = [];
+          this.xhr.onCreate = function(xhr) {
+              this.requests.push(xhr);
+          }.bind(this);
+
           MockCoreVisualizations.loadMockCoreVisualizations();
         });
         teardown(function() {
           delete this.masterView;
+          this.xhr.restore();
           mvc.Components.revokeInstance('groupDropdown');
           mvc.Components.revokeInstance('smcGetGroups');
           mvc.Components.revokeInstance('instanceSearchManager');

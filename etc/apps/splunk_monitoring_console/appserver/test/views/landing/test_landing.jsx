@@ -1,6 +1,7 @@
 import React from 'react';
 import Bookmarks from 'splunk_monitoring_console/collections/Bookmarks';
 import Metrics from 'splunk_monitoring_console/collections/Metrics';
+import AppLocal from 'models/services/AppLocal';
 import ServerInfo from 'models/services/server/ServerInfo';
 import HealthDetailsModel from 'models/services/server/HealthDetails';
 import ClusterConfigModel from 'models/services/cluster/Config';
@@ -12,6 +13,7 @@ suite('Monitoring Console Landing Page', function () {
     setup(function () {
         configure({ adapter: new EnzymeAdapterReact16() });
         this.props = {
+            appLocal: new AppLocal(),
             application: {
                 get: () => {},
             },

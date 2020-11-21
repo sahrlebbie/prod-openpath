@@ -498,9 +498,12 @@
         <option name="charting.chart.overlayFields">scheduled_search_limit</option>
         <option name="charting.legend.placement">bottom</option>
         <drilldown target="_blank">
-          <condition series="*">
+          <condition match="$click.name2$!=&quot;scheduled_search_limit&quot;">
             <link target="_blank">
               <![CDATA[search?q=`dmc_scheduler_instance_search_concurrency_drilldown($host$, $concurrencySplitBy$, $click.name2$)`&earliest=$earliest$&latest=$latest$]]></link>
+          </condition>
+          <condition>
+            <!-- Do nothing for other cases  -->
           </condition>
         </drilldown>
       </chart>

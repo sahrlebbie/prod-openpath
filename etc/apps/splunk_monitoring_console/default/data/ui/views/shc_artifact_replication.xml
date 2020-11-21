@@ -23,7 +23,7 @@
       <table>
         <search>
           <query>
-`dmc_get_warnings_and_errors($group$, *Artifact*)`
+`dmc_get_warnings_and_errors("$group$", *Artifact*)`
 | cluster showcount=t
 | table cluster_count, _time, log_level, component, event_message, punct
 | sort - cluster_count
@@ -48,7 +48,7 @@
       <event>
         <search>
           <query>
-`dmc_get_warnings_and_errors($group$, *Artifact*)` punct="$warningErrorPunct$"
+`dmc_get_warnings_and_errors("$group$", *Artifact*)` punct="$warningErrorPunct$"
           </query>
           <earliest>$warningErrorTime.earliest$</earliest>
           <latest>$warningErrorTime.latest$</latest>
@@ -84,7 +84,7 @@
       <title>Count of Artifacts ($countArtifacts$)</title>
       <search id="artifact_snapshot_base_search">
         <query>
-          | rest splunk_server_group=$group$ splunk_server_group=dmc_group_search_head /services/shcluster/member/artifacts
+          | rest splunk_server_group="$group$" splunk_server_group=dmc_group_search_head /services/shcluster/member/artifacts
           | fields title, status, splunk_server, label, user, eai:acl.app
           | rename splunk_server as member, label as search_name, eai:acl.app as app
         </query>

@@ -201,4 +201,24 @@ Change History
 |         | Lookups can now be created when using the free license                                                           |
 |---------|------------------------------------------------------------------------------------------------------------------|
 | 3.3.3   | Adding Python 3 support                                                                                          |
+|---------|------------------------------------------------------------------------------------------------------------------|
+| 3.4.0   | Added ability to search entries in the editor                                                                    |
+|         | New KV store rows are no longer saved until the user sets a field                                                |
+|         | Column name changes are done through a context menu which should make column renaming easier                     |
+|         | Replaced the handsontable library with jexcel                                                                    |
+|---------|------------------------------------------------------------------------------------------------------------------|
+| 3.4.1   | Fixed issue where values with some characters (such as "<" and ">") failed to appear                             |
+|---------|------------------------------------------------------------------------------------------------------------------|
+| 3.4.2   | Fixed issue where the last value was excluded from saving when the user didn't press enter to set the value      |
+|         | Made replication blacklist more specific                                                                         |
+|---------|------------------------------------------------------------------------------------------------------------------|
+| 3.4.3   | Added app manifest to indicate that the app only needs to be installed on the search head                        |
+|---------|------------------------------------------------------------------------------------------------------------------|
+| 3.4.4   | Specifying Python 3 for the REST endpoints to address appinspect errors                                          |
+|---------|------------------------------------------------------------------------------------------------------------------|
+| 3.4.5   | Fixed issue where you imports only worked for the few columns                                                    |
+|         | Added a horizontal scrollbar                                                                                     |
+|---------|------------------------------------------------------------------------------------------------------------------|
+| 3.4.6   | Fixed XSS issue due to third party libraries                                                                     |
+|         | Updated jexcel and jsuites                                                                                       |
 +---------+------------------------------------------------------------------------------------------------------------------+

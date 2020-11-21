@@ -1,6 +1,0 @@
-<dashboard script="prettify.js">
-    <label>Simple XML Extensions Examples</label>
-    <row>
-        <html src="docs/implement_examples.html" />
-    </row>
-</dashboard>

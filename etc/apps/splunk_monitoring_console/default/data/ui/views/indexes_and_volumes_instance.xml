@@ -142,7 +142,7 @@
         </search>
         <option name="drilldown">row</option>
         <drilldown>
-          <link target="_blank">index_detail_instance?form.splunk_server=$splunk_server$&amp;form.single_index_name=$row.Index$</link>
+          <link target="_blank">index_detail_instance?form.datatype=$datatype$&amp;form.dmc_group=$dmc_group$&amp;form.splunk_server=$splunk_server$&amp;form.single_index_name=$row.Index$</link>
         </drilldown>
       </table>
       <html>

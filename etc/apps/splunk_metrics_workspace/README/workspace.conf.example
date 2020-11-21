@@ -34,6 +34,10 @@ data-alerts-scheduled = 0
 [features]
 data-alerts-streaming = 1
 
+# The following example disable the global-save-all-to-dashboard
+[features]
+global-save-all-to-dashboard = 0
+
 # The following example disable the analysis-related-events
 [features]
 analysis-related-events = 0
@@ -54,34 +58,14 @@ analysis-save-to-report = 0
 [features]
 analysis-create-alert = 0
 
-# The following example disables exporting as a .png file.
-[features]
-analysis-export-png = 0
-
-# The following example disables exporting as a .csv file.
-[features]
-analysis-export-csv = 0
-
-# The following example disables the span limit description.
-[features]
-span-limit-description = 0
-
 # The following example disables state restore
 [features]
 state-restore = 0
 
-# The following example disable the chart-blocking-load
-[features]
-chart-blocking-load = 0
-
-# The following example enables reference lines on charts
-[features]
-reference-lines = 1
-
-# The following example enables category charts
-[features]
-category-charts = 1
-
 # The following example disables the datasets data type.
 [features]
 data-panel = 0
+
+# The following example disable the data-metrics
+[features]
+data-metrics = 0

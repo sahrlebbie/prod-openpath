@@ -17,7 +17,7 @@ export function validateUrl(url) {
     if (isEmpty(url)) {
         return URL_BLANK_MESSAGE;
     } else if (!url.includes('splunk_monitoring_console')) {
-        return URL_MISSING_MC_MESSAGE
+        return URL_MISSING_MC_MESSAGE;
     } else if (!new RegExp('^([a-z]+://|//)', 'i').test(url)) {
         return URL_NOT_ABSOLUTE_MESSAGE;
     }
@@ -49,10 +49,8 @@ export function validateLabel(label, labels, checkDups) {
  */
 export function getValidBookmarks(bookmarksArray) {
     const validBookmarks = [];
-    const labels = bookmarksArray.map(bookmark => {
-        return bookmark.label;
-    });
-    bookmarksArray.map(bookmark => {
+    const labels = bookmarksArray.map(bookmark => bookmark.label);
+    bookmarksArray.forEach((bookmark) => {
         const validUrl = validateUrl(bookmark.url);
         const validLabel = validateLabel(bookmark.label, labels, false);
         if (isEmpty(validUrl) && isEmpty(validLabel)) {

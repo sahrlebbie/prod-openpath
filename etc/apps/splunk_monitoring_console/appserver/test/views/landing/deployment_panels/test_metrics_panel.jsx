@@ -22,6 +22,14 @@ suite('MC Deployment Metrics Panel Component', function () {
                 'recommended': '0',
             },
         };
+
+        // Mock XHR
+        this.xhr = sinon.useFakeXMLHttpRequest();
+        this.requests = [];
+        this.xhr.onCreate = function(xhr) {
+            this.requests.push(xhr);
+        }.bind(this);
+
         this.props = {
             metrics: {
                 fetch: () => {},
@@ -39,6 +47,7 @@ suite('MC Deployment Metrics Panel Component', function () {
         this.wrapper = null;
         this.inst = null;
         this.fakeMetrics = {};
+        this.xhr.restore();
         assert.ok(true, 'Teardown was successful');
     });
     test('Test rendering the metrics component', function () {
