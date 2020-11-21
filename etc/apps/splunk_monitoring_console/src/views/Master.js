@@ -132,7 +132,7 @@ define(
 
 				this.children.title = new TitleView();
 
-				// Mode switcher is not displayed for cloud and Lite instances
+				// Mode switcher is not displayed for cloud, Lite and Splunk Free instances
 				if (this._isModeSwitchVisible()) {
 					this.children.standaloneSwitch = new ControlGroup({
 						controlClass: 'standalone-switch',
@@ -152,7 +152,7 @@ define(
 				    this.children.standaloneSwitch = new LabelControl({
 				        additionalClassNames: 'mode'
 				    });
-				    var currentMode = _('Mode: ').t() + (this.model.appLocal.entry.content.get('configured') == '1' ? DMC_DISTRIBUTED_MODE_LABEL : DMC_STANDALONE_MODE_LABEL);
+					var currentMode = _('Mode: ').t() + (this.model.appLocal.entry.content.get('configured') == '1' ? DMC_DISTRIBUTED_MODE_LABEL : DMC_STANDALONE_MODE_LABEL);
 				    this.children.standaloneSwitch.setValue(currentMode);
 				}
 
@@ -681,7 +681,7 @@ define(
 			},
 
 			_isModeSwitchVisible: function() {
-				return !(this.model.serverInfoModel.isCloud() || this.model.serverInfoModel.isLite());
+				return !(this.model.serverInfoModel.isCloud() || this.model.serverInfoModel.isLite() || this.model.serverInfoModel.isFreeLicense());
 			},
 
 			render: function() {

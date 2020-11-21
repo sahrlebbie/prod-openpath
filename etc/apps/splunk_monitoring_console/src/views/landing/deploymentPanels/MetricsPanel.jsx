@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import TimeRangeDropdown from '@splunk/react-time-range/Dropdown';
 import SplunkwebConnector from '@splunk/react-time-range/SplunkwebConnector';
 import SearchJob from '@splunk/search-job';
-import MetricsPanelModal from 'splunk_monitoring_console/views/landing/deploymentPanels/MetricsPanelModal';
 import WaitSpinner from '@splunk/react-ui/WaitSpinner';
+import MetricsPanelModal from './MetricsPanelModal';
 import './MetricsPanel.pcss';
 
 export const limitedPresets = [
@@ -51,41 +51,13 @@ class DeploymentMetricsPanel extends Component {
     componentDidMount() {
         this.updateMetricsJobs();
     }
-    
+
     componentWillUnmount() {
-        Object.keys(this.state.metricsJobs).map((metric) => {
-            if(this.state.metricsJobs[metric]) {
+        Object.keys(this.state.metricsJobs).forEach((metric) => {
+            if (this.state.metricsJobs[metric]) {
                 this.state.metricsJobs[metric].unsubscribe();
             }
         });
-    }
-
-    /**
-     * Update Metrics on modal close.
-     */
-
-    handleModalClose = () => {
-        this.updateMetrics();
-    }
-
-    /**
-     * Repopulate the enabled metrics.
-     */
-    updateMetrics = () => {
-        this.setState({
-            enabledMetrics: this.props.metrics.getEnabledMetrics(),
-        }, this.updateMetricsJobs);
-    }
-
-    /**
-     * Create new metrics jobs and subscribe to them.
-     */
-    updateMetricsJobs() {
-        const metricsJobs = this.getMetricsJobs();
-        this.setState({
-            metricsJobs: metricsJobs,
-            metricsResults: {},
-        }, this.getMetricsResults);
     }
 
     /**
@@ -94,7 +66,7 @@ class DeploymentMetricsPanel extends Component {
     getMetricsJobs() {
         // for each non-disabled metric create a searchJob
         const metricsJobs = {};
-        Object.keys(this.state.enabledMetrics).map(metric => {
+        Object.keys(this.state.enabledMetrics).forEach((metric) => {
             metricsJobs[metric] = SearchJob.create({
                 search: this.state.enabledMetrics[metric].search,
                 earliest_time: this.state.earliest,
@@ -110,7 +82,7 @@ class DeploymentMetricsPanel extends Component {
      * Subscribe to the results of the Metrics search jobs.
      */
     getMetricsResults() {
-        Object.keys(this.state.metricsJobs).map((metric) => {
+        Object.keys(this.state.metricsJobs).forEach((metric) => {
             this.state.metricsJobs[metric].subscribe((results) => {
                 if (results.results && results.results.length) {
                     const newMetricsResults = { ...this.state.metricsResults };
@@ -129,17 +101,42 @@ class DeploymentMetricsPanel extends Component {
                         metricsResults: newMetricsResults,
                     });
                 }
-            })
+            });
         });
+    }
+
+    /**
+     * Create new metrics jobs and subscribe to them.
+     */
+    updateMetricsJobs() {
+        const metricsJobsCurr = this.getMetricsJobs();
+        this.setState({
+            metricsJobs: metricsJobsCurr,
+            metricsResults: {},
+        }, this.getMetricsResults);
+    }
+
+    /**
+     * Repopulate the enabled metrics.
+     */
+    updateMetrics = () => {
+        this.setState({
+            enabledMetrics: this.props.metrics.getEnabledMetrics(),
+        }, this.updateMetricsJobs);
+    }
+
+    /**
+     * Update Metrics on modal close.
+     */
+    handleModalClose = () => {
+        this.updateMetrics();
     }
 
     /**
      * Presets transform function that limits the timerange presets to those listed above.
      * Specifically only non-realtime presets.
      */
-    presetsTransform = (presets) => {
-        return limitedPresets;
-    };
+    presetsTransform = () => limitedPresets;
 
     /**
      * Handles search time range change
@@ -157,19 +154,19 @@ class DeploymentMetricsPanel extends Component {
     /**
      * Render the single value of data.
      */
-    renderSingleValue(value, deltaValue) {
+    renderSingleValue = (value) => {
         if (value === 'error') {
             return (<div
-                className='metricSingleValue'
-                data-test-name='metric-single-value'
+                className="metricSingleValue"
+                data-test-name="metric-single-value"
             >
                 {_('Data not found.')}
             </div>);
         }
         return (
             <div
-                className='metricSingleValue'
-                data-test-name='metric-single-value'
+                className="metricSingleValue"
+                data-test-name="metric-single-value"
             >
                 {value}
             </div>
@@ -182,11 +179,11 @@ class DeploymentMetricsPanel extends Component {
     render() {
         return (
             <div
-                className='metricsCard'
-                data-test-name='deployment-metrics'
+                className="metricsCard"
+                data-test-name="deployment-metrics"
             >
                 <div
-                    className='metricsCardHeader'
+                    className="metricsCardHeader"
                 >
                     <SplunkwebConnector
                         presetsTransform={this.presetsTransform}
@@ -201,32 +198,32 @@ class DeploymentMetricsPanel extends Component {
                         />
                     </SplunkwebConnector>
                     <MetricsPanelModal
-                        data-test-name='metrics-panel-modal'
+                        data-test-name="metrics-panel-modal"
                         metrics={this.props.metrics}
                         handleClose={this.handleModalClose}
                     />
                 </div>
                 <div
-                    className='metricsList'
-                    data-test-name='metrics-list'
+                    className="metricsList"
+                    data-test-name="metrics-list"
                 >
                     {
-                        Object.keys(this.state.enabledMetrics).map((metric) => (
-                            <div 
-                                className='metricsItem'
-                                data-test-name='metrics-item'
+                        Object.keys(this.state.enabledMetrics).map(metric => (
+                            <div
+                                className="metricsItem"
+                                data-test-name="metrics-item"
                                 key={metric}
                             >
-                                <div className='metricsItemLabel'>
+                                <div className="metricsItemLabel">
                                     {this.state.enabledMetrics[metric].displayName}
                                 </div>
                                 {
-                                    this.state.metricsResults[metric] ? 
+                                    this.state.metricsResults[metric] ?
                                         this.renderSingleValue(
                                             this.state.metricsResults[metric].value)
                                         :
-                                        <WaitSpinner size='medium' />
-                                }  
+                                        <WaitSpinner size="medium" />
+                                }
                             </div>
                         ))
                     }

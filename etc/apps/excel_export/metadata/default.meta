@@ -1,7 +1,0 @@
-[]
-access = read : [ admin, power ], write : [ admin ]
-
-[views/flashtimeline_excel]
-access = read : [ admin, power ], write : [ admin ]
-export = system
-owner = nobody

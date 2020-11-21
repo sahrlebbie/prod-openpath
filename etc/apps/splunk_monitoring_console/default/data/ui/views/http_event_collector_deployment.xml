@@ -34,7 +34,7 @@
     <query>
       `dmc_set_index_introspection` component="HttpEventCollector" search_group=$role$ search_group="$group$" data.series="$data_series$" $token_clause$
       | bin _time minspan=1m 
-      | stats sum(data.num_of_events) as events_total, sum(data.num_of_requests) as requests_total, sum(data.num_of_requests_to_disabled_token) as disabled_token_total, sum(data.num_of_requests_to_incorrect_url) as incorrect_url_total, sum(data.num_of_auth_failures) as auth_fail_total, sum(data.num_of_parser_errors) as parser_error_total, sum(data.total_bytes_indexed) as data_indexed, sum(data.total_bytes_received) as data_received by _time
+      | stats sum(data.num_of_events) as events_total, sum(data.num_of_requests) as requests_total, sum(data.num_of_requests_to_disabled_token) as disabled_token_total, sum(data.num_of_requests_to_incorrect_url) as incorrect_url_total, sum(data.num_of_auth_failures) as auth_fail_total, sum(data.num_of_parser_errors) as parser_error_total, sum(data.total_bytes_indexed) as data_indexed, sum(data.total_bytes_received) as data_received by _time, host
       | join host [ 
       | inputlookup dmc_assets 
       | mvcombine search_group 

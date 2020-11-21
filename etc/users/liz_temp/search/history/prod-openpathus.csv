@@ -1,0 +1,33 @@
+sid,search,"splunk_server","_time","is_realtime",provenance,"event_count","exec_time","result_count","scan_count",status,"total_run_time","api_et","api_lt","search_et","search_lt","savedsearch_name","__mv_sid","__mv_search","__mv_splunk_server","__mv__time","__mv_is_realtime","__mv_provenance","__mv_event_count","__mv_exec_time","__mv_result_count","__mv_scan_count","__mv_status","__mv_total_run_time","__mv_api_et","__mv_api_lt","__mv_search_et","__mv_search_lt","__mv_savedsearch_name"
+"rt_md_1605664266.297","| metadata type=sourcetypes | search totalCount > 0","prod-openpathus","1605664266.920920",1,"UI:Search",0,1605664266,0,0,failed,"661.146",,,,,,,,,,,,,,,,,,,,,,
+"rt_md_1605665489.300","| metadata type=sourcetypes | search totalCount > 0","prod-openpathus","1605665489.935195",1,"UI:Search",0,1605665489,0,0,canceled,"11.029",,,,,,,,,,,,,,,,,,,,,,
+"1605665500.310","search ""failed Password""","prod-openpathus","1605665500.867498",0,"UI:Search",0,1605665500,0,0,completed,"0.083","1605578400.000000000","1605665500.000000000","1605578400.000000000","1605665500.000000000",,,,,,,,,,,,,,,,,,
+"1605665508.311","search ""failed Password""","prod-openpathus","1605665508.014668",0,"UI:Search",0,1605665508,0,0,completed,"0.063","1577836800.000000000","1605665508.000000000","1577836800.000000000","1605665508.000000000",,,,,,,,,,,,,,,,,,
+"1605665513.312","search ""failed Password""","prod-openpathus","1605665513.256336",0,"UI:Search",0,1605665513,0,0,completed,"0.065","1603065600.000000000","1605665513.000000000","1603065600.000000000","1605665513.000000000",,,,,,,,,,,,,,,,,,
+"liz_temp_bGl6X3RlbXA__search__search1_1605665572.313","| rest splunk_server=local /services/server/info
+| fields splunk_server version
+| join type=outer splunk_server [rest splunk_server=local /services/server/status/installed-file-integrity
+    | fields splunk_server check_ready check_failures.fail]
+| eval check_status = case(isnull('check_failures.fail') AND isnotnull(check_ready), ""enabled"", 'check_failures.fail' == ""check_disabled"", ""disabled"", isnull(check_ready), ""feature unavailable"")
+| eval check_ready = if(check_status == ""enabled"", check_ready, ""N/A"")
+| fields version check_status check_ready
+| rename version AS ""Splunk version"" check_status AS ""Check status"" check_ready AS ""Results ready?""","prod-openpathus","1605665572.671041",0,"UI:Dashboard:integrity_check_of_installed_files",0,1605665572,1,0,completed,"0.066",,,,,search1,,,,,,,,,,,,,,,,,
+"liz_temp_bGl6X3RlbXA__search__search2_1605665572.314","| rest splunk_server=local /services/server/status/installed-file-integrity 
+| fields check_failures.* 
+| untable splunk_server file_path check_result 
+| replace ""check_failures.*"" WITH ""*"" IN file_path
+| fields file_path check_result
+| rename file_path AS ""File path"" check_result AS ""Check result""","prod-openpathus","1605665572.678094",0,"UI:Dashboard:integrity_check_of_installed_files",0,1605665572,1,0,completed,"0.042",,,,,search2,,,,,,,,,,,,,,,,,
+"1605665578.315","| rest splunk_server=local /services/server/info | fields splunk_server version | join type=outer splunk_server [rest splunk_server=local /services/server/status/installed-file-integrity     | fields splunk_server check_ready check_failures.fail] | eval check_status = case(isnull('check_failures.fail') AND isnotnull(check_ready), ""enabled"", 'check_failures.fail' == ""check_disabled"", ""disabled"", isnull(check_ready), ""feature unavailable"") | eval check_ready = if(check_status == ""enabled"", check_ready, ""N/A"") | fields version check_status check_ready | rename version AS ""Splunk version"" check_status AS ""Check status"" check_ready AS ""Results ready?""","prod-openpathus","1605665578.375156",0,"UI:Search",0,1605665578,1,0,completed,"0.034",,,,,,,,,,,,,,,,,,,,,,
+"1605665616.316","| mcatalog values(metric_name) as metrics WHERE NOT metric_name=""*_mrollup_*"" AND (""index""=""*"" OR ""index""=""_*"" ) 
+    | mvexpand metrics limit=20000","prod-openpathus","1605665616.517585",0,,401,1605665616,256,401,canceled,"0.082","1605664716.000000000",,"1605664716.000000000",,,,,,,,,,,,,,,,,,,
+"rt_md_1605666265.320","| metadata type=sourcetypes | search totalCount > 0","prod-openpathus","1605666265.562489",1,"UI:Search",0,1605666265,0,0,failed,"36.037",,,,,,,,,,,,,,,,,,,,,,
+"rt_md_1605666439.321","| metadata type=sourcetypes | search totalCount > 0","prod-openpathus","1605666439.370479",1,"UI:Search",0,1605666439,0,0,failed,"46.035000000000004",,,,,,,,,,,,,,,,,,,,,,
+"rt_md_1605666862.323","| metadata type=sourcetypes | search totalCount > 0","prod-openpathus","1605666862.067510",1,"UI:Search",0,1605666862,0,0,canceled,"26.031",,,,,,,,,,,,,,,,,,,,,,
+"1605666864.324","| history | search NOT search=""| history*"" AND NOT search=""*metadata*"" AND NOT search=""*loadjob*"" AND NOT savedsearch_name=""*"" AND NOT search=""search"" AND NOT search=""*from sid*"" AND NOT search=""| eventcount summarize=false index=* index=_**"" AND NOT provenance=""UI:LocateData"" AND NOT provenance=""UI:TableEditor"" AND NOT provenance=""UI:DataModel"" AND NOT provenance=""UI:Pivot"" AND NOT provenance=""UI:Dataset"" | dedup search | head 100000","prod-openpathus","1605666864.747465",0,"UI:Search",0,1605666864,3,0,completed,"0.052000000000000005",,,,,,,,,,,,,,,,,,,,,,
+"1605666888.326","| mcatalog values(metric_name) as metrics WHERE NOT metric_name=""*_mrollup_*"" AND (""index""=""*"" OR ""index""=""_*"" ) 
+    | mvexpand metrics limit=20000","prod-openpathus","1605666888.126005",0,"UI:Search",1871,1605666888,258,1871,completed,"0.084","1605578400.000000000","1605666888.000000000","1605578400.000000000","1605666888.000000000",,,,,,,,,,,,,,,,,,
+"1605666917.342","search sourcetype=","prod-openpathus","1605666917.665468",0,"UI:Search",0,1605666917,0,0,failed,"0.008","1605578400.000000000","1605666917.000000000",,,,,,,,,,,,,,,,,,,,
+"md_1605667641.351","| metadata index=alain_index type=sourcetypes | convert ctime(firstTime),ctime(recentTime,(ctime(lastTime)","prod-openpathus","1605667641.928694",0,"UI:Search",0,1605667641,0,0,failed,"0.008","1605578400.000000000","1605667641.000000000","1605578400.000000000","1605667641.000000000",,,,,,,,,,,,,,,,,,
+"md_1605667669.352","| metadata index=alain_index type=sourcetypes","prod-openpathus","1605667669.910804",0,"UI:Search",0,1605667669,0,0,completed,"0.031","1605578400.000000000","1605667669.000000000","1605578400.000000000","1605667669.000000000",,,,,,,,,,,,,,,,,,
+"1605667749.353","| tstats count where index=alain_index and sourcetypes=*","prod-openpathus","1605667749.681512",0,"UI:Search",0,1605667749,1,0,completed,"0.041","1605578400.000000000","1605667749.000000000","1605578400.000000000","1605667749.000000000",,,,,,,,,,,,,,,,,,

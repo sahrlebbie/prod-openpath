@@ -31,7 +31,7 @@
     </collection>
     <collection label="License Usage">
       <view name="license_usage_today" />
-      <view name="license_usage_30days" />
+      <view name="license_usage_historic" />
     </collection>
     <collection label="SmartStore">
       <view name="smartstore_activity_instance" />
@@ -75,10 +75,15 @@
     <view name="resource_usage_instance" />
     <view name="resource_usage_machine" />
     <view name="resource_usage_deployment" />
+    <view name="resource_usage_cpu_instance" />
+    <view name="resource_usage_cpu_deployment" />
     <collection label="Workload Management">
       <view name="workload_management" />
       <view name="workload_management_per_pool_instance" />
       <view name="workload_management_per_pool_deployment" />
+      <view name="workload_management_monitoring_distributed" />
+      <view name="admission_control_monitoring_instance" />
+      <view name="admission_control_monitoring_distributed" />
     </collection>
   </collection>
   <collection label="Forwarders">

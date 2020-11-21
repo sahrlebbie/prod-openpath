@@ -13,6 +13,8 @@ def send_webhook_request(url, body, user_agent=None):
     sys.stderr.write("INFO Sending POST request to url=%s with size=%d bytes payload\n" % (url, len(body)))
     sys.stderr.write("DEBUG Body: %s\n" % body)
     try:
+        if sys.version_info >= (3, 0) and type(body) == str:
+            body = body.encode()
         req = Request(url, body, {"Content-Type": "application/json", "User-Agent": user_agent})
         res = urlopen(req)
         if 200 <= res.code < 300:

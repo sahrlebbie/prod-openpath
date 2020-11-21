@@ -7,6 +7,7 @@ else:
     from cStringIO import StringIO
     BytesIO = StringIO
     import urllib
+import logging
 from functools import cmp_to_key
 from email import encoders, utils
 import csv
@@ -37,7 +38,7 @@ from splunk.saved import savedSearchJSONIsAlert
 from splunk.util import normalizeBoolean, unicode, format_local_tzoffset
 
 PDF_REPORT_SERVER_TIMEOUT = 600
-PDFGEN_SIMPLE_REQUEST_TIMEOUT = 3600
+SIMPLE_REQUEST_TIMEOUT = 3600
 EMAIL_DELIM = re.compile('\s*[,;]\s*')
 CHARSET = "UTF-8"
 IMPORTANCE_MAP = {
@@ -77,15 +78,16 @@ def renderTime(results):
          except:
               pass
 
-def mail(email, argvals, ssContent, sessionKey):
+def mail(email, argvals, ssContent, sessionKey, namespace):
 
     sender     = email['From']
     use_ssl    = normalizeBoolean(ssContent.get('action.email.use_ssl', False))
     use_tls    = normalizeBoolean(ssContent.get('action.email.use_tls', False))
     server     = ssContent.get('action.email.mailserver', 'localhost')
 
-    username   = argvals.get('username', '')
-    password   = argvals.get('password', '')
+    # retrieve email credentials from getCredentials()
+    # 'username' and 'password' are not included in argvals.get() request
+    username, password = getCredentials(sessionKey, namespace)
     recipients = []
 
     if email['To']:
@@ -98,11 +100,26 @@ def mail(email, argvals, ssContent, sessionKey):
 
     # Clear leading / trailing whitespace from recipients
     recipients = [r.strip() for r in recipients]
+    validRecipients = []
+    if ssContent.get('action.email.allowedDomainList') != "" and ssContent.get('action.email.allowedDomainList') != None:
+        domains = []
+        domains.extend(EMAIL_DELIM.split(ssContent['action.email.allowedDomainList']))
+        domains = [d.strip() for d in domains]
+        for recipient in recipients:
+            dom = recipient.partition("@")[2]
+            if not dom in domains:
+                logger.error("For subject=%s, email recipient=%s is not among the alowedDomainList=%s in alert_actions.conf file. Removing it from the recipients list."
+                             % (ssContent.get('action.email.subject'), recipient, ssContent.get('action.email.allowedDomainList')))
+            else:
+                validRecipients.append(recipient)
+    else:
+        validRecipients = recipients
+
 
     mail_log_msg = 'Sending email. subject="%s", results_link="%s", recipients="%s", server="%s"' % (
         ssContent.get('action.email.subject'),
         ssContent.get('results_link'),
-        str(recipients),
+        str(validRecipients),
         str(server)
     )
     try:
@@ -134,7 +151,7 @@ def mail(email, argvals, ssContent, sessionKey):
         if len(username) > 0 and password is not None and len(password) >0:
             smtp.login(username, password)
 
-        smtp.sendmail(sender, recipients, email.as_string())
+        smtp.sendmail(sender, validRecipients, email.as_string())
         smtp.quit()
         logger.info(mail_log_msg)
 
@@ -155,6 +172,18 @@ def sendEmail(results, settings, keywords, argvals):
     ssname          = argvals.get('ssname')
     isScheduledView = False
     is_stream_malert = normalizeBoolean(argvals.get('is_stream_malert'))
+
+    # Use this way to GET the correct alert_actions.conf under corresponding app.
+    entityClass = ['alerts', 'alert_actions', 'email']
+    uri = entity.buildEndpoint(
+        entityClass,
+        namespace=namespace,
+        owner=owner
+    )
+    responseHeaders, responseBody = simpleRequest(uri, method='GET', getargs={'output_mode':'json'}, sessionKey=sessionKey)
+    alertEmail = json.loads(responseBody)
+    alertContent = alertEmail['entry'][0]['content']
+    alertContent['allowedDomainList'] = alertContent['allowedDomainList'].strip()
 
     if ssname: 
         # populate content with savedsearch
@@ -314,6 +343,8 @@ def sendEmail(results, settings, keywords, argvals):
         ssContent['action.email.reportPaperOrientation'] = argvals.get('paperorientation') or ssContent.get('action.email.paperorientation')
     if argvals.get('sendcsv'):
         ssContent['action.email.sendcsv'] = normalizeBoolean(argvals.get('sendcsv'))
+    if argvals.get('allow_empty_attachment'):
+        ssContent['action.email.allow_empty_attachment'] = normalizeBoolean(argvals.get('allow_empty_attachment'))
     if argvals.get('pdf.logo_path'):
         ssContent['action.email.pdf.logo_path'] = argvals.get('pdf.logo_path')
     if argvals.get('escapeCSVNewline'):
@@ -323,7 +354,11 @@ def sendEmail(results, settings, keywords, argvals):
     setDefaultUserCrendentials = 1
     if argvals.get('server'):
         alert_action_server = ssContent.get('action.email.mailserver', 'localhost')
-        ssContent['action.email.mailserver'] = argvals.get('server')
+        if alertContent.get('allowedDomainList') == "":
+            ssContent['action.email.mailserver'] = argvals.get('server')
+        else:
+            logger.warn("When 'allowedDomainList' is setup, 'server' argument is not accepted in sendemail command. "
+                        "The 'server' value is obtained from 'mailserver'=%s in alert_actions.conf." % alertContent.get('mailserver'))
         assigned_server = ssContent.get('action.email.mailserver', 'localhost')
         if str(alert_action_server) != str(assigned_server):
             setDefaultUserCrendentials = 0
@@ -431,6 +466,18 @@ def sendEmail(results, settings, keywords, argvals):
 
     viewContent = viewResponseBody['entry'][0]['content']
 
+    ssContent['action.email.allowedDomainList'] = ssContent['action.email.allowedDomainList'].strip()
+    if ssContent.get('action.email.allowedDomainList') != alertContent.get('allowedDomainList'):
+        ssContent['action.email.allowedDomainList'] = alertContent['allowedDomainList']
+        logger.warn("For alert=%s, the 'allowedDomainList' value is always obtained from alert_actions.conf."
+                    "The allowedDomainList=%s" % (ssname, alertContent.get('allowedDomainList')))
+
+    if alertContent.get('allowedDomainList') != "":
+        if ssContent.get('action.email.mailserver') != alertContent.get('mailserver'):
+            ssContent['action.email.mailserver'] = alertContent['mailserver']
+            logger.warn("For alert=%s, if a 'allowedDomainList' is specified, it uses the 'mailserver'=%s in alert_actions.conf." %
+                        (ssname, ssContent.get('action.email.mailserver')))
+
     valuesForTemplate = buildSafeMergedValues(ssContent, results, serverInfoContent, jobContent, viewContent, argvals.get('results_file'))
     realize(valuesForTemplate, ssContent, sessionKey, namespace, owner, argvals)
     #Creation of the email object that is to be populated in the build
@@ -458,7 +505,7 @@ def sendEmail(results, settings, keywords, argvals):
     jobCount = getJobCount(jobContent)
     #attachments must be built before body so body can inlclude errors cause by attachments but
     #must actually be attached after body
-    toAttach = buildAttachments(settings, ssContent, resultsWithRenderedTime, email, jobCount)
+    toAttach = buildAttachments(settings, ssContent, resultsWithRenderedTime, email, jobCount, argvals)
     buildPlainTextBody(ssContent, resultsWithRenderedTime, settings, emailBody, jobCount)
 
     if isHtmlBasedContentType:
@@ -469,7 +516,7 @@ def sendEmail(results, settings, keywords, argvals):
         email.attach(attachment)
 
     try:
-        mail(email, argvals, ssContent, sessionKey)
+        mail(email, argvals, ssContent, sessionKey, namespace)
     except Exception as e:
         errorMessage = str(e) + ' while sending mail to: ' + ssContent.get("action.email.to")
         logger.error(errorMessage)
@@ -578,7 +625,7 @@ def setUserCrendentials(argvals, settings):
         sessionKey = settings['sessionKey']
 
         username, password = getCredentials(sessionKey, namespace)
-         
+        
         argvals['username'] = username
         argvals['password'] = password
 
@@ -655,6 +702,16 @@ def buildHTMLBody(ssContent, results, settings, emailbody, email, jobCount):
                 name=ssContent.get('name'),
                 include_search=normalizeBoolean(ssContent.get('action.email.include.search')),
                 ssquery=ssContent.get('search'),
+                include_smaDefinition=normalizeBoolean(ssContent.get('action.email.include.smaDefinition')),
+                smaIndexes=ssContent.get('metric_indexes'),
+                smaFilter=ssContent.get('filter'),
+                smaGroupby=ssContent.get('groupby'),
+                smaCondition=ssContent.get('condition'),
+                smaThreshold=ssContent.get('trigger.threshold'),
+                smaSuppress=ssContent.get('trigger.suppress'),
+                smaEvaluationPerGroup=ssContent.get('trigger.evaluation_per_group'),
+                smaActionPerGroup=ssContent.get('trigger.action_per_group'),
+                smaTriggerPrepare=ssContent.get('trigger.prepare'),
                 alert_type=ssContent.get('alert_type'),
                 include_trigger=normalizeBoolean(ssContent.get('action.email.include.trigger')),
                 include_inline=normalizeBoolean(ssContent.get('action.email.inline')),
@@ -713,6 +770,51 @@ def htmlMetaDataSSTemplate():
         % if ssquery and include_search:    
         <tr>
             <th style="font-weight: normal; text-align: left; padding: 0 20px 10px 0;">Search String:</th><td style="padding: 0 0 10px 0;">${ssquery|h}</td>
+        </tr>
+        % endif
+        % if smaIndexes and include_smaDefinition:    
+        <tr>
+            <th style="font-weight: normal; text-align: left; padding: 0 20px 10px 0;">metric_indexes:</th><td style="padding: 0 0 10px 0;">${smaIndexes|h}</td>
+        </tr>
+        % endif
+        % if smaFilter and include_smaDefinition:    
+        <tr>
+            <th style="font-weight: normal; text-align: left; padding: 0 20px 10px 0;">filter:</th><td style="padding: 0 0 10px 0;">${smaFilter|h}</td>
+        </tr>
+        % endif
+        % if smaGroupby and include_smaDefinition:    
+        <tr>
+            <th style="font-weight: normal; text-align: left; padding: 0 20px 10px 0;">groupby:</th><td style="padding: 0 0 10px 0;">${smaGroupby|h}</td>
+        </tr>
+        % endif
+        % if smaCondition and include_smaDefinition:    
+        <tr>
+            <th style="font-weight: normal; text-align: left; padding: 0 20px 10px 0;">condition:</th><td style="padding: 0 0 10px 0;">${smaCondition|h}</td>
+        </tr>
+        % endif
+        % if smaThreshold and include_smaDefinition:    
+        <tr>
+            <th style="font-weight: normal; text-align: left; padding: 0 20px 10px 0;">trigger.threshold:</th><td style="padding: 0 0 10px 0;">${smaThreshold|h}</td>
+        </tr>
+        % endif
+        % if smaSuppress and include_smaDefinition:    
+        <tr>
+            <th style="font-weight: normal; text-align: left; padding: 0 20px 10px 0;">trigger.suppress:</th><td style="padding: 0 0 10px 0;">${smaSuppress|h}</td>
+        </tr>
+        % endif
+        % if smaEvaluationPerGroup and include_smaDefinition:    
+        <tr>
+            <th style="font-weight: normal; text-align: left; padding: 0 20px 10px 0;">trigger.evaluation_per_group:</th><td style="padding: 0 0 10px 0;">${smaEvaluationPerGroup|h}</td>
+        </tr>
+        % endif
+        % if smaActionPerGroup and include_smaDefinition:    
+        <tr>
+            <th style="font-weight: normal; text-align: left; padding: 0 20px 10px 0;">trigger.action_per_group:</th><td style="padding: 0 0 10px 0;">${smaActionPerGroup|h}</td>
+        </tr>
+        % endif
+        % if smaTriggerPrepare and include_smaDefinition:    
+        <tr>
+            <th style="font-weight: normal; text-align: left; padding: 0 20px 10px 0;">trigger.prepare:</th><td style="padding: 0 0 10px 0;">${smaTriggerPrepare|h}</td>
         </tr>
         % endif
         % if include_trigger and name and alert_type and ssType == "alert":
@@ -807,10 +909,10 @@ def htmlTableTemplate():
                         <td style="text-align: left; padding: 4px 8px; margin-top: 0px; margin-bottom: 0px; border-bottom: 1px dotted #c3cbd4;">
                             % if isinstance(result.get(col), list):
                                 % for val in result.get(col):
-                                    <pre style="font-family: helvetica, arial, sans-serif; white-space: pre-wrap; margin: 0;">${val|h}</pre>
+                                    <pre style="font-family: helvetica, arial, sans-serif; white-space: pre-wrap; margin:0px;">${val|h}</pre>
                                 % endfor
                             % else:
-                                <pre style="font-family: helvetica, arial, sans-serif; white-space: pre-wrap; margin: 0;">${result.get(col)|h}</pre>
+                                <pre style="font-family: helvetica, arial, sans-serif; white-space: pre-wrap; margin:0px;">${result.get(col)|h}</pre>
                             % endif
                         </td>
                     % endfor
@@ -892,6 +994,16 @@ def buildPlainTextBody(ssContent, results, settings, email, jobCount):
                 name=ssContent.get('name'),
                 include_search=normalizeBoolean(ssContent.get('action.email.include.search')),
                 ssquery=ssContent.get('search'),
+                include_smaDefinition=normalizeBoolean(ssContent.get('action.email.include.smaDefinition')),
+                smaIndexes=ssContent.get('metric_indexes'),
+                smaFilter=ssContent.get('filter'),
+                smaGroupby=ssContent.get('groupby'),
+                smaCondition=ssContent.get('condition'),
+                smaThreshold=ssContent.get('trigger.threshold'),
+                smaSuppress=ssContent.get('trigger.suppress'),
+                smaEvaluationPerGroup=ssContent.get('trigger.evaluation_per_group'),
+                smaActionPerGroup=ssContent.get('trigger.action_per_group'),
+                smaTriggerPrepare=ssContent.get('trigger.prepare'),
                 alert_type=ssContent.get('alert_type'),
                 include_trigger=normalizeBoolean(ssContent.get('action.email.include.trigger')),
                 include_inline=normalizeBoolean(ssContent.get('action.email.inline')),
@@ -931,6 +1043,33 @@ ${ssType.capitalize()} Location:   ${view_link}
 % endif
 % if ssquery and include_search:    
 Search String:    ${ssquery}
+% endif
+% if smaIndexes and include_smaDefinition:    
+metric_indexes:    ${smaIndexes}
+% endif
+% if smaFilter and include_smaDefinition:    
+filter:    ${smaFilter}
+% endif
+% if smaGroupby and include_smaDefinition:    
+groupby:    ${smaGroupby}
+% endif
+% if smaCondition and include_smaDefinition:    
+condition:    ${smaCondition}
+% endif
+% if smaThreshold and include_smaDefinition:    
+trigger.threshold:    ${smaThreshold}
+% endif
+% if smaSuppress and include_smaDefinition:    
+trigger.suppress:    ${smaSuppress}
+% endif
+% if smaEvaluationPerGroup and include_smaDefinition:    
+trigger.evaluation_per_group:    ${smaEvaluationPerGroup}
+% endif
+% if smaActionPerGroup and include_smaDefinition:    
+trigger.action_per_group:    ${smaActionPerGroup}
+% endif
+% if smaTriggerPrepare and include_smaDefinition:    
+trigger.prepare:    ${smaTriggerPrepare}
 % endif
 % if include_trigger and name and alert_type and ssType == "alert":
     % if alert_type == "number of events":
@@ -1116,11 +1255,12 @@ No results found.
 ''')
 
 
-def buildAttachments(settings, ssContent, results, email, jobCount):
+def buildAttachments(settings, ssContent, results, email, jobCount, argvals):
     toAttach    = []
     ssContent['errorArray'] = []
     sendpdf     = normalizeBoolean(ssContent.get('action.email.sendpdf', False))
     sendcsv     = normalizeBoolean(ssContent.get('action.email.sendcsv', False))
+    allowEmpty  = normalizeBoolean(ssContent.get('action.email.allow_empty_attachment', False))
     sendresults = normalizeBoolean(ssContent.get('action.email.sendresults', False))
     inline      = normalizeBoolean(ssContent.get('action.email.inline', False))
     inlineFormat= ssContent.get('action.email.format')
@@ -1157,35 +1297,39 @@ def buildAttachments(settings, ssContent, results, email, jobCount):
 
     if sendpdf:
 
-        import splunk.pdf.availability as pdf_availability
-        pdfgen_available = pdf_availability.is_available(session_key=sessionKey)
-        logger.info("sendemail pdfgen_available = %s" % pdfgen_available)
+        sendtestemail = normalizeBoolean(argvals.get('sendtestemail', False))
+        if len(results) == 0 and not allowEmpty and not sendtestemail:
+            logger.info("Not attaching pdf file due to no matching results and allow_empty_attachment=%s" % str(allowEmpty))
+        else:
+            import splunk.pdf.availability as pdf_availability
+            pdfgen_available = pdf_availability.is_available(session_key=sessionKey)
+            logger.info("pdfgen_available = %s" % pdfgen_available)
 
-        try:
-            if pdfgen_available:
-                # will raise an Exception on error
-                pdf = generatePDF(server, subject, searchid, settings, pdfview, ssName, paperSize, paperOrientation, pdfLogoPath)
-        except Exception as e:
-            logger.error("An error occurred while generating a PDF: %s" % e)
-            ssContent['errorArray'].append("An error occurred while generating the PDF. Please see python.log for details.")
+            try:
+                if pdfgen_available:
+                    # will raise an Exception on error
+                    pdf = generatePDF(server, subject, searchid, settings, pdfview, ssName, paperSize, paperOrientation, pdfLogoPath)
+            except Exception as e:
+                logger.error("An error occurred while generating a PDF: %s" % e)
+                ssContent['errorArray'].append("An error occurred while generating the PDF. Please see python.log for details.")
 
-        if pdf:
-            # build up filename to use with attachments
-            props = {
-                "owner": owner or 'nobody',
-                "app": namespace,
-                "type": "dashboard" if pdfview else type or "report",
-                "name": pdfview or ssName
-            }
-            filename = pu.makeReportName(pattern=fileName, type="pdf", reportProps=props)
-            pdf.add_header('content-disposition', 'attachment', filename=filename)
-            toAttach.append(pdf)
+            if pdf:
+                # build up filename to use with attachments
+                props = {
+                    "owner": owner or 'nobody',
+                    "app": namespace,
+                    "type": "dashboard" if pdfview else type or "report",
+                    "name": pdfview or ssName
+                }
+                filename = pu.makeReportName(pattern=fileName, type="pdf", reportProps=props)
+                pdf.add_header('content-disposition', 'attachment', filename=filename)
+                toAttach.append(pdf)
+
     # (type == searchCommand and sendresults and not inline) needed for backwards compatibility
     # (sendresults and not(sendcsv or sendpdf or inline) and inlineFormat == 'csv') 
     #       needed for backwards compatibility when we did not have sendcsv pre 6.1 SPL-79561
-    # SPL-169899 skip the attachment if there are no results.
-    if len(results) == 0:
-        logger.info("buildAttachments: not attaching csv as there are no results")
+    if len(results) == 0 and not allowEmpty:
+        logger.info("Not attaching csv file due to no matching results and allow_empty_attachment=%s" % str(allowEmpty))
     elif (sendcsv or (type == 'searchCommand' and sendresults and not inline) or (sendresults and not(sendcsv or sendpdf or inline) and inlineFormat == 'csv')):
         csvAttachment = MIMEBase("text", "csv")
         # SPL-179427 add choice whether to escape newlines
@@ -1206,6 +1350,7 @@ def buildAttachments(settings, ssContent, results, email, jobCount):
                 ssContent['errorArray'].append("Only the first %s of %s results are included in the attached csv." %(len(results), jobCount))
             else:
                 ssContent['errorArray'].append("Attached csv results have been truncated.")
+
     return toAttach
 
 def esc(val):
@@ -1213,7 +1358,7 @@ def esc(val):
 
 def generateCSVResults(results, escapeCSVNewline):
     if len(results) == 0:
-        return ''
+        return 'No matching events found.'
 
     header = []
     s = BytesIO()
@@ -1221,7 +1366,7 @@ def generateCSVResults(results, escapeCSVNewline):
         t = TextIOWrapper(s, write_through = True, encoding='utf-8')
         w = csv.writer(t)
     else:
-        w = csv.writer(s)    
+        w = csv.writer(s)
     
     
     if "_time" in results[0] : header.append("_time")
@@ -1310,7 +1455,7 @@ def generatePDF(serverURL, subject, sid, settings, pdfViewID, ssName, paperSize,
         parameters['now'] = scheduledJobEffectiveTime  
  
     try:
-        response, content = simpleRequest("pdfgen/render", sessionKey = sessionKey, getargs = parameters, timeout = PDFGEN_SIMPLE_REQUEST_TIMEOUT)
+        response, content = simpleRequest("pdfgen/render", sessionKey = sessionKey, postargs = parameters, timeout = SIMPLE_REQUEST_TIMEOUT)
 
     except splunk.SplunkdConnectionException as e:
         raise PDFException("Failed to fetch PDF (SplunkdConnectionException): %s" % str(e))
@@ -1346,9 +1491,25 @@ def getEffectiveTimeOfScheduledJob(scheduledJobSid):
 
 def getCredentials(sessionKey, namespace):
    try:
-      ent = entity.getEntity('admin/alert_actions', 'email', namespace=namespace, owner='nobody', sessionKey=sessionKey)
-      if 'auth_username' in ent and 'clear_password' in ent:
-          return ent['auth_username'], ent['clear_password']
+      # use POST with arg show_password=true to the admin/alert-actions endpoint to disclose credentials for setUserCredentials()
+      # passing single flag arg 'show_password=true' to reveal credential from AlertActionsHandler:handleList()
+      uri = 'admin/alert_actions/email'
+      response, content = simpleRequest(uri, method='POST', postargs={'show_password': True, 'output_mode': 'json'}, sessionKey=sessionKey)
+
+      # invalid server response status check
+      if response['status']!='200':
+          logger.error('getCredentials - unable to retrieve credentials; check simpleRequest response')
+          return None
+      
+      # parse credentials from servercontent response by using show_password flag in simpleRequest
+      contentJson = json.loads(content)
+      userCredentials = contentJson['entry'][0]['content']
+
+      auth_username  = userCredentials.get('auth_username')
+      clear_password = userCredentials.get('clear_password')
+      if auth_username and clear_password:
+          return auth_username, clear_password
+
    except Exception as e:
       logger.error("Could not get email credentials from splunk, using no credentials. Error: %s" % (str(e)))
 
@@ -1405,9 +1566,11 @@ def sendHealthAlertEmail(results, settings):
     email['Subject'] = Header(results[0].get('subject'), CHARSET)
     plainMsg = results[0].get('plain_msg')
     email.attach(MIMEText(plainMsg, 'plain', _charset=CHARSET))
+    
+    namespace = settings.get('namespace')    
 
     try:
-        mail(email, argvals, alertConfig, sessionKey)
+        mail(email, argvals, alertConfig, sessionKey, namespace)
     except Exception as e:
         errorMessage = 'Error sending Health Report alert. Error="%s".' % e
         logger.error(errorMessage)
@@ -1419,7 +1582,7 @@ results, dummyresults, settings = splunk.Intersplunk.getOrganizedResults()
 try:
     keywords, argvals = splunk.Intersplunk.getKeywordsAndOptions(CHARSET)
 
-    logger.debug('SENDEMAIL argvals %s' % argvals)
+    logger.debug('SENDEMAIL keywords: %s, argvals: %s' % (keywords, argvals))
 
     if 'is_health_alert' in argvals:
         results = sendHealthAlertEmail(results, settings)

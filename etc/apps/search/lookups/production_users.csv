@@ -1,7 +1,0 @@
-"user_role",users,count,"access_roles","privileged_user"
-admins,belinda,0,"development_fullcourse","privileged_account"
-admins,eliza,0,"development_fullcourse","privileged_account"
-admins,mercy,0,"development_fullcourse","privileged_account"
-"non-admins",chimwemwe,0,"development_fullcourse","non_privileged_account"
-"non-admins",ken,0,"development_fullcourse","non_privileged_account"
-"non-admins",martha,0,"development_fullcourse","non_privileged_account"

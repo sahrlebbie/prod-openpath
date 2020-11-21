@@ -1,6 +1,6 @@
 <endpoint name="systemsettings" showOnSearchHeadCluster="0">
   <capabilities>
-      <read>admin_all_objects OR edit_server OR (list_deployment_client AND edit_deployment_client)</read>
+      <read>admin_all_objects OR edit_server OR (list_deployment_client AND edit_deployment_client) OR edit_global_banner</read>
   </capabilities>
   <header></header>
   <menu name="system_configurations">

@@ -12,7 +12,7 @@ import Modal from '@splunk/react-ui/Modal';
 import Message from '@splunk/react-ui/Message';
 import Text from '@splunk/react-ui/Text';
 import WaitSpinner from '@splunk/react-ui/WaitSpinner';
-import * as Utils from 'splunk_monitoring_console/views/landing/bookmark/Utils';
+import * as Utils from './Utils';
 import './BookmarkModal.pcss';
 
 export const BOOKMARKS_ENDPOINT = 'saved/bookmarks/monitoring_console';
@@ -83,29 +83,27 @@ class BookmarkModal extends Component {
     /**
      *
      */
-     handleTextChange = (e, {name, value}) => {
+    handleTextChange = (e, { name, value }) => {
         const newState = this.state;
         newState[name] = value;
         this.setState(newState);
-     }
+    }
 
     /**
      * Validate the url and label.
      * Then either save or display errors to the user.
      */
     handleSubmit = () => {
-        const labels = this.state.bookmarks.map(bookmark => {
-            return bookmark.label;
-        });
-        const labelErrorMsg = Utils.validateLabel(this.state.label, labels, true);
-        const urlErrorMsg = Utils.validateUrl(this.state.url);
+        const labels = this.state.bookmarks.map(bookmark => bookmark.label);
+        const labelErrorMsgCurr = Utils.validateLabel(this.state.label, labels, true);
+        const urlErrorMsgCurr = Utils.validateUrl(this.state.url);
         this.setState({
-            labelErrorMsg: labelErrorMsg,
-            labelError: !isEmpty(labelErrorMsg),
-            urlErrorMsg: urlErrorMsg,
-            urlError: !isEmpty(urlErrorMsg),
+            labelErrorMsg: labelErrorMsgCurr,
+            labelError: !isEmpty(labelErrorMsgCurr),
+            urlErrorMsg: urlErrorMsgCurr,
+            urlError: !isEmpty(urlErrorMsgCurr),
         });
-        if (labelErrorMsg || urlErrorMsg) {
+        if (labelErrorMsgCurr || urlErrorMsgCurr) {
             return;
         }
         this.saveBookmark();
@@ -126,25 +124,24 @@ class BookmarkModal extends Component {
             output_mode: 'json',
         };
 
-        fetch(createRESTURL(BOOKMARKS_ENDPOINT, {app: MC_APP}), {
+        fetch(createRESTURL(BOOKMARKS_ENDPOINT, { app: MC_APP }), {
             ...defaultFetchInit,
             method: 'POST',
             body: querystring.encode(data),
         })
-        .then((response) => {
+        .then((response) => {  // eslint-disable-line no-unused-vars
             this.props.bookmarks.fetch().done(() => {
                 this.handleClose();
             });
         }) // TODO(claral): this silently fails when the user enters an existing name.
         .catch((response) => {
-            let msg = _('Encountered errors while updating Bookmarks');
             if (response.responseJSON.messages && response.responseJSON.messages.length > 0) {
                 const messageObj = response.responseJSON.messages[0];
                 this.setState({
                     isWorking: false,
                     backendErrorMsg: splunkUtil.sprintf(_('%s: %s'), messageObj.type, messageObj.text),
                     backendError: true,
-                })
+                });
             }
         });
     }
@@ -155,19 +152,19 @@ class BookmarkModal extends Component {
     render() {
         return (
             <div
-                data-test-name='bookmarks-button'
+                data-test-name="bookmarks-button"
             >
                 <Button
-                    appearance='primary'
+                    appearance="primary"
                     disabled={(this.state.bookmarks.length >= 6)}
                     label={_('Add Deployment')}
                     onClick={this.handleOpen}
                 />
                 <Modal
-                    data-test-name='bookmark-modal'
+                    data-test-name="bookmark-modal"
                     onRequestClose={this.state.isWorking ? null : this.handleClose}
                     open={this.state.open}
-                    className='bookmark-modal'
+                    className="bookmark-modal"
                 >
                     <Modal.Header
                         title={_('Add Deployment')}
@@ -177,7 +174,7 @@ class BookmarkModal extends Component {
                         {this.state.backendError ?
                             <Message
                                 fill
-                                type='error'
+                                type="error"
                             >
                                 {this.state.backendErrorMsg}
                             </Message> : null
@@ -185,7 +182,7 @@ class BookmarkModal extends Component {
                         <ControlGroup
                             labelWidth={LABEL_WIDTH}
                             label={_('Label')}
-                            data-test='BookmarkLabel'
+                            data-test="BookmarkLabel"
                             help={this.state.labelErrorMsg}
                             error={this.state.labelError}
                         >
@@ -193,7 +190,7 @@ class BookmarkModal extends Component {
                                 disabled={this.state.isWorking}
                                 error={this.state.labelError}
                                 value={this.state.label}
-                                name='label'
+                                name="label"
                                 onChange={this.handleTextChange}
                                 autoComplete={false}
                             />
@@ -202,7 +199,7 @@ class BookmarkModal extends Component {
                         <ControlGroup
                             labelWidth={LABEL_WIDTH}
                             label={_('URL')}
-                            data-test='BookmarkURL'
+                            data-test="BookmarkURL"
                             help={this.state.urlErrorMsg}
                             error={this.state.urlError}
                         >
@@ -210,7 +207,7 @@ class BookmarkModal extends Component {
                                 disabled={this.state.isWorking}
                                 error={this.state.urlError}
                                 value={this.state.url}
-                                name='url'
+                                name="url"
                                 onChange={this.handleTextChange}
                                 autoComplete={false}
                             />
@@ -218,19 +215,19 @@ class BookmarkModal extends Component {
                     </Modal.Body>
                     { this.state.wait ?
                         <Modal.Footer>
-                            <WaitSpinner size='medium' />
+                            <WaitSpinner size="medium" />
                         </Modal.Footer> :
                         <Modal.Footer>
                             <Button
-                                appearance='secondary'
-                                data-test-name='cancel-button'
+                                appearance="secondary"
+                                data-test-name="cancel-button"
                                 onClick={this.handleClose}
                                 disabled={this.state.isWorking}
                                 label={_('Cancel')}
                             />
                             <Button
-                                appearance='primary'
-                                data-test-name='save-button'
+                                appearance="primary"
+                                data-test-name="save-button"
                                 onClick={this.handleSubmit}
                                 disabled={this.state.isWorking}
                                 label={_('Submit')}

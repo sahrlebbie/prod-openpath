@@ -180,7 +180,7 @@ define([
                     "managerid": "instanceSearchManager",
                     'drilldown': 'none',
                     'wrap': 'true',
-                    'pageSize': '25',
+                    'pageSize': '10',
                     "el": this.$el.find('#dmc-instances-listing'),
                     "sortableFieldsExcluded": ['Role']
                 }, {tokens: true});

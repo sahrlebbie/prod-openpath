@@ -1,3 +1,0 @@
-In this example we're using search event handlers to calculate new tokens on the search `<progress>` event. We use the `strptime()` and `strftime()` dashboard-eval functions to parse the effective time range (`$job.earliestTime$` and `$job.latestTime$`) of the search and format it to our preference.
-
-**Note**: The formatted time will reflect the browser's time zone, not the time zone configured for the Splunk user.

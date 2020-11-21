@@ -420,12 +420,13 @@
       </input>
       <chart>
         <searchString>
-`dmc_set_index_introspection` host=$host$ component=kvstoreserverstats
-| bin _time minspan=30s
-| stats first(data.opcounters.command) AS command first(data.opcounters.update) as update first(data.opcounters.query) as query first(data.opcounters.delete) as delete first(data.opcounters.getmore) as getmore first(data.opcounters.insert) as insert by _time
-| streamstats window=2 range(*) as r_*
-| timechart minspan=30s per_minute(r_*) AS *
-| fields _time $operationToChart$
+          `dmc_set_index_introspection` host=$host$ component=kvstoreserverstats
+          | bin _time minspan=30s
+          | stats first(data.opcounters.command) AS command first(data.opcounters.update) as update first(data.opcounters.query) as query first(data.opcounters.delete) as delete first(data.opcounters.getmore) as getmore first(data.opcounters.insert) as insert by _time
+          | streamstats window=2 range(*) as r_*
+          | timechart minspan=30s per_minute(r_*) AS original_*
+          | rename original_* as *
+          | fields _time $operationToChart$
         </searchString>
         <earliestTime>$time.earliest$</earliestTime>
         <latestTime>$time.latest$</latestTime>
@@ -470,12 +471,13 @@
       </input>
       <chart>
         <searchString>
-`dmc_set_index_introspection` host=$host$ component=kvstoreserverstats
-| bin _time minspan=30s
-| stats first(data.asserts.msg) AS msg first(data.asserts.regular) as regular first(data.asserts.rollovers) as rollovers first(data.asserts.user) as user first(data.asserts.warning) as warning by _time
-| streamstats window=2 range(*) as r_*
-| timechart minspan=30s per_minute(r_*) AS *
-| fields _time $assertType$
+          `dmc_set_index_introspection` host=$host$ component=kvstoreserverstats
+          | bin _time minspan=30s
+          | stats first(data.asserts.msg) AS msg first(data.asserts.regular) as regular first(data.asserts.rollovers) as rollovers first(data.asserts.user) as user first(data.asserts.warning) as warning by _time
+          | streamstats window=2 range(*) as r_*
+          | timechart minspan=30s per_minute(r_*) AS original_*
+          | rename original_* as *
+          | fields _time $assertType$
         </searchString>
         <earliestTime>$time.earliest$</earliestTime>
         <latestTime>$time.latest$</latestTime>

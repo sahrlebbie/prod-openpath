@@ -135,6 +135,7 @@ class OutputTelemetryCommand(ReportingCommand):
             found_results += 1
             error = None
             event_str = None
+            response = None
             try:
                 event = json.loads(result[self.input])
 
@@ -153,13 +154,13 @@ class OutputTelemetryCommand(ReportingCommand):
                     event["visibility"] = [k for k in self.visibility_options if self.visibility_options[k] is True]
 
                 event_str = json.dumps(event)
-                self.make_telemetry_request(event_str)
+                response = self.make_telemetry_request(event_str)
 
             except ValueError:
                 error = ERROR_INVALID_JSON
             except binding.HTTPError as http_error:
                 if http_error.status == 429:
-                    error = self.retry_telemetry_request(error, event_str)
+                    response, error = self.retry_telemetry_request(error, event_str)
                 else:
                     error = self.format_error_message(http_error)
 
@@ -171,6 +172,8 @@ class OutputTelemetryCommand(ReportingCommand):
 
             yield {
                 "event": event_str,
+                "telemetry_response":
+                    response.body.readall().decode("utf-8") if response is not None else "",
                 "telemetry_send_status":
                     error if error is not None else "submitted"
             }
@@ -184,15 +187,14 @@ class OutputTelemetryCommand(ReportingCommand):
         retry_count = TELEMETRY_REQUEST_RETRY_TIMES
         while retry_count > 0:
             try:
-                self.make_telemetry_request(event_str)
-                return None
+                return self.make_telemetry_request(event_str), None
             except binding.HTTPError as http_error:
                 if http_error.status == 429:
                     retry_count -= 1
                     continue
                 else:
-                    return http_error.message
-        return error
+                    return None, http_error.message
+        return None, error
 
     def format_error_message(self, http_error):
         if http_error.status in HTTP_ERRORS:
@@ -202,7 +204,7 @@ class OutputTelemetryCommand(ReportingCommand):
         return str(http_error)
 
     def make_telemetry_request(self, event_str):
-        self.service.request(
+        return self.service.request(
             "/servicesNS/" + self._metadata.searchinfo.owner + "/" +
             self._metadata.searchinfo.app + "/telemetry-metric",
             method="POST",

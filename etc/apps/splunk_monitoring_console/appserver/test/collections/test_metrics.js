@@ -55,7 +55,7 @@ function (
             assert.strictEqual(deferred.state(), "resolved", 'request should be resolved');
 
             metrics = this.metrics.getMetrics();
-            assert.equal(Object.keys(metrics).length, 7, 'should contain 7 metrics');
+            assert.equal(Object.keys(metrics).length, 9, 'should contain 9 metrics');
         });
 
         test('test getEnabledMetrics', function() {
@@ -72,7 +72,7 @@ function (
             assert.strictEqual(deferred.state(), "resolved", 'request should be resolved');
 
             metrics = this.metrics.getEnabledMetrics();
-            assert.equal(Object.keys(metrics).length, 3, 'should contain 3 metrics');
+            assert.equal(Object.keys(metrics).length, 4, 'should contain 4 enabled metrics');
         });
     });
 });

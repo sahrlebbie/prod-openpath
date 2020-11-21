@@ -28,6 +28,9 @@
               <choice value="">All time</choice>
               <default>-60m@m</default>
           </input>
+          <html>
+            <p><b>Note:</b> A forwarder is "missing" if it does not connect to indexers for 15 minutes. Forwarder status takes 30 minutes minimum to reflect a monitoring data collection interval of 15 minutes, and higher intervals can take longer.</p>
+          </html>
       </panel>
   </row>
 
@@ -134,9 +137,6 @@
          <set token="show_instance_data_rate">true</set>
         </drilldown>
       </table>
-      <html>
-        <p><b>Note:</b> A forwarder shows a status of "missing" if it has not connected to the indexer within 15 minutes.</p>
-      </html>
     </panel>
   </row>
 

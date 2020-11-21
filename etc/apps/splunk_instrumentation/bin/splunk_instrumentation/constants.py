@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 import random
-
 import os
 import sys
 import json
@@ -99,6 +98,11 @@ if INST_MODE == "DEV":
     if not os.environ.get("SPLUNK_DB"):
         os.environ['SPLUNK_DB'] = os.path.join(os.environ.get('SPLUNK_HOME') + 'var', 'lib', 'splunk')
     INST_PRE_EXECUTE_SLEEP = 1
-    if not os.environ.get('INST_KEY'):
+    if os.environ.get("SPLUNK_USERNAME"):
+        SPLUNKRC = {
+            "username": os.environ.get("SPLUNK_USERNAME"),
+            "password": os.environ.get("SPLUNK_PASSWORD")
+        }
+    elif not os.environ.get('INST_KEY'):
         rc_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'splunkrc.json')
         SPLUNKRC = json.loads(open(rc_file, 'r').read())

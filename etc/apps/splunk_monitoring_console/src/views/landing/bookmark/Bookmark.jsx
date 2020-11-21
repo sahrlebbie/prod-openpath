@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from '@splunk/react-ui/Link';
 import List from '@splunk/react-ui/List';
-import BookmarkModal from 'splunk_monitoring_console/views/landing/bookmark/BookmarkModal';
-import * as Utils from 'splunk_monitoring_console/views/landing/bookmark/Utils';
+import BookmarkModal from './BookmarkModal';
+import * as Utils from './Utils';
 import './Bookmark.pcss';
 
-class BookmarkPanel extends Component{
+class BookmarkPanel extends Component {
     static propTypes = {
         bookmarks: PropTypes.shape({
             fetch: PropTypes.func,
@@ -33,7 +33,7 @@ class BookmarkPanel extends Component{
     }
 
     /**
-     * 
+     * Handle the modal close.
      */
     handleModalClose = () => {
         this.updateBookmarks();
@@ -44,21 +44,21 @@ class BookmarkPanel extends Component{
      */
     render() {
         return (
-            <div className='bookmarks'>
+            <div className="bookmarks">
                 <List>
-                {this.state.bookmarks.map(row => (
-                    <List.Item key={row.id}>
-                        <Link
-                            data-test-name="deployment-link"
-                            to={row.url}
-                        >
-                            {row.label}
-                        </Link>
-                    </List.Item>
-                ))}
+                    {this.state.bookmarks.map(row => (
+                        <List.Item key={row.id}>
+                            <Link
+                                data-test-name="deployment-link"
+                                to={row.url}
+                            >
+                                {row.label}
+                            </Link>
+                        </List.Item>
+                    ))}
                     <List.Item
                         key={-1}
-                        className='bookmarksBtn'
+                        className="bookmarksBtn"
                     >
                         <BookmarkModal
                             bookmarks={this.props.bookmarks}

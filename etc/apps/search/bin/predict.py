@@ -537,7 +537,7 @@ class TestPredict(unittest.TestCase):
         return (cols,results)
 
 
-    def test_predict(self, input_file, expect_output_file, query, fieldlist, timepattern=TIMEPATTERN, update=True):
+    def test_predict(self, input_file, expect_output_file, query, fieldlist, timepattern=TIMEPATTERN, update=False):
         ''' This function runs the given query using data from input_file and compares the result to expect_output_file.
         The rows in the result are restricted to the fields in fieldlist.
         Example: self.test_predict('NorFin.csv', "NorFin_out.csv', 'Nor Fin algorithm=LLP5', ['Nor','Fin'])

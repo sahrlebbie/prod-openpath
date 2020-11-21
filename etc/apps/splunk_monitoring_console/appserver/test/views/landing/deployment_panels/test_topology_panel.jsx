@@ -8,6 +8,14 @@ import EnzymeAdapterReact16 from 'enzyme-adapter-react-16';
 suite('MC Deployment Topology Panel Component', function () {
     setup(function () {
         configure({ adapter: new EnzymeAdapterReact16() });
+
+        // Mock XHR
+        this.xhr = sinon.useFakeXMLHttpRequest();
+        this.requests = [];
+        this.xhr.onCreate = function(xhr) {
+            this.requests.push(xhr);
+        }.bind(this);
+
         this.props = {
             appLocal: new AppLocalModel({
                 configured: 0,
@@ -27,6 +35,7 @@ suite('MC Deployment Topology Panel Component', function () {
         assert.ok(this.wrapper, 'Wrapper instantiated successfully');
     });
     teardown(function () {
+        this.xhr.restore();
         this.wrapper = null;
         this.inst = null;
         assert.ok(true, 'Teardown was successful');

@@ -11,6 +11,32 @@
         <earliestTime>-15m@m</earliestTime>
         <latestTime>now</latestTime>
       </default>
+      <change>
+         <!-- 
+          This condition is satisfied for any time selection which doesn't have empty value for
+          token $time.latest$ i.e. e.g. "All Time".
+         -->
+         <condition match="len($time.latest$)!=0">
+           <set token="latest_time">$time.latest$</set>
+         </condition>
+         <!-- 
+          This condition is satisfied when "All Time" is selected.
+          In this case, $time.latest$ will be set to empty string by the component.
+          This causes issue if token is used in a search for comparison value e.g. 'search field=$time.latest$ '  gets evaled as 'search field= '
+          To eliminate this issue, we use the $latest_time$ token set here e.g. 'search field=$latest_time$ '  gets evaled as 'search field="" '
+          This makes the search query complete and works fine.
+         -->
+         <condition  match="len($time.latest$)==0">
+           <set token="latest_time">""</set>
+         </condition>
+         <!-- 
+          This condition is satisfied for any time selection which doesn't meet above condition.
+          We set it to now, because the default component value for latestTime is now.
+         -->
+         <condition>
+          <set token="latest_time">now</set>
+         </condition>
+      </change>
     </input>
     <input type="dropdown" searchWhenChanged="true" token="dmc_group">
       <label>Group</label>
@@ -47,17 +73,19 @@
     <unset token="source"/>
     <unset token="sourcetype_text"/>
     <unset token="host_and_source_text"/>
+    <!-- If this is not set, it will remain an unset token $latest_time$ on first page load and query will not execute -->
+    <set token="latest_time">now</set>
   </init>
     <search id="distribution_base">
     <query>
-      (index=* OR index=_*) host=$host$ source=$source$ sourcetype=$sourcetype$ _index_earliest=$time.earliest$ _index_latest=$time.latest$
+      (index=* OR index=_*) host=$host$ source=$source$ sourcetype=$sourcetype$ _index_earliest=$time.earliest$ _index_latest=$latest_time$
       | search splunk_server=*
       | eval event_size = len(_raw)
       | eval time_disparity = (_indextime - _time) / 36000
       | stats count by linecount, event_size, time_disparity
     </query>
     <earliest>$time.earliest$</earliest>
-    <latest>now</latest>
+    <latest>$time.latest$</latest>
   </search>
   <row>
     <panel>
@@ -67,19 +95,21 @@
           <query>
             <![CDATA[
             `dmc_set_index_internal` search_group=dmc_group_indexer splunk_server=$splunk_server$ source=*splunkd.log*
-            (component=AggregatorMiningProcessor OR component=LineBreakingProcessor OR component=DateParserVerbose)
+            (component=AggregatorMiningProcessor OR component=LineBreakingProcessor OR component=DateParserVerbose OR component=MetricSchemaProcessor OR component=MetricsProcessor)
             (log_level=WARN OR log_level=ERROR)
             | rex field=event_message "Context: source(::|=)(?<context_source>[^\|]*?)\|host(::|=)(?<context_host>[^\|]*?)\|(?<context_sourcetype>[^\|]*?)\|"
             | eval data_source = if(isnull(data_source) AND isnotnull(context_source), context_source, data_source)
             | eval data_host = if(isnull(data_host) AND isnotnull(context_host), context_host, data_host)
             | eval data_sourcetype = if(isnull(data_sourcetype) AND isnotnull(context_sourcetype), context_sourcetype, data_sourcetype)
             | stats
-              count(eval(component=="LineBreakingProcessor" OR component=="DateParserVerbose" OR component=="AggregatorMiningProcessor")) as total_issues
+              count(eval(component=="LineBreakingProcessor" OR component=="DateParserVerbose" OR component=="AggregatorMiningProcessor" OR component=="MetricSchemaProcessor" OR component=="MetricsProcessor")) as total_issues
               dc(data_host) AS "Host Count"
               dc(data_source) AS "Source Count"
               count(eval(component=="LineBreakingProcessor")) AS "Line Breaking Issues"
               count(eval(component=="DateParserVerbose")) AS "Timestamp Parsing Issues"
-              count(eval(component=="AggregatorMiningProcessor")) AS "Aggregation Issues" by data_sourcetype
+              count(eval(component=="AggregatorMiningProcessor")) AS "Aggregation Issues"
+              count(eval(component=="MetricSchemaProcessor")) AS "Metric Schema Issues"
+              count(eval(component=="MetricsProcessor")) AS "Metrics Issues" by data_sourcetype
             | sort - total_issues
             | rename
               data_sourcetype as Sourcetype
@@ -105,6 +135,12 @@
           <condition field="Aggregation Issues">
             <link target="_blank">search?q=$sourcetype_search_string|u$ | search data_sourcetype=$row.Sourcetype$ component=AggregatorMiningProcessor &amp;earliest=$time.earliest$&amp;latest=$time.latest$</link>
           </condition>
+          <condition field="Metric Schema Issues">
+            <link target="_blank">search?q=$sourcetype_search_string|u$ | search data_sourcetype=$row.Sourcetype$ component=MetricSchemaProcessor &amp;earliest=$time.earliest$&amp;latest=$time.latest$</link>
+          </condition>
+          <condition field="Metrics Issues">
+            <link target="_blank">search?q=$sourcetype_search_string|u$ | search data_sourcetype=$row.Sourcetype$ component=MetricsProcessor &amp;earliest=$time.earliest$&amp;latest=$time.latest$</link>
+          </condition>
           <condition field="*">
 	            <link target="_blank">search?q=$sourcetype_search_string|u$ | search data_sourcetype=$row.Sourcetype$ &amp;earliest=$time.earliest$&amp;latest=$time.latest$</link>
           </condition>
@@ -112,12 +148,12 @@
       </table>
       <html rejects="$sourcetype_text$">
         <p>Clicking a source type shows issues by host and source, helping you locate the origin of this data.
-          <a data-set-token="sourcetype_text" data-value="true">[Show more info]</a>
+          <a href="#" data-set-token="sourcetype_text" data-value="true">[Show more info]</a>
         </p>
       </html>
       <html depends="$sourcetype_text$">
         <p>Clicking a source type shows issues by host and source, helping you locate the origin of this data.
-          <a data-unset-token="sourcetype_text">[Show less info]</a>
+          <a href="#" data-unset-token="sourcetype_text">[Show less info]</a>
         </p>
       </html>
       <html depends="$sourcetype_text$">
@@ -137,6 +173,14 @@
             Aggregation Issues - The number of lines per event exceeds the MAX_EVENTS setting in props.conf.
             <a href="/help?location=learnmore.monitoringconsole.dataquality.aggregation" class="external" target="_blank">Learn More.</a>
           </li>
+          <li>
+            Metric Schema Issues - The conversion of log events to metric data was partially or completely unsuccessful.
+            <a href="/help?location=settings.sourcetype.logtometrics" class="external" target="_blank">Learn More.</a>
+          </li>
+          <li>
+            Metrics Issues - The collection of metric data was partially or completely unsuccessful.
+            <a href="/help?location=learnmore.monitoringconsole.dataquality.metrics" class="external" target="_blank">Learn More.</a>
+          </li>
         </ul>
       </html>
     </panel>
@@ -149,7 +193,7 @@
           <query>
             <![CDATA[
             `dmc_set_index_internal` search_group=dmc_group_indexer splunk_server=$splunk_server$ source=*splunkd.log*
-            (component=AggregatorMiningProcessor OR component=LineBreakingProcessor OR component=DateParserVerbose)
+            (component=AggregatorMiningProcessor OR component=LineBreakingProcessor OR component=DateParserVerbose OR component=MetricSchemaProcessor OR component=MetricsProcessor)
             (log_level=WARN OR log_level=ERROR)
             | rex field=event_message "Context: source(::|=)(?<context_source>[^\|]*?)\|host(::|=)(?<context_host>[^\|]*?)\|(?<context_sourcetype>[^\|]*?)\|"
             | eval data_source = if(isnull(data_source) AND isnotnull(context_source), context_source, data_source)
@@ -157,10 +201,12 @@
             | eval data_sourcetype = if(isnull(data_sourcetype) AND isnotnull(context_sourcetype), context_sourcetype, data_sourcetype)
             | search data_sourcetype=$sourcetype$
             | stats
-              count(eval(component=="LineBreakingProcessor" OR component=="DateParserVerbose" OR component=="AggregatorMiningProcessor")) as total_issues
+              count(eval(component=="LineBreakingProcessor" OR component=="DateParserVerbose" OR component=="AggregatorMiningProcessor" OR component=="MetricSchemaProcessor" OR component="MetricsProcessor")) as total_issues
               count(eval(component=="LineBreakingProcessor")) AS "Line Breaking Issues"
               count(eval(component=="DateParserVerbose")) AS "Timestamp Parsing Issues"
-              count(eval(component=="AggregatorMiningProcessor")) AS "Aggregation Issues" by data_host, data_source
+              count(eval(component=="AggregatorMiningProcessor")) AS "Aggregation Issues"
+              count(eval(component=="MetricSchemaProcessor")) AS "Metric Schema Issues"
+              count(eval(component=="MetricsProcessor")) AS "Metrics Issues" by data_host, data_source
             | sort - total_issues
             | rename
               data_host as Host
@@ -192,6 +238,12 @@
           <condition field="Aggregation Issues">
             <link target="_blank">search?q=$host_and_source_search_string|u$ | search data_host=$row.Host$ data_source=$row.Source$ component=AggregatorMiningProcessor &amp;earliest=$time.earliest$&amp;latest=$time.latest$</link>
           </condition>
+          <condition field="Metric Schema Issues">
+            <link target="_blank">search?q=$sourcetype_search_string|u$ | search data_sourcetype=$row.Sourcetype$ component=MetricSchemaProcessor &amp;earliest=$time.earliest$&amp;latest=$time.latest$</link>
+          </condition>
+          <condition field="Metrics Issues">
+            <link target="_blank">search?q=$sourcetype_search_string|u$ | search data_sourcetype=$row.Sourcetype$ component=MetricsProcessor &amp;earliest=$time.earliest$&amp;latest=$time.latest$</link>
+          </condition>
           <condition field="*">
             <link target="_blank">search?q=$host_and_source_search_string|u$ | search data_host=$row.Host$ data_source=$row.Source$ &amp;earliest=$time.earliest$&amp;latest=$time.latest$</link>
           </condition>
@@ -200,13 +252,13 @@
       <html rejects="$host_and_source_text$">
         <p>
           Clicking a host or source shows statistics for events from that host and source.
-          <a data-set-token="host_and_source_text" data-value="true">[Show more info]</a>
+          <a href="#" data-set-token="host_and_source_text" data-value="true">[Show more info]</a>
         </p>
       </html>
       <html depends="$host_and_source_text$">
         <p>
           Clicking a host or source shows statistics for events from that host and source.
-          <a data-unset-token="host_and_source_text">[Show less info]</a>
+          <a href="#" data-unset-token="host_and_source_text">[Show less info]</a>
         </p>
       </html>
       <html depends="$host_and_source_text$">
@@ -226,10 +278,18 @@
             Aggregation Issues - The number of lines per event exceeds the MAX_EVENTS setting in props.conf.
             <a href="/help?location=learnmore.monitoringconsole.dataquality.aggregation" class="external" target="_blank">Learn More.</a>
           </li>
+          <li>
+            Metric Schema Issues - The conversion of log events to metric data was partially or completely unsuccessful.
+            <a href="/help?location=settings.sourcetype.logtometrics" class="external" target="_blank">Learn More.</a>
+          </li>
+          <li>
+            Metrics Issues - The collection of metric data was partially or completely unsuccessful.
+            <a href="/help?location=learnmore.monitoringconsole.dataquality.metrics" class="external" target="_blank">Learn More.</a>
+          </li>
         </ul>
       </html>
       <html>
-        <a data-unset-token="sourcetype">[Close this panel]</a>
+        <a href="#" data-unset-token="sourcetype">[Close this panel]</a>
       </html>
     </panel>
   </row>
@@ -249,7 +309,7 @@
           <a href="/help?location=learnmore.monitoringconsole.dataquality.linecount" class="external" target="_blank">Learn More.</a>
         </p>
         <p>
-          <a data-unset-token="host">[Close these panels]</a>
+          <a href="#" data-unset-token="host">[Close these panels]</a>
         </p>
       </html>
     </panel>

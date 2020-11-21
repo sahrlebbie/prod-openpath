@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2019 ORGANIZATION
+# Copyright (C) 2020 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-08-27 16:18-0700\n"
-"PO-Revision-Date: 2019-09-13 12:37+0100\n"
+"POT-Creation-Date: 2020-08-17 20:05+0000\n"
+"PO-Revision-Date: 2020-09-07 13:41+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,17 +16,40 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.1\n"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardPanel.jsx:87
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/build/storybook-bundle/vendors~main.e0df70734e05c354eb36.bundle.js:39
+msgid ""
+"\n"
+"  cursor: "
+msgstr ""
+"\n"
+"  cursore: "
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/build/storybook-bundle/vendors~main.e0df70734e05c354eb36.bundle.js:39
+msgid ""
+"\n"
+"  display: inline-block;\n"
+"  cursor: "
+msgstr ""
+"\n"
+"  visualizzazione: blocco in linea;\n"
+"  cursore: "
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/build/storybook-bundle/vendors~main.e0df70734e05c354eb36.bundle.js:6
+msgid " 0o1"
+msgstr " 0o1"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardPanel.jsx:89
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardPanel.jsx:90
 msgid " You may now view the dashboard."
 msgstr "È ora possibile visualizzare la dashboard."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Frequency.jsx:39
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Frequency.jsx:41
 msgid " minutes past the hour"
-msgstr "minuti dopo l'ora"
+msgstr " minuti dopo l'ora"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/webapp/pages/home/ConfigurationCheck.jsx:22
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/splunk_metrics_workspace/src/main/webapp/pages/home/ConfigurationCheck.jsx:22
 #, python-format
 msgid ""
 "# %(app_name)s Setup\n"
@@ -37,11 +60,11 @@ msgid ""
 msgstr ""
 "# Configurazione di %(app_name)s\n"
 "\n"
-"L'app **%(app_name)s** è utilizzata all'interno delle tue app esistenti, è necessario configurare la vista dell'app %(app_name)s per utilizzarla.\n"
+"**%(app_name)s** è in uso nelle app esistenti, occorre configurare l'app %(app_name)s per visualizzarlo.\n"
 "\n"
-"Per maggiori informazioni, consultare [%(base_url)s%(app_doc_link)s](%(base_url)s%(app_doc_link)s)"
+"Per maggiori informazioni vedere [%(base_url)s%(app_doc_link)s](%(base_url)s%(app_doc_link)s)"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/webapp/pages/version_check/index.jsx:16
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/splunk_metrics_workspace/src/main/webapp/pages/version_check/index.jsx:16
 #, python-format
 msgid ""
 "# Unable to launch app\n"
@@ -51,14 +74,14 @@ msgid ""
 "To use the %(app_name)s, you must upgrade Splunk.\n"
 "See [%(app_upgrade_url)s](%(app_upgrade_url)s) for more information."
 msgstr ""
-"# Impossibile avviare l'app\n"
+"# Lancio dell'app non riuscito\n"
 "\n"
-"L'app %(app_name)s richiede Splunk Enterprise versione **%(splunk_req_version)s** o successiva. Attualmente è in uso la versione %(splunk_curr_version)s.\n"
+"%(app_name)s richiede la versione Splunk Enterprise **%(splunk_req_version)s** o superiore. La versione attualmente in uso è %(splunk_curr_version)s.\n"
 "\n"
-"Per utilizzare %(app_name)s, è necessario aggiornare Splunk.\n"
-"Per maggiori informazioni, vedere [%(app_upgrade_url)s](%(app_upgrade_url)s)."
+"Per usare %(app_name)s, occorre effettuare l'upgrade di Splunk.\n"
+"Vedere [%(app_upgrade_url)s](%(app_upgrade_url)s) per maggiori informazioni."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/webapp/pages/home/index.jsx:18
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/splunk_metrics_workspace/src/main/webapp/pages/home/index.jsx:18
 #, python-format
 msgid ""
 "# Welcome!\n"
@@ -71,1582 +94,1949 @@ msgid ""
 msgstr ""
 "# Benvenuto!\n"
 "\n"
-"L'app **%(app_name)s** è utilizzata all'interno delle tue app esistenti, passa alla vista **%(app_view)s** per utilizzarla.\\\n"
+"**%(app_name)s** è in uso nelle app esistenti, andare nella vista **%(app_view)s** per utilizzarlo.\\\n"
 "%(base_url)s/app/{app-name}/%(app_view)s\n"
 "\n"
-"Se ti trovi già nell'app %(parent_app_name)s, fai clic sulla scheda **Analytics** per lanciare %(app_name)s.\\\n"
-"Per maggiori informazioni, consultare [%(base_url)s%(app_doc_link)s](%(base_url)s%(app_doc_link)s)"
+"Se ci si trova già nell'app %(parent_app_name)s, fare clic sulla scheda **Analytics** per lanciare %(app_name)s.\\\n"
+"Per maggiori informazioni vedere [%(base_url)s%(app_doc_link)s](%(base_url)s%(app_doc_link)s)"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:175
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/redux/alerting/alerting-actions.js:79
 #, python-format
-msgid "%(alertName)s created successfully."
-msgstr "%(alertName)s creato correttamente."
+msgid "%(alert)s created successfully."
+msgstr "%(alert)s creato correttamente."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:125
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:124
 #, python-format
 msgid "%(chartType)s Chart and Statistics Table"
-msgstr "Grafico %(chartType)s e tabella delle statistiche"
+msgstr "%(chartType)s grafico e tabella delle statistiche"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/DataPanel.jsx:206
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartPanel/Legend/Legend.jsx:196
+#, python-format
+msgid "%(itemName)s, Line color: %(itemColor)s"
+msgstr "%(itemName)s, Colore linea: %(itemColor)s"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisLabel.jsx:80
+#, python-format
+msgid "%(minString)s to %(maxString)s"
+msgstr "Da %(minString)s a %(maxString)s"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/DataPanel.jsx:336
 #, python-format
 msgid "%(number)s matches found"
 msgstr "%(number)s corrispondenze trovate"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/Section.jsx:17
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisLabel.jsx:92
+#, python-format
+msgid "%(sideString)s = %(yAxisString)s"
+msgstr "%(sideString)s = %(yAxisString)s"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/Section.jsx:16
 #, python-format
 msgid "%(title)s section"
-msgstr "Sezione %(title)s"
+msgstr "%(title)s sezione"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/GlobalControls/RefreshControl.jsx:32
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisLabel.jsx:87
+#, python-format
+msgid "%(valuesString)s, Log"
+msgstr "%(valuesString)s, Logaritmica"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/GlobalControls/RefreshControl.jsx:29
 #, python-format
 msgid "(%(duration)s to refresh)"
-msgstr "(%(duration)s all'aggiornamento)"
+msgstr "(%(duration)s per aggiornare)"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/GlobalControls/RefreshControl.jsx:40
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/GlobalControls/RefreshControl.jsx:37
 #, python-format
 msgid "(%(timePassed)s ago)"
 msgstr "(%(timePassed)s fa)"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/GlobalControls/RefreshControl.jsx:31
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/GlobalControls/RefreshControl.jsx:28
 msgid "(Refreshing)"
-msgstr "(Aggiornamento)"
+msgstr "(aggiornamento)"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertPanel/AlertPanel.jsx:22
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertPanel/AlertPanel.jsx:23
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartPanel/ChartPanel.jsx:251
 #, python-format
 msgid "(Time span=%(span)s)"
-msgstr "(Span temporale=%(span)s)"
+msgstr "(span temporale=%(span)s)"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/Hierarchies.jsx:62
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:55
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/build/storybook-bundle/main.aaee9aca1af307a2ec8f.bundle.js:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/build/workflow-headless/fixtures/common.js:237326
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/build/workflow-sauce/fixtures/common.js:237326
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/lib/index.js:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/HierarchyMenuItem.jsx:21
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:57
 msgid "(default)"
 msgstr "(default)"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Threshold.jsx:75
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Threshold.jsx:69
 #, python-format
 msgid "(over %(span)s intervals)"
-msgstr "(nel corso di %(span)s intervalli)"
+msgstr "(su %(span)s intervalli)"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/DataPanel.jsx:205
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/build/storybook-bundle/vendors~main.e0df70734e05c354eb36.bundle.js:6
+msgid "+0x1"
+msgstr "+0x1"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Multiselect/Compact.jsx:601
+msgid ", "
+msgstr ", "
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/build/storybook-bundle/vendors~main.e0df70734e05c354eb36.bundle.js:6
+msgid "0b1"
+msgstr "0b1"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/DataPanel.jsx:335
 msgid "1 match found"
 msgstr "1 corrispondenza trovata"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:24
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/view-utils.js:13
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:24
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/view-utils.js:13
 msgid "2 days ago"
 msgstr "2 giorni fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:22
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/view-utils.js:11
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:22
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/view-utils.js:11
 msgid "2 hours ago"
 msgstr "2 ore fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:23
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/view-utils.js:12
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:23
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/view-utils.js:12
 msgid "24 hours ago"
 msgstr "24 ore fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:20
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/view-utils.js:9
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:20
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/view-utils.js:9
 msgid "30 minutes ago"
 msgstr "30 minuti fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:21
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/view-utils.js:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:21
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/view-utils.js:10
 msgid "60 minutes ago"
 msgstr "60 minuti fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:25
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/view-utils.js:14
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:25
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/view-utils.js:14
 msgid "7 days ago"
 msgstr "7 giorni fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/GlobalControls/RefreshControl.jsx:149
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/GlobalControls/RefreshControl.jsx:137
 msgid "AUTO REFRESH"
 msgstr "AGGIORNAMENTO AUTOMATICO"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/FilterPanel/FilterPanel.jsx:38
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:177
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardForm.jsx:19
+msgid "Absolute"
+msgstr "Assoluto"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/FilterPanel/FilterPanel.jsx:59
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:245
 msgid "Add"
 msgstr "Aggiungi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/FilterList/FilterList.jsx:45
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/FilterPanel/FilterPanel.jsx:57
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/FilterList/FilterList.jsx:56
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/FilterPanel/FilterPanel.jsx:78
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/FilterPanel/FilterPanel.jsx:79
 msgid "Add New Filter"
-msgstr "Aggiungi un nuovo filtro"
+msgstr "Aggiungi nuovo filtro"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLineList/ReferenceLineList.jsx:42
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:183
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLineList/ReferenceLineList.jsx:42
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:251
 msgid "Add New Reference Line"
 msgstr "Aggiungi nuova riga di riferimento"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SeriesPanel.jsx:159
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesPanel.jsx:174
 msgid "Add a horizontal line to indicate significant values or thresholds."
-msgstr "Aggiungi una riga orizzontale per indicare valori o soglie significativi."
+msgstr "Aggiungi una riga orizzontale per indicare i valori significativi o le soglie."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:283
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterPanel/DimensionFilterSection/DimensionFilterSection.jsx:126
+msgid "Add dimension filter"
+msgstr "Aggiungi filtro dimensione"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:282
 msgid "Add interactive time control"
-msgstr "Aggiungi controllo temporale interattivo"
+msgstr "Aggiungi il controllo temporale attivo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/webapp/pages/home/ConfigurationCheck.jsx:205
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/DataPanel.jsx:309
+msgid "Add new filter"
+msgstr "Aggiungi nuovo filtro"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/splunk_metrics_workspace/src/main/webapp/pages/home/ConfigurationCheck.jsx:206
 msgid "Add the ${VIEW_TITLE} view to the ${PARENT_APP_NAME} app"
 msgstr "Aggiungi la vista ${VIEW_TITLE} all'app ${PARENT_APP_NAME}"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/containers/UnifiedAnalysisApp/AddMeasureAction.jsx:46
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/containers/UnifiedAnalysisApp/AddMeasureAction.jsx:28
 msgid "Add to selected chart"
 msgstr "Aggiungi al grafico selezionato"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Throttle.jsx:19
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Throttle.jsx:23
 msgid "After an alert is triggered, subsequent alerts will not be triggered until after the throttle period."
 msgstr "Dopo l'attivazione di un allarme, quelli successivi vengono attivati solo dopo l'intervallo temporale di limitazione."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SeriesPanel.jsx:178
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesPanel.jsx:199
 msgid "Aggregation"
 msgstr "Aggregazione"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertDialog.jsx:226
-msgid "Alert"
-msgstr "Allarme"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertForm.jsx:335
-msgid "Alert Type"
-msgstr "Tipo di allarme"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:1
 msgid "Alert level"
 msgstr "Livello di allarme"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Threshold.jsx:69
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Threshold.jsx:63
 msgid "Alert when"
 msgstr "Allarme quando"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:45
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:47
 msgid "Alerts"
 msgstr "Allarmi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/containers/UnifiedAnalysisApp/GlobalControlsContainer.jsx:56
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/containers/UnifiedAnalysisApp/GlobalControlsContainer.jsx:55
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/containers/UnifiedAnalysisApp/GlobalControlsContainer.jsx:61
 msgid "Alerts cannot be saved to a dashboard."
-msgstr "Gli allarmi non possono essere salvati in una dashboard."
+msgstr "Impossibile salvare gli allarmi in una dashboard."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/selector-utils.js:28
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardPanel.jsx:101
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardPanel.jsx:102
+msgid "Alerts will not be saved to the Dashboard"
+msgstr "Gli allarmi non saranno salvati nella dashboard"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/selector-utils.js:29
 msgid "All Charts"
 msgstr "Tutti i grafici"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardPanel.jsx:77
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardPanel.jsx:79
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardPanel.jsx:80
 #, python-format
 msgid "All charts have been added to %(id)s."
 msgstr "Tutti i grafici sono stati aggiunti a %(id)s."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:29
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartingGrid/ChartingGrid.jsx:124
+msgid "All charts loaded."
+msgstr "Tutti i grafici caricati."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:18
 msgid "All time"
 msgstr "Sempre"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/containers/UnifiedAnalysisApp/UnifiedAnalysisApp.jsx:341
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/containers/UnifiedAnalysisApp/UnifiedAnalysisApp.jsx:429
 msgid "Analysis"
 msgstr "Analisi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/resources/splunk/default/data/ui/views/analysis_workspace.xml
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/resources/splunk/default/data/ui/views/analytics_workspace.xml
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/default.old.20190820-122328/data/ui/views/analysis_workspace.xml
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/default/data/ui/views/analysis_workspace.xml /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/default/data/ui/views/analytics_workspace.xml
-msgid "Analytics"
-msgstr "Analytics"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerDialog.jsx:27
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/TransientPanel/TransientPanel.jsx:28
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerDialog.jsx:26
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TransientPanel/TransientPanel.jsx:29
 msgid "Apply"
 msgstr "Applica"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/DeleteAlertDialog.jsx:22
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/DeleteAlertDialog.jsx:26
 msgid "Are you sure you want to delete"
-msgstr "Si è certi di volere eliminare"
+msgstr "Eliminare"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:88
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:83
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:107
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:83
 msgid "Area"
 msgstr "Area"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Frequency.jsx:49
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Frequency.jsx:51
 msgid "At "
-msgstr "A"
+msgstr "A "
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/GlobalControls/RefreshControl.jsx:124
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisLabel.jsx:79
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/containers/UnifiedAnalysisApp/MultiSeriesPanelContainer.jsx:77
+msgid "Auto"
+msgstr "Auto"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/CustomSelect/CustomSelect.jsx:42
+msgid "Auto refresh settings"
+msgstr "Impostazioni di aggiornamento automatico"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/GlobalControls/RefreshControl.jsx:121
 msgid "Auto-refresh"
 msgstr "Aggiornamento automatico"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:8
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:8
 msgid "Avg"
 msgstr "Med"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/EmptyState/EmptyState.jsx:48
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/EmptyState/EmptyState.jsx:41
 msgid "Build"
-msgstr "Crea"
+msgstr "Build"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:19
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:8
 msgid "Business week to date"
 msgstr "Inizio settimana lavorativa a oggi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:190
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:258
 msgid "Calculation"
 msgstr "Calcolo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:251
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:252
 msgid "Can only contain letters, numbers and underscores."
 msgstr "Può contenere solo lettere, numeri e caratteri di sottolineatura."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertDialog.jsx:174
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/DeleteAlertDialog.jsx:30
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerDialog.jsx:22
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardPanel.jsx:128
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportModal.jsx:76
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/TransientPanel/TransientPanel.jsx:62
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/AlertFormModal.jsx:44
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/DeleteAlertDialog.jsx:30
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardPanel.jsx:141
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:139
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisForm.jsx:145
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportModal.jsx:78
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerDialog.jsx:21
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TransientPanel/TransientPanel.jsx:58
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardPanel.jsx:140
 msgid "Cancel"
 msgstr "Annulla"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:97
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:62
 msgid "Categorical Charts"
-msgstr "Grafici categorici"
+msgstr "Grafici categoriali"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:1
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/selector-utils.js:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/selector-utils.js:1
 msgid "Chart"
 msgstr "Grafico"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartPanel/ChartOptionsDropdown.jsx:11
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartPanel/ChartOptionsDropdown.jsx:13
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartPanel/ChartOptionsDropdown.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartPanel/ChartOptionsDropdown.jsx:12
 msgid "Chart Actions"
 msgstr "Azioni grafico"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/MultiSeriesPanel.jsx:303
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/MultiSeriesPanel.jsx:373
 msgid "Chart Settings"
 msgstr "Impostazioni grafico"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:40
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:73
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:94
 msgid "Chart Type"
-msgstr "Tipo di grafico"
+msgstr "Tipo grafico"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:688
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartingGrid/ChartingGrid.jsx:135
 msgid "Charting grid"
-msgstr "Griglia grafici"
+msgstr "Griglia creazione grafici"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/selector-utils.js:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/selector-utils.js:1
 msgid "Charts"
 msgstr "Grafici"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:41
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:74
-msgid "Choose a chart type based on your need"
-msgstr "Scegliere un tipo di grafico in base alle proprie esigenze"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerForm.jsx:87
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerForm.jsx:235
 msgid "Choose the type of time range"
-msgstr "Scegliere il tipo di intervallo temporale"
+msgstr "Selezionare il tipo di intervallo temporale"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/icons/ClearAll.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Multiselect/Compact.jsx:386
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/icons/ClearAll.jsx:10
 msgid "Clear All"
 msgstr "Cancella tutto"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/MemberExplorer.jsx:58
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Multiselect/Compact.jsx:386
+msgid "Clear All Matches"
+msgstr "Cancella tutte le corrispondenze"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/MemberExplorer.jsx:59
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/MemberExplorer.jsx:67
 msgid "Clear Selections"
 msgstr "Cancella selezioni"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ClearAllButton/ClearAllButton.jsx:29
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ClearAllButton/ClearAllButton.jsx:28
 msgid "Clear all"
 msgstr "Cancella tutto"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SeriesButtons.jsx:28
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesButtons.jsx:29
 msgid "Clone"
 msgstr "Clona"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:483
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/panel-utils.js:285
 msgid "Clone this Panel"
 msgstr "Clona questo pannello"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ButtonPanel/ButtonPanel.jsx:48
-#, python-format
-msgid "Collapse %(title)s %(subtitle)s"
-msgstr "Comprimi %(title)s %(subtitle)s"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:93
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:99
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:87
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:64
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:112
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:87
 msgid "Column"
 msgstr "Colonna"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/resources/splunk/default/app.conf:12
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/default.old.20190820-122328/app.conf:13 /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/default/app.conf:13
-msgid "Compare trends in time series"
-msgstr "Confronta le tendenze nelle serie temporali"
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterPanel/FilterPanel.jsx:130
+msgid "Complete the highlighted rows"
+msgstr "Completa le righe evidenziate"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:77
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:68
 msgid "Condition"
 msgstr "Condizione"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:203
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:271
 msgid "Constant Value"
 msgstr "Valore costante"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:115
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:114
 msgid "Content"
 msgstr "Contenuto"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/StateRestoreControl/StateRestoreControl.jsx:19
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/splunk_metrics_workspace/src/main/webapp/pages/analytics_workspace/utils/consumer-config.js:4
+msgid "Context to Console"
+msgstr "Contesto a console"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/WarningDialog/WarningDialog.jsx:59
+msgid "Continue"
+msgstr "Continua"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/StateRestoreControl/StateRestoreControl.jsx:19
 msgid "Continue where you left off, or select new data."
-msgstr "Continua da dove hai lasciato o seleziona nuovi dati."
+msgstr "Continua da dove avevi interrotto, o seleziona nuovi dati."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/LegendPopupContainer.jsx:98
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartingGrid/LegendPopupContainer.jsx:117
 msgid "Copy Series Name"
-msgstr "Copia nome della serie"
+msgstr "Copia nome serie"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:9
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:9
 msgid "Count"
 msgstr "Conteggio"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-enterprise/index.jsx:84
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterPanel/FilterPanel.jsx:300
+msgid "Create New Filter"
+msgstr "Crea nuovo filtro"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/src/index.jsx:79
 msgid "Critical"
 msgstr "Critica"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:26
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/view-utils.js:15
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceTimeRange.jsx:28
+msgid "Current chart"
+msgstr "Grafico attuale"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/DataRangeSelector.jsx:46
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:26
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/view-utils.js:15
 msgid "Custom"
 msgstr "Personalizzata"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerDialog.jsx:19
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/DataPanelTimePicker.jsx:20
+msgid "Custom Data Time Range"
+msgstr "Intervallo temporale dati personalizzato"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/CustomTimePicker/CustomTimePicker.jsx:14
 msgid "Custom Time Range"
 msgstr "Intervallo temporale personalizzato"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Time/TimeRange.jsx:39
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/DataRangeSelector.jsx:29
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceTimeRange.jsx:29
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Time/TimeRange.jsx:39
 msgid "Custom..."
 msgstr "Personalizzato..."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:208
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:277
 msgid "Customize the label (optional)."
 msgstr "Personalizza l'etichetta (opzionale)."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:330
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardPanel.jsx:89
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:328
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardPanel.jsx:91
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardPanel.jsx:92
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:274
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:274
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardForm.jsx:160
 msgid "Dashboard Description"
 msgstr "Descrizione dashboard"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:265
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:265
 msgid "Dashboard ID"
 msgstr "ID dashboard"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:255
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:256
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardForm.jsx:152
 msgid "Dashboard Title"
 msgstr "Titolo dashboard"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/containers/UnifiedAnalysisApp/UnifiedAnalysisApp.jsx:274
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/containers/UnifiedAnalysisApp/UnifiedAnalysisApp.jsx:337
 msgid "Data"
 msgstr "Dati"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:43
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TreeControl/TreeControl.jsx:172
+msgid "Data tree"
+msgstr "Struttura dei dati"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:45
 msgid "Datasets"
 msgstr "Set di dati"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/containers/UnifiedAnalysisApp/AddMeasureAction.jsx:38
-msgid "Datasets cannot be added to categorical charts"
-msgstr "I set di dati non possono essere aggiunti ai grafici categorici"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerForm.jsx:95
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerForm.jsx:213
 msgid "Date & Time Range"
 msgstr "Intervallo di data e ora"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/CustomTimeShift.jsx:13
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:35
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:32
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:37
 msgid "Days"
 msgstr "Giorni"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/RelativeTimeInput.jsx:71
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/RelativeTimeInput.jsx:71
 msgid "Days Ago"
 msgstr "Giorni fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/DeleteAlertDialog.jsx:36
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/CustomTimeShift.jsx:13
+msgid "Days ago"
+msgstr "Giorni fa"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/DeleteAlertDialog.jsx:35
 msgid "Delete"
 msgstr "Elimina"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/DeleteAlertDialog.jsx:19
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/DeleteAlertDialog.jsx:23
 msgid "Delete Alert"
 msgstr "Elimina allarme"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/DataPanel.jsx:46
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/DataPanel.jsx:88
 msgid "Delete alert"
 msgstr "Elimina allarme"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:130
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertForm.jsx:312
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:104
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:120
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/ScheduledAlertForm.jsx:183
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/StreamingAlertForm.jsx:169
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:104
 msgid "Description"
 msgstr "Descrizione"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:210
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:200
 msgid "Details"
 msgstr "Dettagli"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SplitBy/SplitBy.jsx:123
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SplitBy/SplitBy.jsx:135
 msgid "Dimension"
 msgstr "Dimensione"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SeriesPanel.jsx:212
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesPanel.jsx:264
 msgid "Display an earlier time range."
-msgstr "Visualizza un intervallo temporale precedente."
+msgstr "Mostra un intervallo temporale precedente"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:10
 msgid "Dist count"
-msgstr "Conteggio distinti"
+msgstr "Conteggio dist"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerForm.jsx:107
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/WarningDialog/WarningDialog.jsx:52
+msgid "Do not show this again"
+msgstr "Non mostrare più"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerForm.jsx:76
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerForm.jsx:114
 msgid "Earliest"
 msgstr "Inizio"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/customTimePickerValidation.js:30
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/timePickerValidation.js:50
 msgid "Earliest and Latest times must be different."
-msgstr "Ora inizio e Ora fine devono essere diverse."
+msgstr "L'ora inizio (earliest) e l'ora fine (latest) devono essere differenti."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/customTimePickerValidation.js:34
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/timePickerValidation.js:37
+msgid "Earliest field cannot be empty."
+msgstr "Il campo earliest non può essere vuoto."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/timePickerValidation.js:54
 msgid "Earliest must be before latest."
-msgstr "L'inizio deve essere antecedente alla fine."
+msgstr "Il campo earliest deve essere precedente rispetto a latest."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/FilterList/FilterList.jsx:53
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/FilterPanel/FilterPanel.jsx:45
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/FilterList/FilterList.jsx:65
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/FilterPanel/FilterPanel.jsx:64
 #, python-format
 msgid "Edit %(dimension)s filter"
-msgstr "Modifica filtro %(dimension)s"
+msgstr "Modifica %(dimension)s filtro"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertDialog.jsx:112
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:546
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/ScheduledAlertDialogContainer.jsx:247
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/StreamingAlertDialogContainer.jsx:245
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/panel-utils.js:225
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/panel-utils.js:235
 msgid "Edit Alert"
 msgstr "Modifica allarme"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLineList/ReferenceLineList.jsx:48
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:46
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:168
+msgid "Edit Span"
+msgstr "Modifica span"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisLabel.jsx:33
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisLabel.jsx:58
+msgid "Edit Y-Axis"
+msgstr "Modifica asse Y"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/DataPanel.jsx:315
+msgid "Edit metric filter"
+msgstr "Modifica filtro per la metrica"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLineList/ReferenceLineList.jsx:48
 #, python-format
 msgid "Edit reference line %(label)s"
 msgstr "Modifica riga di riferimento %(label)s"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:659
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartingGrid/ChartingGridConnector.jsx:81
 msgid "Empty State"
 msgstr "Stato vuoto"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:29
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/dashboard-utils.js:8
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/dashboard-utils.test.js:7
 msgid "Enter a Dashboard ID"
-msgstr "Immetti un ID dashboard"
+msgstr "Inserisci ID dashboard"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:36
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/dashboard-utils.js:15
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/dashboard-utils.test.js:6
 msgid "Enter a valid Dashboard ID"
-msgstr "Immetti un ID dashboard valido"
+msgstr "Inserire una ID dashboard valida"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:137
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Frequency.jsx:68
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:127
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Frequency.jsx:70
 msgid "Evaluate every"
 msgstr "Valuta ogni"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/EventExplorer/EventTable.jsx:136
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/EventExplorer/EventTable.jsx:138
 msgid "Event"
 msgstr "Evento"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:44
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:46
 msgid "Events"
 msgstr "Eventi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/MemberExplorer.jsx:210
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/MemberExplorer.jsx:217
 msgid "Exclude"
 msgstr "Escludi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/LegendPopupContainer.jsx:86
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartingGrid/LegendPopupContainer.jsx:102
 #, python-format
 msgid "Exclude %(name)s"
 msgstr "Escludi %(name)s"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:58
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:58
 msgid "Execution frequency must be a valid whole number."
 msgstr "La frequenza di esecuzione deve essere un numero intero valido."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:340
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:338
 msgid "Existing"
 msgstr "Esistente"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ButtonPanel/ButtonPanel.jsx:49
-#, python-format
-msgid "Expand %(title)s %(subtitle)s"
-msgstr "Espandi %(title)s %(subtitle)s"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:587
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/panel-utils.js:361
 msgid "Export as CSV"
 msgstr "Esporta come CSV"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:579
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/panel-utils.js:353
 msgid "Export as PNG"
 msgstr "Esporta come PNG"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/redux/views/views-saga.js:97
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/redux/views/views-saga.js:139
 msgid "Failed to fetch measure."
 msgstr "Impossibile recuperare la misura."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/icons/FieldFilter.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/redux/measure/measure-actions.js:47
+#, python-format
+msgid "Failed to load dimensions: %(error)s"
+msgstr "Caricamento delle dimensioni non riuscito: %(error)s"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/redux/datasource-filter-metadata/datasource-filter-metadata-actions.js:41
+#, python-format
+msgid "Failed to load indexes: %(error)s"
+msgstr "Caricamento degli indici non riuscito: %(error)s"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/icons/FieldFilter.jsx:10
 msgid "Field Filter"
 msgstr "Filtro campo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/PanelFilter/PanelFilterToken.jsx:64
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Multiselect/Compact.jsx:407
+msgid "Filter"
+msgstr "Filtro"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterPanel/FilterPanel.jsx:230
+msgid "Filter by index"
+msgstr "Filtra per indice"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterPanel/FilterPanel.jsx:299
+msgid "Filter by indexes and other fields"
+msgstr "Filtra per indici e altri campi"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterPanel/FilterPanel.jsx:272
+msgid "Filter by other fields"
+msgstr "Filtra per altri campi"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/PanelFilter/PanelFilterToken.jsx:64
 msgid "Filtered"
 msgstr "Filtrato"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/PanelFilter/ChartPanelFilterBar.jsx:1
-msgid "Filtered dimensions"
-msgstr "Dimensioni filtrate"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:173
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SeriesPanel.jsx:131
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:163
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesPanel.jsx:146
 msgid "Filters"
 msgstr "Filtri"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/EventExplorer/EventExplorer.jsx:116
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/EventExplorer/EventExplorer.jsx:117
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/EventExplorer/EventExplorer.jsx:116
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/EventExplorer/EventExplorer.jsx:117
 msgid "Find"
 msgstr "Trova"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/DataPanel.jsx:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/DataPanel.jsx:1
 msgid "Find Data to Analyze"
 msgstr "Trova dati da analizzare"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/EmptyState/EmptyState.jsx:37
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/EmptyState/EmptyState.jsx:34
 msgid "Find something interesting? Save it to a dashboard, or create an alert."
-msgstr "Trovi qualcosa di interessante? Salvalo in una dashboard oppure crea un allarme."
+msgstr "Trovato qualcosa di interessante? Salvalo nella dashboard, oppure crea un allarme."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:54
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:54
 msgid "Frequency cannot be empty."
 msgstr "La frequenza non può essere vuota."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerForm.jsx:77
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/utils/timepicker-utils.js:77
 #, python-format
 msgid "From %(datetime)s"
 msgstr "Da %(datetime)s"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/GlobalActions/GlobalActions.jsx:21
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/GlobalActions/GlobalActions.jsx:22
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/utils/timepicker-utils.js:37
+#, python-format
+msgid "From %(datetimeEarliest)s to %(datetimeLatest)s"
+msgstr "Da %(datetimeEarliest)s a %(datetimeLatest)s"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/GlobalActions/GlobalActions.jsx:21
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/GlobalActions/GlobalActions.jsx:22
 msgid "Global Actions"
 msgstr "Azioni globali"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/GlobalControls/GlobalControls.jsx:133
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/GlobalControls/GlobalControls.jsx:133
 msgid "Global controls"
 msgstr "Controlli globali"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/webapp/pages/version_check/index.jsx:56
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/splunk_metrics_workspace/src/main/webapp/pages/version_check/index.jsx:56
 msgid "Go to Search"
 msgstr "Vai alla ricerca"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/webapp/pages/home/index.jsx:42
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/splunk_metrics_workspace/src/main/webapp/pages/home/index.jsx:42
 #, python-format
 msgid "Go to the %(VIEW_TITLE)s in Search"
 msgstr "Vai a %(VIEW_TITLE)s nella ricerca"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/LayoutControl/LayoutControl.jsx:15
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardForm.jsx:19
+msgid "Grid"
+msgstr "Griglia"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/LayoutControl/LayoutControl.jsx:15
 msgid "Grid Layout"
 msgstr "Layout griglia"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/icons/HideLeft.jsx:8
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:78
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/icons/Heatmap.jsx:10
+msgid "Heatmap"
+msgstr "Heatmap"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportModal.jsx:44
+msgid "Heatmap will be saved to the Report as a column chart "
+msgstr "La heatmap verrà salvata nel report come grafico a colonne"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/WarningDialog/WarningDialog.jsx:41
+msgid "Heatmap will open as a column chart in Search."
+msgstr "La heatmap si aprirà nella ricerca come grafico a colonne."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardPanel.jsx:108
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardPanel.jsx:109
+msgid "Heatmaps will be saved to the Dashboard as column charts "
+msgstr "Le heatmap verranno salvate nel report come grafici a colonne"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/icons/HideLeft.jsx:8
 msgid "Hide Left"
-msgstr "Nascondi sinistra"
+msgstr "Nascondi a sinistra"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/icons/HideRight.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/icons/HideRight.jsx:10
 msgid "Hide Right"
-msgstr "Nascondi destra"
+msgstr "Nascondi a destra"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/redux/data-sources/data-sources-reducer.js:138
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/redux/data-sources/data-sources-reducer.js:142
 #, python-format
 msgid "Hierarchy not found: %(sourceName)s"
 msgstr "Gerarchia non trovata: %(sourceName)s"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-enterprise/index.jsx:78
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/src/index.jsx:73
 msgid "High"
 msgstr "Alta"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SplitBy/SplitBy.jsx:142
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SplitBy/SplitBy.jsx:155
 msgid "Highest"
 msgstr "Massima"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/resources/splunk/default/data/ui/views/home.xml
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/default.old.20190820-122328/data/ui/views/home.xml /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/default/data/ui/views/home.xml
-msgid "Home"
-msgstr "Home"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/CustomTimeShift.jsx:12
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:34
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:31
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:36
 msgid "Hours"
 msgstr "Ore"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/RelativeTimeInput.jsx:70
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/RelativeTimeInput.jsx:70
 msgid "Hours Ago"
 msgstr "Ore fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:68
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/CustomTimeShift.jsx:12
+msgid "Hours ago"
+msgstr "Ore fa"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:68
 msgid "Hours must be from 1 to 24."
-msgstr "Il numero di ore deve essere compreso tra 1 e 24."
+msgstr "Le ore devono essere comprese tra 1 e 24."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Lookback.jsx:27
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Lookback.jsx:29
 msgid "In the last"
-msgstr "Negli ultimi/Nelle ultime"
+msgstr "Nell'ultimo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/MemberExplorer.jsx:207
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/MemberExplorer.jsx:214
 msgid "Include"
 msgstr "Includi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:223
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:292
 msgid "Include Value"
-msgstr "Includi valore"
+msgstr "Valore incluso"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SeriesPanel.jsx:132
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesPanel.jsx:147
 msgid "Include or exclude values from specific dimensions."
-msgstr "Includere o escludere valori da dimensioni specifiche."
+msgstr "Includi o escludi valori da specifiche dimensioni."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-enterprise/index.jsx:60
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/src/index.jsx:55
 msgid "Info"
 msgstr "Info"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerForm.jsx:78
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerForm.jsx:82
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerForm.jsx:43
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/utils/timepicker-utils.js:78
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/utils/timepicker-utils.js:81
 msgid "Invalid Value"
 msgstr "Valore non valido"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Threshold.jsx:84
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Threshold.jsx:78
 msgid "Is"
 msgstr "È"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/LegendPopupContainer.jsx:75
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartingGrid/LegendPopupContainer.jsx:91
 #, python-format
 msgid "Keep Only %(name)s"
-msgstr "Tieni solo %(name)s"
+msgstr "Conserva solo %(name)s"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:208
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:277
 msgid "Label"
 msgstr "Etichetta"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:6
-msgid "Last 1 hour"
-msgstr "Ultima 1 ora"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:9
-msgid "Last 12 hours"
-msgstr "Ultime 12 ore"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:4
-msgid "Last 15 minutes"
-msgstr "Ultimi 15 minuti"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:10
-msgid "Last 24 hours"
-msgstr "Ultime 24 ore"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:7
-msgid "Last 3 hours"
-msgstr "Ultime 3 ore"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:13
-msgid "Last 30 days"
-msgstr "Ultimi 30 giorni"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:5
-msgid "Last 30 minutes"
-msgstr "Ultimi 30 minuti"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:23
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:12
 msgid "Last 4 hours"
 msgstr "Ultime 4 ore"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:11
-msgid "Last 48 hours"
-msgstr "Ultime 48 ore"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:8
-msgid "Last 6 hours"
-msgstr "Ultime 6 ore"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:22
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:11
 msgid "Last 60 minutes"
 msgstr "Ultimi 60 minuti"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:12
-msgid "Last 7 days"
-msgstr "Ultimi 7 giorni"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerForm.jsx:131
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerForm.jsx:91
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerForm.jsx:133
 msgid "Latest"
 msgstr "Fine"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/Hierarchy.jsx:238
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardForm.jsx:169
+msgid "Layout Option"
+msgstr "Opzione di layout"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Hierarchy.jsx:239
 msgid "Learn more"
 msgstr "Ulteriori informazioni"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/StateRestoreControl/StateRestoreControl.jsx:14
-msgid "Let's bring you up to speed!"
-msgstr "Lascia che ti aggiorniamo!"
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisLabel.jsx:76
+msgid "Left"
+msgstr "A sinistra"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SplitBy/SplitBy.jsx:154
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/StateRestoreControl/StateRestoreControl.jsx:14
+msgid "Let's bring you up to speed!"
+msgstr "Aggiornati!"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SplitBy/SplitBy.jsx:167
 msgid "Limit"
 msgstr "Limite"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SplitBy/SplitBy.jsx:140
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SplitBy/SplitBy.jsx:153
 msgid "Limit Type"
 msgstr "Tipo di limite"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:83
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:79
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:102
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:79
 msgid "Line"
 msgstr "A linee"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/MemberExplorer.jsx:291
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/MemberExplorer.jsx:292
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/MemberExplorer.jsx:294
-msgid "Load more..."
-msgstr "Carica di più..."
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisForm.jsx:134
+msgid "Linear"
+msgstr "Lineare"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/DataPanel.jsx:224
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/DataPanelTree.jsx:52
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/Hierarchy.jsx:209
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Panel/LoadingBody.jsx:25
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/MemberExplorer.jsx:298
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/MemberExplorer.jsx:299
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/MemberExplorer.jsx:301
+msgid "Load more..."
+msgstr "Carica altro..."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartingGrid/ChartingGrid.jsx:127
+msgid "Loading ${numPanelsLoading} ${numPanelsLoading > 1 ? 'charts' : 'chart'}."
+msgstr "Caricamento in corso di ${numPanelsLoading} ${numPanelsLoading > 1 ? 'charts' : 'chart'}."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/DataPanel.jsx:422
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/DataPanelTree.jsx:51
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Hierarchy.jsx:208
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Panel/LoadingBody.jsx:24
 msgid "Loading..."
 msgstr "Caricamento in corso..."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:144
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisForm.jsx:139
+msgid "Log"
+msgstr "Logaritmica"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:134
 msgid "Lookback"
 msgstr "Ricerca a ritroso"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:77
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:77
 msgid "Lookback cannot be empty"
-msgstr "La ricerca a ritroso non può essere vuota"
+msgstr "Ricerca a ritroso non può essere vuoto"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:81
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:81
 msgid "Lookback must be a valid whole number"
-msgstr "La ricerca a ritroso deve essere un numero intero valido"
+msgstr "Ricerca a ritroso deve essere un numero intero valido"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:86
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:86
 msgid "Lookback must be greater than 0"
-msgstr "La ricerca a ritroso deve essere maggiore di 0"
+msgstr "Ricerca a ritroso deve essere maggiore di 0"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-enterprise/index.jsx:66
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/src/index.jsx:61
 msgid "Low"
 msgstr "Bassa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SplitBy/SplitBy.jsx:143
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SplitBy/SplitBy.jsx:156
 msgid "Lowest"
 msgstr "Minima"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:11
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisLabel.jsx:74
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:11
 msgid "Max"
 msgstr "Max"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/FullscreenControl/FullscreenControl.jsx:13
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisForm.jsx:116
+msgid "Max Value"
+msgstr "Valore max"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/yAxisValidation.js:6
+msgid "Max must be greater than min"
+msgstr "Il valore max deve essere maggiore del valore min"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/yAxisValidation.js:5
+msgid "Max must be valid number"
+msgstr "Il valore max deve essere un numero valido"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/FullscreenControl/FullscreenControl.jsx:13
 msgid "Maximize panel"
 msgstr "Ingrandisci pannello"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:123
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:113
 msgid "Measure"
 msgstr "Misura"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-enterprise/index.jsx:72
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/src/index.jsx:67
 msgid "Medium"
 msgstr "Media"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:42
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:44
 msgid "Metrics"
 msgstr "Metriche"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:12
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisLabel.jsx:73
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:12
 msgid "Min"
 msgstr "Min"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/FullscreenControl/FullscreenControl.jsx:11
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisForm.jsx:102
+msgid "Min Value"
+msgstr "Valore min"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/yAxisValidation.js:4
+msgid "Min must be valid number"
+msgstr "Il valore min deve essere un numero valido"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/FullscreenControl/FullscreenControl.jsx:11
 msgid "Minimize panel"
 msgstr "Riduci pannello"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/CustomTimeShift.jsx:11
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:33
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:30
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:35
 msgid "Minutes"
 msgstr "Minuti"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/RelativeTimeInput.jsx:69
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/RelativeTimeInput.jsx:69
 msgid "Minutes Ago"
 msgstr "Minuti fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:64
-msgid "Minutes must be from 1 to 60."
-msgstr "Il numero di minuti deve essere compreso tra 1 e 60."
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/CustomTimeShift.jsx:11
+msgid "Minutes ago"
+msgstr "Minuti fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:20
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:64
+msgid "Minutes must be from 1 to 60."
+msgstr "I minuti devono essere compresi tra 1 e 60."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:9
 msgid "Month to date"
 msgstr "Inizio mese a oggi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/RelativeTimeInput.jsx:73
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:34
+msgid "Months"
+msgstr "Mesi"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/RelativeTimeInput.jsx:73
 msgid "Months Ago"
 msgstr "Mesi fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:4
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:4
 msgid "N/A"
 msgstr "N/D"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:336
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:334
 msgid "New"
 msgstr "Nuovo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/messages.js:1
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:158
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/messages.js:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:157
 msgid "No"
 msgstr "No"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/Aggregation/Aggregation.jsx:144
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/Aggregation/Aggregation.jsx:148
 msgid "No aggregations"
 msgstr "Nessuna aggregazione"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:206
-msgid "No details found for this alert."
-msgstr "Nessun dettaglio per questo allarme."
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartPanel/Viz/tooltips.js:37
+msgid "No data available"
+msgstr "Nessun dato disponibile"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/FilterSelect/FilterSelect.jsx:418
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:196
+msgid "No details found for this alert."
+msgstr "Nessun dettaglio trovato per questo allarme."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Multiselect/Compact.jsx:144
+msgid "No matches"
+msgstr "Nessuna corrispondenza"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/FilterSelect/FilterSelect.jsx:416
 msgid "No options"
 msgstr "Nessuna opzione"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:229
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:218
 msgid "No thresholds found for this alert"
 msgstr "Nessuna soglia trovata per questo allarme"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SplitBy/SplitBy.jsx:94
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:19
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/view-utils.js:8
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SplitBy/SplitBy.jsx:105
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:19
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/view-utils.js:8
 msgid "None"
 msgstr "Nessuno"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/Hierarchy.jsx:216
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Hierarchy.jsx:217
 msgid "Not all metrics listed. Contact your admin to increase the metrics limit."
-msgstr "Non tutte le metriche sono elencate. Contattare l'amministratore per aumentare il limite delle metriche."
+msgstr "Non sono state elencate tutte le metriche. Contattare l'amministratore per aumentare il limite delle metriche."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerForm.jsx:138
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerForm.jsx:92
 msgid "Now"
 msgstr "Adesso"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/StateRestoreControl/StateRestoreControl.jsx:21
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/StateRestoreControl/StateRestoreControl.jsx:21
 msgid "Open Charts"
-msgstr "Apri grafici"
+msgstr "Apri i grafici"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:462
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/panel-utils.js:253
 msgid "Open in Search"
 msgstr "Apri in Ricerca"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/StateRestoreControl/StateRestoreControl.jsx:15
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/StateRestoreControl/StateRestoreControl.jsx:15
 msgid "Open your latest charts, or start by selecting data."
-msgstr "Apri i tuoi ultimi grafici o inizia selezionando i dati."
+msgstr "Apri gli ultimi grafici oppure inizia selezionando i dati."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertForm.jsx:320
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/ScheduledAlertForm.jsx:191
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/StreamingAlertForm.jsx:177
 msgid "Optional"
 msgstr "Opzionale"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/Axis/Axis.jsx:29
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/Axis/Axis.jsx:29
 msgid "Overlay on right axis"
-msgstr "Sovrapponi sull'asse destro"
+msgstr "Sovrapposizione sull'asse orizzontale"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:314
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:313
 msgid "Panel Title"
 msgstr "Titolo pannello"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertForm.jsx:323
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:294
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ButtonPanel/ButtonPanel.jsx:72
+#, python-format
+msgid "Panel is closed %(title)s %(subtitle)s"
+msgstr "Il pannello è chiuso %(title)s %(subtitle)s"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ButtonPanel/ButtonPanel.jsx:71
+#, python-format
+msgid "Panel is open %(title)s %(subtitle)s"
+msgstr "Il pannello è aperto %(title)s %(subtitle)s"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/ScheduledAlertForm.jsx:194
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/StreamingAlertForm.jsx:180
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:293
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardForm.jsx:178
 msgid "Permissions"
 msgstr "Autorizzazioni"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/ChartPreview.jsx:60
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:194
+msgid "Please reference the time range to set an appropriate time span."
+msgstr "Fare riferimento all'intervallo temporale per impostare un opportuno span temporale."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/ChartPreview.jsx:74
 msgid "Preview"
 msgstr "Anteprima"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:26
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:15
 msgid "Previous business week"
 msgstr "Settimana lavorativa precedente"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:27
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:16
 msgid "Previous month"
 msgstr "Mese precedente"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:25
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:14
 msgid "Previous week"
 msgstr "Settimana precedente"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:28
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:17
 msgid "Previous year"
 msgstr "Anno precedente"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:19
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/constants.js:12
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:23
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardForm.jsx:21
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/constants.js:12
 msgid "Private"
 msgstr "Privato"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/RelativeTimeInput.jsx:74
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/RelativeTimeInput.jsx:74
 msgid "Quarters Ago"
 msgstr "Trimestri fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:13
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:13
 msgid "Rate"
 msgstr "Tasso"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:197
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:17
+msgid "Rate (Avg)"
+msgstr "Tasso (medio)"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:16
+msgid "Rate (Sum)"
+msgstr "Tasso (somma)"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:265
 msgid "Raw Data"
 msgstr "Dati grezzi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SeriesPanel.jsx:158
-msgid "Reference Lines"
-msgstr "Righe di riferimento"
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLineTimePicker/ReferenceLineTimePicker.jsx:14
+msgid "Reference Line Time Range"
+msgstr "Intervallo temporale linee di riferimento"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/GlobalControls/RefreshControl.jsx:112
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesPanel.jsx:173
+msgid "Reference Lines"
+msgstr "Linee di riferimento"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/GlobalControls/RefreshControl.jsx:109
 msgid "Refresh"
 msgstr "Aggiorna"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/GlobalControls/RefreshControl.jsx:111
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/GlobalControls/RefreshControl.jsx:108
 msgid "Refresh Chart Data"
-msgstr "Aggiorna dati del grafico"
+msgstr "Aggiorna dati grafico"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerForm.jsx:93
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerForm.jsx:216
 msgid "Relative"
 msgstr "Relativo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/FilterPanel/FilterPanel.jsx:34
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SeriesButtons.jsx:42
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/FilterPanel/FilterPanel.jsx:55
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesButtons.jsx:43
 msgid "Remove"
 msgstr "Rimuovi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/FilterList/FilterList.jsx:56
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/FilterList/FilterList.jsx:68
 #, python-format
 msgid "Remove %(dimension)s filter"
-msgstr "Rimuovi filtro %(dimension)s"
+msgstr "Rimuovi il filtro %(dimension)s "
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartPanel/ChartButtons.jsx:51
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/DataPanel.jsx:316
+msgid "Remove metric filter"
+msgstr "Rimuovi filtro metrica"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartPanel/ChartButtons.jsx:48
 msgid "Remove panel"
-msgstr "Rimuovi pannello"
+msgstr "Rimuovi il pannello"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLineList/ReferenceLineList.jsx:51
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLineList/ReferenceLineList.jsx:51
 #, python-format
 msgid "Remove reference line %(label)s"
 msgstr "Rimuovi riga di riferimento %(label)s"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportModal.jsx:50
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportModal.jsx:55
 msgid "Report"
 msgstr "Report"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportModal.jsx:46
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportModal.jsx:51
 #, python-format
 msgid "Report %(reportName)s has been created. You may now view the report."
-msgstr "Il report %(reportName)s è stato creato. Ora è possibile visualizzarlo."
+msgstr "Il report %(reportName)s è stato creato. È ora possibile visualizzare il report."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertForm.jsx:266
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/ScheduledAlertForm.jsx:148
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/StreamingAlertForm.jsx:134
 msgid "Required"
 msgstr "Obbligatorio"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/containers/UnifiedAnalysisApp/GlobalControlsContainer.jsx:75
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/containers/UnifiedAnalysisApp/GlobalControlsContainer.jsx:80
 msgid "Reset zoom to enable auto-refresh"
-msgstr "Reimposta zoom per abilitare l'aggiornamento automatico"
+msgstr "Reimposta lo zoom per abilitare l'aggiornamento automatico"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/containers/UnifiedAnalysisApp/GlobalControlsContainer.jsx:76
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/containers/UnifiedAnalysisApp/GlobalControlsContainer.jsx:81
 msgid "Reset zoom to enable refresh"
-msgstr "Reimposta zoom per abilitare l'aggiornamento"
+msgstr "Reimposta lo zoom per abilitare l'aggiornamento"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ErrorPanel/ErrorPanel.jsx:37
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ErrorPanel/ErrorPanel.jsx:39
 msgid "Retry"
 msgstr "Riprova"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertDialog.jsx:192
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardPanel.jsx:136
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportModal.jsx:90
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:44
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:160
+msgid "Revert Span"
+msgstr "Annulla span"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisLabel.jsx:32
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisLabel.jsx:50
+msgid "Revert Y-Axis"
+msgstr "Annulla modifiche all'asse Y"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisLabel.jsx:76
+msgid "Right"
+msgstr "A destra"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/AlertFormModal.jsx:50
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardPanel.jsx:147
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportModal.jsx:90
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardPanel.jsx:146
 msgid "Save"
 msgstr "Salva"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardPanel.jsx:101
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardPanel.jsx:116
 msgid "Save All To Dashboard"
 msgstr "Salva tutto nella dashboard"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardPanel.jsx:100
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardPanel.jsx:117
+msgid "Save All To Dashboards App Beta"
+msgstr "Salva tutto nell'app dashboard beta"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardPanel.jsx:115
 msgid "Save As Dashboard Panel"
 msgstr "Salva come pannello dashboard"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportModal.jsx:54
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportModal.jsx:65
 msgid "Save As Report"
 msgstr "Salva come report"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/containers/UnifiedAnalysisApp/UnifiedAnalysisApp.jsx:144
-msgid "Save all charts to a dashboard"
-msgstr "Salva tutti i grafici in una dashboard"
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/containers/UnifiedAnalysisApp/UnifiedAnalysisApp.jsx:127
+msgid "Save all charts to Dashboard (XML)"
+msgstr "Salva tutti i grafici nella dashboard (XML)"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertDialog.jsx:112
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:597
-msgid "Save as Alert"
-msgstr "Salva come allarme"
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/containers/UnifiedAnalysisApp/UnifiedAnalysisApp.jsx:135
+msgid "Save all charts to Dashboards App (beta)"
+msgstr "Salva tutti i grafici nell'app dashboard (beta)"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:567
-msgid "Save as Dashboard Panel"
-msgstr "Salva come pannello dashboard"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:573
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/panel-utils.js:347
 msgid "Save as Report"
 msgstr "Salva come report"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/constants.js:21
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/ScheduledAlertDialogContainer.jsx:247
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/panel-utils.js:307
+msgid "Save as Scheduled Alert"
+msgstr "Salva come allarme pianificato"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/StreamingAlertDialogContainer.jsx:245
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/panel-utils.js:317
+msgid "Save as Streaming Alert"
+msgstr "Salva come allarme in streaming"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/panel-utils.js:327
+msgid "Save to Dashboard (XML)"
+msgstr "Salva nella dashboard (XML)"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/panel-utils.js:337
+msgid "Save to Dashboards App (beta)"
+msgstr "Salva nell'app dashboard (beta)"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardPanel.jsx:116
+msgid "Save to Dashboards App Beta"
+msgstr "Salva nell'app dashboard beta"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisForm.jsx:129
+msgid "Scale"
+msgstr "scala"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/constants.js:21
 msgid "Scheduled"
 msgstr "Pianificato"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertForm.jsx:339
-msgid "Scheduled alerts periodically search for trigger conditions."
-msgstr "Gli allarmi pianificati ricercano periodicamente condizioni di attivazione."
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/SearchBox.jsx:15
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/SearchBox.jsx:16
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/SearchBox.jsx:15
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/SearchBox.jsx:16
 msgid "Search"
 msgstr "Ricerca"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:491
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/panel-utils.js:292
 msgid "Search Related Events"
 msgstr "Cerca eventi correlati"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:32
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:29
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:34
 msgid "Seconds"
 msgstr "Secondi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/RelativeTimeInput.jsx:68
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/RelativeTimeInput.jsx:68
 msgid "Seconds Ago"
 msgstr "Secondi fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/containers/UnifiedAnalysisApp/AddMeasureAction.jsx:39
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Multiselect/Compact.jsx:379
+msgid "Select All"
+msgstr "Seleziona tutto"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Multiselect/Compact.jsx:379
+msgid "Select All Matches"
+msgstr "Seleziona tutte le corrispondenze"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterPanel/DimensionFilterSection/DimensionsDropdown.jsx:82
+msgid "Select a dimension"
+msgstr "Seleziona una dimensione"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:216
+msgid "Select a time range."
+msgstr "Selezionare un intervallo temporale."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/containers/UnifiedAnalysisApp/AddMeasureAction.jsx:23
 msgid "Select a valid chart to add this series"
-msgstr "Seleziona un grafico valido per aggiungere questa serie"
+msgstr "Selezionare un grafico valido da aggiungere a questa serie"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/redux/views/views-saga.js:92
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/redux/views/views-saga.js:134
 msgid "Select an aggregation."
-msgstr "Selezionare un'aggregazione."
+msgstr "Selezionare un'aggregazione"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:151
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SeriesPanel.jsx:179
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterPanel/DimensionFilterSection/DimensionValuesDropdown.jsx:87
+msgid "Select dimension values"
+msgstr "Seleziona i valori di dimensione"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterDropdown/FilterDropdown.jsx:59
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterDropdown/FilterDropdown.jsx:66
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterPanel/FilterPanel.jsx:238
+msgid "Select index filters"
+msgstr "Selezionare i filtri per l'indice"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:172
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesPanel.jsx:200
 msgid "Select or type an aggregation."
 msgstr "Selezionare o digitare un'aggregazione."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/Hierarchies.jsx:78
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Multiselect/Compact.jsx:147
+msgid "Select..."
+msgstr "Seleziona..."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Hierarchies.jsx:79
 msgid "Selected Index:"
 msgstr "Indice selezionato:"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:274
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertForm.jsx:303
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:86
+#, python-format
+msgid "Set the min and max value of the y-axis. (for example: %(exampleText)s)"
+msgstr "Impostare il valore min e max dell'asse y (ad esempio: %(exampleText)s)."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:262
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/ScheduledAlertForm.jsx:174
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/StreamingAlertForm.jsx:160
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:86
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Threshold.jsx:55
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:77
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Threshold.jsx:49
 msgid "Severity"
 msgstr "Severità"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:19
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/constants.js:13
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:23
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardForm.jsx:21
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/constants.js:13
 msgid "Shared in App"
 msgstr "Condiviso in App"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartingGrid/ChartingGrid.jsx:178
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/redux/alerting/alerting-actions.js:82
 msgid "Show Alert"
 msgstr "Mostra allarme"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:259
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:261
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:247
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:249
 msgid "Show triggered instances"
 msgstr "Mostra istanze attivate"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardPanel.jsx:95
-msgid "Some charts are alerts and will not be saved to a dashboard"
-msgstr "Alcuni grafici sono allarmi e non verranno salvati in una dashboard"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/icons/SortAZ.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/icons/SortAZ.jsx:10
 msgid "Sort A to Z"
 msgstr "Ordina da A a Z"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/SortToggle.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/SortToggle.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/SortToggle.jsx:25
 msgid "Sort Ascending"
 msgstr "Ordinamento crescente"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/SortToggle.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/SortToggle.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/SortToggle.jsx:25
 msgid "Sort Descending"
 msgstr "Ordinamento decrescente"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/icons/SortZA.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/icons/SortZA.jsx:10
 msgid "Sort Z to A"
 msgstr "Ordina da Z ad A"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertForm.jsx:289
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/ScheduledAlertForm.jsx:165
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/StreamingAlertForm.jsx:151
 msgid "Source"
 msgstr "Source"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/redux/data-sources/data-sources-reducer.js:105
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/redux/data-sources/data-sources-reducer.js:124
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/redux/data-sources/data-sources-reducer.js:109
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/redux/data-sources/data-sources-reducer.js:128
 #, python-format
 msgid "Source not found: %(sourceName)s"
 msgstr "Source non trovata: %(sourceName)s"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:192
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:182
 msgid "Span"
 msgstr "Span"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SeriesPanel.jsx:196
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:114
+msgid "Span Period"
+msgstr "Periodo span"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesPanel.jsx:241
 msgid "Split By"
 msgstr "Suddivisione per"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:185
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:175
 msgid "Split by"
 msgstr "Suddivisione per"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SeriesPanel.jsx:197
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesPanel.jsx:242
 msgid "Split this series into separate values."
 msgstr "Suddividi questa serie in valori separati."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/resources/splunk/default/app.conf:7
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/default.old.20190820-122328/app.conf:7 /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/default/app.conf:7
-msgid "Splunk Analytics Workspace"
-msgstr "Area di lavoro Splunk Analytics"
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/icons/StackColumn.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/icons/StackColumn.jsx:10
 msgid "Stack Column"
 msgstr "Colonna stack"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/LayoutControl/LayoutControl.jsx:19
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/LayoutControl/LayoutControl.jsx:19
 msgid "Stack Layout"
 msgstr "Layout stack"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:104
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:69
 msgid "Stacked Column"
 msgstr "Colonna in stack"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/EmptyState/EmptyState.jsx:32
-msgid "Start by selecting data."
-msgstr "Selezionare per prima cosa i dati."
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterPanel/FilterPanel.jsx:233
+msgid "Start by adding index filters"
+msgstr "Inizia aggiungendo i filtri per l'indice"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:145
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/EmptyState/EmptyState.jsx:32
+msgid "Start by selecting data."
+msgstr "Inizia selezionando i dati."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:144
 msgid "Statistics Table"
 msgstr "Tabella statistiche"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:14
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:14
 msgid "Std dev"
-msgstr "Dev std"
+msgstr "Std dev"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertPanel/StreamingSeverityIcon.jsx:12
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertPanel/StreamingSeverityIcon.jsx:11
 msgid "Stream Bell"
 msgstr "Campanella streaming"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/constants.js:22
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/constants.js:22
 msgid "Streaming"
 msgstr "Streaming"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertForm.jsx:344
-msgid "Streaming alerts continuously search for trigger conditions."
-msgstr "Gli allarmi in streaming cercano continuamente condizioni di attivazione."
-
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:15
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:15
 msgid "Sum"
 msgstr "Somma"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Throttle.jsx:55
-msgid "Supress Triggering for"
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Throttle.jsx:60
+msgid "Suppress Triggering for"
 msgstr "Elimina attivazione per"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/webapp/pages/version_check/index.jsx:14
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/splunk_metrics_workspace/src/main/webapp/pages/version_check/index.jsx:14
 #, python-format
 msgid ""
 "The %(app_name)s requires Splunk Enterprise version **%(splunk_req_version)s** or higher. You are currently using version %(splunk_curr_version)s.\n"
 "Contact your administrator for assistance."
 msgstr ""
-"L'app %(app_name)s richiede Splunk Enterprise versione **%(splunk_req_version)s** o successiva.  Attualmente è in uso la versione %(splunk_curr_version)s.\n"
-"Contattare l'amministratore per ricevere assistenza."
+"%(app_name)s richiede la versione Splunk Enterprise **%(splunk_req_version)s** o superiore. La versione attualmente in uso è %(splunk_curr_version)s.\n"
+"Contattare l'amministratore per assistenza."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:117
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:117
 #, python-format
 msgid "The %(invalidActionsStr)s action is not supported for streaming alerts. Please delete the action and save again."
-msgstr "L'azione %(invalidActionsStr)s non è supportata per gli allarmi in streaming. Eliminare l'azione e salvare di nuovo."
+msgstr "L'azione %(invalidActionsStr)s non è supportata per gli allarmi in streaming. Eliminare l'azione e salvare nuovamente."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:111
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:111
 #, python-format
 msgid "The %(invalidActionsStr)s actions are not supported for streaming alerts. Please delete the actions and save again."
-msgstr "Le azioni %(invalidActionsStr)s non sono supportate per gli allarmi in streaming. Eliminare le azioni e salvare di nuovo."
+msgstr "Le azioni %(invalidActionsStr)s non sono supportate per gli allarmi in streaming. Eliminare l'azione e salvare nuovamente."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:209
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:191
 msgid "The ID is used as the filename on disk. Cannot be changed later"
 msgstr "L'ID è utilizzato come nome di file sul disco. Non è possibile modificarlo in un momento successivo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/customTimePickerValidation.js:21
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/timePickerValidation.js:41
 msgid "The earliest time is invalid."
 msgstr "L'ora inizio non è valida."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/customTimePickerValidation.js:26
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/timePickerValidation.js:46
 msgid "The latest time is invalid."
 msgstr "L'ora fine non è valida."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/MemberExplorer.jsx:245
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/MemberExplorer.jsx:252
 msgid "There are no members for ${dimension} available. Expand the time range to see available members."
-msgstr "Non ci sono membri disponibili per ${dimension}. Espandere l'intervallo temporale per vedere i membri disponibili."
+msgstr "Non ci sono membri ${dimension} disponibili. Espandere l'intervallo temporale per vedere i membri disponibili."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartPanel/ChartPanel.jsx:143
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterDropdown/FilterDropdown.jsx:72
+msgid "There are no metric indexes"
+msgstr "Non ci sono indici metrici"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartPanel/ChartPanel.jsx:76
 msgid "There are not enough data points within the current time range. Select a wider time range to expand your results."
-msgstr "Non ci sono coordinate a sufficienza all'interno dell'intervallo temporale corrente. Selezionare un intervallo temporale più ampio per espandere i risultati."
+msgstr "Non ci sono sufficienti coordinate all'interno di questo intervallo temporale. Selezionare un intervallo temporale più ampio per espandere i risultati."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartPanel/ChartPanel.jsx:137
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartPanel/ChartPanel.jsx:69
 msgid "There are too many data points within the current time range. Select a shorter time range to refine your results."
-msgstr "Ci sono troppe coordinate all'interno dell'intervallo temporale corrente. Selezionare un intervallo temporale più breve per affinare i risultati."
+msgstr "Ci sono troppe coordinate all'interno di questo intervallo temporale. Selezionare un intervallo temporale più breve per affinare i risultati."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/ChartPanel/ChartPanel.jsx:128
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/ChartPanel/ChartPanel.jsx:60
 #, python-format
 msgid "There is no data available for %(measures)s. To see data on the chart, select a different time range, edit filters, or check with your administrator about user permissions."
-msgstr ""
-"Non ci sono dati disponibili per %(measures)s. Per vedere i dati sul grafico, selezionare un intervallo temporale diverso, modificare i filtri o verificare con il proprio amministratore le autorizzazioni utente."
+msgstr "Nessun dato disponibile per %(measures)s. Per vedere i dati nel grafico, selezionare un differente intervallo temporale, modificare i filtri, o verificare con l'amministratore i permessi utente."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertDialog.jsx:128
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/ScheduledAlertDialogContainer.jsx:192
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/StreamingAlertDialogContainer.jsx:192
 msgid "There was a problem opening the Save as Alert dialog. Close the dialog and try again."
-msgstr "Si è verificato un problema durante l'apertura della finestra di dialogo Salva come allarme. Chiudere la finestra di dialogo e riprovare."
+msgstr "Si è verificato un problema nell'apertura del dialogo Salva come Allarme. Chiudere il dialogo e provare nuovamente."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardPanel.jsx:80
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesPanel.jsx:219
+msgid "This aggregation should only be used with accumulating counter metrics."
+msgstr "Questa aggregazione dovrebbe essere usata solo con le metriche di conteggio ad accumulo."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardPanel.jsx:82
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardPanel.jsx:83
 #, python-format
 msgid "This panel has been created and added to %(id)s."
 msgstr "Questo pannello è stato creato e aggiunto a %(id)s."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:24
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:24
 msgid "Threshold value is too large. Enter a smaller threshold."
-msgstr "Il valore di soglia è troppo grande. Immettere una soglia più piccola."
+msgstr "Valore della soglia troppo elevato. Inserire una soglia più bassa."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:26
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:26
 msgid "Threshold value is too small. Enter a bigger threshold."
-msgstr "Il valore di soglia è troppo piccolo. Immettere una soglia più grande."
+msgstr "Valore della soglia troppo basso. Inserire una soglia più alta."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:249
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:238
 msgid "Thresholds"
 msgstr "Soglie"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:151
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Throttle.jsx:71
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:141
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Throttle.jsx:75
 msgid "Throttle"
 msgstr "Limitazione"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:37
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:37
 msgid "Throttle period cannot be empty"
 msgstr "Il periodo di limitazione non può essere vuoto"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:40
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:40
 msgid "Throttle period must be a valid whole number"
 msgstr "Il periodo di limitazione deve essere un numero intero valido"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:44
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:44
 msgid "Throttle period must be greater than 0"
 msgstr "Il periodo di limitazione deve essere maggiore di 0"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/EventExplorer/EventTable.jsx:135
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/EventExplorer/EventTable.jsx:137
 msgid "Time"
 msgstr "Ora"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:81
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:100
 msgid "Time Charts"
-msgstr "Grafici temporali"
+msgstr "Grafici tempo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/icons/TimeColumn.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/icons/TimeColumn.jsx:10
 msgid "Time Column"
-msgstr "Colonna Ora"
+msgstr "Colonna tempo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:111
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:216
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceTimeRange.jsx:91
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/TimeShift.jsx:111
 msgid "Time Range"
 msgstr "Intervallo temporale"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:152
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:151
 msgid "Time Range Picker"
 msgstr "Selezione intervallo temporale"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/SeriesPanel.jsx:211
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/SeriesPanel.jsx:263
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerForm.jsx:48
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/TimePickerForm.jsx:210
 msgid "Time Shift"
 msgstr "Sfasamento temporale"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/CustomTimeShift.jsx:102
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:198
+msgid "Time Span"
+msgstr "Span temporale"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:95
+msgid "Time Span must be a positive number"
+msgstr "Lo span temporale deve essere un numero positivo"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/CustomTimeShift.jsx:103
 msgid "Time Unit"
 msgstr "Unità di tempo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/CustomTimeShift.jsx:92
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/CustomTimeShift.jsx:93
 msgid "Time Value"
-msgstr "Valore temporale"
+msgstr "Valore di tempo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Time/TimeRange.jsx:80
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Time/TimeRange.jsx:81
 msgid "Time range Menu"
 msgstr "Menu intervallo temporale"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertForm.jsx:306
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:93
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/timePickerValidation.js:62
+msgid "Time shift must be a numeric value."
+msgstr "Lo sfasamento temporale deve essere un valore numerico"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:180
+#, python-format
+msgid "Time span = %(display)s"
+msgstr "Span temporale = %(display)s"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/ScheduledAlertForm.jsx:177
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/StreamingAlertForm.jsx:163
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:93
 msgid "Title"
 msgstr "Titolo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:10
 msgid "Title cannot be empty"
 msgstr "Il titolo non può essere vuoto"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerForm.jsx:81
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/utils/timepicker-utils.js:80
 #, python-format
 msgid "To %(datetime)s"
 msgstr "A %(datetime)s"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:17
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:6
 msgid "Today"
 msgstr "Oggi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:165
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:155
 msgid "Trigger Actions"
 msgstr "Attiva azioni"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/AlertForm.jsx:380
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/ScheduledAlertForm.jsx:212
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/StreamingAlertForm.jsx:189
 msgid "Trigger Conditions"
 msgstr "Condizioni di attivazione"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:20
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:20
 msgid "Trigger threshold cannot be empty"
 msgstr "La soglia di attivazione non può essere vuota"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/validation.js:22
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/validation.js:22
 msgid "Trigger threshold must be a valid number"
-msgstr "La soglia di attivazione deve essere un numero valido"
+msgstr "La soglia di attivazione deve essere un numero valido."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:127
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:148
 msgid "Type a constant here"
-msgstr "Digitare una costante qui"
+msgstr "Digitare qui una costante"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/splunk_metrics_workspace/main/webapp/pages/version_check/index.jsx:51
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/splunk_metrics_workspace/src/main/webapp/pages/version_check/index.jsx:51
 msgid "Unable to launch app"
-msgstr "Impossibile avviare l'app"
+msgstr "Impossibile lanciare l'app"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/containers/UnifiedAnalysisApp/UnifiedAnalysisApp.jsx:114
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/splunk_metrics_workspace/src/main/webapp/pages/analytics_workspace/index.jsx:209
+msgid "Unable to load panel."
+msgstr "Impossibile caricare il pannello."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/containers/UnifiedAnalysisApp/UnifiedAnalysisApp.jsx:85
 msgid "Unable to process the chart's time range. Using default time range"
-msgstr "Impossibile elaborare l'intervallo temporale del grafico. Utilizzo dell'intervallo temporale di default"
+msgstr "Impossibile elaborare l'intervallo temporale del grafico. Usare l'intervallo temporale di default"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-enterprise/index.jsx:90
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/src/index.jsx:85
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/FilterPanel/FilterPanel.jsx:36
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:175
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:144
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/YAxisForm.jsx:150
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/FilterPanel/FilterPanel.jsx:57
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:243
 msgid "Update"
 msgstr "Aggiorna"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:133
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:164
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/FilterPanel/FilterPanel.jsx:276
+msgid "Use dimension = value(s) pairs to filter your data further. Example: ip=10.1*, 10.2*"
+msgstr "Usa coppie dimensione = valore/i per filtrare ulteriormente i dati. Esempio: ip=10.1*, 10.2*"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:154
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ReferenceLinePanel/ReferenceLinePanel.jsx:185
 msgid "Value"
 msgstr "Valore"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/format-number.js:12
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/format-number.js:12
 msgid "Value cannot be empty"
 msgstr "Il valore non può essere vuoto"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/format-number.js:13
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/format-number.js:13
 msgid "Value must be a valid number"
 msgstr "Il valore deve essere un numero valido"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/format-number.js:15
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/format-number.js:15
 msgid "Value must be greater than or equal to -5.4e306"
-msgstr "Il valore deve essere maggiore o uguale a -5.4e306."
+msgstr "Il valore deve essere maggiore o uguale a -5.4e306"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/format-number.js:14
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/format-number.js:14
 msgid "Value must be less than or equal to 5.4e306"
-msgstr "Il valore deve essere minore o uguale a 5.4e306."
+msgstr "Il valore deve essere minore o uguale a 5.4e306"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/SuccessDialog/SuccessDialog.jsx:31
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/SuccessDialog/SuccessDialog.jsx:35
 #, python-format
 msgid "View %(type)s"
 msgstr "Visualizza %(type)s"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:18
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:7
 msgid "Week to date"
 msgstr "Inizio settimana a oggi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesPanel/TimeShift/CustomTimeShift.jsx:14
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:36
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/TimeSpanPicker.jsx:33
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:38
 msgid "Weeks"
 msgstr "Settimane"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/RelativeTimeInput.jsx:72
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/RelativeTimeInput.jsx:72
 msgid "Weeks Ago"
 msgstr "Settimane fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/MemberExplorer.jsx:374
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/TimeShift/CustomTimeShift.jsx:14
+msgid "Weeks ago"
+msgstr "Settimane fa"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/MemberExplorer.jsx:381
 msgid "Wildcards:"
 msgstr "Caratteri jolly:"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:21
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/lib/test-ready.js:1
+msgid "Wrong index!"
+msgstr "Indice errato."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/lib/test-ready.js:1
+msgid "Wrong length!"
+msgstr "Lunghezza errata."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/lib/test-ready.js:1
+msgid "Wrong offset!"
+msgstr "Offset errato."
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesPanel/ChartSettingsPanel/ChartSettingsPanel.jsx:135
+msgid "Y-Axis"
+msgstr "Asse Y"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:10
 msgid "Year to date"
 msgstr "Inizio anno a oggi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/RelativeTimeInput.jsx:75
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/RelativeTimeInput.jsx:75
 msgid "Years Ago"
 msgstr "Anni fa"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:157
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:156
 msgid "Yes"
 msgstr "Sì"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/timeranges.js:24
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/timeranges.js:13
 msgid "Yesterday"
 msgstr "Ieri"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:234
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:235
 msgid "You do not have any dashboards yet. Try saving to a new dashboard."
-msgstr "Non hai ancora alcuna dashboard. Prova a salvare in una nuova dashboard."
+msgstr "Non è presente ancora alcuna dashboard. Provare a salvare in una nuova dashboard."
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/SuccessDialog/SuccessDialog.jsx:20
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:209
+msgid "You have no writable dashboards"
+msgstr "Non ci sono dashboard scrivibili"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/SuccessDialog/SuccessDialog.jsx:24
 #, python-format
 msgid "Your %(type)s Has Been Created"
-msgstr "Creazione %(type)s eseguita"
+msgstr "%(type)s è stata creata"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/StateRestoreControl/StateRestoreControl.jsx:18
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/StateRestoreControl/StateRestoreControl.jsx:18
 msgid "Your work has been recovered."
-msgstr "Il tuo lavoro è stato recuperato."
+msgstr "Il lavoro è stato recuperato"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/icons/ZoomOut.jsx:10
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/icons/ZoomOut.jsx:10
 msgid "Zoom Out"
 msgstr "Zoom indietro"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Time/TimeRange.jsx:84
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Time/TimeRange.jsx:85
 msgid "Zoom out"
 msgstr "Zoom indietro"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/messages.js:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/messages.js:1
 msgid "accelerated "
 msgstr "accelerato"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:49
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/lib/test-ready.js:1
+msgid "ajax error"
+msgstr "errore ajax"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/lib/test-ready.js:1
+msgid "ajax error "
+msgstr "errore ajax"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:51
 msgid "alerts"
 msgstr "allarmi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:107
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:98
 #, python-format
 msgid "at %(timePoint)s"
-msgstr "alle %(timePoint)s"
+msgstr "a %(timePoint)s"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:109
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:100
 #, python-format
 msgid "at %(timePoint)s minutes past the hour"
 msgstr "a %(timePoint)s minuti dopo l'ora"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/messages.js:3
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/messages.js:3
 msgid "available"
-msgstr "disponibile"
+msgstr "disponibili"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:19
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:21
 msgid "average"
 msgstr "medio"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesLegend/OptionA.jsx:26
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesLegend/OptionB.jsx:26
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/MultiSeriesLegend/OptionC.jsx:20
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/dashboards.js:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesLegend/OptionA.jsx:26
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesLegend/OptionB.jsx:26
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/MultiSeriesLegend/OptionC.jsx:20
 msgid "by"
 msgstr "per"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/series.js:35
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/redux/views/views-series.js:188
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/series.js:35
 #, python-format
 msgid "by %(dimension)s"
 msgstr "per %(dimension)s"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:20
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:22
 msgid "count"
 msgstr "conteggio"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:48
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:50
 msgid "data"
 msgstr "dati"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:47
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:49
 msgid "datasets"
 msgstr "set di dati"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:21
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:23
 msgid "distinct count"
-msgstr "conteggio distinti"
+msgstr "conteggio distinto"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerForm.jsx:24
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/CustomTimePicker/CustomTimePickerForm.jsx:31
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/utils/timepicker-utils.js:20
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/TimePicker/utils/timepicker-utils.js:26
 #, python-format
 msgid "eg. %(firstExample)s or %(secondExample)s"
-msgstr "es. %(firstExample)s o %(secondExample)s"
+msgstr "ad es. %(firstExample)s o %(secondExample)s"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/EventExplorer/EventExplorer.jsx:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/lib/test-ready.js:1
+msgid "entries"
+msgstr "voci"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/EventExplorer/EventExplorer.jsx:1
 msgid "event"
 msgstr "evento"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/EventExplorer/EventExplorer.jsx:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/EventExplorer/EventExplorer.jsx:1
 msgid "events"
 msgstr "eventi"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Threshold.jsx:21
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Threshold.jsx:23
 msgid "greater than"
 msgstr "maggiore di"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDialog/Threshold.jsx:22
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/lib/test-ready.js:1
+msgid "keys"
+msgstr "chiavi"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDialog/Threshold.jsx:24
 msgid "less than"
 msgstr "minore di"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:22
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:24
 msgid "max"
 msgstr "max"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:46
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:48
 msgid "metrics"
 msgstr "metriche"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:23
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:25
 msgid "min"
 msgstr "min"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:157
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:147
 msgid "no"
 msgstr "no"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DataPanel/Hierarchy.jsx:231
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DataPanel/Hierarchy.jsx:232
 msgid "not found"
 msgstr "non trovato"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/GlobalControls/RefreshControl.jsx:154
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/GlobalControls/RefreshControl.jsx:140
 msgid "off"
 msgstr "off"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/GlobalControls/RefreshControl.jsx:156
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/GlobalControls/RefreshControl.jsx:142
 msgid "on"
 msgstr "su"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:258
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:276
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Dashboard/SaveDashboardForm.jsx:316
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/Report/SaveAsReportForm.jsx:109
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:258
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:276
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Dashboard/SaveDashboardForm.jsx:315
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/Report/SaveAsReportForm.jsx:109
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/UdfDashboard/SaveUdfDashboardForm.jsx:162
 msgid "optional"
 msgstr "opzionale"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:193
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:183
 #, python-format
 msgid "over %(span)s intervals"
-msgstr "nel corso di %(span)s intervalli"
+msgstr "su %(span)s intervalli"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:1
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:1
 msgid "over the last"
-msgstr "nel corso degli ultimi/delle ultime"
+msgstr "nell'ultimo"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:24
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:26
 msgid "rate"
 msgstr "tasso"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:25
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:27
 msgid "standard deviation"
 msgstr "deviazione standard"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/utils/internationalized-names.js:26
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/utils/internationalized-names.js:28
 msgid "sum"
 msgstr "somma"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/MemberExplorer.jsx:283
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/MemberExplorer.jsx:290
 msgid "value remaining"
 msgstr "valore rimanente"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/DimensionFilterPanel/MemberExplorer.jsx:284
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-enterprise/lib/test-ready.js:1
+msgid "values"
+msgstr "valori"
+
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/DimensionFilterPanel/MemberExplorer.jsx:291
 msgid "values remaining"
 msgstr "valori rimanenti"
 
-#: /Users/yzeng/builds/main/etc/apps/splunk_metrics_workspace/appserver/sourcefiles/analysis-workspace-core/components/AlertDetails/AlertDetails.jsx:154
+#: /opt/splunk/etc/apps/splunk_metrics_workspace/build/data-analysis/packages/analysis-workspace-core/src/components/AlertDetails/AlertDetails.jsx:144
 #, python-format
 msgid "yes, suppressed for %(duration)s"
 msgstr "sì, eliminato per %(duration)s"

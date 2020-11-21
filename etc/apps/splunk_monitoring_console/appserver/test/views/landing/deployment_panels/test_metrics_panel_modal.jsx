@@ -2,6 +2,7 @@ import React from 'react';
 import { configure, shallow } from 'enzyme';
 import MetricsPanelModal from 'splunk_monitoring_console/views/landing/deploymentPanels/MetricsPanelModal';
 import EnzymeAdapterReact16 from 'enzyme-adapter-react-16';
+import Modal from '@splunk/react-ui/Modal';
 
 suite('MC Deployment Metrics Modal Component', function() {
     setup(function () {
@@ -60,7 +61,7 @@ suite('MC Deployment Metrics Modal Component', function() {
     });
     test('Test rendering the MetricsPanelModal component', function() {
         assert.equal(
-            this.wrapper.find('Modal').length,1,
+            this.wrapper.find(Modal).length,1,
             'MetricsPanelModal page rendered');
         assert.equal(this.wrapper.find('Header').length, 1,
             'Should be 1 main header');

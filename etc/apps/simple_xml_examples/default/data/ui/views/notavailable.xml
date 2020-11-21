@@ -1,6 +1,0 @@
-<dashboard script="prettify.js">
-  <label>Not Available</label>
-  <row>
-    <html src="docs/notavailable.html" />
-  </row>
-</dashboard>

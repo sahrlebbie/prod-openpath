@@ -56,8 +56,8 @@ define(
 							peer: this.model.peer,
 							state: this.model.state
 						},
-						collection: { 
-							peers: this.collection.peers 
+						collection: {
+							peers: this.collection.peers
 						},
 						onHiddenRemove: true
 					});
@@ -132,7 +132,9 @@ define(
 					_: _,
 					disabled: this.model.peer.entry.content.get('status-toggle') === 'Disabled',
 					edit: this.model.peer.canEditInstanceDetails(),
-					local: this.model.peer.entry.content.get('type') === 'localInstance'
+                    local: this.model.peer.entry.content.get('type') === 'localInstance',
+                    // Set true if monitoring configured in distributed mode. false if standalone mode.
+                    configured: this.model.appLocal.entry.content.get('configured')
 				}));
 				this._updateConfigured();
 				return this;
@@ -146,15 +148,17 @@ define(
 			},
 			template: '\
                 <ul class="first-group">\
-                	<% if (disabled) { %>\
+                    <% if (disabled) { %>\
                 		<li><a href="#" class="enable-instance"><%- _("Enable Monitoring").t() %></a></li>\
                 	<% } else { %>\
 	                    <li><a href="#" class="edit-server-roles"><%- _("Edit Server Roles").t() %></a></li>\
                     	<li class="edit-groups-container"><a href="#" class="edit-groups"><%- _("Edit Custom Groups").t() %></a></li>\
 	                    <% if (edit) { %>\
 		                    <li><a href="#" class="edit-instance"><%- _("Edit Instance").t() %></a></li>\
+                        <% } %>\
+                        <% if (configured) { %>\
+		                    <li><a href="#" class="disable-instance"><%- _("Disable Monitoring").t() %></a></li>\
 	                    <% } %>\
-						<li><a href="#" class="disable-instance"><%- _("Disable Monitoring").t() %></a></li>\
                     <% } %>\
                 </ul>\
             '

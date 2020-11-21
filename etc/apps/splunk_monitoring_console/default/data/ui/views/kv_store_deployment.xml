@@ -249,7 +249,7 @@
       <table depends="$drilldown_page_fault$" rejects="$split_by_host$" id="drilldown_page_fault">
         <title>Time range: $drilldown_page_fault_earliest_label$ ~ $drilldown_page_fault_latest_label$. Metric: $countPageFaultsFunc$ page fault range: $drilldown_page_fault_metric$. ($drilldown_page_fault_count$ instances)</title>
         <search>
-          <query>`dmc_drilldown_kv_store_deployment_page_faults($group$, $countPageFaultsFunc$, $drilldown_page_fault_metric$)`</query>
+          <query>`dmc_drilldown_kv_store_deployment_page_faults("$group$", $countPageFaultsFunc$, $drilldown_page_fault_metric$)`</query>
           <earliest>$drilldown_page_fault_earliest$</earliest>
           <latest>$drilldown_page_fault_latest$</latest>
         </search>
@@ -319,7 +319,7 @@
       <table depends="$drilldown_network_traffic$" rejects="$split_by_host$" id="drilldown_network_traffic">
         <title>Time range: $drilldown_network_traffic_earliest_label$ ~ $drilldown_network_traffic_latest_label$. Metric: Network traffic: $drilldown_network_traffic_metric$. ($drilldown_network_traffic_count$ instances)</title>
         <search>
-          <query>`dmc_drilldown_kv_store_deployment_network($group$)`</query>
+          <query>`dmc_drilldown_kv_store_deployment_network("$group$")`</query>
           <earliest>$drilldown_network_traffic_earliest$</earliest>
           <latest>$drilldown_network_traffic_latest$</latest>
         </search>
@@ -426,7 +426,7 @@
       <table depends="$drilldown_mapped_memory_ratio$" rejects="$split_by_host$" id="drilldown_mapped_memory_ratio">
         <title>Time range: $drilldown_mapped_memory_ratio_earliest_label$ ~ $drilldown_mapped_memory_ratio_latest_label$. Metric: Virtual to mapped memory ratio: $drilldown_mapped_memory_ratio_metric$. ($drilldown_mapped_memory_ratio_count$ instances)</title>
         <search>
-          <query>`dmc_drilldown_kv_store_deployment_memory_ratio($group$, $drilldown_mapped_memory_ratio_metric$)`</query>
+          <query>`dmc_drilldown_kv_store_deployment_memory_ratio("$group$", $drilldown_mapped_memory_ratio_metric$)`</query>
           <earliest>$drilldown_mapped_memory_ratio_earliest$</earliest>
           <latest>$drilldown_mapped_memory_ratio_latest$</latest>
         </search>
@@ -449,18 +449,36 @@
         <viz type="splunk_monitoring_console.heatmap">
             <search>
                 <query>
-                    `dmc_set_index_introspection` search_group=dmc_group_kv_store search_group="$group$" component=kvstorereplicasetstats data.replSetStats.myState!=1
-                    | bin _time minspan=1m
-                    | stats max(data.oplogInfo.end) AS local by _time host
+                    `dmc_set_index_introspection` search_group=dmc_group_kv_store search_group="$group$" component=kvstorereplicasetstats data.replSetStats.myState=1
+                    | spath data.replSetStats.members{}.name output=name
+                    | spath data.replSetStats.members{}.optimeDate output=optimeDate
+                    | spath data.replSetStats.members{}.stateStr output=stateStr
+                    | eval prop_key_val=mvzip(mvzip(name, optimeDate, "---"), stateStr, "---")
+                    | fields _time, prop_key_val
+                    | mvexpand prop_key_val
+                    | eval name=mvindex(split(prop_key_val, "---"), 0)
+                    | eval optimeDate=mvindex(split(prop_key_val, "---"), 1)
+                    | eval stateStr=mvindex(split(prop_key_val, "---"), 2)
+                    | where stateStr="SECONDARY"
                     | join _time
                     [ search `dmc_set_index_introspection` search_group=dmc_group_kv_store search_group="$group$" component=kvstorereplicasetstats data.replSetStats.myState=1
+                       | spath data.replSetStats.members{}.name output=name
+                       | spath data.replSetStats.members{}.optimeDate output=optimeDate
+                       | spath data.replSetStats.members{}.stateStr output=stateStr
+                       | eval prop_key_val=mvzip(mvzip(name, optimeDate, "---"), stateStr, "---")
+                       | fields _time, prop_key_val
+                       | mvexpand prop_key_val
+                       | eval name=mvindex(split(prop_key_val, "---"), 0)
+                       | eval optimeDate=mvindex(split(prop_key_val, "---"), 1)
+                       | eval stateStr=mvindex(split(prop_key_val, "---"), 2)
+                       | where stateStr="PRIMARY"
+                       | stats max(optimeDate) as primary by _time]
+                    | eval difference=(primary-optimeDate)/1000
                     | bin _time minspan=1m
-                    | stats max(data.oplogInfo.end) AS primary by _time]
-                    | eval difference=(primary-local)/1000
-                    | stats avg(difference) AS lag by host _time
+                    | stats avg(difference) AS lag by _time name
                     | eval lag = round(lag, 2)
                     | `dmc_replication_lag_rangemap`
-                    | timechart minspan=1m partial=f dc(host) as server_count by range
+                    | timechart minspan=1m partial=f dc(name) as server_count by range
                     | fields _time ">30s", "10-30s", "0-10s"
                 </query>
                 <earliest>$time.earliest$</earliest>
@@ -482,19 +500,37 @@
         </viz>
       <chart>
         <searchString>
-`dmc_set_index_introspection` search_group=dmc_group_kv_store search_group="$group$" component=kvstorereplicasetstats data.replSetStats.myState!=1
-| bin _time minspan=1m 
-| stats max(data.oplogInfo.end) AS local by _time host 
-| join _time 
-  [ search `dmc_set_index_introspection` search_group=dmc_group_kv_store search_group="$group$" component=kvstorereplicasetstats data.replSetStats.myState=1
-  | bin _time minspan=1m 
-  | stats max(data.oplogInfo.end) AS primary by _time]
-| eval difference=(primary-local)/1000
-| stats avg(difference) AS lag by host _time
-| eval lag = round(lag, 2)
-| `dmc_replication_lag_rangemap`
-| timechart minspan=1m partial=f dc(host) as server_count by range 
-| fields _time ">30s", "10-30s", "0-10s"
+            `dmc_set_index_introspection` search_group=dmc_group_kv_store search_group="$group$" component=kvstorereplicasetstats data.replSetStats.myState=1
+            | spath data.replSetStats.members{}.name output=name
+            | spath data.replSetStats.members{}.optimeDate output=optimeDate
+            | spath data.replSetStats.members{}.stateStr output=stateStr
+            | eval prop_key_val=mvzip(mvzip(name, optimeDate, "---"), stateStr, "---")
+            | fields _time, prop_key_val
+            | mvexpand prop_key_val
+            | eval name=mvindex(split(prop_key_val, "---"), 0)
+            | eval optimeDate=mvindex(split(prop_key_val, "---"), 1)
+            | eval stateStr=mvindex(split(prop_key_val, "---"), 2)
+            | where stateStr="SECONDARY"
+            | join _time
+            [ search `dmc_set_index_introspection` search_group=dmc_group_kv_store search_group="$group$" component=kvstorereplicasetstats data.replSetStats.myState=1
+                | spath data.replSetStats.members{}.name output=name
+                | spath data.replSetStats.members{}.optimeDate output=optimeDate
+                | spath data.replSetStats.members{}.stateStr output=stateStr
+                | eval prop_key_val=mvzip(mvzip(name, optimeDate, "---"), stateStr, "---")
+                | fields _time, prop_key_val
+                | mvexpand prop_key_val
+                | eval name=mvindex(split(prop_key_val, "---"), 0)
+                | eval optimeDate=mvindex(split(prop_key_val, "---"), 1)
+                | eval stateStr=mvindex(split(prop_key_val, "---"), 2)
+                | where stateStr="PRIMARY"
+                | stats max(optimeDate) as primary by _time]
+            | eval difference=(primary-optimeDate)/1000
+            | bin _time minspan=1m
+            | stats avg(difference) AS lag by _time name
+            | eval lag = round(lag, 2)
+            | `dmc_replication_lag_rangemap`
+            | timechart minspan=1m partial=f dc(name) as server_count by range
+            | fields _time ">30s", "10-30s", "0-10s"
         </searchString>
         <earliestTime>$time.earliest$</earliestTime>
         <latestTime>$time.latest$</latestTime>
@@ -541,7 +577,7 @@
       <table depends="$drilldown_rep_latency$" rejects="$split_by_host$" id="drilldown_rep_latency">
         <title>Time range: $drilldown_rep_latency_earliest_label$ ~ $drilldown_rep_latency_latest_label$. Metric: Replication lag range: $drilldown_rep_latency_metric$ seconds. ($drilldown_rep_latency_count$ instances)</title>
         <search>
-          <query>`dmc_drilldown_kv_store_deployment_replication_lag($group$, $drilldown_rep_latency_metric$)`</query>
+          <query>`dmc_drilldown_kv_store_deployment_replication_lag("$group$", $drilldown_rep_latency_metric$)`</query>
           <earliest>$drilldown_rep_latency_earliest$</earliest>
           <latest>$drilldown_rep_latency_latest$</latest>
         </search>
@@ -609,7 +645,7 @@
       <table depends="$drilldown_primary_oplog_window$" rejects="$split_by_host$" id="drilldown_primary_oplog_window">
         <title>Time range: $drilldown_primary_oplog_window_earliest_label$ ~ $drilldown_primary_oplog_window_latest_label$. Metric: Primary Oplog Window. ($drilldown_primary_oplog_window_count$ instances)</title>
         <search>
-          <query>`dmc_drilldown_kv_store_primary_oplog_window($group$)`</query>
+          <query>`dmc_drilldown_kv_store_primary_oplog_window("$group$")`</query>
           <earliest>$drilldown_primary_oplog_window_earliest$</earliest>
           <latest>$drilldown_primary_oplog_window_latest$</latest>
         </search>
@@ -716,7 +752,7 @@
       <table depends="$drilldown_background_flush$" rejects="$split_by_host$" id="drilldown_background_flush">
         <title>Time range: $drilldown_background_flush_earliest_label$ ~ $drilldown_background_flush_latest_label$. Metric: Flushing rate range: $drilldown_background_flush_metric$. ($drilldown_background_flush_count$ instances)</title>
         <search>
-          <query>`dmc_drilldown_kv_store_deployment_background_flush($group$, $drilldown_background_flush_metric$)`</query>
+          <query>`dmc_drilldown_kv_store_deployment_background_flush("$group$", $drilldown_background_flush_metric$)`</query>
           <earliest>$drilldown_background_flush_earliest$</earliest>
           <latest>$drilldown_background_flush_latest$</latest>
         </search>

@@ -4,26 +4,26 @@
         <query>
             | rest splunk_server_group=dmc_group_indexer splunk_server_group="$group$" /services/data/indexes/$index$
             | join title splunk_server type=outer [| rest splunk_server_group=dmc_group_indexer splunk_server_group="$group$" /services/data/indexes-extended/$index$]
-            | eval bucketCount = if(isnotnull(total_bucket_count), total_bucket_count, 0)
-            | eval eventCount = if(isnotnull(totalEventCount), totalEventCount, 0)
-            | eval coldBucketSize = if(isnotnull('bucket_dirs.cold.bucket_size'), 'bucket_dirs.cold.bucket_size', 'bucket_dirs.cold.size')
-            | eval coldBucketSizeGB = if(isnull(coldBucketSize), 0, round(coldBucketSize/ 1024, 2))
+            | eval bucketCount = coalesce(total_bucket_count, 0)
+            | eval eventCount = coalesce(totalEventCount, 0)
+            | eval coldBucketSize = coalesce('bucket_dirs.cold.bucket_size', 'bucket_dirs.cold.size', 0)
+            | eval coldBucketSizeGB = round(coldBucketSize/ 1024, 2)
             | eval coldBucketMaxSizeGB = if(isnull('coldPath.maxDataSizeMB') OR 'coldPath.maxDataSizeMB' = 0, "unlimited", round('coldPath.maxDataSizeMB' / 1024, 2))
             | eval coldBucketUsageGB = coldBucketSizeGB." / ".coldBucketMaxSizeGB
-            | eval homeBucketSizeGB = round((total_size - if(isnull(coldBucketSize), 0, coldBucketSize)) / 1024, 2)
-            | eval homeBucketSizeGB = if(isnull(homeBucketSizeGB), 0, homeBucketSizeGB)
+            | eval homeBucketSizeGB = coalesce(round((total_size - coldBucketSize) / 1024, 2), 0.00)
             | eval homeBucketMaxSizeGB = round('homePath.maxDataSizeMB' / 1024, 2)
-            | eval homeBucketMaxSizeGB = if(isnull(homeBucketMaxSizeGB) OR homeBucketMaxSizeGB == 0, "unlimited", homeBucketMaxSizeGB)
+            | eval homeBucketMaxSizeGB = if(homeBucketMaxSizeGB > 0, homeBucketMaxSizeGB, "unlimited")
             | eval homeBucketUsageGB = homeBucketSizeGB." / ".homeBucketMaxSizeGB
-            | eval dataAgeSeconds = now() - strptime(minTime,"%Y-%m-%dT%H:%M:%S%z")
-            | eval dataAgeDays = ceiling(dataAgeSeconds / 86400)
+            | eval dataAgeDays = coalesce(round((now() - strptime(minTime,"%Y-%m-%dT%H:%M:%S%z")) / 86400, 0), 0)
             | eval frozenTimePeriodDays = round(frozenTimePeriodInSecs / 86400, 0)
+            | eval frozenTimePeriodDays = if(frozenTimePeriodDays > 0, frozenTimePeriodDays, "unlimited")
             | eval freezeRatioDays = dataAgeDays." / ".frozenTimePeriodDays
-            | eval indexSizeGB = if(currentDBSizeMB >= 1 AND totalEventCount >=1, round(currentDBSizeMB/1024, 2), 0)
-            | eval indexMaxSizeGB = if(maxTotalDataSizeMB > 0, round(maxTotalDataSizeMB / 1024, 2), "unlimited")
+            | eval indexSizeGB = if(currentDBSizeMB >= 1 AND totalEventCount >=1, round(currentDBSizeMB/1024, 2), 0.00)
+            | eval maxTotalDataSizeGB = round(maxTotalDataSizeMB / 1024, 2)
+            | eval indexMaxSizeGB = if(maxTotalDataSizeGB > 0, maxTotalDataSizeGB, "unlimited")
             | eval indexSizeUsageGB = indexSizeGB." / ".indexMaxSizeGB
             | eval indexSizeUsagePerc = if(isNum(indexMaxSizeGB) AND (indexMaxSizeGB > 0), round(indexSizeGB / indexMaxSizeGB * 100, 2)."%", "N/A")
-            | eval total_raw_size = if(isnotnull(total_raw_size), total_raw_size, 0)
+            | eval total_raw_size = coalesce(total_raw_size, 0)
         </query>
     </search>
     <fieldset autoRun="true" submitButton="false">

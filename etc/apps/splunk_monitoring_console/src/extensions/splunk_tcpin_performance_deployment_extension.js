@@ -2,17 +2,16 @@ define([
     'underscore',
     'jquery',
     'backbone',
-    'splunk.util',
     'views/shared/controls/SyntheticRadioControl'
 ], function(
     _,
     $,
     Backbone,
-    utils,
     SyntheticRadioControl
 ) {
 
-    $(".viz").hide();
+    // SPL-188381 Specified id in selector to prevent hiding of Health Check
+    $("#indexer_count_by_tcp_input_queue_fill_ratio .viz").hide();
 
     this.model = this.model || {};
 

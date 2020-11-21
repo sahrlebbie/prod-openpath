@@ -266,31 +266,29 @@
   </row>
   <row>
     <panel reject="$snapshot$">
-      <title>Deployment-Wide $aggrSearchConcurLabel$ Concurrent Searches</title>
-      <input type="dropdown" token="aggrSearchConcurDivider" searchWhenChanged="true">
+      <title>Deployment-Wide $aggrSearchConcurLabel$ Search Concurrency Per Instance Over Time</title>
+      <input type="dropdown" token="aggrSearchConcurFunc" searchWhenChanged="true">
         <label>Aggregation</label>
         <showClearButton>false</showClearButton>
-        <default>1</default>
-        <choice value="1">Total</choice>
-        <choice value="num_hosts">Average Per Instance</choice>
+        <default>Median</default>
+        <choice value="Avg">Average</choice>
+        <choice value="Median">Median</choice>
+        <choice value="Min">Minimum</choice>
+        <choice value="Max">Maximum</choice>
+        <choice value="Perc90">90th Percentile</choice>
+        <choice value="First">Sampled</choice>
         <change>
-          <condition value="1">
-            <set token="aggrSearchConcurLabel">Total</set>
-          </condition>
-          <condition value="num_hosts">
-            <set token="aggrSearchConcurLabel">Average</set>
-          </condition>
+          <set token="aggrSearchConcurLabel">$label$</set>
         </change>
       </input>
       <chart>
         <search>
           <query>
-          `dmc_set_index_introspection` search_group=$role$ search_group="$group$" sourcetype=splunk_resource_usage ((component=PerProcess data.search_props.sid::*) OR component=Hostwide)
-          | `dmc_rename_introspection_fields`
-          | timechart minspan=30s dc(sid) AS distinct_search_count dc(host) AS num_hosts
-          | eval distinct_search_count = distinct_search_count / $aggrSearchConcurDivider$
-          | eval distinct_search_count = round(distinct_search_count, 2)
-          | fields - num_hosts
+          `dmc_set_index_introspection` search_group="$role$" search_group="$group$" sourcetype=splunk_resource_usage ((component=PerProcess data.search_props.sid::*) OR component=Hostwide)
+          | `dmc_set_bin`
+          | stats dc(data.search_props.sid) AS distinct_search_count by host, _time
+          | timechart minspan=10s bins=200 partial=f $aggrSearchConcurFunc$(distinct_search_count) AS distinct_search_count_per_host
+          | eval distinct_search_count_per_host = round(distinct_search_count_per_host, 2)
           </query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
@@ -496,13 +494,12 @@
           <query>
             `dmc_set_index_introspection` search_group=$role$ search_group="$group$" sourcetype=splunk_resource_usage data.search_props.sid::* data.search_props.mode!=RT
             | `dmc_rename_introspection_fields`
-            | eval search_label = if(isnotnull(label), label, sid)
-            | stats max(elapsed) as runtime max(mem_used) as mem_used earliest(_time) as _time by search_label, provenance, type, mode, app, role, user, host
+            | stats max(elapsed) as runtime max(mem_used) as mem_used earliest(_time) as _time by sid, label, provenance, type, mode, app, role, user, host
             | eval mem_used = round(mem_used, 2)
             | sort 20 - mem_used, runtime
-            | fields search_label, provenance, mem_used, host, runtime, _time, type, mode, app, user, role
+            | fields sid, label, provenance, mem_used, host, runtime, _time, type, mode, app, user, role
             | eval _time=strftime(_time,"%+")
-            | rename search_label as Name, provenance as Provenance, mem_used as "Memory Usage (MB)", host as Instance, runtime as Runtime, _time as Started, type as Type, mode as Mode, app as App, user as User, role as Role
+            | rename sid as SID, label as Name, provenance as Provenance, mem_used as "Memory Usage (MB)", host as Instance, runtime as Runtime, _time as Started, type as Type, mode as Mode, app as App, user as User, role as Role
             | fieldformat Runtime = `dmc_convert_runtime(Runtime)`
           </query>
           <earliest>$time.earliest$</earliest>

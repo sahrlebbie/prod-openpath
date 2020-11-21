@@ -1,0 +1,18 @@
+[app/ui]
+version = 8.1.0
+modtime = 1605678319.039368000
+
+[app/launcher]
+version = 8.1.0
+modtime = 1605678319.040520000
+
+[app/package/check_for_updates]
+version = 8.1.0
+modtime = 1605678319.041055000
+
+[lookups/lookupfilesize.csv]
+access = read : [ * ], write : [ admin, power ]
+export = system
+owner = admin
+version = 8.1.0
+modtime = 1605835861.613611000

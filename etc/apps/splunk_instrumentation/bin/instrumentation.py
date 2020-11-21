@@ -18,8 +18,11 @@ parser.add_argument('--no-send', action='store_true', help='will not query _tele
 parser.add_argument('-m', '--mode', default="INPUT", help='is required if not running from splund modular inputs')
 parser.add_argument('--test-schema')
 parser.add_argument('--log-level')
+parser.add_argument('--username')
+parser.add_argument('--password')
 parser.add_argument('--execution-id')
 parser.add_argument('--quickdraw-url', help='used to override the quickdraw-url')
+parser.add_argument('--run-unscheduled', help='Run even if not scheduled', default=False)
 parser.add_argument('--default-quickdraw', help='used to override the quickdraw-url response')
 parser.add_argument('--start-date', help='first date to query, in YYYY-MM-DD format (defaults to yesterday)')
 parser.add_argument('--stop-date', help='last date to query, in YYY-MM-DD format (inclusive) (defaults to yesterday)')
@@ -44,6 +47,12 @@ if args.quickdraw_url:
     os.environ['QUICKDRAW_URL'] = args.quickdraw_url
 if args.default_quickdraw:
     os.environ['DEFAULT_QUICKDRAW'] = args.default_quickdraw
+if args.username:
+    os.environ['SPLUNK_USERNAME'] = args.username
+if args.password:
+    os.environ['SPLUNK_PASSWORD'] = args.password
+if args.run_unscheduled:
+    os.environ['RUN_UNSCHEDULE'] = args.run_unscheduled
 
 
 # Routine to get the value of an input token
@@ -53,6 +62,8 @@ def get_key():
     # stdin is just a token
     os.environ['INST_TOKEN'] = config_str.rstrip()
 
+if not os.environ.get("SPLUNK_DB"):
+    os.environ['SPLUNK_DB'] = os.path.join(os.environ.get('SPLUNK_HOME') + 'var', 'lib', 'splunk')
 
 # the default mode is INPUT and is what scripted inputs uses and implies
 # there is a token passed in to stdin.
@@ -165,7 +176,7 @@ def main():
     services = ServiceBundle(splunkd)
     telemetry_conf_service = services.telemetry_conf_service
 
-    if should_input_run(telemetry_conf_service):
+    if os.environ.get('RUN_UNSCHEDULE') or should_input_run(telemetry_conf_service):
         process_input_params(telemetry_conf_service, args)
         run_input({'start': args.start_date, 'stop': args.stop_date})
     else:

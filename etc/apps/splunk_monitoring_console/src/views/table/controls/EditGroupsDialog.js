@@ -79,8 +79,19 @@ define(
 
 		            	$(e.target).prop('disabled', true);
 		            	this.model.peer.save().done(function() {
+                            /*
+                            SPL-177576 Removing a new Custom Group
+                            was giving error as the newly created group
+                            models were not having fetched after saving
+                            so they didn't have URL/ID where HTTP DELETE
+                            could be called when trying to remove them.
+
+                            Fetching all the models again after saving
+                            will prevent this issue.
+                            */
+                            this.collection.peers.fetch();
 		            		this.model.state.set('changesMade', true);
-		            		
+
 		            		this.hide();
 		            		var confirmationDialog = new ConfirmationDialog({
 		            			message: _("Your custom groups have updated successfully.").t()

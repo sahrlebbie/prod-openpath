@@ -1,1 +1,0 @@
-This example shows how to connect Custom Visualizations to top-level searches introduced in Splunk 6.2.

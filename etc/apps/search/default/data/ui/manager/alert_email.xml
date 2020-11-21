@@ -76,6 +76,17 @@
          </element>
       </elements>
     </element>
+    <element name="email_domain" type="fieldset">
+      <view name="edit"/>
+      <key name="legend">Email Domains</key>
+      <elements>
+        <element name="allowedDomainList" type="expando_textarea" label="Allowed Domains">
+          <view name="edit"/>
+          <key name="exampleText">Provide a comma-separated list of allowed email domains. Leave empty for no restriction.</key>
+          <key name="submitValueEdit">value.strip()</key>
+        </element>
+      </elements>
+    </element>
     <element name="body_settings" type="fieldset">
       <view name="edit"/>
       <key name="legend">Email Format</key>
@@ -149,7 +160,7 @@
         </element>
         <element name="pdf.footer_left" type="select" label="Left">
           <view name="edit"/>
-          <key name="processValueEdit">','.join([member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp')]) if value and [member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp')] else 'logo'</key>
+          <key name="processValueEdit">','.join([member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp', 'none')]) if value and [member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp', 'none')] else 'logo'</key>
           <options>
             <opt value="logo" label="Logo" />
             <opt value="title" label="Title" />
@@ -161,7 +172,7 @@
         </element>
         <element name="pdf.footer_center" type="select" label="Center">
           <view name="edit"/>
-          <key name="processValueEdit">','.join([member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp')]) if value and [member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp')] else 'title'</key>
+          <key name="processValueEdit">','.join([member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp', 'none')]) if value and [member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp', 'none')] else 'title'</key>
           <options>
             <opt value="logo" label="Logo" />
             <opt value="title" label="Title" />
@@ -173,7 +184,7 @@
         </element>
         <element name="pdf.footer_right" type="select" label="Right">
           <view name="edit"/>
-          <key name="processValueEdit">','.join([member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp')]) if value and [member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp')] else 'timestamp,pagination'</key>
+          <key name="processValueEdit">','.join([member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp', 'none')]) if value and [member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp', 'none')] else 'timestamp,pagination'</key>
           <options>
             <opt value="logo" label="Logo" />
             <opt value="title" label="Title" />
@@ -205,7 +216,7 @@
         </element>
         <element name="pdf.header_left" type="select" label="Left">
           <view name="edit"/>
-          <key name="processValueEdit">','.join([member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp')]) if value and [member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp')] else 'none'</key>
+          <key name="processValueEdit">','.join([member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp', 'none')]) if value and [member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp', 'none')] else 'none'</key>
           <options>
             <opt value="logo" label="Logo" />
             <opt value="title" label="Title" />
@@ -217,7 +228,7 @@
         </element>
         <element name="pdf.header_center" type="select" label="Center">
           <view name="edit"/>
-          <key name="processValueEdit">','.join([member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp')]) if value and [member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp')] else 'description'</key>
+          <key name="processValueEdit">','.join([member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp', 'none')]) if value and [member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp', 'none')] else 'description'</key>
           <options>
             <opt value="logo" label="Logo" />
             <opt value="title" label="Title" />
@@ -229,7 +240,7 @@
         </element>
         <element name="pdf.header_right" type="select" label="Right">
           <view name="edit"/>
-          <key name="processValueEdit">','.join([member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp')]) if value and [member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp')] else 'none'</key>
+          <key name="processValueEdit">','.join([member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp', 'none')]) if value and [member.strip() for member in value.split(',') if member.strip() in ('logo','title','description','pagination','timestamp', 'none')] else 'none'</key>
           <options>
             <opt value="logo" label="Logo" />
             <opt value="title" label="Title" />

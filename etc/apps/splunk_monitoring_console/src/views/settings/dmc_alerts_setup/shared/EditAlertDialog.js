@@ -282,11 +282,13 @@ define([
 
 		_isValidEntry: function (numStr, min, max) {
 			if(!_.isNaN(+numStr)) {
-				var numVal = parseFloat(numStr);
-				if (numVal < min) {
+                var numVal = parseFloat(numStr);
+                // SPL-188423 Fixed validation for comparison type ranges
+                // Comparison of > should not validate as >=
+				if (_.isUndefined(max) && numVal <= min) {
 					return false;
 				}
-				if (!_.isUndefined(max) && numVal > max) {
+				if (!_.isUndefined(max) && (numVal < min || numVal > max)) {
 					return false;
 				}
 				return true;
